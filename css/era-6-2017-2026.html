@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>2017–2026: Grid era and modern CSS power</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin: 16px; }
+    nav { border: 1px solid #000; padding: 8px; margin-bottom: 12px; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .card { border: 1px solid #000; padding: 12px; }
+    @media (min-width: 800px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+    /* Container-query style note: spec work moved around between drafts; modern browsers implement container queries now */
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/index.html">The Hub</a> |
+    <a href="/css/csshome.html">CSS Home</a> |
+    <a href="glossary.html">Glossary</a> |
+    <a href="bibliography.html">Bibliography</a> |
+    <a href="contributors.html">Contributors</a> |
+    <a href="discussion.html">Discussion</a> |
+    <a href="era-1-1994-1996.html">1994-1996</a> |
+    <a href="era-2-1996-1998.html">1996-1998</a> |
+    <a href="era-3-1998-2004.html">1998-2004</a> |
+    <a href="era-4-2004-2011.html">2004-2011</a> |
+    <a href="era-5-2011-2017.html">2011-2017</a> |
+    <a href="era-6-2017-2026.html">2017-2026</a> 
+  </nav>
+ <h1>2017–2026: Grid, modern selectors, and the “you can finally do it in CSS” era</h1>
+  <p>
+    CSS Grid becomes a real standard-era layout system around 2017, with the W3C process moving it through key stages
+    and browsers shipping broad support soon after. :contentReference[oaicite:23]{index=23}
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h2>What Grid changed</h2>
+      <ul>
+        <li>Two-dimensional layout (rows and columns) without table hacks.</li>
+        <li>Cleaner page structure: fewer wrapper divs just for layout.</li>
+        <li>Real alignment tools, not “please line up, I’m begging you.”</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Big modern features (2017–2026)</h2>
+      <ul>
+        <li>CSS Custom Properties (“CSS variables”) become normal tooling in real projects. :contentReference[oaicite:24]{index=24}</li>
+        <li>Container query work matures through CSSWG drafts and modules. :contentReference[oaicite:25]{index=25}</li>
+        <li>Selectors keep evolving through levels (the spec keeps moving because it’s updated often). :contentReference[oaicite:26]{index=26}</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Major players</h2>
+      <ul>
+        <li><strong>W3C CSS Working Group</strong> and its participants. :contentReference[oaicite:27]{index=27}</li>
+        <li>Editors and implementers from browser teams (Google, Apple, Mozilla, Microsoft, Igalia, etc.). :contentReference[oaicite:28]{index=28}</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Important reality check</h2>
+      <p>
+        Modern CSS is not “one version.” It’s a living pile of modules. The W3C publishes snapshots, drafts, and recommendations,
+        and browsers ship features gradually. :contentReference[oaicite:29]{index=29}
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>
