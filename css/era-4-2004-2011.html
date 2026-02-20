@@ -1,93 +1,176 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!doctype html>
 <html>
 <head>
-<title>2001–2011: CSS 2.1 Becomes the Baseline</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>CSS Era 4 (2001–2010)</title>
+  <meta charset="utf-8">
+  <style>
+    /* CSS 2.1 era “fixed width centered” look: header, nav, two columns with floats.
+       Includes the classic margin: 0 auto centering hack (common early 2000s). */
 
-<style type="text/css">
-/* CSS2.1 era: floats, positioning, basic layout patterns */
-body { font-family: serif; background: #fff; color: #000; }
-h1 { font-size: 22pt; }
-.box { border: 1px solid #000; padding: 10px; margin: 10px 0; }
-pre { font-family: monospace; }
-</style>
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:#f0f0f0;
+      color:#111;
+    }
+
+    #container{
+      width: 960px;
+      margin: 0 auto; /* Classic “margin center” hack */
+      background:#fff;
+      border:1px solid #999;
+    }
+
+    #header{
+      background:#003366;
+      color:#fff;
+      padding:14px;
+    }
+
+    #header h1{margin:0;font-size:22px;}
+    #header p{margin:6px 0 0;font-size:12px;color:#cfe3ff;}
+
+    #nav{
+      background:#e6e6e6;
+      border-top:1px solid #999;
+      border-bottom:1px solid #999;
+      padding:8px 10px;
+      font-size:13px;
+    }
+
+    #nav a{color:#003366;font-weight:bold;text-decoration:none;margin-right:12px;}
+    #nav a:hover{text-decoration:underline;}
+
+    #sidebar{
+      float:left;
+      width: 250px;
+      padding:10px;
+      background:#f7f7f7;
+      border-right:1px solid #ccc;
+    }
+
+    #content{
+      float:right;
+      width: 680px;
+      padding:10px;
+    }
+
+    .box{
+      border:1px solid #999;
+      padding:10px;
+      margin-bottom:10px;
+      background:#fff;
+    }
+
+    .box h2{margin:0 0 8px;font-size:16px;color:#003366;}
+
+    /* Clearfix (common hack for float layouts) */
+    .clearfix:after{
+      content: ".";
+      display:block;
+      clear:both;
+      height:0;
+      visibility:hidden;
+    }
+
+    .tiny{font-size:12px;color:#444;}
+    code{background:#eee;padding:2px 4px;border:1px solid #ccc;}
+  </style>
 </head>
 
 <body>
+  <div id="container">
+    <div id="header">
+      <h1>Era 4: CSS 2.1 baseline and the fixed-width centered web (2001–2010)</h1>
+      <p>
+        CSS Level 2 Revision 1 (CSS 2.1) becomes a W3C recommendation on 7 June 2011, but it defines the baseline behavior
+        that authors and browsers stabilized during the 2000s.
+      </p>
+    </div>
 
-<div class="box">
-<a href="/index.html">Main Hub</a>
-  <a href="csshome.html">CSS Home</a> |
-  <a href="era-1-1994-1996.html">1994-1996</a> |
-  <a href="era-2-1996-1998.html">1996-1998</a> |
-  <a href="era-3-1998-2004.html">1998-2004</a> |
-  <a href="era-4-2004-2011.html">2004-2011</a> |
-  <a href="era-5-2011-2017.html">2011-2017</a> |
-  <a href="era-6-2017-2026.html">2017-2026</a> |
-  <a href="glossary.html">Glossary</a> |
-  <a href="bibliography.html">Bibliography</a> |
-  <a href="contributors.html">Contributors</a> |
-  <a href="discussion.html">Discussion</a>
-</div>
+    <div id="nav">
+            <a href="/index.html">Main Hub</a>
+            <a href="csshome.html">CSS Home</a> |
+            <a href="era-1-1994-1996.html">1994-1996</a> |
+            <a href="era-2-1996-1998.html">1996-1998</a> |
+            <a href="era-3-1998-2004.html">1998-2004</a> |
+            <a href="era-4-2004-2011.html">2004-2011</a> |
+            <a href="era-5-2011-2017.html">2011-2017</a> |
+            <a href="era-6-2017-2026.html">2017-2026</a> |
+            <a href="glossary.html">Glossary</a> |
+            <a href="bibliography.html">Bibliography</a> |
+            <a href="contributors.html">Contributors</a> |
+            <a href="discussion.html">Discussion</a>
+    </div>
 
-<h1>2001–2011: CSS Level 2 Revision 1 (CSS 2.1) and the Long Cleanup</h1>
+    <div class="clearfix">
+      <div id="sidebar">
+        <div class="box">
+          <h2>Era style pattern</h2>
+          <ul class="tiny">
+            <li>960px centered wrapper</li>
+            <li>Float columns</li>
+            <li>Clearfix hacks</li>
+            <li>“Header / Nav / Content / Footer” layout</li>
+          </ul>
+        </div>
 
-<p>
-This era is dominated by a painful truth: CSS existed, but cross-browser consistency did not.
-The goal of <b>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1)</b> was to document what browsers actually implemented
-and remove or clarify features that were broken or never shipped.
-</p>
+        <div class="box">
+          <h2>The “margin center” hack</h2>
+          <p class="tiny">
+            A typical centered site wrapper:
+          </p>
+          <p class="tiny">
+            <code>width: 960px;</code><br>
+            <code>margin: 0 auto;</code>
+          </p>
+        </div>
+      </div>
 
-<h2>Key Event</h2>
-<p>
-In <b>June 2011</b>, CSS 2.1 became a W3C Recommendation, solidifying the baseline.
-</p>
+      <div id="content">
+        <div class="box">
+          <h2>Why this era happened</h2>
+          <p>
+            After the late-1990s chaos, authors wanted a dependable baseline. CSS features that were too buggy or too
+            inconsistently implemented got avoided. The community converged on “safe” CSS: floats, clear fixes,
+            predictable typography, and fixed-width centered layouts.
+          </p>
+        </div>
 
-<h2>Who Shaped This Era</h2>
-<ul>
-  <li><b>W3C CSS Working Group</b> – maintained CSS 2.1 work for years</li>
-  <li><b>Browser implementers</b> – forced reality checks through actual engine behavior</li>
-  <li><b>Standards advocates</b> – pushed “write standards, not browser hacks” culture</li>
-</ul>
+        <div class="box">
+          <h2>Major players (spec editors and community)</h2>
+          <ul>
+            <li><b>Bert Bos</b>: long-term CSS editor and W3C contributor.</li>
+            <li><b>Tantek &Ccedil;elik</b> and <b>Ian Hickson</b>: listed as editors on CSS 2.1 spec.</li>
+            <li><b>Web Standards Project</b> (WaSP): advocacy pushing browser support and standards compliance.</li>
+            <li><b>Browser engine teams:</b> Trident (Microsoft), Gecko (Mozilla), WebKit (Apple), Presto (Opera).</li>
+          </ul>
+        </div>
 
-<h2>Engine Teams (What Controlled Reality)</h2>
-<dl>
-  <dt><b>Trident</b> (Internet Explorer 6–8)</dt>
-  <dd>Dominant in market share, source of many compatibility constraints.</dd>
-  <dt><b>Gecko</b> (Firefox)</dt>
-  <dd>Improved standards behavior and developer tools helped shift culture.</dd>
-  <dt><b>WebKit</b> (Safari and early Chrome)</dt>
-  <dd>Fast iteration, later forked into Blink (2013, next era).</dd>
-  <dt><b>Presto</b> (Opera)</dt>
-  <dd>Consistently strong standards support, smaller market footprint.</dd>
-</dl>
+        <div class="box">
+          <h2>What authors actually did (2001–2010)</h2>
+          <ul>
+            <li><b>960px grid layouts:</b> fixed containers, often 960px, centered with <code>margin: 0 auto</code>.</li>
+            <li><b>Float columns + clearfix:</b> floats for layout, clearfix hacks to contain them.</li>
+            <li><b>Image-based rounded corners:</b> before border-radius was reliable, corners were sliced images.</li>
+            <li><b>“HasLayout” and IE fixes:</b> special hacks for older Microsoft Internet Explorer behavior.</li>
+            <li><b>Reset CSS:</b> normalize browser default margins/paddings to reduce surprises.</li>
+          </ul>
+        </div>
 
-<div class="box">
-<h2>What Authors Actually Did (The Greatest Hits of Pain)</h2>
-<ul>
-  <li><b>Float layouts</b> + clearfix hacks to keep containers from collapsing.</li>
-  <li><b>HasLayout</b> workarounds in Internet Explorer (triggering layout modes).</li>
-  <li><b>Conditional comments</b> to serve CSS only to Internet Explorer.</li>
-  <li><b>Star HTML hack</b> and <b>underscore hack</b> to target IE parsing behavior.</li>
-  <li><b>PNG transparency hacks</b> and filters for old IE.</li>
-  <li><b>Reset styles</b> to normalize default browser styling.</li>
-</ul>
-</div>
+        <div class="box">
+          <h2>Why CSS 2.1 matters</h2>
+          <p>
+            CSS 2.1 is a cleanup and stabilization step: it clarified behavior and removed or de-emphasized features that
+            never worked consistently. It became the “boring baseline” that made modern CSS possible. 
+          </p>
+        </div>
+      </div>
+    </div>
 
-<h2>CSS 2.1-Era Example</h2>
-<pre>
-.float-left { float: left; width: 200px; }
-.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
-</pre>
-
-<h2>Why This Era Matters</h2>
-<p>
-CSS 2.1 is the reason modern CSS could move forward without collapsing under incompatible interpretations.
-It basically turned chaos into a shared baseline.
-</p>
-
-<hr>
-<p><strong>HTML 4.01 Strict note:</strong> this page avoids deprecated HTML presentational elements.</p>
-
+    <div style="border-top:1px solid #999;padding:10px;background:#e6e6e6;font-size:12px;">
+      <b>Key reference:</b> CSS 2.1 W3C recommendation date: 7 June 2011.
+    </div>
+  </div>
 </body>
 </html>

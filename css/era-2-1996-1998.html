@@ -1,87 +1,83 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!doctype html>
 <html>
 <head>
-<title>1996–1998: CSS Level 1 (W3C Recommendation) and Early Support</title>
-<style type="text/css">
-/* CSS1 era: keep it basic */
-body { font-family: serif; color: #000; background: #fff; }
-h1 { font-size: 20pt; }
-h2 { font-size: 14pt; }
-.box { border: 1px solid #000; padding: 8px; }
-</style>
+  <title>CSS Era 2 (1996–1998)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <style type="text/css">
+    /* CSS1-ish only: fonts, colors, backgrounds, borders, margin/padding, text decoration */
+    body { background: #dcdcdc; color: #111111; font-family: Arial, Helvetica, sans-serif; }
+    .page { background: #ffffff; border: 2px solid #333333; padding: 12px; margin: 12px; }
+    h1 { font-size: 20pt; margin: 0 0 8px 0; }
+    h2 { font-size: 14pt; margin: 14px 0 6px 0; }
+    a:link { color: #0000cc; text-decoration: underline; }
+    a:visited { color: #551A8B; }
+    .nav { border: 1px solid #333333; padding: 6px; background: #eeeeee; }
+    .small { font-size: 10pt; }
+    .box { border: 1px solid #333333; padding: 8px; background: #f7f7f7; }
+  </style>
 </head>
 
-<body bgcolor="#ffffff" text="#000000">
+<body>
+<div class="page">
+  <h1>Era 2: CSS Level 1 and first real browser support (1996–1998)</h1>
 
-<center><h1>1996–1998: CSS Level 1 Arrives</h1></center>
-<hr>
+  <div class="nav">
+    <b>Navigation:</b>
+            <a href="/index.html">Main Hub</a>
+            <a href="csshome.html">CSS Home</a> |
+            <a href="era-1-1994-1996.html">1994-1996</a> |
+            <a href="era-2-1996-1998.html">1996-1998</a> |
+            <a href="era-3-1998-2004.html">1998-2004</a> |
+            <a href="era-4-2004-2011.html">2004-2011</a> |
+            <a href="era-5-2011-2017.html">2011-2017</a> |
+            <a href="era-6-2017-2026.html">2017-2026</a> |
+            <a href="glossary.html">Glossary</a> |
+            <a href="bibliography.html">Bibliography</a> |
+            <a href="contributors.html">Contributors</a> |
+            <a href="discussion.html">Discussion</a>
+  </div>
 
-<center>
-  <a href="/index.html">Main Hub</a>
-  <a href="csshome.html">CSS Home</a> |
-  <a href="era-1-1994-1996.html">1994-1996</a> |
-  <a href="era-2-1996-1998.html">1996-1998</a> |
-  <a href="era-3-1998-2004.html">1998-2004</a> |
-  <a href="era-4-2004-2011.html">2004-2011</a> |
-  <a href="era-5-2011-2017.html">2011-2017</a> |
-  <a href="era-6-2017-2026.html">2017-2026</a> |
-  <a href="glossary.html">Glossary</a> |
-  <a href="bibliography.html">Bibliography</a> |
-  <a href="contributors.html">Contributors</a> |
-  <a href="discussion.html">Discussion</a>
-</center>
+  <h2>What changed in this era</h2>
+  <p>
+    CSS Level 1 (often written as <b>CSS1</b>) becomes an official recommendation on <b>17 December 1996</b>.
+    This mattered because it created a shared baseline for browsers and authors: a real spec for fonts, colors,
+    backgrounds, text styling, and the basic box model (margin, border, padding).
+  </p>
 
-<hr>
+  <div class="box">
+    <b>CSS Level 1 focus:</b>
+    <ul>
+      <li>Font properties (family, size, weight, style)</li>
+      <li>Color and background color</li>
+      <li>Text properties (alignment, decoration)</li>
+      <li>Box properties (margin, border, padding)</li>
+      <li>Classification hooks (class and id) for selecting elements</li>
+    </ul>
+  </div>
 
-<h2>Key Event</h2>
-<p>
-On <b>December 17, 1996</b>, the W3C published <b>Cascading Style Sheets, level 1 (CSS1)</b> as a Recommendation.
-It defined basic styling: fonts, colors, text formatting, margins, padding, borders, and simple selectors.
-</p>
+  <h2>Major players</h2>
+  <ul>
+    <li><b>H&aring;kon Wium Lie</b> and <b>Bert Bos</b>: core CSS design leadership.</li>
+    <li><b>World Wide Web Consortium</b> (W3C): publishes CSS1 recommendation. </li>
+    <li><b>Browser implementers:</b> early CSS support appears unevenly across products.</li>
+  </ul>
 
-<h2>Major People and Groups</h2>
-<ul>
-  <li><b>Håkon Wium Lie</b> – CSS1 author/editor</li>
-  <li><b>Bert Bos</b> – CSS1 author/editor</li>
-  <li><b>W3C CSS Working Group</b> – produced the Recommendation</li>
-</ul>
+  <h2>What shipped (the messy truth)</h2>
+  <p>
+    CSS existed on paper before it existed reliably in browsers. During 1996–1998, support was partial and buggy.
+    Authors still used HTML presentation features heavily, because those worked.
+  </p>
 
-<h2>Browser Reality (Why It Was Hard)</h2>
-<p>
-CSS existed on paper, but browsers implemented it inconsistently. Authors could not rely on it for layout.
-This is why presentational HTML kept thriving even when CSS was “official.”
-</p>
+  <h2>What authors actually did</h2>
+  <ul>
+    <li><b>Inline style and tiny embedded styles:</b> small experiments where failure was acceptable.</li>
+    <li><b>Fallback-first:</b> assume CSS might fail and content still must be readable.</li>
+    <li><b>Keep it shallow:</b> simple color/font changes, not complex layout.</li>
+  </ul>
 
-<div class="box">
-<h2>What Authors Actually Did</h2>
-<ul>
-  <li>Used CSS mostly for <b>fonts and colors</b>, not layout.</li>
-  <li>Kept <tt>&lt;font&gt;</tt> and <tt>&lt;center&gt;</tt> as “backup.”</li>
-  <li>Kept layouts in <b>tables</b> and used CSS as optional enhancement.</li>
-  <li>Used <b>inline styles</b> when they worked, because external styles sometimes failed.</li>
-</ul>
+  <p class="small">
+    CSS1 becomes a W3C recommendation on 17 December 1996. 
+  </p>
 </div>
-
-<h2>CSS1 Example (Era-Appropriate)</h2>
-<pre>
-p { color: black; }
-a { color: blue; }
-</pre>
-
-<h2>HTML 3.2 Tag Demonstration (Common in This Era)</h2>
-<p>
-<b>Bold</b> <i>Italic</i> <tt>Monospace</tt> <u>Underline</u>
-</p>
-
-<table border="1" cellpadding="4" cellspacing="0">
-<tr><th>Technique</th><th>Why</th></tr>
-<tr><td>Tables for layout</td><td>CSS layout was unreliable</td></tr>
-<tr><td>&lt;font&gt; tags</td><td>Typography control worked everywhere</td></tr>
-<tr><td>Spacer GIFs</td><td>Forced spacing and alignment</td></tr>
-</table>
-
-<hr>
-<address>CSS History Archive | Era 2 (1996–1998)</address>
-
 </body>
 </html>

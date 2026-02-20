@@ -1,109 +1,155 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!doctype html>
 <html>
 <head>
-<title>1998–2001: CSS2 Expansion and the Implementation Crisis</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-<style type="text/css">
-/* CSS2 era: positioning exists but is risky, keep modest */
-body { font-family: serif; background: #ffffff; color: #000000; }
-h1 { font-size: 22pt; }
-h2 { font-size: 16pt; }
-.box { border: 1px solid #000000; padding: 10px; margin-top: 10px; }
-code, pre { font-family: monospace; }
-</style>
+  <title>CSS Era 3 (1998–2004)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <style type="text/css">
+    /* CSS2 era: floats, positioning, z-index, background images allowed.
+       Late-90s look: strong borders, tiled background, “portal” vibe. */
+    body{
+      margin:0;
+      font-family: Verdana, Arial, sans-serif;
+      color:#111;
+      background:#003366 url("data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==") repeat;
+    }
+    #wrap{
+      width: 92%;
+      margin: 12px auto;
+      background:#ffffff;
+      border: 4px solid #ffcc00;
+    }
+    #top{
+      background:#000066;
+      color:#ffffff;
+      padding:10px;
+      position:relative;
+    }
+    #top h1{margin:0;font-size:20px;}
+    #top .tagline{font-size:11px;color:#ffcc00;margin-top:4px;}
+    #nav{
+      background:#ffcc00;
+      padding:6px;
+      font-size:12px;
+    }
+    #nav a{color:#000066;font-weight:bold;text-decoration:none;margin-right:10px;}
+    #nav a:hover{text-decoration:underline;}
+    #left{
+      float:left;
+      width: 24%;
+      padding:10px;
+      background:#f2f2f2;
+      border-right: 2px solid #cccccc;
+    }
+    #right{
+      float:right;
+      width: 72%;
+      padding:10px;
+    }
+    .box{
+      border:2px solid #000066;
+      padding:8px;
+      margin-bottom:10px;
+      background:#ffffff;
+    }
+    .box h2{margin:0 0 6px;font-size:14px;color:#000066;}
+    .tiny{font-size:11px;color:#333;}
+    .clear{clear:both;}
+    .callout{
+      position:relative;
+      border:2px dashed #cc0000;
+      padding:8px;
+      background:#fff7f7;
+    }
+  </style>
 </head>
 
 <body>
+  <div id="wrap">
+    <div id="top">
+      <h1>Era 3: CSS Level 2 and the browser wars (1998–2001)</h1>
+      <div class="tagline">
+        CSS Level 2 becomes a W3C recommendation on 12 May 1998.
+      </div>
+    </div>
 
-<div class="box">
-  <a href="/index.html">Main Hub</a>
-  <a href="csshome.html">CSS Home</a> |
-  <a href="era-1-1994-1996.html">1994-1996</a> |
-  <a href="era-2-1996-1998.html">1996-1998</a> |
-  <a href="era-3-1998-2004.html">1998-2004</a> |
-  <a href="era-4-2004-2011.html">2004-2011</a> |
-  <a href="era-5-2011-2017.html">2011-2017</a> |
-  <a href="era-6-2017-2026.html">2017-2026</a> |
-  <a href="glossary.html">Glossary</a> |
-  <a href="bibliography.html">Bibliography</a> |
-  <a href="contributors.html">Contributors</a> |
-  <a href="discussion.html">Discussion</a>
-</div>
+    <div id="nav">
+            <a href="/index.html">Main Hub</a>
+            <a href="csshome.html">CSS Home</a> |
+            <a href="era-1-1994-1996.html">1994-1996</a> |
+            <a href="era-2-1996-1998.html">1996-1998</a> |
+            <a href="era-3-1998-2004.html">1998-2004</a> |
+            <a href="era-4-2004-2011.html">2004-2011</a> |
+            <a href="era-5-2011-2017.html">2011-2017</a> |
+            <a href="era-6-2017-2026.html">2017-2026</a> |
+            <a href="glossary.html">Glossary</a> |
+            <a href="bibliography.html">Bibliography</a> |
+            <a href="contributors.html">Contributors</a> |
+            <a href="discussion.html">Discussion</a>
+    </div>
 
-<h1>1998–2001: CSS Level 2 (CSS2) and the Browser Wars</h1>
-<hr>
+    <div id="left">
+      <div class="box">
+        <h2>What CSS2 tried to deliver</h2>
+        <ul>
+          <li>Positioning (absolute, relative, fixed)</li>
+          <li>Layering with z-index</li>
+          <li>Media types (print vs screen)</li>
+          <li>More selectors and richer formatting</li>
+        </ul>
+      </div>
 
-<h2>Key Event</h2>
-<p>
-On <b>May 12, 1998</b>, the W3C published <b>Cascading Style Sheets, level 2 (CSS2)</b> as a Recommendation.
-CSS2 expanded CSS from styling text into controlling layout behavior.
-</p>
+      <div class="box">
+        <h2>Reality check</h2>
+        <p class="tiny">
+          CSS2 was ambitious. Browser support was inconsistent, and authors lived in workaround land.
+        </p>
+      </div>
+    </div>
 
-<h2>Spec Editors and Groups</h2>
-<ul>
-  <li><b>Bert Bos</b> – CSS2 editor</li>
-  <li><b>Håkon Wium Lie</b> – CSS2 editor</li>
-  <li><b>Chris Lilley</b> – CSS2 editor</li>
-  <li><b>Ian Jacobs</b> – CSS2 editor</li>
-  <li><b>W3C CSS Working Group</b></li>
-</ul>
+    <div id="right">
+      <div class="box">
+        <h2>Major players (spec and institutions)</h2>
+        <p>
+          CSS2 is edited by <b>Bert Bos</b>, <b>H&aring;kon Wium Lie</b>, <b>Chris Lilley</b>, and <b>Ian Jacobs</b>. 
+          The <b>World Wide Web Consortium</b> (W3C) coordinates the recommendation track.
+        </p>
+      </div>
 
-<h2>Browser/Engine Teams (Why CSS2 Hurt)</h2>
-<dl>
-  <dt><b>Trident</b> (Microsoft Internet Explorer)</dt>
-  <dd>Strong market power, uneven standards behavior, lots of quirks.</dd>
+      <div class="box">
+        <h2>Browser wars impact</h2>
+        <p>
+          Competing browsers shipped overlapping CSS features with different bugs and different interpretations.
+          Authors often built two styles: one for a dominant browser, one for “everything else.”
+        </p>
+        <div class="callout">
+          <b>Big lesson:</b> the spec existing did not mean the web behaved the same everywhere.
+        </div>
+      </div>
 
-  <dt><b>Gecko</b> (Mozilla)</dt>
-  <dd>Rebuilt to replace old Netscape engine; big push toward standards.</dd>
+      <div class="box">
+        <h2>What authors actually did (1998–2001)</h2>
+        <ul>
+          <li><b>Table layout still ruled:</b> CSS layout was not dependable, so tables stayed the default layout tool.</li>
+          <li><b>Early float layouts:</b> floated columns existed but required careful clearing.</li>
+          <li><b>Browser sniffing:</b> different style sheets or conditional hacks for different engines.</li>
+          <li><b>Print styles:</b> experimented with <b>media types</b>, but support varied.</li>
+        </ul>
+      </div>
 
-  <dt><b>Presto</b> (Opera)</dt>
-  <dd>Often strong standards support, smaller market share.</dd>
-</dl>
+      <div class="box">
+        <h2>Why this era matters</h2>
+        <p>
+          CSS2 set the conceptual foundation for modern layout and media styling, even though implementation lagged.
+          It also showed that interoperability requires tests, shared behavior, and patience.
+        </p>
+      </div>
+    </div>
 
-<h2>What CSS2 Added (Big Deals)</h2>
-<ol>
-  <li><b>Positioning</b>: absolute, relative, fixed</li>
-  <li><b>Z-index layering</b></li>
-  <li><b>Media types</b> (print vs screen)</li>
-  <li><b>More precise box model definitions</b></li>
-  <li><b>Aural styles</b> (ambitious, barely implemented)</li>
-</ol>
+    <div class="clear"></div>
 
-<div class="box">
-<h2>What Authors Actually Did (Hacks + Survival)</h2>
-<ul>
-  <li><b>Tables for layout</b> stayed dominant.</li>
-  <li><b>Float layouts</b> started appearing, but were fragile.</li>
-  <li><b>Internet Explorer box model hacks</b> (targeting broken width calculations).</li>
-  <li><b>“Quirks mode” behavior</b> appeared based on DOCTYPE presence.</li>
-  <li><b>Proprietary features</b>: Microsoft filters, nonstandard behaviors, vendor differences.</li>
-</ul>
-</div>
-
-<h2>Era CSS2 Example (Careful)</h2>
-<pre>
-#nav { position: relative; }
-.note { border: 1px solid black; padding: 8px; }
-</pre>
-
-<h2>HTML Tag Coverage Demonstration (Transitional)</h2>
-<p>
-This era still used deprecated tags heavily:
-<font color="blue">FONT</font>,
-<center>CENTER</center>,
-and alignment attributes.
-</p>
-
-<table border="1" cellpadding="4" cellspacing="0">
-<tr><th>Tool</th><th>Why used</th></tr>
-<tr><td>Nested tables</td><td>Reliable grid layout</td></tr>
-<tr><td>Spacer GIF</td><td>For spacing control</td></tr>
-<tr><td>FONT tags</td><td>Typography fallback</td></tr>
-</table>
-
-<hr>
-<address>CSS History Archive | Era 3 (1998–2001)</address>
-
+    <div class="box" style="margin:10px;">
+      <b>CSS2 Recommendation date:</b> 12 May 1998.
+    </div>
+  </div>
 </body>
 </html>

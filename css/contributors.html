@@ -3,53 +3,18 @@
 <head>
 <meta charset="utf-8">
 <title>CSS Contributors and Standards Leaders</title>
-
-<style>
-:root {
-  --bg: #0e0e12;
-  --card: #16161d;
-  --border: #2c2c38;
-  --text: #e8e8ec;
-  --accent: #9aa7ff;
-}
-
-body {
-  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  margin: 0;
-  padding: 2rem;
-}
-
-header, section {
-  margin-bottom: 2rem;
-}
-
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-h1, h2 {
-  color: var(--accent);
-}
-
-ul {
-  padding-left: 1.2rem;
-}
-
-a {
-  color: var(--accent);
-}
-</style>
+<link rel="stylesheet" href="shared-modern.css">
 </head>
 
 <body>
+<main>
+    <header>
+      <h1>Contributors and Major Players</h1>
+      <p>
+        People, teams, and institutions that shaped Cascading Style Sheets across eras.
+        Links go to public reference pages (often Wikipedia or official bios).
+      </p>
 
-<header>
  <nav>
   <a href="/index.html">Main Hub</a>
   <a href="csshome.html">CSS Home</a> |
@@ -64,105 +29,283 @@ a {
   <a href="contributors.html">Contributors</a> |
   <a href="discussion.html">Discussion</a>
   </nav>
-
-  <h1>Major Contributors to Cascading Style Sheets (CSS)</h1>
-  <p>
-    This page documents the individuals, editors, working group members, and browser engineers
-    who significantly shaped CSS from 1994 to today.
-  </p>
 </header>
+   <section>
+<h2>Founders and Early Architects (1994–1998)</h2>
 
-<section class="card">
-  <h2>Håkon Wium Lie</h2>
-  <p>
-    Proposed CSS in 1994 while working with the World Wide Web Consortium (W3C).
-    He envisioned separating document structure (HTML) from presentation.
-    He later worked at Opera, advocating strongly for standards compliance.
-  </p>
-  <p>
-    Contributions:
-  </p>
-  <ul>
-    <li>Co-author and editor of CSS1 and CSS2</li>
-    <li>Shaped the cascade model</li>
-    <li>Helped define media types</li>
-  </ul>
-  <p>
-    Reference: <a href="https://en.wikipedia.org/wiki/H%C3%A5kon_Wium_Lie">Wikipedia</a>
-  </p>
+<ul>
+
+<li>
+<strong>
+<a href="https://en.wikipedia.org/wiki/H%C3%A5kon_Wium_Lie" target="_blank">
+Håkon Wium Lie
+</a>
+</strong>
+<br>
+Co-creator of CSS. In 1994, while working at CERN, he proposed the idea of
+a separate stylesheet language that would allow authors to control layout
+and typography without modifying HTML. He introduced the concept of
+"cascading," where rules are prioritized by origin and specificity.
+Later joined Opera Software and continued advocating for open standards.
+</li>
+
+<br>
+
+<li>
+<strong>
+<a href="https://en.wikipedia.org/wiki/Bert_Bos" target="_blank">
+Bert Bos
+</a>
+</strong>
+<br>
+Co-creator of CSS and one of its longest-serving editors.
+He collaborated with Lie to formalize early CSS concepts and became editor of
+CSS Level 1 and CSS Level 2. Bos has remained deeply involved in CSS Working
+Group activities and helped define structural behavior of the language,
+including selectors and formatting models.
+</li>
+
+<br>
+
+<li>
+<strong>
+<a href="https://en.wikipedia.org/wiki/Tim_Berners-Lee" target="_blank">
+Tim Berners-Lee
+</a>
+</strong>
+<br>
+Founder of the World Wide Web and Director of the World Wide Web Consortium
+(W3C). While not a CSS author, he supported the separation of content (HTML)
+and presentation (CSS), which became a foundational architectural principle.
+</li>
+
+</ul>
 </section>
 
-<section class="card">
-  <h2>Bert Bos</h2>
-  <p>
-    Co-developer of CSS and long-time W3C editor. Bos collaborated on CSS1 and CSS2
-    and played a central role in refining CSS 2.1.
-  </p>
-  <ul>
-    <li>CSS1 and CSS2 co-editor</li>
-    <li>Key contributor to CSS2.1 stabilization</li>
-    <li>Advocate for modular CSS development</li>
-  </ul>
-  <p>
-    Reference: <a href="https://en.wikipedia.org/wiki/Bert_Bos">Wikipedia</a>
-  </p>
+
+<section>
+<h2>CSS Level 2 and Standards Leadership (1998–2005)</h2>
+
+<ul>
+
+<li>
+<strong>
+<a href="https://en.wikipedia.org/wiki/Chris_Lilley" target="_blank">
+Chris Lilley
+</a>
+</strong>
+<br>
+Editor of CSS2 (1998). Worked extensively on color standards, web fonts,
+and graphical aspects of CSS. Contributed to SVG and CSS integration efforts.
+</li>
+
+<br>
+
+<li>
+<strong>
+<a href="https://www.w3.org/People/Jacobs/" target="_blank">
+Ian Jacobs
+</a>
+</strong>
+<br>
+Co-editor of CSS2 and long-time W3C staff member.
+Helped coordinate specification publication and standards process management.
+</li>
+
+<br>
+
+<li>
+<strong>
+<a href="https://en.wikipedia.org/wiki/Tantek_%C3%87elik" target="_blank">
+Tantek Çelik
+</a>
+</strong>
+<br>
+Editor of CSS 2.1. Key contributor during the browser wars era.
+Worked to reconcile browser inconsistencies and stabilize CSS behavior into
+what became the widely implemented CSS 2.1 baseline.
+</li>
+
+<br>
+
+<li>
+<strong>
+<a href="https://en.wikipedia.org/wiki/Ian_Hickson" target="_blank">
+Ian Hickson
+</a>
+</strong>
+<br>
+Editor of CSS 2.1 and major specification editor across web technologies.
+Focused on clarifying ambiguous behavior and improving interoperability across engines.
+</li>
+
+</ul>
 </section>
 
-<section class="card">
-  <h2>Chris Lilley</h2>
-  <p>
-    CSS2 editor and W3C contributor focused on typography and graphics standards.
-    Played a key editorial role during CSS’s expansion into layout.
-  </p>
-  <p>
-    Reference: <a href="https://en.wikipedia.org/wiki/Chris_Lilley">Wikipedia</a>
-  </p>
+
+<section>
+<h2>Modern CSS Editors and Specification Leaders (2005–Present)</h2>
+
+<ul>
+
+<li>
+<strong>
+<a href="https://fantasai.inkedblade.net/" target="_blank">
+Elika J. Etemad (fantasai)
+</a>
+</strong>
+<br>
+One of the most influential modern CSS editors.
+Lead editor on numerous modules including CSS Grid and CSS Logical Properties.
+Actively guides interoperability efforts in the CSS Working Group.
+</li>
+
+<br>
+
+<li>
+<strong>
+<a href="https://en.wikipedia.org/wiki/Tab_Atkins_Jr." target="_blank">
+Tab Atkins Jr.
+</a>
+</strong>
+<br>
+Specification editor for many modern CSS modules including Flexbox,
+Selectors Level 4, and various layout-related updates.
+Strong advocate for clear spec writing and implementer communication.
+</li>
+
+<br>
+
+<li>
+<strong>
+<a href="https://en.wikipedia.org/wiki/Lea_Verou" target="_blank">
+Lea Verou
+</a>
+</strong>
+<br>
+Researcher and CSS Working Group contributor.
+Advanced tooling, selector development, and developer education.
+Author of influential CSS resources and widely recognized educator.
+</li>
+
+<br>
+
+<li>
+<strong>
+<a href="https://www.miriamsuzanne.com/" target="_blank">
+Miriam Suzanne
+</a>
+</strong>
+<br>
+Advocate for modern layout systems and design systems.
+Contributed to the evolution of container queries and layout philosophy.
+</li>
+
+</ul>
 </section>
 
-<section class="card">
-  <h2>Women Who Shaped CSS and Web Standards</h2>
 
-  <h3>Tantek Çelik</h3>
-  <p>
-    Early Internet Explorer engineer and later Web standards advocate.
-    Helped improve standards compliance and worked closely on CSS implementations.
-  </p>
+<section>
+<h2>Educators and Layout Advocates</h2>
 
-  <h3>Anne van Kesteren</h3>
-  <p>
-    Long-time standards contributor and editor in web platform technologies.
-    Contributed to specifications and browser engine alignment affecting CSS behavior.
-  </p>
+<ul>
 
-  <h3>Fantasai (Elika Etemad)</h3>
-  <p>
-    Editor in the W3C CSS Working Group, heavily involved in CSS specifications
-    including layout modules and text-level details.
-  </p>
+<li>
+<strong>
+<a href="https://en.wikipedia.org/wiki/Rachel_Andrew" target="_blank">
+Rachel Andrew
+</a>
+</strong>
+<br>
+Major educator and author on CSS Grid.
+Wrote key documentation and worked with browser vendors to promote
+understanding of modern layout patterns.
+</li>
 
-  <h3>Tab Atkins Jr.</h3>
-  <p>
-    CSS Working Group co-chair and editor for multiple modern CSS modules,
-    including Grid, Cascade, and Selectors.
-  </p>
+<br>
 
-  <p>
-    CSS evolution has depended on many contributors inside browser vendors and W3C,
-    including women and underrepresented engineers who worked through specification editing
-    and test suite development.
-  </p>
+<li>
+<strong>
+<a href="https://en.wikipedia.org/wiki/Jen_Simmons" target="_blank">
+Jen Simmons
+</a>
+</strong>
+<br>
+Mozilla advocate who championed CSS Grid.
+Produced educational material and live coding demonstrations that
+accelerated Grid adoption.
+</li>
+
+<br>
+
+<li>
+<strong>
+<a href="https://en.wikipedia.org/wiki/Nicole_Sullivan_(web_developer)" target="_blank">
+Nicole Sullivan
+</a>
+</strong>
+<br>
+Pioneer of scalable CSS architecture (Object-Oriented CSS).
+Focused on modularity and performance.
+</li>
+
+</ul>
 </section>
 
-<section class="card">
-  <h2>Browser Engine Teams</h2>
-  <ul>
-    <li><strong>Blink</strong> (Google Chrome / Chromium)</li>
-    <li><strong>WebKit</strong> (Safari)</li>
-    <li><strong>Gecko</strong> (Firefox)</li>
-    <li><strong>Trident</strong> (Internet Explorer, historical)</li>
-    <li><strong>Presto</strong> (Opera, historical)</li>
-  </ul>
-</section>
 
-</body>
-</html>
+<section>
+<h2>Browser Engine Teams (Implementation Power)</h2>
+
+<p>
+CSS does not matter if browsers do not implement it.
+Engine teams shaped real-world CSS behavior.
+</p>
+
+<ul>
+<li>
+<strong>
+<a href="https://en.wikipedia.org/wiki/Trident_(software)" target="_blank">
+Trident
+</a>
+</strong>
+ — Microsoft Internet Explorer engine (1997–2015). Defined much early layout behavior.
+</li>
+
+<li>
+<strong>
+<a href="https://en.wikipedia.org/wiki/Gecko_(software)" target="_blank">
+Gecko
+</a>
+</strong>
+ — Mozilla engine. Strong standards alignment and test-driven implementation.
+</li>
+
+<li>
+<strong>
+<a href="https://en.wikipedia.org/wiki/WebKit" target="_blank">
+WebKit
+</a>
+</strong>
+ — Engine powering Safari; major influence on mobile CSS evolution.
+</li>
+
+<li>
+<strong>
+<a href="https://en.wikipedia.org/wiki/Blink_(browser_engine)" target="_blank">
+Blink
+</a>
+</strong>
+ — Chromium engine; accelerated modern CSS shipping cycles.
+</li>
+
+<li>
+<strong>
+<a href="https://en.wikipedia.org/wiki/Presto_(layout_engine)" target="_blank">
+Presto
+</a>
+</strong>
+ — Opera engine known for strong standards adoption in the 2000s.
+</li>
+</ul>
+
+</section>

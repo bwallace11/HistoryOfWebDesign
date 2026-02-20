@@ -1,91 +1,97 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!doctype html>
 <html>
 <head>
-<title>1994–1996: CSS Is Born (Proposals to CSS1 Drafts)</title>
-<style type="text/css">
-/* Era-appropriate: early CSS idea, very limited, not reliable in browsers */
-body { font-family: serif; }
-h1 { font-size: 20pt; }
-</style>
+  <title>CSS Era 1 (1990–1996)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <style type="text/css">
+    /* CSS is extremely new here.
+       Keep it simple: fonts, colors, spacing. (CSS1-style basics only.) */
+    body { font-family: Times New Roman, serif; color: #000000; background: #ffffff; }
+    a:link { color: #0000EE; }
+    a:visited { color: #551A8B; }
+    h1 { font-size: 24pt; }
+    h2 { font-size: 16pt; }
+    table { border: 1px solid #000000; }
+    td { padding: 6px; }
+    .note { font-size: 10pt; }
+  </style>
 </head>
 
-<body bgcolor="#ffffff" text="#000000" link="#0000cc" vlink="#660066" alink="#ff0000">
-
+<body>
 <center>
-<h1>1994–1996: CSS Is Born</h1>
+  <h1>Cascading Style Sheets: Era 1 (1990–1996)</h1>
+  <p>
+    CSS stands for <b>Cascading Style Sheets</b>. This era covers the conditions that created CSS and the first
+    real proposal work that led to <b>CSS Level 1</b>.
+  </p>
+
+  <table width="90%" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>
+        <b>Navigation:</b>
+            <a href="/index.html">Main Hub</a>
+            <a href="csshome.html">CSS Home</a> |
+            <a href="era-1-1994-1996.html">1994-1996</a> |
+            <a href="era-2-1996-1998.html">1996-1998</a> |
+            <a href="era-3-1998-2004.html">1998-2004</a> |
+            <a href="era-4-2004-2011.html">2004-2011</a> |
+            <a href="era-5-2011-2017.html">2011-2017</a> |
+            <a href="era-6-2017-2026.html">2017-2026</a> |
+            <a href="glossary.html">Glossary</a> |
+            <a href="bibliography.html">Bibliography</a> |
+            <a href="contributors.html">Contributors</a> |
+            <a href="discussion.html">Discussion</a>
+      </td>
+    </tr>
+  </table>
 </center>
 
 <hr>
 
-<center>
-  <a href="/index.html">Main Hub</a>
-  <a href="csshome.html">CSS Home</a> |
-  <a href="era-1-1994-1996.html">1994-1996</a> |
-  <a href="era-2-1996-1998.html">1996-1998</a> |
-  <a href="era-3-1998-2004.html">1998-2004</a> |
-  <a href="era-4-2004-2011.html">2004-2011</a> |
-  <a href="era-5-2011-2017.html">2011-2017</a> |
-  <a href="era-6-2017-2026.html">2017-2026</a> |
-  <a href="glossary.html">Glossary</a> |
-  <a href="bibliography.html">Bibliography</a> |
-  <a href="contributors.html">Contributors</a> |
-  <a href="discussion.html">Discussion</a>
-</center>
-
-<hr>
-
-<h2>What Was Happening</h2>
-
+<h2>Context: why CSS had to exist</h2>
 <p>
-In 1994, the <b>World Wide Web Consortium (W3C)</b> formed to guide web standards.
-At the time, HTML carried structure and a lot of ugly presentation because authors wanted control
-and browsers were competing for attention.
+Early web pages were mostly structural markup (headings, paragraphs, lists, links). As the web expanded past research,
+authors wanted control over type, spacing, colors, and basic layout. Browsers responded by adding presentational HTML
+features (for example, font tags and alignment) but that mixed content and presentation and made sites hard to maintain.
+CSS was created as a separate, reusable styling layer to prevent HTML from turning into a formatting mess.
 </p>
 
-<p>
-In that environment, <b>Håkon Wium Lie</b> proposed <b>Cascading Style Sheets (CSS)</b> as a way to separate
-document structure (HTML) from presentation (style rules).
-<b>Bert Bos</b> quickly became a major collaborator, and CSS work moved through W3C.
-</p>
-
-<h2>Major People and Groups</h2>
+<h2>Key milestones (1990–1996)</h2>
 <ul>
-  <li><b>Håkon Wium Lie</b> (W3C / later Opera): proposed CSS (1994)</li>
-  <li><b>Bert Bos</b> (W3C): co-author/editor in early CSS work</li>
-  <li><b>Tim Berners-Lee</b> (W3C): supported architecture separating structure and presentation</li>
-  <li><b>W3C</b>: organized CSS work toward Recommendation status</li>
+  <li><b>1990–1993:</b> The World Wide Web spreads from research to public networks; authors want more control.</li>
+  <li><b>1994:</b> Early CSS proposals circulate; the goal is to style HTML documents without changing HTML itself.</li>
+  <li><b>1994–1996:</b> CSS develops through discussion, prototypes, and standards work, preparing for CSS1.</li>
+  <li><b>17 December 1996:</b> CSS Level 1 becomes a World Wide Web Consortium recommendation. (See <a href="bibliography.html">bibliography</a>.)</li>
 </ul>
 
-<h2>Why CSS Was Needed</h2>
-<ol>
-  <li>HTML was getting stuffed with presentation: <tt>&lt;font&gt;</tt>, <tt>&lt;center&gt;</tt>, color attributes.</li>
-  <li>Sites needed consistent visual rules across many pages (not manual formatting everywhere).</li>
-  <li>Users sometimes needed control (fonts, contrast) for accessibility and preference.</li>
-  <li>Print vs screen required different presentation rules.</li>
-</ol>
-
-<h2>What Authors Actually Did</h2>
+<h2>Major people and institutions</h2>
 <ul>
-  <li><b>Presentational HTML everywhere</b>: <tt>&lt;font&gt;</tt>, <tt>&lt;center&gt;</tt>, <tt>bgcolor</tt>, <tt>align</tt>.</li>
-  <li><b>Tables as layout scaffolding</b> (even before it was “officially” encouraged).</li>
-  <li><b>Spacer GIFs</b> to force spacing because layout control was weak.</li>
-  <li><b>“Best viewed in…” badges</b> because consistent rendering was a fantasy.</li>
+  <li><b>H&aring;kon Wium Lie</b> (CERN): proposed early cascading style sheets and pushed the idea as the web grew.</li> 
+  <li><b>Bert Bos</b>: co-designed early CSS and became a major editor of CSS specifications.</li>
+  <li><b>Tim Berners-Lee</b> (CERN / W3C): founded the World Wide Web Consortium to coordinate web standards.</li>
+  <li><b>World Wide Web Consortium</b> (W3C): the standards organization that published CSS recommendations.</li>
 </ul>
 
-<h2>Early CSS Ideas (Tiny Example)</h2>
+<h2>What shipped (reality check)</h2>
 <p>
-Browsers had little consistent support, so even simple things could be unreliable:
+Before CSS1 was a stable recommendation, browser support was limited and inconsistent. Authors relied mostly on
+HTML presentation features and browser defaults.
 </p>
-<pre>
-body { font-family: serif; }
-h1 { font-size: 20pt; }
-</pre>
+
+<h2>What authors actually did (1990–1996)</h2>
+<ul>
+  <li><b>Presentational HTML:</b> authors used tags and attributes because CSS support was not reliable.</li>
+  <li><b>Defaults and patience:</b> pages leaned on browser default fonts and spacing.</li>
+  <li><b>Early experiments:</b> tiny embedded style sheets or testing pages, usually not production-critical.</li>
+</ul>
+
+<p class="note">
+This era ends when CSS Level 1 becomes a W3C recommendation on 17 December 1996.
+</p>
 
 <hr>
-
-<address>
-CSS History Archive | Era 1 (1994–1996)
-</address>
-
+<p class="note">
+Next: <a href="era-2-1996-1998.html">Era 2 (1996–1998)</a>
+</p>
 </body>
 </html>

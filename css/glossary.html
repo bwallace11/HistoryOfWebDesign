@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>CSS Glossary and Acronyms</title>
-
-  <style type="text/css">
-    body { font-family: serif; background: #fff; color: #000; }
-    .nav { border: 1px solid #000; padding: 8px; }
-    dt { font-weight: bold; margin-top: 10px; }
-  </style>
+  <title>Glossary (CSS History)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="shared-modern.css">
 </head>
-
 <body>
-  <div class="nav">
+  <main>
+    <header>
+      <h1>Glossary and Acronyms</h1>
+      <p>
+        Terms used across CSS history. Acronyms are written out in full the first time they appear here.
+      </p>
+      <nav>
  <a href="/index.html">Main Hub</a>
   <a href="csshome.html">CSS Home</a> |
   <a href="era-1-1994-1996.html">1994-1996</a> |
@@ -25,114 +26,226 @@
   <a href="bibliography.html">Bibliography</a> |
   <a href="contributors.html">Contributors</a> |
   <a href="discussion.html">Discussion</a>
-  </div>
+      </nav>
+    </header>
+  
+   <section>
+<div class="az-nav">
+<a href="#A">A</a>
+<a href="#B">B</a>
+<a href="#C">C</a>
+<a href="#D">D</a>
+<a href="#E">E</a>
+<a href="#F">F</a>
+<a href="#G">G</a>
+<a href="#H">H</a>
+<a href="#I">I</a>
+<a href="#J">J</a>
+<a href="#K">K</a>
+<a href="#L">L</a>
+<a href="#M">M</a>
+<a href="#N">N</a>
+<a href="#O">O</a>
+<a href="#P">P</a>
+<a href="#Q">Q</a>
+<a href="#R">R</a>
+<a href="#S">S</a>
+<a href="#T">T</a>
+<a href="#U">U</a>
+<a href="#V">V</a>
+<a href="#W">W</a>
+<a href="#X">X</a>
+<a href="#Y">Y</a>
+<a href="#Z">Z</a>
+</div>
+</section>
 
-  <h1>Glossary and Acronyms (CSS + Web Basics)</h1>
-  <p>
-    This is written for people who are new to HTML and CSS. Terms come from many eras.
-  </p>
 
-  <h2>Acronyms (spelled out)</h2>
-  <dl>
-    <dt>CSS</dt>
-    <dd>Cascading Style Sheets. The language used to control presentation (fonts, spacing, layout) of web documents.</dd>
+<section id="A" class="letter-section">
+<div class="letter-heading">A</div>
+<dl>
+<dt>@import</dt>
+<dd>At-rule used to import external style sheets.</dd>
 
-    <dt>HTML</dt>
-    <dd>HyperText Markup Language. The markup language for document structure and meaning.</dd>
+<dt>@media</dt>
+<dd>At-rule used for conditional styling (responsive design).</dd>
 
-    <dt>W3C</dt>
-    <dd>World Wide Web Consortium. A standards organization that publishes web specifications.</dd>
+<dt>Absolute Positioning</dt>
+<dd>Removes an element from normal flow and positions it relative to a positioned ancestor.</dd>
+</dl>
+</section>
 
-    <dt>IETF</dt>
-    <dd>Internet Engineering Task Force. Another standards organization (important earlier for web standards).</dd>
 
-    <dt>URL</dt>
-    <dd>Uniform Resource Locator. A web address.</dd>
+<section id="B" class="letter-section">
+<div class="letter-heading">B</div>
+<dl>
+<dt>Background</dt>
+<dd>Property controlling background color, image, repeat, and position.</dd>
 
-    <dt>HTTP</dt>
-    <dd>HyperText Transfer Protocol. The network protocol used to request and deliver web documents.</dd>
+<dt>Block Formatting Context</dt>
+<dd>A layout environment affecting float and margin behavior.</dd>
 
-    <dt>SGML</dt>
-    <dd>Standard Generalized Markup Language. An older markup standard that influenced HTML.</dd>
+<dt>Box Model</dt>
+<dd>Content, padding, border, and margin structure.</dd>
+</dl>
+</section>
 
-    <dt>DOM</dt>
-    <dd>Document Object Model. A programming interface for documents. (Mentioned in history even if your site avoids JavaScript.)</dd>
 
-    <dt>UA</dt>
-    <dd>User Agent. Usually a web browser, but can be other tools that read web content.</dd>
+<section id="C" class="letter-section">
+<div class="letter-heading">C</div>
+<dl>
+<dt>Cascade</dt>
+<dd>The system deciding which rules apply.</dd>
 
-    <dt>DTD</dt>
-    <dd>Document Type Definition. A grammar for SGML/XML documents (important in older HTML/XHTML history).</dd>
-  </dl>
+<dt>Class Selector</dt>
+<dd>Selector using .classname syntax.</dd>
 
-  <h2>CSS terms (beginner friendly)</h2>
-  <dl>
-    <dt>Rule</dt>
-    <dd>A chunk of CSS: selector + declarations.</dd>
+<dt>CSS</dt>
+<dd>Cascading Style Sheets, the styling language of the web.</dd>
 
-    <dt>Selector</dt>
-    <dd>The part that chooses what elements the rule applies to (example: <code>p</code>, <code>.card</code>, <code>#header</code>).</dd>
+<dt>CSS Grid</dt>
+<dd>Two-dimensional layout system.</dd>
+</dl>
+</section>
 
-    <dt>Declaration</dt>
-    <dd>A property and value pair (example: <code>color: black;</code>).</dd>
 
-    <dt>Property</dt>
-    <dd>The thing you are changing (color, margin, display, font-size).</dd>
+<section id="D" class="letter-section">
+<div class="letter-heading">D</div>
+<dl>
+<dt>Display</dt>
+<dd>Defines how an element generates layout boxes.</dd>
 
-    <dt>Value</dt>
-    <dd>The setting for the property (black, 16px, grid, 1.5).</dd>
+<dt>@document</dt>
+<dd>An at-rule for conditional matching of document URLs (limited support).</dd>
+</dl>
+</section>
 
-    <dt>Cascade</dt>
-    <dd>The system that decides which CSS wins when multiple rules conflict.</dd>
 
-    <dt>Specificity</dt>
-    <dd>A scoring system for selectors. More specific selectors override less specific ones (when other factors tie).</dd>
+<section id="F" class="letter-section">
+<div class="letter-heading">F</div>
+<dl>
+<dt>Flexbox</dt>
+<dd>One-dimensional layout system.</dd>
 
-    <dt>Inheritance</dt>
-    <dd>Some properties pass from parent elements to children (like font-family), others do not (like margin).</dd>
+<dt>Float</dt>
+<dd>Property originally for text wrapping, later used for layout.</dd>
+</dl>
+</section>
 
-    <dt>Box Model</dt>
-    <dd>How elements take up space: content, padding, border, margin.</dd>
 
-    <dt>Block</dt>
-    <dd>Elements that start on a new line and usually take full width (like <code>div</code>, <code>p</code>).</dd>
+<section id="G" class="letter-section">
+<div class="letter-heading">G</div>
+<dl>
+<dt>Gecko</dt>
+<dd>Mozilla's rendering engine.</dd>
 
-    <dt>Inline</dt>
-    <dd>Elements that flow within a line of text (like <code>span</code>, <code>a</code>).</dd>
+<dt>Grid Template Columns</dt>
+<dd>Defines column structure in CSS Grid.</dd>
+</dl>
+</section>
 
-    <dt>Layout</dt>
-    <dd>How elements are placed on the page (floats, flexbox, grid).</dd>
 
-    <dt>Float</dt>
-    <dd>An older layout trick that let text wrap around elements. Used heavily before flexbox/grid.</dd>
+<section id="M" class="letter-section">
+<div class="letter-heading">M</div>
+<dl>
+<dt>Margin</dt>
+<dd>Outer spacing around an element.</dd>
 
-    <dt>Flexbox</dt>
-    <dd>Flexible Box Layout. Good for one-direction layouts (row or column) and alignment.</dd>
+<dt>Margin: 0 auto</dt>
+<dd>Technique for centering fixed-width block elements.</dd>
 
-    <dt>Grid</dt>
-    <dd>CSS Grid Layout. Good for two-direction layouts (rows and columns together).</dd>
+<dt>Media Query</dt>
+<dd>Conditional rules for responsive design.</dd>
+</dl>
+</section>
 
-    <dt>Media Query</dt>
-    <dd>A CSS feature that applies rules based on conditions like screen width (responsive design).</dd>
 
-    <dt>Responsive Design</dt>
-    <dd>Design that adapts to different screens and devices, often using media queries.</dd>
+<section id="S" class="letter-section">
+<div class="letter-heading">S</div>
+<dl>
+<dt>Selector</dt>
+<dd>Pattern used to match elements.</dd>
 
-    <dt>Vendor Prefix</dt>
-    <dd>Old browser prefixes like <code>-webkit-</code>, <code>-moz-</code>, used for experimental features.</dd>
+<dt>Specificity</dt>
+<dd>Weighting system to resolve conflicts.</dd>
 
-    <dt>Custom Property</dt>
-    <dd>CSS variable using <code>--name</code>, used with <code>var(--name)</code>.</dd>
+<dt>@supports</dt>
+<dd>Feature query at-rule to test browser support.</dd>
+</dl>
+</section>
 
-    <dt>Container Query</dt>
-    <dd>Responsive styling based on a container’s size, not the viewport.</dd>
 
-    <dt>Cascade Layer</dt>
-    <dd><code>@layer</code> feature to control which groups of styles win before specificity fights.</dd>
-  </dl>
+<section id="T" class="letter-section">
+<div class="letter-heading">T</div>
+<dl>
+<dt>Transition</dt>
+<dd>Enables smooth animation between property values.</dd>
 
-  <p>
-    This glossary is intentionally big because beginners deserve definitions, not “just google it.”
-  </p>
+<dt>Transform</dt>
+<dd>Applies 2D or 3D transformations to elements.</dd>
+</dl>
+</section>
+
+
+<section id="V" class="letter-section">
+<div class="letter-heading">V</div>
+<dl>
+<dt>Vendor Prefix</dt>
+<dd>Browser-specific prefix like -webkit- used for experimental features.</dd>
+</dl>
+</section>
+
+
+<section id="W" class="letter-section">
+<div class="letter-heading">W</div>
+<dl>
+<dt>WebKit</dt>
+<dd>Browser engine used by Safari.</dd>
+
+<dt>Width</dt>
+<dd>Property defining horizontal dimension of an element.</dd>
+
+<dt>White-space</dt>
+<dd>Controls how whitespace inside elements is handled.</dd>
+
+<dt>Writing-mode</dt>
+<dd>Defines text flow direction (horizontal or vertical).</dd>
+</dl>
+</section>
+
+
+<section id="X" class="letter-section">
+<div class="letter-heading">X</div>
+<dl>
+<dt>X-Height</dt>
+<dd>The height of the lowercase letter x in a typeface; relevant to font rendering.</dd>
+
+<dt>XML Namespaces</dt>
+<dd>Used historically with CSS in XML-based documents.</dd>
+</dl>
+</section>
+
+
+<section id="Y" class="letter-section">
+<div class="letter-heading">Y</div>
+<dl>
+<dt>Y-Axis</dt>
+<dd>Vertical axis in transforms and layout systems.</dd>
+</dl>
+</section>
+
+
+<section id="Z" class="letter-section">
+<div class="letter-heading">Z</div>
+<dl>
+<dt>Z-Index</dt>
+<dd>Controls stacking order of positioned elements.</dd>
+
+<dt>Zoom</dt>
+<dd>Non-standard property historically used in Internet Explorer.</dd>
+</dl>
+</section>
+
+</main>
 </body>
 </html>

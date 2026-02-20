@@ -2,73 +2,154 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>2017–2026: Modern CSS (Grid to Container Queries)</title>
+  <title>CSS Era 6 (2017–2026)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { font-family: system-ui, Arial, sans-serif; line-height: 1.5; }
-    .card { border: 1px solid #111; padding: 12px; margin: 12px 0; }
-    .layout { display: grid; grid-template-columns: 1fr; gap: 12px; }
-    @media (min-width: 800px) {
-      .layout { grid-template-columns: 1fr 1fr; }
+    /* Modern era: grid, custom properties, dark mode preference, progressive enhancements */
+    :root{
+      --bg:#0f0f14;
+      --panel:#171722;
+      --border:#2b2b38;
+      --text:#ececf1;
+      --muted:#b9bbca;
+      --accent:#9daaff;
+      --link:#7CFFB2;
     }
-    /* Modern selector example (supported in modern browsers): */
-    .card:has(code) { outline: 2px dashed #444; }
+
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f6f7fb;
+        --panel:#ffffff;
+        --border:#d9dbe7;
+        --text:#141414;
+        --muted:#444;
+        --accent:#1f2a63;
+        --link:#0a7a3a;
+      }
+    }
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      background:radial-gradient(900px 450px at 30% 20%, rgba(157,170,255,.18), transparent),
+                 radial-gradient(700px 450px at 80% 60%, rgba(124,255,178,.12), transparent),
+                 var(--bg);
+      color:var(--text);
+      line-height:1.65;
+      padding:18px;
+    }
+
+    header, section{
+      max-width:980px;
+      margin:0 auto 14px auto;
+      background:rgba(255,255,255,0.03);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:16px;
+    }
+
+    h1{margin:0;color:var(--accent);}
+    p{margin:8px 0;color:var(--muted);}
+
+    nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:10px;
+    }
+    nav a{
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:800;
+      border:1px solid var(--border);
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(0,0,0,.18);
+    }
+    nav a:hover{text-decoration:underline;}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width:900px){ .grid{grid-template-columns:1fr;} }
+
+    .card{
+      background:rgba(0,0,0,.18);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:14px;
+    }
+
+    .card h2{margin:0 0 8px; font-size:16px;}
+    a{color:var(--link);}
   </style>
 </head>
+
 <body>
+  <header>
+    <h1>Era 6: Grid era and modern platform CSS (2017–2026)</h1>
+    <p>
+      CSS Grid Layout becomes a cornerstone for real layout work and modern CSS grows into a system language for design.
+      The Grid spec continues evolving as a living collection of modules.
+    </p>
+    <nav>
+            <a href="/index.html">Main Hub</a>
+            <a href="csshome.html">CSS Home</a> |
+            <a href="era-1-1994-1996.html">1994-1996</a> |
+            <a href="era-2-1996-1998.html">1996-1998</a> |
+            <a href="era-3-1998-2004.html">1998-2004</a> |
+            <a href="era-4-2004-2011.html">2004-2011</a> |
+            <a href="era-5-2011-2017.html">2011-2017</a> |
+            <a href="era-6-2017-2026.html">2017-2026</a> |
+            <a href="glossary.html">Glossary</a> |
+            <a href="bibliography.html">Bibliography</a> |
+            <a href="contributors.html">Contributors</a> |
+            <a href="discussion.html">Discussion</a>
+    </nav>
+  </header>
 
-<header>
-  <h1>2017–2026: Modern CSS Becomes a Real Layout System</h1>
-  <nav>
-  <a href="/index.html">Main Hub</a>
-  <a href="csshome.html">CSS Home</a> |
-  <a href="era-1-1994-1996.html">1994-1996</a> |
-  <a href="era-2-1996-1998.html">1996-1998</a> |
-  <a href="era-3-1998-2004.html">1998-2004</a> |
-  <a href="era-4-2004-2011.html">2004-2011</a> |
-  <a href="era-5-2011-2017.html">2011-2017</a> |
-  <a href="era-6-2017-2026.html">2017-2026</a> |
-  <a href="glossary.html">Glossary</a> |
-  <a href="bibliography.html">Bibliography</a> |
-  <a href="contributors.html">Contributors</a> |
-  <a href="discussion.html">Discussion</a>
-  </nav>
-</header>
+  <section>
+    <div class="grid">
+      <div class="card">
+        <h2>What defines this era</h2>
+        <ul>
+          <li>Grid layouts (2D layout)</li>
+          <li>Custom properties (CSS variables)</li>
+          <li>Modern selectors and better component styling</li>
+          <li>Design systems and theming as normal practice</li>
+        </ul>
+      </div>
 
-<section class="layout">
-  <article class="card">
-    <h2>Major Features</h2>
-    <ul>
-      <li><strong>CSS Grid Layout</strong> (two-dimensional layout)</li>
-      <li><strong>Container Queries</strong> (component-based responsiveness)</li>
-      <li><strong>:has()</strong> (parent-aware selection)</li>
-      <li><strong>Cascade Layers</strong> (<code>@layer</code>)</li>
-      <li><strong>Modern color and typography improvements</strong></li>
-    </ul>
-  </article>
+      <div class="card">
+        <h2>Major people and groups</h2>
+        <ul>
+          <li><b>CSS Working Group</b> (W3C): editors and contributors across browsers.</li>
+          <li><b>Elika J. Etemad</b> (fantasai): major editor and standards leader.</li>
+          <li><b>Tab Atkins</b>: long-time standards editor and explainer author.</li>
+          <li><b>Jen Simmons</b>, <b>Rachel Andrew</b>, <b>Miriam Suzanne</b>: education + advocacy for modern layout.</li>
+        </ul>
+      </div>
 
-  <article class="card">
-    <h2>What Authors Actually Did</h2>
-    <ul>
-      <li>Moved from heavy frameworks to design systems and utility CSS.</li>
-      <li>Reduced prefix hacks because evergreen browsers update automatically.</li>
-      <li>Used grid for page layout, flexbox for components, and containers for responsive blocks.</li>
-      <li>Fought complexity: build tooling, bundlers, and “CSS-in-JS” debates.</li>
-    </ul>
-  </article>
-</section>
+      <div class="card">
+        <h2>What authors actually did</h2>
+        <ul>
+          <li><b>Grid-first layouts</b> replacing framework-only grids.</li>
+          <li><b>Utility CSS</b> and design systems at scale.</li>
+          <li><b>Progressive enhancement</b>: use modern features when available, graceful fallback otherwise.</li>
+          <li><b>Dark mode</b> using <code>prefers-color-scheme</code>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-<section class="card">
-  <h2>Engine Teams (Modern Reality)</h2>
-  <ul>
-    <li>Blink (Chrome / Chromium browsers)</li>
-    <li>WebKit (Safari)</li>
-    <li>Gecko (Firefox)</li>
-  </ul>
-</section>
-
-<footer>
-  <p>CSS History Archive | Era 6 (2017–2026)</p>
-</footer>
-
+  <section>
+    <h2>Why modern CSS feels “alive”</h2>
+    <p>
+      CSS evolves through modules that ship when browsers implement them and tests confirm behavior.
+      Instead of a single “CSS4,” improvements arrive continuously.
+    </p>
+  </section>
 </body>
 </html>

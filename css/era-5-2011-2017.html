@@ -2,80 +2,126 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>2011–2017: CSS3 Modules Go Mainstream</title>
+  <title>CSS Era 5 (2011–2017)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    /* Era-appropriate: media queries, gradients, flexbox (final syntax), transitions */
-    body { font-family: system-ui, Arial, sans-serif; line-height: 1.5; }
-    .card { border: 1px solid #111; padding: 12px; margin: 12px 0; }
-    @media (min-width: 700px) {
-      .grid { display: flex; gap: 12px; }
-      .grid > .card { flex: 1; }
+    /* 2011–2017: responsive design, CSS3 modules: border-radius, shadows, gradients, media queries */
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      background:#f6f7fb;
+      color:#141414;
+      line-height:1.6;
+    }
+    header{
+      padding:18px 16px;
+      background:linear-gradient(135deg,#1f2a63,#6a2b7c);
+      color:#fff;
+    }
+    header h1{margin:0 0 6px;}
+    header p{margin:0;color:rgba(255,255,255,.85);}
+    nav{
+      padding:10px 16px;
+      background:#fff;
+      border-bottom:1px solid #ddd;
+    }
+    nav a{
+      display:inline-block;
+      margin:0 10px 6px 0;
+      text-decoration:none;
+      color:#1f2a63;
+      font-weight:700;
+    }
+    nav a:hover{text-decoration:underline;}
+    main{
+      max-width:980px;
+      margin:0 auto;
+      padding:16px;
+    }
+    .grid{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .card{
+      flex:1 1 320px;
+      background:#fff;
+      border:1px solid #ddd;
+      border-radius:14px;
+      box-shadow:0 10px 24px rgba(0,0,0,.06);
+      padding:14px;
+    }
+    .card h2{margin:0 0 8px; color:#1f2a63;}
+    code{
+      background:#f2f2f7;
+      border:1px solid #ddd;
+      padding:2px 6px;
+      border-radius:8px;
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size:.95em;
+    }
+    @media (max-width:600px){
+      header{padding:16px 12px;}
+      nav{padding:10px 12px;}
+      main{padding:12px;}
     }
   </style>
 </head>
+
 <body>
+  <header>
+    <h1>Era 5: CSS3 modules, responsive design, modern UI patterns (2011–2017)</h1>
+    <p>
+      CSS becomes modular: instead of “one CSS3,” you get stable modules like backgrounds, borders, selectors, media queries, and transforms.
+    </p>
+  </header>
 
-<header>
-  <h1>2011–2017: CSS3 Modules Become the New Normal</h1>
   <nav>
-  <a href="/index.html">Main Hub</a>
-  <a href="csshome.html">CSS Home</a> |
-  <a href="era-1-1994-1996.html">1994-1996</a> |
-  <a href="era-2-1996-1998.html">1996-1998</a> |
-  <a href="era-3-1998-2004.html">1998-2004</a> |
-  <a href="era-4-2004-2011.html">2004-2011</a> |
-  <a href="era-5-2011-2017.html">2011-2017</a> |
-  <a href="era-6-2017-2026.html">2017-2026</a> |
-  <a href="glossary.html">Glossary</a> |
-  <a href="bibliography.html">Bibliography</a> |
-  <a href="contributors.html">Contributors</a> |
-  <a href="discussion.html">Discussion</a>
+            <a href="/index.html">Main Hub</a>
+            <a href="csshome.html">CSS Home</a> |
+            <a href="era-1-1994-1996.html">1994-1996</a> |
+            <a href="era-2-1996-1998.html">1996-1998</a> |
+            <a href="era-3-1998-2004.html">1998-2004</a> |
+            <a href="era-4-2004-2011.html">2004-2011</a> |
+            <a href="era-5-2011-2017.html">2011-2017</a> |
+            <a href="era-6-2017-2026.html">2017-2026</a> |
+            <a href="glossary.html">Glossary</a> |
+            <a href="bibliography.html">Bibliography</a> |
+            <a href="contributors.html">Contributors</a> |
+            <a href="discussion.html">Discussion</a>
   </nav>
-</header>
 
-<section class="card">
-  <h2>What Changed</h2>
-  <p>
-  Instead of one giant “CSS3 spec,” CSS evolved as <strong>modules</strong>.
-  That let features ship independently: selectors, backgrounds, transforms, flexbox, and more.
-  </p>
-</section>
+  <main>
+    <div class="grid">
+      <section class="card">
+        <h2>What changes</h2>
+        <ul>
+          <li>Responsive design becomes mainstream (media queries + flexible layouts).</li>
+          <li>Rounded corners and shadows become normal: <code>border-radius</code>, <code>box-shadow</code>.</li>
+          <li>Visual polish without images: gradients, transforms, transitions.</li>
+        </ul>
+      </section>
 
-<section class="grid">
-  <article class="card">
-    <h2>Major Features (Common by 2017)</h2>
-    <ul>
-      <li>Media queries (responsive design)</li>
-      <li>Transforms, transitions, animations</li>
-      <li>Gradients and multiple backgrounds</li>
-      <li>Flexbox (modern layout model)</li>
-    </ul>
-  </article>
+      <section class="card">
+        <h2>Major contributors</h2>
+        <ul>
+          <li><b>Rachel Andrew</b>: CSS Grid educator and standards communicator.</li>
+          <li><b>Jen Simmons</b>: major advocate/teacher for modern layout (especially grid) at Mozilla.</li>
+          <li><b>Lea Verou</b>: CSS educator, tooling, and standards work.</li>
+          <li><b>Elika J. Etemad</b> (also known as fantasai): major CSS editor and spec leader.</li>
+        </ul>
+      </section>
 
-  <article class="card">
-    <h2>Engine Teams Driving This</h2>
-    <ul>
-      <li>Blink (Chrome, forked from WebKit in 2013)</li>
-      <li>WebKit (Safari)</li>
-      <li>Gecko (Firefox)</li>
-      <li>EdgeHTML (older Edge, before Chromium switch later)</li>
-    </ul>
-  </article>
-</section>
-
-<section class="card">
-  <h2>What Authors Actually Did</h2>
-  <ul>
-    <li><strong>Vendor prefixes</strong>: <code>-webkit-</code>, <code>-moz-</code>, <code>-ms-</code>, <code>-o-</code></li>
-    <li><strong>Autoprefixing</strong> tools became common to manage prefix mess</li>
-    <li><strong>Frameworks</strong> (Bootstrap era) shaped default design language</li>
-    <li><strong>Float layouts</strong> persisted until flexbox became safe enough</li>
-  </ul>
-</section>
-
-<footer>
-  <p>CSS History Archive | Era 5 (2011–2017)</p>
-</footer>
-
+      <section class="card">
+        <h2>What authors actually did</h2>
+        <ul>
+          <li><b>Mobile-first layouts:</b> design for small screens, then add rules for larger screens.</li>
+          <li><b>“Flat design”:</b> minimal decoration, bold type, strong spacing.</li>
+          <li><b>Frameworks:</b> prebuilt grids and UI patterns become common.</li>
+          <li><b>Vendor prefixes:</b> write the same property several times (example: <code>-webkit-</code>).</li>
+        </ul>
+      </section>
+    </div>
+  </main>
 </body>
 </html>

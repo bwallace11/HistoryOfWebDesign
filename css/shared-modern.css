@@ -1,0 +1,131 @@
+ :root{
+  --bg:#0f0f14;
+  --panel:#171722;
+  --panel2:#12121a;
+  --border:#2b2b38;
+  --text:#ececf1;
+  --muted:#b9bbca;
+  --accent:#9daaff;
+  --link:#7CFFB2;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  padding:28px 16px;
+  background:radial-gradient(900px 450px at 30% 20%, #1b1f35, transparent),
+             radial-gradient(700px 450px at 80% 60%, #241a2e, transparent),
+             var(--bg);
+  color:var(--text);
+  font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+  line-height:1.65;
+}
+
+main{
+  max-width:980px;
+  margin:0 auto;
+}
+
+header{
+  margin-bottom:18px;
+  padding:16px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  border-radius:14px;
+}
+
+nav{
+  margin-top:10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+nav a{
+  color:var(--accent);
+  text-decoration:none;
+  font-weight:700;
+  padding:8px 10px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:rgba(0,0,0,.2);
+}
+
+nav a:hover{ text-decoration:underline; }
+
+section{
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:16px;
+  margin-bottom:14px;
+}
+
+h1{margin:0; color:var(--accent);}
+h2{margin:0 0 10px; color:var(--text); font-size:18px;}
+h3{margin:14px 0 8px; color:var(--accent); font-size:16px;}
+
+p{margin:0 0 10px; color:var(--muted);}
+
+a{ color:var(--link); }
+a:hover{ text-decoration:underline; }
+
+dl{
+  display:grid;
+  grid-template-columns: 220px 1fr;
+  gap:8px 14px;
+}
+
+dt{
+  font-weight:800;
+  color:var(--text);
+  padding-top:2px;
+}
+
+dd{
+  margin:0 0 10px 0;
+  color:var(--muted);
+}
+
+code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.95em;
+  background: rgba(0,0,0,.25);
+  padding: 2px 6px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.small{font-size:13px;color:var(--muted);}
+
+.az-nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:12px;
+}
+.az-nav a{
+  padding:6px 10px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:700;
+  color:var(--accent);
+  background:rgba(0,0,0,.2);
+}
+.az-nav a:hover{ text-decoration:underline; }
+.letter-section{ margin-top:30px; }
+.letter-section:target{
+  border:2px solid var(--accent);
+  padding:12px;
+  border-radius:14px;
+}
+.letter-heading{
+  font-size:28px;
+  margin-bottom:10px;
+  color:var(--accent);
+  border-bottom:1px solid var(--border);
+  padding-bottom:6px;
+}
+ 

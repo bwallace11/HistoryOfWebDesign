@@ -1,136 +1,163 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Web History Archive</title>
-
-<style>
-/* Very basic, era-inspired styling */
-
-body {
-  background-color: #c0c0c0;
-  font-family: "Times New Roman", serif;
-  margin: 40px;
-}
-
-.browser {
-  background-color: #ffffff;
-  border: 2px solid #000000;
-  width: 800px;
-  margin: auto;
-}
-
-.browser-bar {
-  background-color: #000080;
-  color: #ffffff;
-  padding: 5px;
-  font-weight: bold;
-}
-
-.menu-bar {
-  background-color: #e0e0e0;
-  padding: 4px;
-  border-bottom: 1px solid #000000;
-}
-
-.menu-bar span {
-  margin-right: 15px;
-}
-
-.content {
-  padding: 20px;
-}
-
-.nav-table {
-  border: 1px solid #000000;
-  margin-top: 15px;
-}
-
-.nav-table td {
-  padding: 6px 10px;
-  border-right: 1px solid #000000;
-}
-
-.nav-table td:last-child {
-  border-right: none;
-}
-
-.footer {
-  background-color: #e0e0e0;
-  padding: 8px;
-  border-top: 1px solid #000000;
-  font-size: 12px;
-}
-
-a {
-  color: #0000cc;
-}
-</style>
-
+  <meta charset="utf-8">
+  <title>Web History Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --win:#141622;
+      --bar:#20243a;
+      --border:#2f3556;
+      --text:#e9e9f2;
+      --muted:#b8bbd1;
+      --accent:#9daaff;
+      --ok:#7CFFB2;
+    }
+    body{
+      margin:0;
+      background:radial-gradient(900px 450px at 30% 20%, #1b1f35, transparent),
+                 radial-gradient(700px 450px at 80% 60%, #241a2e, transparent),
+                 var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+      padding:24px;
+    }
+    .window{
+      max-width:980px;
+      margin:0 auto;
+      background:var(--win);
+      border:1px solid var(--border);
+      box-shadow:0 20px 60px rgba(0,0,0,.5);
+      border-radius:14px;
+      overflow:hidden;
+    }
+    .titlebar{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:10px 14px;
+      background:linear-gradient(180deg, #24294a, var(--bar));
+      border-bottom:1px solid var(--border);
+    }
+    .dots{display:flex; gap:8px;}
+    .dot{width:10px;height:10px;border-radius:50%;}
+    .dot.r{background:#ff5f57;}
+    .dot.y{background:#febc2e;}
+    .dot.g{background:#28c840;}
+    .title{
+      font-weight:700;
+      letter-spacing:.3px;
+    }
+    .toolbar{
+      display:flex;
+      gap:10px;
+      padding:12px 14px;
+      border-bottom:1px solid var(--border);
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .pill{
+      border:1px solid var(--border);
+      padding:8px 10px;
+      border-radius:999px;
+      color:var(--muted);
+      background:rgba(255,255,255,0.03);
+      font-size:14px;
+    }
+    .address{
+      flex:1;
+      min-width:240px;
+      border:1px solid var(--border);
+      padding:8px 12px;
+      border-radius:10px;
+      background:rgba(0,0,0,.25);
+      color:var(--muted);
+      font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size:13px;
+    }
+    .content{padding:18px 18px 24px;}
+    h1{margin:0 0 6px; color:var(--accent);}
+    p{margin:0 0 14px; color:var(--muted); line-height:1.6;}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 820px){
+      .grid{grid-template-columns:1fr;}
+    }
+    .card{
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:rgba(255,255,255,0.03);
+      padding:14px;
+    }
+    .card h2{margin:0 0 8px; font-size:16px; color:var(--text);}
+    .card p{margin:0 0 10px; font-size:14px;}
+    .card a{
+      color:var(--ok);
+      text-decoration:none;
+      font-weight:700;
+    }
+    .card a:hover{text-decoration:underline;}
+    .footer{
+      padding:12px 18px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      font-size:13px;
+    }
+  </style>
 </head>
-
 <body>
+  <div class="window">
+    <div class="titlebar">
+      <div class="dots">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+      </div>
+      <div class="title">HyperWeb Navigator 0.9 (Totally Real)</div>
+    </div>
 
-<div class="browser">
+    <div class="toolbar">
+      <span class="pill">Back</span>
+      <span class="pill">Forward</span>
+      <span class="pill">Reload</span>
+      <span class="pill">Home</span>
+      <div class="address">file:///web-history-hub/index.html</div>
+      <span class="pill">Secure: <strong style="color:#7CFFB2">Yes</strong></span>
+    </div>
 
-  <div class="browser-bar">
-    Mosaic 1.0 — Web History Archive
+    <div class="content">
+      <h1>Web History Hub</h1>
+      <p>
+        One centralized place for your future sections: <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>.
+        For now, the <strong>Cascading Style Sheets</strong> history site is live.
+      </p>
+    <div class="card">
+          <h2>HTML History</h2>
+          <p>Placeholder. You’ll add the HTML-only section later.</p>
+           <a href="/html/htmlhome.html">Open HTML Section</a>
+        </div>
+
+      <div class="grid">
+        <div class="card">
+          <h2>CSS History</h2>
+          <p>From the first proposals to modern layout and design systems, broken into real eras.</p>
+          <a href="css/index.html">Open CSS Section</a>
+        </div>
+
+        <div class="card">
+          <h2>JavaScript History</h2>
+          <p>Placeholder. You’ll add the JavaScript section later.</p>
+          <span style="color:#b8bbd1">Coming soon</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      No JavaScript was harmed in the making of this hub....yet
+    </div>
   </div>
-
-  <div class="menu-bar">
-    <span>File</span>
-    <span>Edit</span>
-    <span>View</span>
-    <span>Go</span>
-    <span>Bookmarks</span>
-    <span>Options</span>
-    <span>Help</span>
-  </div>
-
-  <div class="content">
-
-    <h1>Welcome to the Web History Archive</h1>
-
-    <p>
-      You are viewing a simulated early web browser interface.
-      This archive explores the complete history of:
-    </p>
-
-    <ul>
-      <li>HyperText Markup Language (HTML)</li>
-      <li>Cascading Style Sheets (CSS)</li>
-      <li>JavaScript (coming soon)</li>
-    </ul>
-
-    <h2>Enter a Section</h2>
-
-    <table class="nav-table" cellpadding="0" cellspacing="0">
-      <tr>
-        <td><a href="/html/htmlhome.html">HTML History</a></td>
-        <td><a href="/css/csshome.html">CSS History</a></td>
-        <td><a href="#">JavaScript History (Coming Soon)</a></td>
-      </tr>
-    </table>
-
-    <h2>What This Project Does</h2>
-
-    <p>
-      Each era page uses only the HTML and CSS that existed in that period.
-      No JavaScript is used in historical pages.
-    </p>
-
-    <p>
-      This archive documents major contributors, specification milestones,
-      browser implementation shifts, and structural changes in the Web.
-    </p>
-
-  </div>
-
-  <div class="footer">
-    Status: Connected | Display Mode: Standards | Document: index.html
-  </div>
-
-</div>
-
 </body>
 </html>
