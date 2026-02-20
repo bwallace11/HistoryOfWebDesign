@@ -1,59 +1,168 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>CSS Contributors</title>
+<meta charset="utf-8">
+<title>CSS Contributors and Standards Leaders</title>
+
+<style>
+:root {
+  --bg: #0e0e12;
+  --card: #16161d;
+  --border: #2c2c38;
+  --text: #e8e8ec;
+  --accent: #9aa7ff;
+}
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  margin: 0;
+  padding: 2rem;
+}
+
+header, section {
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+h1, h2 {
+  color: var(--accent);
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+a {
+  color: var(--accent);
+}
+</style>
 </head>
+
 <body>
 
-  <nav>
-    <a href="/index.html">The Hub</a> |
-    <a href="csshome.html">CSS Home</a> |
-    <a href="glossary.html">Glossary</a> |
-    <a href="bibliography.html">Bibliography</a> |
-    <a href="contributors.html">Contributors</a> |
-    <a href="discussion.html">Discussion</a> |
-    <a href="era-1-1994-1996.html">1994-1996</a> |
-    <a href="era-2-1996-1998.html">1996-1998</a> |
-    <a href="era-3-1998-2004.html">1998-2004</a> |
-    <a href="era-4-2004-2011.html">2004-2011</a> |
-    <a href="era-5-2011-2017.html">2011-2017</a> |
-    <a href="era-6-2017-2026.html">2017-2026</a> 
+<header>
+ <nav>
+  <a href="/index.html">Main Hub</a>
+  <a href="csshome.html">CSS Home</a> |
+  <a href="era-1-1994-1996.html">1994-1996</a> |
+  <a href="era-2-1996-1998.html">1996-1998</a> |
+  <a href="era-3-1998-2004.html">1998-2004</a> |
+  <a href="era-4-2004-2011.html">2004-2011</a> |
+  <a href="era-5-2011-2017.html">2011-2017</a> |
+  <a href="era-6-2017-2026.html">2017-2026</a> |
+  <a href="glossary.html">Glossary</a> |
+  <a href="bibliography.html">Bibliography</a> |
+  <a href="contributors.html">Contributors</a> |
+  <a href="discussion.html">Discussion</a>
   </nav>
-<h1>CSS Contributors (Major People)</h1>
-<hr>
 
-<h2>Håkon Wium Lie</h2>
-<p>
-  Håkon Wium Lie proposed the idea of <strong>Cascading Style Sheets</strong> in <strong>1994</strong>, when the Web badly needed a real styling system.
-  He’s one of the central founders of CSS thinking. 
-</p>
-<ul>
-  <li>W3C page: https://www.w3.org/People/howcome/ </li>
-  <li>Wikipedia: https://en.wikipedia.org/wiki/H%C3%A5kon_Wium_Lie </li>
-</ul>
+  <h1>Major Contributors to Cascading Style Sheets (CSS)</h1>
+  <p>
+    This page documents the individuals, editors, working group members, and browser engineers
+    who significantly shaped CSS from 1994 to today.
+  </p>
+</header>
 
-<h2>Bert Bos</h2>
-<p>
-  Bert Bos is a co-inventor of CSS and worked at W3C on CSS and other standards work. He collaborated early with Lie and helped shape CSS into an implementable standard. 
-</p>
-<ul>
-  <li>W3C page: https://www.w3.org/People/Bos/ </li>
-  <li>W3C staff bio: https://www.w3.org/staff/?initial=b </li>
-  <li>Wikipedia: https://en.wikipedia.org/wiki/Bert_Bos </li>
-</ul>
+<section class="card">
+  <h2>Håkon Wium Lie</h2>
+  <p>
+    Proposed CSS in 1994 while working with the World Wide Web Consortium (W3C).
+    He envisioned separating document structure (HTML) from presentation.
+    He later worked at Opera, advocating strongly for standards compliance.
+  </p>
+  <p>
+    Contributions:
+  </p>
+  <ul>
+    <li>Co-author and editor of CSS1 and CSS2</li>
+    <li>Shaped the cascade model</li>
+    <li>Helped define media types</li>
+  </ul>
+  <p>
+    Reference: <a href="https://en.wikipedia.org/wiki/H%C3%A5kon_Wium_Lie">Wikipedia</a>
+  </p>
+</section>
 
-<h2>CSS Working Group (CSSWG) contributors (ongoing)</h2>
-<p>
-  CSS is maintained and expanded by the <strong>Cascading Style Sheets Working Group</strong> at W3C, made up of browser engineers, spec editors,
-  and invited experts. 
-</p>
-<ul>
-  <li>CSSWG participants list: https://www.w3.org/Style/CSS/members </li>
-  <li>CSSWG charter: https://www.w3.org/2019/10/css-wg-charter.html </li>
-</ul>
+<section class="card">
+  <h2>Bert Bos</h2>
+  <p>
+    Co-developer of CSS and long-time W3C editor. Bos collaborated on CSS1 and CSS2
+    and played a central role in refining CSS 2.1.
+  </p>
+  <ul>
+    <li>CSS1 and CSS2 co-editor</li>
+    <li>Key contributor to CSS2.1 stabilization</li>
+    <li>Advocate for modular CSS development</li>
+  </ul>
+  <p>
+    Reference: <a href="https://en.wikipedia.org/wiki/Bert_Bos">Wikipedia</a>
+  </p>
+</section>
 
-<p><small>Note: Modern CSS is maintained by many editors across many modules. The participants list is the most accurate “current roster.”</small></p>
+<section class="card">
+  <h2>Chris Lilley</h2>
+  <p>
+    CSS2 editor and W3C contributor focused on typography and graphics standards.
+    Played a key editorial role during CSS’s expansion into layout.
+  </p>
+  <p>
+    Reference: <a href="https://en.wikipedia.org/wiki/Chris_Lilley">Wikipedia</a>
+  </p>
+</section>
+
+<section class="card">
+  <h2>Women Who Shaped CSS and Web Standards</h2>
+
+  <h3>Tantek Çelik</h3>
+  <p>
+    Early Internet Explorer engineer and later Web standards advocate.
+    Helped improve standards compliance and worked closely on CSS implementations.
+  </p>
+
+  <h3>Anne van Kesteren</h3>
+  <p>
+    Long-time standards contributor and editor in web platform technologies.
+    Contributed to specifications and browser engine alignment affecting CSS behavior.
+  </p>
+
+  <h3>Fantasai (Elika Etemad)</h3>
+  <p>
+    Editor in the W3C CSS Working Group, heavily involved in CSS specifications
+    including layout modules and text-level details.
+  </p>
+
+  <h3>Tab Atkins Jr.</h3>
+  <p>
+    CSS Working Group co-chair and editor for multiple modern CSS modules,
+    including Grid, Cascade, and Selectors.
+  </p>
+
+  <p>
+    CSS evolution has depended on many contributors inside browser vendors and W3C,
+    including women and underrepresented engineers who worked through specification editing
+    and test suite development.
+  </p>
+</section>
+
+<section class="card">
+  <h2>Browser Engine Teams</h2>
+  <ul>
+    <li><strong>Blink</strong> (Google Chrome / Chromium)</li>
+    <li><strong>WebKit</strong> (Safari)</li>
+    <li><strong>Gecko</strong> (Firefox)</li>
+    <li><strong>Trident</strong> (Internet Explorer, historical)</li>
+    <li><strong>Presto</strong> (Opera, historical)</li>
+  </ul>
+</section>
 
 </body>
 </html>

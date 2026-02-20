@@ -1,68 +1,87 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <html>
 <head>
-  <title>1996–1998: CSS1 and CSS2</title>
-  <style type="text/css">
-    /* CSS1-level basics: font, color, background, simple spacing */
-    body { font-family: Arial, Helvetica, sans-serif; background: #ffffff; color: #000000; }
-    h1 { font-size: 24px; }
-    h2 { font-size: 18px; }
-    p  { line-height: 1.3; }
-    .box { border: 1px solid #000000; padding: 8px; }
-  </style>
+<title>1996–1998: CSS Level 1 (W3C Recommendation) and Early Support</title>
+<style type="text/css">
+/* CSS1 era: keep it basic */
+body { font-family: serif; color: #000; background: #fff; }
+h1 { font-size: 20pt; }
+h2 { font-size: 14pt; }
+.box { border: 1px solid #000; padding: 8px; }
+</style>
 </head>
 
-<body>
-<table border="1" cellpadding="6" cellspacing="0" width="100%">
-  <tr>
-    <td><a href="/index.html">The Hub</a></td>
-    <td><a href="csshome.html">CSS Home</a></td>
-    <td><a href="glossary.html">Glossary</a></td>
-    <td><a href="bibliography.html">Bibliography</a></td>
-    <td><a href="contributors.html">Contributors</a></td>
-        <td><a href="discussion.html">Discussion</a></td>
-        <td><a href="era-1-1994-1996.html">1994-1996</a></td>
-        <td><a href="era-2-1996-1998.html">1996-1998</a></td>
-        <td><a href="era-3-1998-2004.html">1998-2004</a></td>
-        <td><a href="era-4-2004-2011.html">2004-2011</a></td>
-        <td><a href="era-5-2011-2017.html">2011-2017</a></td>
-        <td><a href="era-6-2017-2026.html">2017-2026</a></td>
-  </tr>
-</table>
-<h1>1996–1998: CSS1 becomes official, CSS2 follows</h1>
+<body bgcolor="#ffffff" text="#000000">
+
+<center><h1>1996–1998: CSS Level 1 Arrives</h1></center>
 <hr>
+
+<center>
+  <a href="/index.html">Main Hub</a>
+  <a href="csshome.html">CSS Home</a> |
+  <a href="era-1-1994-1996.html">1994-1996</a> |
+  <a href="era-2-1996-1998.html">1996-1998</a> |
+  <a href="era-3-1998-2004.html">1998-2004</a> |
+  <a href="era-4-2004-2011.html">2004-2011</a> |
+  <a href="era-5-2011-2017.html">2011-2017</a> |
+  <a href="era-6-2017-2026.html">2017-2026</a> |
+  <a href="glossary.html">Glossary</a> |
+  <a href="bibliography.html">Bibliography</a> |
+  <a href="contributors.html">Contributors</a> |
+  <a href="discussion.html">Discussion</a>
+</center>
+
+<hr>
+
+<h2>Key Event</h2>
+<p>
+On <b>December 17, 1996</b>, the W3C published <b>Cascading Style Sheets, level 1 (CSS1)</b> as a Recommendation.
+It defined basic styling: fonts, colors, text formatting, margins, padding, borders, and simple selectors.
+</p>
+
+<h2>Major People and Groups</h2>
+<ul>
+  <li><b>Håkon Wium Lie</b> – CSS1 author/editor</li>
+  <li><b>Bert Bos</b> – CSS1 author/editor</li>
+  <li><b>W3C CSS Working Group</b> – produced the Recommendation</li>
+</ul>
+
+<h2>Browser Reality (Why It Was Hard)</h2>
+<p>
+CSS existed on paper, but browsers implemented it inconsistently. Authors could not rely on it for layout.
+This is why presentational HTML kept thriving even when CSS was “official.”
+</p>
 
 <div class="box">
-  <h2>What happened</h2>
-  <p>
-    <strong>CSS Level 1</strong> became a <strong>W3C Recommendation</strong> in <strong>December 1996</strong>. :contentReference[oaicite:6]{index=6}
-    Then <strong>CSS Level 2</strong> arrived in <strong>May 1998</strong>, expanding what CSS could describe. :contentReference[oaicite:7]{index=7}
-  </p>
+<h2>What Authors Actually Did</h2>
+<ul>
+  <li>Used CSS mostly for <b>fonts and colors</b>, not layout.</li>
+  <li>Kept <tt>&lt;font&gt;</tt> and <tt>&lt;center&gt;</tt> as “backup.”</li>
+  <li>Kept layouts in <b>tables</b> and used CSS as optional enhancement.</li>
+  <li>Used <b>inline styles</b> when they worked, because external styles sometimes failed.</li>
+</ul>
 </div>
 
-<h2>Why CSS1 mattered</h2>
-<ul>
-  <li>It gave authors a real way to set fonts, text styles, colors, and spacing without stuffing HTML with formatting tags.</li>
-  <li>It introduced the core idea of the <strong>cascade</strong> (rules competing by priority).</li>
-  <li>It created a real target for browser implementers, even if support was messy.</li>
-</ul>
+<h2>CSS1 Example (Era-Appropriate)</h2>
+<pre>
+p { color: black; }
+a { color: blue; }
+</pre>
 
-<h2>Why CSS2 mattered</h2>
-<ul>
-  <li>It expanded layout and media concepts (more device types, stronger layout goals).</li>
-  <li>It pushed CSS toward being capable of replacing many HTML “layout hacks.”</li>
-</ul>
+<h2>HTML 3.2 Tag Demonstration (Common in This Era)</h2>
+<p>
+<b>Bold</b> <i>Italic</i> <tt>Monospace</tt> <u>Underline</u>
+</p>
 
-<h2>Major players (this era)</h2>
-<ul>
-  <li><strong>Håkon Wium Lie</strong> and <strong>Bert Bos</strong> (core creators/editors). :contentReference[oaicite:8]{index=8}</li>
-  <li><strong>W3C</strong> as the standards home for CSS work. :contentReference[oaicite:9]{index=9}</li>
-  <li><strong>Browser vendors</strong> implementing partial CSS: Netscape, Microsoft, Opera (support differed a lot).</li>
-</ul>
- <td><a href="era-1-1994-1996.html">Prev Era</a></td>
-<td><a href="era-3-1998-2004.html">Next Era</a></td>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>Technique</th><th>Why</th></tr>
+<tr><td>Tables for layout</td><td>CSS layout was unreliable</td></tr>
+<tr><td>&lt;font&gt; tags</td><td>Typography control worked everywhere</td></tr>
+<tr><td>Spacer GIFs</td><td>Forced spacing and alignment</td></tr>
+</table>
+
 <hr>
-<p><small><strong>Era CSS rule:</strong> This page only uses basic CSS1-style rules (no flexbox, no grid, no variables).</small></p>
+<address>CSS History Archive | Era 2 (1996–1998)</address>
 
 </body>
 </html>

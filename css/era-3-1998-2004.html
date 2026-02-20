@@ -1,62 +1,109 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-  <title>1998–2004: Browser Wars and CSS Pain</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <style type="text/css">
-    body { font-family: Verdana, Arial, sans-serif; background: #ffffff; color: #111111; }
-    h1 { font-size: 22px; }
-    .note { border: 1px solid #333333; padding: 10px; background: #f2f2f2; }
-  </style>
+<title>1998–2001: CSS2 Expansion and the Implementation Crisis</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<style type="text/css">
+/* CSS2 era: positioning exists but is risky, keep modest */
+body { font-family: serif; background: #ffffff; color: #000000; }
+h1 { font-size: 22pt; }
+h2 { font-size: 16pt; }
+.box { border: 1px solid #000000; padding: 10px; margin-top: 10px; }
+code, pre { font-family: monospace; }
+</style>
 </head>
 
 <body>
-<table border="1" cellpadding="6" cellspacing="0" width="100%">
-  <tr>
-    <td><a href="/index.html">The Hub</a></td>
- <td><a href="csshome.html">CSS Home</a></td>
-    <td><a href="glossary.html">Glossary</a></td>
-    <td><a href="bibliography.html">Bibliography</a></td>
-    <td><a href="contributors.html">Contributors</a></td>
-    <td><a href="discussion.html">Discussion</a></td>
-    <td><a href="era-1-1994-1996.html">1994-1996</a></td>
-    <td><a href="era-2-1996-1998.html">1996-1998</a></td>
-    <td><a href="era-3-1998-2004.html">1998-2004</a></td>
-    <td><a href="era-4-2004-2011.html">2004-2011</a></td>
-     <td><a href="era-5-2011-2017.html">2011-2017</a></td>
-     <td><a href="era-6-2017-2026.html">2017-2026</a></td>
-  </tr>
-</table>
 
-<h1>1998–2004: Browser wars and “why won’t this look the same?”</h1>
-
-<p>
-  This era is where CSS exists, but browser support is uneven. Developers often fell back to HTML layout tricks because
-  CSS rendering differed across browsers.
-</p>
-
-<hr>
-
-<div class="note">
-  <p><strong>Key theme:</strong> CSS is real, but implementation is a mess, so author practices become a mix of CSS and HTML workarounds.</p>
+<div class="box">
+  <a href="/index.html">Main Hub</a>
+  <a href="csshome.html">CSS Home</a> |
+  <a href="era-1-1994-1996.html">1994-1996</a> |
+  <a href="era-2-1996-1998.html">1996-1998</a> |
+  <a href="era-3-1998-2004.html">1998-2004</a> |
+  <a href="era-4-2004-2011.html">2004-2011</a> |
+  <a href="era-5-2011-2017.html">2011-2017</a> |
+  <a href="era-6-2017-2026.html">2017-2026</a> |
+  <a href="glossary.html">Glossary</a> |
+  <a href="bibliography.html">Bibliography</a> |
+  <a href="contributors.html">Contributors</a> |
+  <a href="discussion.html">Discussion</a>
 </div>
 
-<h2>Important things to note</h2>
+<h1>1998–2001: CSS Level 2 (CSS2) and the Browser Wars</h1>
+<hr>
+
+<h2>Key Event</h2>
+<p>
+On <b>May 12, 1998</b>, the W3C published <b>Cascading Style Sheets, level 2 (CSS2)</b> as a Recommendation.
+CSS2 expanded CSS from styling text into controlling layout behavior.
+</p>
+
+<h2>Spec Editors and Groups</h2>
 <ul>
-  <li><strong>CSS Level 2 (1998)</strong> exists, but browsers don’t implement everything consistently. :contentReference[oaicite:10]{index=10}</li>
-  <li>Developers used “fallback thinking”: if CSS breaks, the page must still be readable.</li>
-  <li>Standards advocacy grows: people start pushing browsers to follow specs more closely.</li>
+  <li><b>Bert Bos</b> – CSS2 editor</li>
+  <li><b>Håkon Wium Lie</b> – CSS2 editor</li>
+  <li><b>Chris Lilley</b> – CSS2 editor</li>
+  <li><b>Ian Jacobs</b> – CSS2 editor</li>
+  <li><b>W3C CSS Working Group</b></li>
 </ul>
 
-<h2>Major players</h2>
+<h2>Browser/Engine Teams (Why CSS2 Hurt)</h2>
+<dl>
+  <dt><b>Trident</b> (Microsoft Internet Explorer)</dt>
+  <dd>Strong market power, uneven standards behavior, lots of quirks.</dd>
+
+  <dt><b>Gecko</b> (Mozilla)</dt>
+  <dd>Rebuilt to replace old Netscape engine; big push toward standards.</dd>
+
+  <dt><b>Presto</b> (Opera)</dt>
+  <dd>Often strong standards support, smaller market share.</dd>
+</dl>
+
+<h2>What CSS2 Added (Big Deals)</h2>
+<ol>
+  <li><b>Positioning</b>: absolute, relative, fixed</li>
+  <li><b>Z-index layering</b></li>
+  <li><b>Media types</b> (print vs screen)</li>
+  <li><b>More precise box model definitions</b></li>
+  <li><b>Aural styles</b> (ambitious, barely implemented)</li>
+</ol>
+
+<div class="box">
+<h2>What Authors Actually Did (Hacks + Survival)</h2>
 <ul>
-  <li><strong>W3C CSS Working Group</strong> forming CSS direction and errata work. :contentReference[oaicite:11]{index=11}</li>
-  <li><strong>Håkon Wium Lie</strong>, <strong>Bert Bos</strong>, and other W3C editors/staff working on CSS. :contentReference[oaicite:12]{index=12}</li>
-  <li><strong>Browser teams</strong> (Microsoft, Netscape/Mozilla, Opera) making their own choices and bugs.</li>
+  <li><b>Tables for layout</b> stayed dominant.</li>
+  <li><b>Float layouts</b> started appearing, but were fragile.</li>
+  <li><b>Internet Explorer box model hacks</b> (targeting broken width calculations).</li>
+  <li><b>“Quirks mode” behavior</b> appeared based on DOCTYPE presence.</li>
+  <li><b>Proprietary features</b>: Microsoft filters, nonstandard behaviors, vendor differences.</li>
 </ul>
+</div>
+
+<h2>Era CSS2 Example (Careful)</h2>
+<pre>
+#nav { position: relative; }
+.note { border: 1px solid black; padding: 8px; }
+</pre>
+
+<h2>HTML Tag Coverage Demonstration (Transitional)</h2>
+<p>
+This era still used deprecated tags heavily:
+<font color="blue">FONT</font>,
+<center>CENTER</center>,
+and alignment attributes.
+</p>
+
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>Tool</th><th>Why used</th></tr>
+<tr><td>Nested tables</td><td>Reliable grid layout</td></tr>
+<tr><td>Spacer GIF</td><td>For spacing control</td></tr>
+<tr><td>FONT tags</td><td>Typography fallback</td></tr>
+</table>
 
 <hr>
-<p><small><strong>Era CSS rule:</strong> No modern CSS here. Only basic typography, colors, and simple boxes.</small></p>
+<address>CSS History Archive | Era 3 (1998–2001)</address>
 
 </body>
 </html>

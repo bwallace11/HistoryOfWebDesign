@@ -1,39 +1,136 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Web Standards History</title>
+<meta charset="utf-8">
+<title>Web History Archive</title>
+
+<style>
+/* Very basic, era-inspired styling */
+
+body {
+  background-color: #c0c0c0;
+  font-family: "Times New Roman", serif;
+  margin: 40px;
+}
+
+.browser {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  width: 800px;
+  margin: auto;
+}
+
+.browser-bar {
+  background-color: #000080;
+  color: #ffffff;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.menu-bar {
+  background-color: #e0e0e0;
+  padding: 4px;
+  border-bottom: 1px solid #000000;
+}
+
+.menu-bar span {
+  margin-right: 15px;
+}
+
+.content {
+  padding: 20px;
+}
+
+.nav-table {
+  border: 1px solid #000000;
+  margin-top: 15px;
+}
+
+.nav-table td {
+  padding: 6px 10px;
+  border-right: 1px solid #000000;
+}
+
+.nav-table td:last-child {
+  border-right: none;
+}
+
+.footer {
+  background-color: #e0e0e0;
+  padding: 8px;
+  border-top: 1px solid #000000;
+  font-size: 12px;
+}
+
+a {
+  color: #0000cc;
+}
+</style>
+
 </head>
+
 <body>
 
-<header>
-  <h1>Web Standards History Archive</h1>
-  <p>
-    A structured archive documenting the full history of
-    HyperText Markup Language (HTML), Cascading Style Sheets (CSS),
-    and JavaScript from origin to present.
-  </p>
-</header>
+<div class="browser">
 
-<nav>
-  <h2>Main Sections</h2>
-  <ul>
-    <li><a href="html/htmlhome.html">HTML Section</a></li>
-    <li><a href="css/csshome.html">CSS Section</a></li>
-    <li><a href="javascript/jshome.html">JavaScript Section (Future)</a></li>
-  </ul>
-</nav>
+  <div class="browser-bar">
+    Mosaic 1.0 — Web History Archive
+  </div>
 
-<main>
-  <p>
-    Each section documents the full historical development of its language,
-    key contributors, standards evolution, and philosophical changes.
-  </p>
-</main>
+  <div class="menu-bar">
+    <span>File</span>
+    <span>Edit</span>
+    <span>View</span>
+    <span>Go</span>
+    <span>Bookmarks</span>
+    <span>Options</span>
+    <span>Help</span>
+  </div>
 
-<footer>
-  <address>Web Standards History Project</address>
-</footer>
+  <div class="content">
+
+    <h1>Welcome to the Web History Archive</h1>
+
+    <p>
+      You are viewing a simulated early web browser interface.
+      This archive explores the complete history of:
+    </p>
+
+    <ul>
+      <li>HyperText Markup Language (HTML)</li>
+      <li>Cascading Style Sheets (CSS)</li>
+      <li>JavaScript (coming soon)</li>
+    </ul>
+
+    <h2>Enter a Section</h2>
+
+    <table class="nav-table" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><a href="/html/htmlhome.html">HTML History</a></td>
+        <td><a href="/css/csshome.html">CSS History</a></td>
+        <td><a href="#">JavaScript History (Coming Soon)</a></td>
+      </tr>
+    </table>
+
+    <h2>What This Project Does</h2>
+
+    <p>
+      Each era page uses only the HTML and CSS that existed in that period.
+      No JavaScript is used in historical pages.
+    </p>
+
+    <p>
+      This archive documents major contributors, specification milestones,
+      browser implementation shifts, and structural changes in the Web.
+    </p>
+
+  </div>
+
+  <div class="footer">
+    Status: Connected | Display Mode: Standards | Document: index.html
+  </div>
+
+</div>
 
 </body>
 </html>

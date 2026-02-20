@@ -1,65 +1,91 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <html>
 <head>
-  <title>1994–1996: CSS Is Proposed</title>
+<title>1994–1996: CSS Is Born (Proposals to CSS1 Drafts)</title>
+<style type="text/css">
+/* Era-appropriate: early CSS idea, very limited, not reliable in browsers */
+body { font-family: serif; }
+h1 { font-size: 20pt; }
+</style>
 </head>
 
-<body bgcolor="#ffffff" text="#000000" link="#0000cc" vlink="#551a8b" alink="#ff0000">
+<body bgcolor="#ffffff" text="#000000" link="#0000cc" vlink="#660066" alink="#ff0000">
 
-<table border="1" cellpadding="6" cellspacing="0" width="100%">
-  <tr>
-    <td><a href="/index.html">The Hub</a></td>
-    <td><a href="csshome.html">CSS Home</a></td>
-    <td><a href="glossary.html">Glossary</a></td>
-    <td><a href="bibliography.html">Bibliography</a></td>
-    <td><a href="contributors.html">Contributors</a></td>
-    <td><a href="discussion.html">Discussion</a></td>
-    <td><a href="era-1-1994-1996.html">1994-1996</a></td>
-    <td><a href="era-2-1996-1998.html">1996-1998</a></td>
-    <td><a href="era-3-1998-2004.html">1998-2004</a></td>
-    <td><a href="era-4-2004-2011.html">2004-2011</a></td>
-     <td><a href="era-5-2011-2017.html">2011-2017</a></td>
-     <td><a href="era-6-2017-2026.html">2017-2026</a></td>
-  </tr>
-</table>
 <center>
-  <h1>1994–1996: CSS Is Proposed (Before CSS1 Is Official)</h1>
+<h1>1994–1996: CSS Is Born</h1>
 </center>
+
 <hr>
 
-<font size="4"><b>What’s going on in this era?</b></font>
+<center>
+  <a href="/index.html">Main Hub</a>
+  <a href="csshome.html">CSS Home</a> |
+  <a href="era-1-1994-1996.html">1994-1996</a> |
+  <a href="era-2-1996-1998.html">1996-1998</a> |
+  <a href="era-3-1998-2004.html">1998-2004</a> |
+  <a href="era-4-2004-2011.html">2004-2011</a> |
+  <a href="era-5-2011-2017.html">2011-2017</a> |
+  <a href="era-6-2017-2026.html">2017-2026</a> |
+  <a href="glossary.html">Glossary</a> |
+  <a href="bibliography.html">Bibliography</a> |
+  <a href="contributors.html">Contributors</a> |
+  <a href="discussion.html">Discussion</a>
+</center>
+
+<hr>
+
+<h2>What Was Happening</h2>
+
 <p>
-  Early web pages were mostly plain text and links. Authors wanted control over fonts, spacing, and layout, but HTML did not
-  have a clean styling system. In <b>1994</b>, <b>Håkon Wium Lie</b> proposed the concept of <b>Cascading Style Sheets</b> while working
-  in the early Web community (connected to CERN and W3C work). :contentReference[oaicite:1]{index=1}
+In 1994, the <b>World Wide Web Consortium (W3C)</b> formed to guide web standards.
+At the time, HTML carried structure and a lot of ugly presentation because authors wanted control
+and browsers were competing for attention.
 </p>
 
-<font size="4"><b>Why this mattered</b></font>
+<p>
+In that environment, <b>Håkon Wium Lie</b> proposed <b>Cascading Style Sheets (CSS)</b> as a way to separate
+document structure (HTML) from presentation (style rules).
+<b>Bert Bos</b> quickly became a major collaborator, and CSS work moved through W3C.
+</p>
+
+<h2>Major People and Groups</h2>
 <ul>
-  <li><b>HTML was getting “presentational” fast</b> (tags like <tt>&lt;font&gt;</tt> and alignment tricks).</li>
-  <li><b>Sites needed consistent styling</b> without repeating formatting on every element.</li>
-  <li><b>A “cascade”</b> meant multiple style sources could interact (browser defaults, user preferences, author styling).</li>
+  <li><b>Håkon Wium Lie</b> (W3C / later Opera): proposed CSS (1994)</li>
+  <li><b>Bert Bos</b> (W3C): co-author/editor in early CSS work</li>
+  <li><b>Tim Berners-Lee</b> (W3C): supported architecture separating structure and presentation</li>
+  <li><b>W3C</b>: organized CSS work toward Recommendation status</li>
 </ul>
 
-<font size="4"><b>Major players</b></font>
-<ul>
-  <li><b>Håkon Wium Lie</b> (proposed CSS in 1994). :contentReference[oaicite:2]{index=2}</li>
-  <li><b>Bert Bos</b> (co-inventor, joined W3C in the mid-1990s and worked on CSS). :contentReference[oaicite:3]{index=3}</li>
-  <li><b>World Wide Web Consortium (W3C)</b> (the standards organization coordinating CSS work). :contentReference[oaicite:4]{index=4}</li>
-</ul>
-
-<font size="4"><b>Important notes</b></font>
+<h2>Why CSS Was Needed</h2>
 <ol>
-  <li>CSS starts as a proposal before it becomes a formal W3C Recommendation.</li>
-  <li>Early browsers were inconsistent, so HTML “formatting tags” kept spreading anyway.</li>
+  <li>HTML was getting stuffed with presentation: <tt>&lt;font&gt;</tt>, <tt>&lt;center&gt;</tt>, color attributes.</li>
+  <li>Sites needed consistent visual rules across many pages (not manual formatting everywhere).</li>
+  <li>Users sometimes needed control (fonts, contrast) for accessibility and preference.</li>
+  <li>Print vs screen required different presentation rules.</li>
 </ol>
+
+<h2>What Authors Actually Did</h2>
+<ul>
+  <li><b>Presentational HTML everywhere</b>: <tt>&lt;font&gt;</tt>, <tt>&lt;center&gt;</tt>, <tt>bgcolor</tt>, <tt>align</tt>.</li>
+  <li><b>Tables as layout scaffolding</b> (even before it was “officially” encouraged).</li>
+  <li><b>Spacer GIFs</b> to force spacing because layout control was weak.</li>
+  <li><b>“Best viewed in…” badges</b> because consistent rendering was a fantasy.</li>
+</ul>
+
+<h2>Early CSS Ideas (Tiny Example)</h2>
+<p>
+Browsers had little consistent support, so even simple things could be unreliable:
+</p>
+<pre>
+body { font-family: serif; }
+h1 { font-size: 20pt; }
+</pre>
 
 <hr>
 
-<font size="2">
-  <b>Era HTML rules:</b> This page uses HTML 3.2 style (tables for layout, <tt>&lt;font&gt;</tt>, <tt>&lt;center&gt;</tt>, body colors).
-  No modern HTML5 elements used here.
-</font>
+<address>
+CSS History Archive | Era 1 (1994–1996)
+</address>
 
 </body>
 </html>

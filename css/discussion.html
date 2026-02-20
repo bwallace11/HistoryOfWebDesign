@@ -1,63 +1,119 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>CSS Discussion</title>
+<meta charset="utf-8">
+<title>Discussion: CSS History and Structural Tensions</title>
+
+<style>
+body {
+  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+  background: #111;
+  color: #e6e6e6;
+  line-height: 1.7;
+  margin: 0;
+  padding: 2rem;
+}
+section {
+  margin-bottom: 2rem;
+}
+h1, h2 {
+  color: #8fa0ff;
+}
+.block {
+  border-left: 4px solid #8fa0ff;
+  padding-left: 1rem;
+}
+</style>
 </head>
+
 <body>
-  <nav>
-    <a href="/index.html">The Hub</a> |
-    <a href="csshome.html">CSS Home</a> |
-    <a href="glossary.html">Glossary</a> |
-    <a href="bibliography.html">Bibliography</a> |
-    <a href="contributors.html">Contributors</a> |
-    <a href="discussion.html">Discussion</a> |
-    <a href="era-1-1994-1996.html">1994-1996</a> |
-    <a href="era-2-1996-1998.html">1996-1998</a> |
-    <a href="era-3-1998-2004.html">1998-2004</a> |
-    <a href="era-4-2004-2011.html">2004-2011</a> |
-    <a href="era-5-2011-2017.html">2011-2017</a> |
-    <a href="era-6-2017-2026.html">2017-2026</a> 
+<nav>
+  <a href="/index.html">Main Hub</a>
+  <a href="csshome.html">CSS Home</a> |
+  <a href="era-1-1994-1996.html">1994-1996</a> |
+  <a href="era-2-1996-1998.html">1996-1998</a> |
+  <a href="era-3-1998-2004.html">1998-2004</a> |
+  <a href="era-4-2004-2011.html">2004-2011</a> |
+  <a href="era-5-2011-2017.html">2011-2017</a> |
+  <a href="era-6-2017-2026.html">2017-2026</a> |
+  <a href="glossary.html">Glossary</a> |
+  <a href="bibliography.html">Bibliography</a> |
+  <a href="contributors.html">Contributors</a> |
+  <a href="discussion.html">Discussion</a>
   </nav>
+<h1>Discussion: CSS from Proposal to Platform Infrastructure</h1>
 
-<h1>CSS Discussion: Interesting Themes (1994–2026)</h1>
-<hr>
-
-<h2>Theme 1: “HTML tried to do styling, and it got ugly”</h2>
+<section>
+<h2>1. Separation of Structure and Presentation</h2>
+<div class="block">
 <p>
-  Early websites used formatting tags because there was no stable CSS support. That created pages that were hard to maintain.
-  CSS was meant to move styling out of HTML and into a reusable rule system. 
+CSS was designed to separate presentation from HTML structure.
+However, real-world authoring practices often re-combined them
+through inline styles, CSS frameworks, and component abstractions.
 </p>
+</div>
+</section>
 
-<h2>Theme 2: The cascade is political, not just technical</h2>
+<section>
+<h2>2. Standards vs Implementation</h2>
+<div class="block">
 <p>
-  The cascade is about who gets control: the browser, the user, or the author. This is why “user style sheets” mattered in the original vision,
-  even if modern reality often favors author control.
+CSS2 was ambitious but inconsistently implemented.
+CSS 2.1 then became a specification that reflected what browsers could actually do.
+This demonstrates how standards sometimes follow implementation, not the other way around.
 </p>
+</div>
+</section>
 
-<h2>Theme 3: Browser wars shaped what CSS became</h2>
+<section>
+<h2>3. The Cost of Backward Compatibility</h2>
 <p>
-  Specs can say anything they want, but the real web is what browsers implement. Bad support slowed adoption and encouraged hacks.
+The principle “Don’t break the Web” shapes every modern CSS decision.
+Legacy behaviors remain because millions of pages depend on them.
+Modern CSS layers new systems instead of replacing old ones.
 </p>
+</section>
 
-<h2>Theme 4: “CSS3” is not one thing</h2>
+<section>
+<h2>4. Layout Evolution</h2>
 <p>
-  “CSS3” became a name people used, but the working model is really separate modules that move at different speeds. 
+Tables → Floats → Positioning → Flexbox → Grid → Container Queries.
+Each step solved real problems but introduced new complexity.
 </p>
+</section>
 
-<h2>Discussion Questions </h2>
+<section>
+<h2>5. Prefixes and Vendor Influence</h2>
+<p>
+Vendor prefixes allowed experimentation but created fragmentation.
+The industry eventually moved toward test-driven interoperability.
+</p>
+</section>
+
+<section>
+<h2>6. Is CSS Now Too Powerful?</h2>
+<p>
+Modern CSS contains grid systems, custom properties, container queries,
+layers, and advanced selectors. Some argue it rivals programming languages in complexity.
+Others argue this complexity reflects legitimate interface demands.
+</p>
+</section>
+
+<section>
+<h2>Expanded Academic Prompts</h2>
 <ol>
-  <li>When is it “okay” for authors to use hacks, if browsers don’t match the spec?</li>
-  <li>Did separating structure (HTML) and presentation (CSS) actually happen, or do people still mix them mentally?</li>
-  <li>Is the cascade a feature or an obstacle for beginners?</li>
-  <li>Why do you think layout took so long to become “easy” on the web?</li>
-  <li>What do you gain and lose when CSS becomes more powerful?</li>
-  <li>Should browsers ship experimental CSS features behind flags, or wait until specs are stable?</li>
-  <li>How do developer tools (inspectors) change the way people learn CSS compared to the 1990s?</li>
-  <li>Are “utility-first” styles a return to presentational markup, just in a different form?</li>
-  <li>What should matter more: backwards compatibility or cleaning up old design mistakes?</li>
-  <li>Should CSS keep expanding into behavior-like features (more UI controls), or stay “just styling”?</li>
+<li>Should CSS have remained minimal instead of evolving into a layout engine?</li>
+<li>Did vendor prefixes delay standard alignment or accelerate innovation?</li>
+<li>Is the cascade still useful, or increasingly replaced by component scoping?</li>
+<li>What does CSS reveal about the tension between open standards and corporate control?</li>
+<li>Is grid the final layout model, or will another replace it?</li>
+<li>How do container queries change responsive design philosophy?</li>
+<li>Are frameworks a response to CSS weakness or an abstraction necessity?</li>
+<li>Is backward compatibility a strength or technical debt?</li>
+<li>How does CSS support accessibility goals?</li>
+<li>What role do W3C working groups play compared to browser implementers?</li>
 </ol>
+</section>
 
 </body>
 </html>

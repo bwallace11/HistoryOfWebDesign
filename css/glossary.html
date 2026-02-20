@@ -1,98 +1,138 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="utf-8">
-  <title>CSS Glossary</title>
+  <title>CSS Glossary and Acronyms</title>
+
+  <style type="text/css">
+    body { font-family: serif; background: #fff; color: #000; }
+    .nav { border: 1px solid #000; padding: 8px; }
+    dt { font-weight: bold; margin-top: 10px; }
+  </style>
 </head>
+
 <body>
+  <div class="nav">
+ <a href="/index.html">Main Hub</a>
+  <a href="csshome.html">CSS Home</a> |
+  <a href="era-1-1994-1996.html">1994-1996</a> |
+  <a href="era-2-1996-1998.html">1996-1998</a> |
+  <a href="era-3-1998-2004.html">1998-2004</a> |
+  <a href="era-4-2004-2011.html">2004-2011</a> |
+  <a href="era-5-2011-2017.html">2011-2017</a> |
+  <a href="era-6-2017-2026.html">2017-2026</a> |
+  <a href="glossary.html">Glossary</a> |
+  <a href="bibliography.html">Bibliography</a> |
+  <a href="contributors.html">Contributors</a> |
+  <a href="discussion.html">Discussion</a>
+  </div>
 
-  <nav>
-    <a href="/index.html">The Hub</a> |
-    <a href="csshome.html">CSS Home</a> |
-    <a href="glossary.html">Glossary</a> |
-    <a href="bibliography.html">Bibliography</a> |
-    <a href="contributors.html">Contributors</a> |
-    <a href="discussion.html">Discussion</a> |
-    <a href="era-1-1994-1996.html">1994-1996</a> |
-    <a href="era-2-1996-1998.html">1996-1998</a> |
-    <a href="era-3-1998-2004.html">1998-2004</a> |
-    <a href="era-4-2004-2011.html">2004-2011</a> |
-    <a href="era-5-2011-2017.html">2011-2017</a> |
-    <a href="era-6-2017-2026.html">2017-2026</a> 
-  </nav>
-<h1>Glossary (CSS terms + acronyms)</h1>
-<hr>
+  <h1>Glossary and Acronyms (CSS + Web Basics)</h1>
+  <p>
+    This is written for people who are new to HTML and CSS. Terms come from many eras.
+  </p>
 
-<dl>
-  <dt><strong>CSS (Cascading Style Sheets)</strong></dt>
-  <dd>A language for describing how HTML content should look (fonts, spacing, layout, colors).</dd>
+  <h2>Acronyms (spelled out)</h2>
+  <dl>
+    <dt>CSS</dt>
+    <dd>Cascading Style Sheets. The language used to control presentation (fonts, spacing, layout) of web documents.</dd>
 
-  <dt><strong>W3C (World Wide Web Consortium)</strong></dt>
-  <dd>The standards organization that hosts working groups for web specs, including CSS.</dd>
+    <dt>HTML</dt>
+    <dd>HyperText Markup Language. The markup language for document structure and meaning.</dd>
 
-  <dt><strong>CSSWG (Cascading Style Sheets Working Group)</strong></dt>
-  <dd>The group inside W3C that writes and maintains CSS specifications and related tests.</dd>
+    <dt>W3C</dt>
+    <dd>World Wide Web Consortium. A standards organization that publishes web specifications.</dd>
 
-  <dt><strong>Recommendation (W3C Recommendation)</strong></dt>
-  <dd>A mature W3C standard. It means the spec is stable enough to be treated as a web standard.</dd>
+    <dt>IETF</dt>
+    <dd>Internet Engineering Task Force. Another standards organization (important earlier for web standards).</dd>
 
-  <dt><strong>Working Draft</strong></dt>
-  <dd>An early version of a spec that can change a lot.</dd>
+    <dt>URL</dt>
+    <dd>Uniform Resource Locator. A web address.</dd>
 
-  <dt><strong>Candidate Recommendation</strong></dt>
-  <dd>A stage where a spec is asking for implementation experience and testing.</dd>
+    <dt>HTTP</dt>
+    <dd>HyperText Transfer Protocol. The network protocol used to request and deliver web documents.</dd>
 
-  <dt><strong>Property</strong></dt>
-  <dd>A CSS setting like <code>color</code>, <code>font-size</code>, or <code>margin</code>.</dd>
+    <dt>SGML</dt>
+    <dd>Standard Generalized Markup Language. An older markup standard that influenced HTML.</dd>
 
-  <dt><strong>Value</strong></dt>
-  <dd>The setting you assign to a property, like <code>color: red;</code>.</dd>
+    <dt>DOM</dt>
+    <dd>Document Object Model. A programming interface for documents. (Mentioned in history even if your site avoids JavaScript.)</dd>
 
-  <dt><strong>Declaration</strong></dt>
-  <dd>A single property + value pair: <code>margin: 10px;</code></dd>
+    <dt>UA</dt>
+    <dd>User Agent. Usually a web browser, but can be other tools that read web content.</dd>
 
-  <dt><strong>Rule</strong></dt>
-  <dd>A selector plus declarations: <code>p { color: black; }</code></dd>
+    <dt>DTD</dt>
+    <dd>Document Type Definition. A grammar for SGML/XML documents (important in older HTML/XHTML history).</dd>
+  </dl>
 
-  <dt><strong>Selector</strong></dt>
-  <dd>The part that chooses what elements get styled (like <code>p</code> or <code>.class</code>).</dd>
+  <h2>CSS terms (beginner friendly)</h2>
+  <dl>
+    <dt>Rule</dt>
+    <dd>A chunk of CSS: selector + declarations.</dd>
 
-  <dt><strong>Class (HTML class attribute)</strong></dt>
-  <dd>A label used to target elements in CSS (example: <code>class="card"</code>).</dd>
+    <dt>Selector</dt>
+    <dd>The part that chooses what elements the rule applies to (example: <code>p</code>, <code>.card</code>, <code>#header</code>).</dd>
 
-  <dt><strong>ID (HTML id attribute)</strong></dt>
-  <dd>A unique label used to target one element (example: <code>id="header"</code>).</dd>
+    <dt>Declaration</dt>
+    <dd>A property and value pair (example: <code>color: black;</code>).</dd>
 
-  <dt><strong>Specificity</strong></dt>
-  <dd>The “priority math” browsers use when multiple rules compete for the same element.</dd>
+    <dt>Property</dt>
+    <dd>The thing you are changing (color, margin, display, font-size).</dd>
 
-  <dt><strong>Cascade</strong></dt>
-  <dd>The system that decides which CSS wins when multiple rules apply.</dd>
+    <dt>Value</dt>
+    <dd>The setting for the property (black, 16px, grid, 1.5).</dd>
 
-  <dt><strong>Inheritance</strong></dt>
-  <dd>When some styles (like font family) flow from parent elements to children automatically.</dd>
+    <dt>Cascade</dt>
+    <dd>The system that decides which CSS wins when multiple rules conflict.</dd>
 
-  <dt><strong>Box Model</strong></dt>
-  <dd>Every element is treated like a box: content, padding, border, margin.</dd>
+    <dt>Specificity</dt>
+    <dd>A scoring system for selectors. More specific selectors override less specific ones (when other factors tie).</dd>
 
-  <dt><strong>Media Query</strong></dt>
-  <dd>A CSS feature that applies styles only under certain conditions (like screen width). Media Queries Level 3 became a W3C Recommendation in 2012.</dd>
+    <dt>Inheritance</dt>
+    <dd>Some properties pass from parent elements to children (like font-family), others do not (like margin).</dd>
 
-  <dt><strong>Responsive Design</strong></dt>
-  <dd>A design approach where layout adapts to screen size and device constraints.</dd>
+    <dt>Box Model</dt>
+    <dd>How elements take up space: content, padding, border, margin.</dd>
 
-  <dt><strong>Flexbox (Flexible Box Layout)</strong></dt>
-  <dd>A layout system mainly for one-dimensional layouts (row OR column).</dd>
+    <dt>Block</dt>
+    <dd>Elements that start on a new line and usually take full width (like <code>div</code>, <code>p</code>).</dd>
 
-  <dt><strong>Grid (CSS Grid Layout)</strong></dt>
-  <dd>A layout system for two-dimensional layouts (rows AND columns).</dd>
+    <dt>Inline</dt>
+    <dd>Elements that flow within a line of text (like <code>span</code>, <code>a</code>).</dd>
 
-  <dt><strong>Custom Properties (CSS Variables)</strong></dt>
-  <dd>Author-defined properties like <code>--main-color</code> that can be reused.</dd>
+    <dt>Layout</dt>
+    <dd>How elements are placed on the page (floats, flexbox, grid).</dd>
 
-  <dt><strong>Container Query</strong></dt>
-  <dd>CSS rules that respond to the size of a container instead of the viewport.</dd>
-</dl>
+    <dt>Float</dt>
+    <dd>An older layout trick that let text wrap around elements. Used heavily before flexbox/grid.</dd>
 
+    <dt>Flexbox</dt>
+    <dd>Flexible Box Layout. Good for one-direction layouts (row or column) and alignment.</dd>
+
+    <dt>Grid</dt>
+    <dd>CSS Grid Layout. Good for two-direction layouts (rows and columns together).</dd>
+
+    <dt>Media Query</dt>
+    <dd>A CSS feature that applies rules based on conditions like screen width (responsive design).</dd>
+
+    <dt>Responsive Design</dt>
+    <dd>Design that adapts to different screens and devices, often using media queries.</dd>
+
+    <dt>Vendor Prefix</dt>
+    <dd>Old browser prefixes like <code>-webkit-</code>, <code>-moz-</code>, used for experimental features.</dd>
+
+    <dt>Custom Property</dt>
+    <dd>CSS variable using <code>--name</code>, used with <code>var(--name)</code>.</dd>
+
+    <dt>Container Query</dt>
+    <dd>Responsive styling based on a container’s size, not the viewport.</dd>
+
+    <dt>Cascade Layer</dt>
+    <dd><code>@layer</code> feature to control which groups of styles win before specificity fights.</dd>
+  </dl>
+
+  <p>
+    This glossary is intentionally big because beginners deserve definitions, not “just google it.”
+  </p>
 </body>
 </html>

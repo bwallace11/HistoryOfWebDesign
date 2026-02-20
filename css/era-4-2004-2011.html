@@ -1,58 +1,93 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
 <head>
-  <title>2004–2011: CSS3 modules begin; CSS 2.1 stabilizes</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <style type="text/css">
-    body { font-family: Georgia, "Times New Roman", serif; color: #111; background: #fff; }
-    h1 { font-size: 22px; }
-    h2 { font-size: 16px; }
-    .callout { border: 2px solid #000; padding: 10px; }
-  </style>
+<title>2001–2011: CSS 2.1 Becomes the Baseline</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<style type="text/css">
+/* CSS2.1 era: floats, positioning, basic layout patterns */
+body { font-family: serif; background: #fff; color: #000; }
+h1 { font-size: 22pt; }
+.box { border: 1px solid #000; padding: 10px; margin: 10px 0; }
+pre { font-family: monospace; }
+</style>
 </head>
 
 <body>
-<table border="1" cellpadding="6" cellspacing="0" width="100%">
-  <tr>
-    <td><a href="/index.html">The Hub</a></td>
- <td><a href="csshome.html">CSS Home</a></td>
-    <td><a href="glossary.html">Glossary</a></td>
-    <td><a href="bibliography.html">Bibliography</a></td>
-    <td><a href="contributors.html">Contributors</a></td>
-    <td><a href="discussion.html">Discussion</a></td>
-    <td><a href="era-1-1994-1996.html">1994-1996</a></td>
-    <td><a href="era-2-1996-1998.html">1996-1998</a></td>
-    <td><a href="era-3-1998-2004.html">1998-2004</a></td>
-    <td><a href="era-4-2004-2011.html">2004-2011</a></td>
-     <td><a href="era-5-2011-2017.html">2011-2017</a></td>
-     <td><a href="era-6-2017-2026.html">2017-2026</a></td>
-  </tr>
-</table>
-<h1>2004–2011: CSS becomes modular, and CSS 2.1 becomes the stable base</h1>
-<hr>
 
-<div class="callout">
-  <p>
-    <strong>Main shift:</strong> CSS stops being “one huge spec” and becomes a set of modules (often called “CSS3” modules).
-    Meanwhile, <strong>CSS 2.1</strong> becomes the stable baseline used for consistent implementation.
-  </p>
+<div class="box">
+<a href="/index.html">Main Hub</a>
+  <a href="csshome.html">CSS Home</a> |
+  <a href="era-1-1994-1996.html">1994-1996</a> |
+  <a href="era-2-1996-1998.html">1996-1998</a> |
+  <a href="era-3-1998-2004.html">1998-2004</a> |
+  <a href="era-4-2004-2011.html">2004-2011</a> |
+  <a href="era-5-2011-2017.html">2011-2017</a> |
+  <a href="era-6-2017-2026.html">2017-2026</a> |
+  <a href="glossary.html">Glossary</a> |
+  <a href="bibliography.html">Bibliography</a> |
+  <a href="contributors.html">Contributors</a> |
+  <a href="discussion.html">Discussion</a>
 </div>
 
-<h2>What to know</h2>
+<h1>2001–2011: CSS Level 2 Revision 1 (CSS 2.1) and the Long Cleanup</h1>
+
+<p>
+This era is dominated by a painful truth: CSS existed, but cross-browser consistency did not.
+The goal of <b>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1)</b> was to document what browsers actually implemented
+and remove or clarify features that were broken or never shipped.
+</p>
+
+<h2>Key Event</h2>
+<p>
+In <b>June 2011</b>, CSS 2.1 became a W3C Recommendation, solidifying the baseline.
+</p>
+
+<h2>Who Shaped This Era</h2>
 <ul>
-  <li>The CSS Working Group focuses on clarifying and stabilizing behavior so browsers can match each other better. :contentReference[oaicite:14]{index=14}</li>
-  <li>“CSS3” is not one single version that ships at once; it is a modular approach. :contentReference[oaicite:15]{index=15}</li>
-  <li>This era sets up the modern world: better interoperability, better docs, better testing culture.</li>
+  <li><b>W3C CSS Working Group</b> – maintained CSS 2.1 work for years</li>
+  <li><b>Browser implementers</b> – forced reality checks through actual engine behavior</li>
+  <li><b>Standards advocates</b> – pushed “write standards, not browser hacks” culture</li>
 </ul>
 
-<h2>Major players</h2>
+<h2>Engine Teams (What Controlled Reality)</h2>
+<dl>
+  <dt><b>Trident</b> (Internet Explorer 6–8)</dt>
+  <dd>Dominant in market share, source of many compatibility constraints.</dd>
+  <dt><b>Gecko</b> (Firefox)</dt>
+  <dd>Improved standards behavior and developer tools helped shift culture.</dd>
+  <dt><b>WebKit</b> (Safari and early Chrome)</dt>
+  <dd>Fast iteration, later forked into Blink (2013, next era).</dd>
+  <dt><b>Presto</b> (Opera)</dt>
+  <dd>Consistently strong standards support, smaller market footprint.</dd>
+</dl>
+
+<div class="box">
+<h2>What Authors Actually Did (The Greatest Hits of Pain)</h2>
 <ul>
-  <li><strong>W3C CSS Working Group (CSSWG)</strong> coordinating specs and tests. :contentReference[oaicite:16]{index=16}</li>
-  <li>Editors and implementers across browser companies and the W3C staff network.</li>
+  <li><b>Float layouts</b> + clearfix hacks to keep containers from collapsing.</li>
+  <li><b>HasLayout</b> workarounds in Internet Explorer (triggering layout modes).</li>
+  <li><b>Conditional comments</b> to serve CSS only to Internet Explorer.</li>
+  <li><b>Star HTML hack</b> and <b>underscore hack</b> to target IE parsing behavior.</li>
+  <li><b>PNG transparency hacks</b> and filters for old IE.</li>
+  <li><b>Reset styles</b> to normalize default browser styling.</li>
 </ul>
+</div>
+
+<h2>CSS 2.1-Era Example</h2>
+<pre>
+.float-left { float: left; width: 200px; }
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+</pre>
+
+<h2>Why This Era Matters</h2>
+<p>
+CSS 2.1 is the reason modern CSS could move forward without collapsing under incompatible interpretations.
+It basically turned chaos into a shared baseline.
+</p>
 
 <hr>
-<p><small><strong>Era CSS rule:</strong> CSS2.1-style basics only. No media queries, no flexbox, no grid.</small></p>
+<p><strong>HTML 4.01 Strict note:</strong> this page avoids deprecated HTML presentational elements.</p>
 
 </body>
 </html>

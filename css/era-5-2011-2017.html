@@ -2,57 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>2011–2017: Responsive era and modern layout begins</title>
+  <title>2011–2017: CSS3 Modules Go Mainstream</title>
   <style>
-    body { font-family: Arial, Helvetica, sans-serif; margin: 16px; }
-    .nav { border: 1px solid #000; padding: 8px; }
-    .card { border: 1px solid #000; padding: 10px; margin-top: 10px; }
-    @media screen and (min-width: 700px) {
-      .two { display: inline-block; width: 48%; vertical-align: top; }
+    /* Era-appropriate: media queries, gradients, flexbox (final syntax), transitions */
+    body { font-family: system-ui, Arial, sans-serif; line-height: 1.5; }
+    .card { border: 1px solid #111; padding: 12px; margin: 12px 0; }
+    @media (min-width: 700px) {
+      .grid { display: flex; gap: 12px; }
+      .grid > .card { flex: 1; }
     }
   </style>
 </head>
 <body>
 
-  <div class="nav">
-    <a href="/index.html">The Hub</a> |
-    <a href="csshome.html">CSS Home</a> |
-    <a href="glossary.html">Glossary</a> |
-    <a href="bibliography.html">Bibliography</a> |
-    <a href="contributors.html">Contributors</a> |
-    <a href="discussion.html">Discussion</a> |
-    <a href="era-1-1994-1996.html">1994-1996</a> |
-    <a href="era-2-1996-1998.html">1996-1998</a> |
-    <a href="era-3-1998-2004.html">1998-2004</a> |
-    <a href="era-4-2004-2011.html">2004-2011</a> |
-    <a href="era-5-2011-2017.html">2011-2017</a> |
-    <a href="era-6-2017-2026.html">2017-2026</a> 
-  </div>
-<h1>2011–2017: Responsive design becomes standard, layout gets serious</h1>
+<header>
+  <h1>2011–2017: CSS3 Modules Become the New Normal</h1>
+  <nav>
+  <a href="/index.html">Main Hub</a>
+  <a href="csshome.html">CSS Home</a> |
+  <a href="era-1-1994-1996.html">1994-1996</a> |
+  <a href="era-2-1996-1998.html">1996-1998</a> |
+  <a href="era-3-1998-2004.html">1998-2004</a> |
+  <a href="era-4-2004-2011.html">2004-2011</a> |
+  <a href="era-5-2011-2017.html">2011-2017</a> |
+  <a href="era-6-2017-2026.html">2017-2026</a> |
+  <a href="glossary.html">Glossary</a> |
+  <a href="bibliography.html">Bibliography</a> |
+  <a href="contributors.html">Contributors</a> |
+  <a href="discussion.html">Discussion</a>
+  </nav>
+</header>
+
+<section class="card">
+  <h2>What Changed</h2>
   <p>
-    This era is where “modern CSS” starts feeling normal: responsive design is everywhere, and browser updating gets faster.
-    Media Queries become a W3C Recommendation in 2012, which locks in responsive design as a standard tool. :contentReference[oaicite:18]{index=18}
+  Instead of one giant “CSS3 spec,” CSS evolved as <strong>modules</strong>.
+  That let features ship independently: selectors, backgrounds, transforms, flexbox, and more.
   </p>
+</section>
 
-  <div class="card two">
-    <h2>What changes</h2>
+<section class="grid">
+  <article class="card">
+    <h2>Major Features (Common by 2017)</h2>
     <ul>
-      <li>Responsive layouts become expected (mobile is not optional).</li>
-      <li>CSS is modular and grows feature-by-feature instead of “one big CSS3 drop.” :contentReference[oaicite:19]{index=19}</li>
-      <li>Flexbox becomes a mainstream layout tool (used carefully at first).</li>
+      <li>Media queries (responsive design)</li>
+      <li>Transforms, transitions, animations</li>
+      <li>Gradients and multiple backgrounds</li>
+      <li>Flexbox (modern layout model)</li>
     </ul>
-  </div>
+  </article>
 
-  <div class="card two">
-    <h2>Major players</h2>
+  <article class="card">
+    <h2>Engine Teams Driving This</h2>
     <ul>
-      <li>Browser vendors shipping features faster (Chrome, Firefox, Safari, IE/Edge direction shift).</li>
-      <li>CSS Working Group editors and contributors coordinating modules and tests. :contentReference[oaicite:20]{index=20}</li>
+      <li>Blink (Chrome, forked from WebKit in 2013)</li>
+      <li>WebKit (Safari)</li>
+      <li>Gecko (Firefox)</li>
+      <li>EdgeHTML (older Edge, before Chromium switch later)</li>
     </ul>
-  </div>
+  </article>
+</section>
 
-  <hr>
-  <p><small><strong>Era CSS rule:</strong> Media queries are OK here. Grid is not used yet on this page.</small></p>
+<section class="card">
+  <h2>What Authors Actually Did</h2>
+  <ul>
+    <li><strong>Vendor prefixes</strong>: <code>-webkit-</code>, <code>-moz-</code>, <code>-ms-</code>, <code>-o-</code></li>
+    <li><strong>Autoprefixing</strong> tools became common to manage prefix mess</li>
+    <li><strong>Frameworks</strong> (Bootstrap era) shaped default design language</li>
+    <li><strong>Float layouts</strong> persisted until flexbox became safe enough</li>
+  </ul>
+</section>
+
+<footer>
+  <p>CSS History Archive | Era 5 (2011–2017)</p>
+</footer>
 
 </body>
 </html>
