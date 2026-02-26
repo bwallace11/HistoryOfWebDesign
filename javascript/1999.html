@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>1999 – ECMAScript 3</title>
+<link rel="stylesheet" href="../css/base.css">
+</head>
+<body>
+
+<h1>1999 – Standardization and ECMAScript 3</h1>
+
+<p>
+The late 1990s were dominated by the Browser Wars between Netscape Navigator and Microsoft Internet Explorer. Microsoft introduced JScript, its own implementation of JavaScript. Differences between implementations created compatibility chaos. Developers wrote conditional browser checks and duplicate logic.
+</p>
+
+<p>
+To stabilize the ecosystem, JavaScript was standardized as ECMAScript under Ecma International. ECMAScript 3, released in 1999, became the foundational specification for modern JavaScript.
+</p>
+
+<h2>Major Additions in ES3</h2>
+
+<ul>
+<li>try/catch exception handling</li>
+<li>Regular expressions</li>
+<li>Improved string and numeric handling</li>
+<li>More reliable object behavior</li>
+</ul>
+
+<p>
+ES3 formalized JavaScript into a structured language rather than a browser-specific scripting tool. It established the baseline that lasted nearly a decade.
+</p>
+
+<h2>Era Demonstration</h2>
+
+<input type="text" id="input">
+<button onclick="validate()">Validate</button>
+<p id="output"></p>
+
+<script>
+function validate() {
+  var value = document.getElementById("input").value;
+  var pattern = /^[a-zA-Z]+$/;
+
+  try {
+    if (pattern.test(value)) {
+      document.getElementById("output").innerHTML = "Alphabetic input confirmed.";
+    } else {
+      document.getElementById("output").innerHTML = "Input rejected.";
+    }
+  } catch (e) {
+    document.getElementById("output").innerHTML = "Error encountered.";
+  }
+}
+</script>
+
+<p>
+This example demonstrates ES3-era error handling and regular expression usage.
+</p>
+
+</body>
+</html>

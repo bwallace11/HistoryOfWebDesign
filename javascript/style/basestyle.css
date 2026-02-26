@@ -1,0 +1,35 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  background: #0e0e18;
+  color: #f4f4f4;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: #7ab3ff;
+}
+
+nav a {
+  margin-right: 10px;
+  color: #c4b5fd;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+button {
+  padding: 8px 12px;
+  background: #1a1a2e;
+  color: white;
+  border: 1px solid #444;
+  cursor: pointer;
+}
+
+pre {
+  background: #111;
+  padding: 10px;
+  overflow: auto;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>2025 – Modern ECMAScript</title>
+<link rel="stylesheet" href="../css/base.css">
+</head>
+<body>
+
+<h1>2025 – Incremental Evolution and Governance</h1>
+
+<p>
+Modern JavaScript evolves through annual releases managed by TC39. Features move through a multi-stage proposal process before inclusion in ECMA-262.
+</p>
+
+<p>
+The focus has shifted from survival and structural reform to refinement, ergonomics, and long-term sustainability.
+</p>
+
+<button id="check">Test Modern Feature</button>
+<pre id="result"></pre>
+
+<script>
+document.getElementById("check").addEventListener("click", () => {
+  const a = new Set([1,2,3]);
+  const b = new Set([2,3,4]);
+
+  if (typeof a.intersection === "function") {
+    const r = a.intersection(b);
+    document.getElementById("result").textContent =
+      "Intersection: " + [...r].join(", ");
+  } else {
+    document.getElementById("result").textContent =
+      "Feature not supported in this runtime.";
+  }
+});
+</script>
+
+<p>
+Backward compatibility remains central to JavaScript’s philosophy. Even flawed historical decisions are preserved to protect the global web.
+</p>
+
+</body>
+</html>

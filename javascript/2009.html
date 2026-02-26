@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>2009 – ECMAScript 5</title>
+<link rel="stylesheet" href="../css/base.css">
+</head>
+<body>
+
+<h1>2009 – ECMAScript 5: Stabilization After ES4</h1>
+
+<p>
+Following the collapse of the ambitious ES4 proposal, the JavaScript community faced a governance crisis. ES4 had proposed static typing, namespaces, and major structural changes. Disagreements among browser vendors led to its abandonment.
+</p>
+
+<p>
+ECMAScript 5, released in 2009, restored confidence by prioritizing stability and backward compatibility over radical redesign.
+</p>
+
+<h2>Major Features</h2>
+
+<ul>
+<li>Strict mode</li>
+<li>Native JSON support</li>
+<li>Object property descriptors</li>
+<li>Improved array methods</li>
+</ul>
+
+<button id="run">Generate Data</button>
+<pre id="display"></pre>
+
+<script>
+"use strict";
+
+document.getElementById("run").addEventListener("click", function() {
+  var data = {
+    era: "ES5",
+    stabilization: true
+  };
+  document.getElementById("display").textContent =
+    JSON.stringify(data, null, 2);
+});
+</script>
+
+<p>
+Strict mode eliminated silent errors and unsafe patterns, marking the beginning of JavaScript’s maturation.
+</p>
+
+</body>
+</html>

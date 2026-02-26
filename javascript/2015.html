@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>2015 – ES2015</title>
+<link rel="stylesheet" href="../css/base.css">
+</head>
+<body>
+
+<h1>2015 – ECMAScript 2015 (ES6)</h1>
+
+<p>
+ES2015 represented the most transformative upgrade since ES3. It modernized syntax, improved readability, and introduced structural clarity.
+</p>
+
+<h2>Major Innovations</h2>
+
+<ul>
+<li>let and const</li>
+<li>Arrow functions</li>
+<li>Classes</li>
+<li>Modules</li>
+<li>Promises</li>
+</ul>
+
+<button id="run">Describe Era</button>
+<pre id="output"></pre>
+
+<script>
+class Era {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+  describe() {
+    return `${this.name} transformed JavaScript in ${this.year}.`;
+  }
+}
+
+document.getElementById("run").addEventListener("click", () => {
+  const e = new Era("ES2015", 2015);
+  document.getElementById("output").textContent = e.describe();
+});
+</script>
+
+<p>
+Unlike ES4, ES2015 succeeded because it preserved compatibility while enabling progressive adoption.
+</p>
+
+</body>
+</html>
