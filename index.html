@@ -5,159 +5,323 @@
   <title>Web History Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    :root{
-      --bg:#0b0c10;
-      --win:#141622;
-      --bar:#20243a;
-      --border:#2f3556;
-      --text:#e9e9f2;
-      --muted:#b8bbd1;
-      --accent:#9daaff;
-      --ok:#7CFFB2;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #000000;
+      font-family: "Arial", sans-serif;
+      padding: 32px 16px;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
     }
-    body{
-      margin:0;
-      background:radial-gradient(900px 450px at 30% 20%, #1b1f35, transparent),
-                 radial-gradient(700px 450px at 80% 60%, #241a2e, transparent),
-                 var(--bg);
-      color:var(--text);
-      font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;
-      padding:24px;
+
+    /* ── 90s browser window ── */
+    .browser {
+      width: 100%;
+      max-width: 960px;
+      background: #c0c0c0;
+      border-top: 2px solid #ffffff;
+      border-left: 2px solid #ffffff;
+      border-right: 2px solid #808080;
+      border-bottom: 2px solid #808080;
+      box-shadow: 2px 2px 0 #000;
     }
-    .window{
-      max-width:980px;
-      margin:0 auto;
-      background:var(--win);
-      border:1px solid var(--border);
-      box-shadow:0 20px 60px rgba(0,0,0,.5);
-      border-radius:14px;
-      overflow:hidden;
+
+    /* Title bar */
+    .titlebar {
+      background: #000080;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 13px;
+      padding: 4px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
     }
-    .titlebar{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      padding:10px 14px;
-      background:linear-gradient(180deg, #24294a, var(--bar));
-      border-bottom:1px solid var(--border);
+    .titlebar-btns {
+      display: flex;
+      gap: 2px;
     }
-    .dots{display:flex; gap:8px;}
-    .dot{width:10px;height:10px;border-radius:50%;}
-    .dot.r{background:#ff5f57;}
-    .dot.y{background:#febc2e;}
-    .dot.g{background:#28c840;}
-    .title{
-      font-weight:700;
-      letter-spacing:.3px;
+    .titlebar-btns span {
+      display: inline-block;
+      width: 16px;
+      height: 14px;
+      background: #c0c0c0;
+      color: #000;
+      font-size: 10px;
+      font-weight: bold;
+      text-align: center;
+      line-height: 14px;
+      border-top: 1px solid #fff;
+      border-left: 1px solid #fff;
+      border-right: 1px solid #808080;
+      border-bottom: 1px solid #808080;
+      cursor: default;
     }
-    .toolbar{
-      display:flex;
-      gap:10px;
-      padding:12px 14px;
-      border-bottom:1px solid var(--border);
-      align-items:center;
-      flex-wrap:wrap;
+
+    /* Menu bar */
+    .menubar {
+      background: #c0c0c0;
+      border-bottom: 1px solid #808080;
+      padding: 2px 4px;
+      font-size: 13px;
+      display: flex;
+      gap: 2px;
     }
-    .pill{
-      border:1px solid var(--border);
-      padding:8px 10px;
-      border-radius:999px;
-      color:var(--muted);
-      background:rgba(255,255,255,0.03);
-      font-size:14px;
+    .menubar span {
+      padding: 2px 8px;
+      cursor: default;
     }
-    .address{
-      flex:1;
-      min-width:240px;
-      border:1px solid var(--border);
-      padding:8px 12px;
-      border-radius:10px;
-      background:rgba(0,0,0,.25);
-      color:var(--muted);
-      font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size:13px;
+    .menubar span:hover {
+      background: #000080;
+      color: #fff;
     }
-    .content{padding:18px 18px 24px;}
-    h1{margin:0 0 6px; color:var(--accent);}
-    p{margin:0 0 14px; color:var(--muted); line-height:1.6;}
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:14px;
+
+    /* Address bar */
+    .addressbar {
+      background: #c0c0c0;
+      padding: 4px 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 2px solid #808080;
+      font-size: 13px;
     }
-    @media (max-width: 820px){
-      .grid{grid-template-columns:1fr;}
+    .addressbar label {
+      font-weight: bold;
+      white-space: nowrap;
     }
-    .card{
-      border:1px solid var(--border);
-      border-radius:14px;
-      background:rgba(255,255,255,0.03);
-      padding:14px;
+    .addressbar input {
+      flex: 1;
+      font-family: "Courier New", monospace;
+      font-size: 12px;
+      padding: 2px 4px;
+      background: #fff;
+      border-top: 2px solid #808080;
+      border-left: 2px solid #808080;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      color: #000;
     }
-    .card h2{margin:0 0 8px; font-size:16px; color:var(--text);}
-    .card p{margin:0 0 10px; font-size:14px;}
-    .card a{
-      color:var(--ok);
-      text-decoration:none;
-      font-weight:700;
+    .go-btn {
+      padding: 2px 10px;
+      font-size: 12px;
+      font-weight: bold;
+      background: #c0c0c0;
+      border-top: 2px solid #fff;
+      border-left: 2px solid #fff;
+      border-right: 2px solid #808080;
+      border-bottom: 2px solid #808080;
+      cursor: pointer;
     }
-    .card a:hover{text-decoration:underline;}
-    .footer{
-      padding:12px 18px;
-      border-top:1px solid var(--border);
-      color:var(--muted);
-      font-size:13px;
+    .go-btn:active {
+      border-top: 2px solid #808080;
+      border-left: 2px solid #808080;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+    }
+
+    /* Page content area */
+    .content {
+      background: #c0c0c0;
+      padding: 16px 18px 18px;
+    }
+
+    .page-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #000080;
+      margin-bottom: 6px;
+    }
+    .page-desc {
+      font-size: 13px;
+      color: #000;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    /* Inset panel for the 3 cards */
+    .inset {
+      background: #c0c0c0;
+      border-top: 2px solid #808080;
+      border-left: 2px solid #808080;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      padding: 14px;
+    }
+
+    .cards-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 640px) {
+      .cards-row { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: #c0c0c0;
+      border-top: 2px solid #fff;
+      border-left: 2px solid #fff;
+      border-right: 2px solid #808080;
+      border-bottom: 2px solid #808080;
+      padding: 10px 12px;
+    }
+    .card h2 {
+      font-size: 14px;
+      font-weight: bold;
+      color: #000080;
+      margin-bottom: 6px;
+      border-bottom: 1px solid #808080;
+      padding-bottom: 4px;
+    }
+    .card p {
+      font-size: 12px;
+      color: #000;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .card a {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: bold;
+      color: #000;
+      text-decoration: none;
+      padding: 3px 10px;
+      background: #c0c0c0;
+      border-top: 2px solid #fff;
+      border-left: 2px solid #fff;
+      border-right: 2px solid #808080;
+      border-bottom: 2px solid #808080;
+    }
+    .card a:hover {
+      background: #d4d4d4;
+    }
+    .card a:active {
+      border-top: 2px solid #808080;
+      border-left: 2px solid #808080;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+    }
+
+    /* Status bar */
+    .statusbar {
+      background: #c0c0c0;
+      border-top: 2px solid #808080;
+      padding: 4px 8px;
+      font-size: 11px;
+      color: #000;
+      display: flex;
+      gap: 8px;
+    }
+    .status-panel {
+      border-top: 1px solid #808080;
+      border-left: 1px solid #808080;
+      border-right: 1px solid #fff;
+      border-bottom: 1px solid #fff;
+      padding: 1px 6px;
+      flex: 1;
+    }
+    .status-panel.narrow {
+      flex: 0 0 auto;
+      min-width: 120px;
+    }
+
+    /* Footer note */
+    .footer-note {
+      margin-top: 14px;
+      padding: 8px 10px;
+      background: #c0c0c0;
+      border-top: 2px solid #808080;
+      border-left: 2px solid #808080;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      font-size: 12px;
+      color: #000;
+      line-height: 1.55;
+    }
+    .footer-note strong {
+      color: #000080;
     }
   </style>
 </head>
 <body>
-  <div class="window">
+  <div class="browser">
+
+    <!-- Title bar -->
     <div class="titlebar">
-      <div class="dots">
-        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+      <span>Web History Hub – Netscape Navigator</span>
+      <div class="titlebar-btns">
+        <span>_</span>
+        <span>□</span>
+        <span>✕</span>
       </div>
-      <div class="title">HyperWeb Navigator 0.9 (Totally Real)</div>
     </div>
 
-    <div class="toolbar">
-      <span class="pill">Back</span>
-      <span class="pill">Forward</span>
-      <span class="pill">Reload</span>
-      <span class="pill">Home</span>
-      <div class="address">file:///web-history-hub/index.html</div>
-      <span class="pill">Secure: <strong style="color:#7CFFB2">Yes</strong></span>
+    <!-- Menu bar 
+    <div class="menubar">
+      <span>File</span>
+      <span>Edit</span>
+      <span>View</span>
+      <span>Go</span>
+      <span>Bookmarks</span>
+      <span>Help</span>
+    </div> -->
+
+    <!-- Address bar -->
+    <div class="addressbar">
+      <label>Address:</label>
+      <input type="text" value="https://historyofwd.netlify.app/" readonly>
+      <button class="go-btn">Go</button>
     </div>
 
+    <!-- Page content -->
     <div class="content">
-      <h1>Web History Hub</h1>
-      <p>
-        One centralized place for your future sections: <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>.
-        For now, the <strong>Cascading Style Sheets</strong> history site is live.
+      <div class="page-title">Web History Hub</div>
+      <p class="page-desc">
+        A complete historical archive of the three core technologies of the World Wide Web:
+        <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>.
+        The CSS history section is currently live. HTML and JavaScript are available below.
       </p>
-    <div class="card">
-          <h2>HTML History</h2>
-         <p>Explore the origins of HTML, from simple text documents to the structured language that powers modern web design.</p>
-           <a href="/html/htmlhome.html">Open HTML Section</a>
-        </div>
 
-      <div class="grid">
-        <div class="card">
-          <h2>CSS History</h2>
-          <p>From the first proposals to modern layout and design systems, broken into real eras.</p>
-          <a href="/css/csshome.html">Open CSS Section</a>
-        </div>
+      <div class="inset">
+        <div class="cards-row">
 
-        <div class="card">
-          <h2>JavaScript History</h2>
-          <p>Placeholder. You’ll add the JavaScript section later.</p>
-          <a href="javascript/jsindex.html">Open JavaScript Section</a>
+          <div class="card">
+            <h2>HTML History</h2>
+            <p>Explore the origins of HTML, from Tim Berners-Lee's first proposal in 1989 to HTML5 and the living standard maintained by WHATWG today.</p>
+            <a href="/html/htmlhome.html">Open HTML Section</a>
+          </div>
+
+          <div class="card">
+            <h2>CSS History</h2>
+            <p>From Håkon Wium Lie's 1994 proposal to modern layout systems like Grid and Flexbox — broken into real historical eras.</p>
+            <a href="/css/csshome.html">Open CSS Section</a>
+          </div>
+
+          <div class="card">
+            <h2>JavaScript History</h2>
+            <p>From Brendan Eich's ten-day creation at Netscape in 1995 to the annual ECMAScript release cycle managed by TC39 today.</p>
+            <a href="javascript/jsindex.html">Open JavaScript Section</a>
+          </div>
+
         </div>
+      </div>
+
+      <div class="footer-note">
+        <strong>A note on design:</strong> Each section of this archive is intentionally built using only the HTML, CSS, and JavaScript available during the era it covers. Earlier eras have no styling or primitive layouts; later eras use modern techniques. The visual differences between sections are not errors — they are the historical record. This hub uses a neutral 1990s browser aesthetic as a wrapper for all three sections.
       </div>
     </div>
 
-    <div class="footer">
-      No JavaScript was harmed in the making of this hub....yet
+    <!-- Status bar -->
+    <div class="statusbar">
+      <div class="status-panel">Document: Done</div>
+      <div class="status-panel narrow">historyofwd.netlify.app</div>
     </div>
+
   </div>
 </body>
 </html>

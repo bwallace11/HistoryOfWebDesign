@@ -1,0 +1,127 @@
+/* style/1999.css - CSS Level 1 only */
+/* Published December 1996, widely adopted by ~1999 */
+/* Available: color, background-color, font-family, font-size, font-weight, */
+/* font-style, text-decoration, text-align, margin, padding, border, */
+/* width, height on block elements. NO float layout, NO positioning tricks. */
+/* Web-safe fonts only. No :hover on non-links. */
+
+body {
+  background-color: #cccccc;
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: #000066;
+  font-weight: bold;
+}
+
+h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: #000066;
+  font-weight: bold;
+}
+
+h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #000000;
+  font-weight: bold;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+a {
+  color: #0000cc;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #800080;
+}
+
+ul {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+tt, code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+}
+
+hr {
+  color: #999999;
+}
+
+.navbar {
+  background-color: #000066;
+  color: #ffffff;
+  padding: 6px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.navbar a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.pagewrap {
+  background-color: #ffffff;
+  margin-left: 60px;
+  margin-right: 60px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 16px;
+  border: 1px solid #999999;
+}
+
+.demobox {
+  background-color: #eeeeff;
+  border: 2px solid #000066;
+  padding: 12px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.demobox h3 {
+  color: #000066;
+  margin-top: 0;
+}
+
+.note {
+  font-size: 11px;
+  color: #666666;
+  font-style: italic;
+}
+
+.output {
+  background-color: #ffffff;
+  border: 1px solid #999999;
+  padding: 6px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+  margin-top: 8px;
+  min-height: 20px;
+}
+
+.footer {
+  text-align: center;
+  font-size: 11px;
+  color: #666666;
+  margin-top: 10px;
+}

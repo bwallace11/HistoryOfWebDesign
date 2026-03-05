@@ -1,51 +1,251 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>2015 – ES2015</title>
-<link rel="stylesheet" href="../css/base.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2015 – ECMAScript 2015 (ES6)</title>
+  <link rel="stylesheet" href="style/2015.css">
 </head>
 <body>
 
-<h1>2015 – ECMAScript 2015 (ES6)</h1>
+<header>
+  <div class="header-inner">
+    <h1>JavaScript History Archive</h1>
+    <p class="subtitle">A historical record of the ECMAScript specification &mdash; 1995 to 2025</p>
+  </div>
+</header>
 
-<p>
-ES2015 represented the most transformative upgrade since ES3. It modernized syntax, improved readability, and introduced structural clarity.
-</p>
+<nav>
+  <ul>
+    <li><a href="jsindex.html">Home</a></li>
+    <li><a href="1995.html">1995</a></li>
+    <li><a href="1999.html">1999</a></li>
+    <li><a href="2009.html">2009</a></li>
+    <li><a href="2015.html" class="active">2015</a></li>
+    <li><a href="2025.html">2025</a></li>
+    <li><a href="glossary.html">Glossary</a></li>
+    <li><a href="contributors.html">Contributors</a></li>
+    <li><a href="discussion.html">Discussion</a></li>
+    <li><a href="bibliography.html">Bibliography</a></li>
+    <li><a href="../index.html">Hub Home</a></li>
+  </ul>
+</nav>
 
-<h2>Major Innovations</h2>
+<div class="container">
 
-<ul>
-<li>let and const</li>
-<li>Arrow functions</li>
-<li>Classes</li>
-<li>Modules</li>
-<li>Promises</li>
-</ul>
+  <main>
+    <h1>2015 &ndash; ECMAScript 2015 (ES6)</h1>
 
-<button id="run">Describe Era</button>
-<pre id="output"></pre>
+    <p>
+      ECMAScript 2015 &mdash; also called ES6 &mdash; was the largest single update to
+      JavaScript since ECMAScript 3 in 1999. Work on it began around 2009, and it was
+      finalized and published by Ecma International in June 2015. Unlike the failed ES4
+      proposal, ES2015 succeeded because it preserved complete backward compatibility
+      while introducing new syntax that developers could adopt gradually.
+    </p>
+
+    <p>
+      The adoption process was eased further by <strong>transpilers</strong> &mdash;
+      particularly Babel, released in 2014 &mdash; which converted ES2015 syntax back
+      to ES5 so that new code could run in older browsers that did not yet support the
+      new features.
+    </p>
+
+    <h2>Major Innovations in ES2015</h2>
+    <ul>
+      <li><strong>let and const</strong> &mdash; Block-scoped variable declarations</li>
+      <li><strong>Arrow functions</strong> &mdash; Shorter function syntax with lexically bound <code>this</code></li>
+      <li><strong>Classes</strong> &mdash; Syntactic sugar over prototype-based inheritance</li>
+      <li><strong>Template literals</strong> &mdash; Backtick strings with embedded expressions</li>
+      <li><strong>Destructuring</strong> &mdash; Unpack values from arrays and objects</li>
+      <li><strong>Default parameters</strong> &mdash; Fallback values in function signatures</li>
+      <li><strong>Rest and spread operators</strong> &mdash; <code>...</code> for collecting or expanding values</li>
+      <li><strong>Modules</strong> &mdash; <code>import</code> and <code>export</code></li>
+      <li><strong>Promises</strong> &mdash; Native structured asynchronous operations</li>
+      <li><strong>Map and Set</strong> &mdash; New collection types</li>
+      <li><strong>for...of loop</strong> &mdash; Iteration over any iterable</li>
+    </ul>
+
+    <h2>Era Demonstrations</h2>
+
+    <div class="demobox">
+      <h3>Demo 1: Classes and Template Literals</h3>
+      <p>
+        ES2015 introduced <code>class</code> syntax. Under the hood it still uses
+        JavaScript's prototype chain &mdash; <code>class</code> is syntactic sugar,
+        not a new object system. It pairs naturally with <strong>template literals</strong>,
+        which allow embedded expressions inside backtick strings using <code>${expression}</code>.
+      </p>
+      <p>Enter a language name and year to create an Era object:</p>
+
+      <input type="text" id="langName" placeholder="Language name" size="18">
+      &nbsp;
+      <input type="number" id="langYear" placeholder="Year" size="6">
+      &nbsp;
+      <button id="classBtn">Create Era</button>
+      <pre id="classOutput">Fill in the fields and click Create Era.</pre>
+
+      <p class="note">Uses: class, constructor, template literal ${}, arrow function =&gt;, const</p>
+    </div>
+
+    <div class="demobox">
+      <h3>Demo 2: Destructuring and Spread</h3>
+      <p>
+        <strong>Destructuring</strong> unpacks values from an array or object into named
+        variables in a single line. The <strong>spread operator</strong> (<code>...</code>)
+        copies or merges arrays and objects. Enter a comma-separated list of numbers:
+      </p>
+
+      <input type="text" id="spreadInput" placeholder="e.g. 10, 20, 30, 40, 50" size="28">
+      &nbsp;
+      <button id="spreadBtn">Run</button>
+      <pre id="spreadOutput">Enter numbers and click Run.</pre>
+
+      <p class="note">Uses: const [first, second, ...rest], Math.max(...nums), [...nums].sort()</p>
+    </div>
+
+    <div class="demobox">
+      <h3>Demo 3: Promises &mdash; Asynchronous Operations</h3>
+      <p>
+        Before Promises, asynchronous code used nested callbacks. A <strong>Promise</strong>
+        represents a value available in the future &mdash; it can be pending, fulfilled, or
+        rejected. Chain <code>.then()</code> for success and <code>.catch()</code> for errors.
+      </p>
+      <p>Click to simulate an asynchronous operation (like a network request) with a 1.5s delay:</p>
+
+      <button id="promiseBtn">Simulate Async Request</button>
+      <pre id="promiseOutput">Click the button to start.</pre>
+
+      <p class="note">Uses: new Promise((resolve, reject) =&gt; {}), setTimeout, .then(), .catch()</p>
+    </div>
+
+    <h2>Why ES2015 Succeeded Where ES4 Failed</h2>
+    <p>
+      ES4 had attempted radical change. ES2015 chose a different strategy: every new feature
+      was backward-compatible, gradually adoptable, and independently useful. A developer
+      could use only arrow functions and template literals while ignoring classes entirely.
+      That flexibility, combined with tooling like Babel, made adoption practical across
+      a fragmented browser landscape.
+    </p>
+  </main>
+
+  <aside>
+    <div class="sidebar-card">
+      <h3>In This Section</h3>
+      <ul>
+        <li><a href="1995.html">1995 &mdash; Birth of JS</a></li>
+        <li><a href="1999.html">1999 &mdash; ECMAScript 3</a></li>
+        <li><a href="2009.html">2009 &mdash; ECMAScript 5</a></li>
+        <li><strong>2015 &mdash; ES2015</strong></li>
+        <li><a href="2025.html">2025 &mdash; Modern JS</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Reference</h3>
+      <ul>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="contributors.html">Contributors</a></li>
+        <li><a href="discussion.html">Discussion</a></li>
+        <li><a href="bibliography.html">Bibliography</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>ES2015 Quick Facts</h3>
+      <p>
+        Published: June 2015<br>
+        Editions before: ES5 (2009), ES5.1 (2011)<br>
+        Editor: Allen Wirfs-Brock<br>
+        Transpiler: Babel (2014)<br>
+        Features added: 30+
+      </p>
+    </div>
+  </aside>
+
+</div>
+
+<footer>
+  JavaScript History Archive &nbsp;|&nbsp;
+  <a href="../index.html">Web History Hub</a>
+</footer>
 
 <script>
+// ES2015 features: class, const, let, arrow functions, template literals,
+// destructuring, spread, Promises.
+
 class Era {
   constructor(name, year) {
     this.name = name;
     this.year = year;
   }
   describe() {
-    return `${this.name} transformed JavaScript in ${this.year}.`;
+    return `${this.name} (${this.year}) — a landmark in web technology.`;
+  }
+  yearsAgo() {
+    const current = 2025;
+    return current - this.year;
   }
 }
 
-document.getElementById("run").addEventListener("click", () => {
-  const e = new Era("ES2015", 2015);
-  document.getElementById("output").textContent = e.describe();
+document.getElementById("classBtn").addEventListener("click", () => {
+  const name = document.getElementById("langName").value.trim();
+  const year = parseInt(document.getElementById("langYear").value, 10);
+
+  if (!name || isNaN(year)) {
+    document.getElementById("classOutput").textContent = "Please enter both a name and a year.";
+    return;
+  }
+
+  const era = new Era(name, year);
+  let output = era.describe() + "\n";
+  output += `That was ${era.yearsAgo()} years ago.\n`;
+  output += `Instance of Era class: ${era instanceof Era}`;
+  document.getElementById("classOutput").textContent = output;
+});
+
+document.getElementById("spreadBtn").addEventListener("click", () => {
+  const raw = document.getElementById("spreadInput").value;
+  const nums = raw.split(",").map(n => Number(n.trim())).filter(n => !isNaN(n));
+
+  if (nums.length < 2) {
+    document.getElementById("spreadOutput").textContent = "Please enter at least two numbers.";
+    return;
+  }
+
+  const [first, second, ...rest] = nums;
+  const sorted = [...nums].sort((a, b) => a - b);
+  const max = Math.max(...nums);
+  const min = Math.min(...nums);
+
+  let output = `Original:  [${nums.join(", ")}]\n`;
+  output += `Destructured — first: ${first}, second: ${second}\n`;
+  output += `Rest:      [${rest.join(", ")}]\n`;
+  output += `Sorted:    [${sorted.join(", ")}]\n`;
+  output += `Max: ${max}  |  Min: ${min}`;
+  document.getElementById("spreadOutput").textContent = output;
+});
+
+document.getElementById("promiseBtn").addEventListener("click", () => {
+  const output = document.getElementById("promiseOutput");
+  output.textContent = "Promise pending... waiting 1.5 seconds...";
+
+  const fetchData = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const data = { status: "fulfilled", era: "ES2015", feature: "Promises" };
+      resolve(data);
+    }, 1500);
+  });
+
+  fetchData
+    .then(data => {
+      output.textContent = "Promise fulfilled!\n" + JSON.stringify(data, null, 2);
+    })
+    .catch(err => {
+      output.textContent = "Promise rejected: " + err.message;
+    });
 });
 </script>
-
-<p>
-Unlike ES4, ES2015 succeeded because it preserved compatibility while enabling progressive adoption.
-</p>
 
 </body>
 </html>

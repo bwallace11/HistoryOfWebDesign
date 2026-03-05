@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Glossary – JavaScript Archive</title>
+  <link rel="stylesheet" href="style/2025.css">
+</head>
+<body>
+
+<site-header>
+  <div class="header-inner">
+    <h1>JavaScript History Archive</h1>
+    <p>A historical record of the ECMAScript specification &mdash; 1995 to 2025</p>
+  </div>
+</site-header>
+
+<site-nav>
+  <ul>
+    <li><a href="jsindex.html">Home</a></li>
+    <li><a href="1995.html">1995</a></li>
+    <li><a href="1999.html">1999</a></li>
+    <li><a href="2009.html">2009</a></li>
+    <li><a href="2015.html">2015</a></li>
+    <li><a href="2025.html">2025</a></li>
+    <li><a href="glossary.html" class="active">Glossary</a></li>
+    <li><a href="contributors.html">Contributors</a></li>
+    <li><a href="discussion.html">Discussion</a></li>
+    <li><a href="bibliography.html">Bibliography</a></li>
+    <li><a href="../index.html">Hub Home</a></li>
+  </ul>
+</site-nav>
+
+<div class="page-grid">
+
+  <main>
+    <h1>Glossary</h1>
+    <p>Key terms used throughout the JavaScript history archive.</p>
+
+    <h2>ECMAScript</h2>
+    <p>The formal name for the JavaScript language specification, maintained by Ecma International under the designation ECMA-262. "JavaScript" is a trademark of Oracle Corporation; the standardized language is officially called ECMAScript.</p>
+
+    <h2>TC39</h2>
+    <p>Technical Committee 39 of Ecma International. Responsible for evolving the ECMAScript specification. Members include representatives from Google, Mozilla, Apple, Microsoft, Meta, and others.</p>
+
+    <h2>Prototype-based inheritance</h2>
+    <p>An object-oriented model in which objects inherit directly from other objects rather than from class definitions. JavaScript uses prototype chains: every object has an internal link to a prototype object, and property lookups traverse this chain.</p>
+
+    <h2>Transpiler</h2>
+    <p>A tool that converts code written in one version of a language into an equivalent version supported by older runtimes. Babel is the most widely used JavaScript transpiler, allowing ES2015+ syntax to compile to ES5 for older browsers.</p>
+
+    <h2>Strict mode</h2>
+    <p>An opt-in mode introduced in ES5, activated by placing <code>"use strict";</code> at the top of a script or function. Strict mode turns silent errors into exceptions and forbids certain unsafe syntax.</p>
+
+    <h2>DOM (Document Object Model)</h2>
+    <p>An API provided by the browser that represents an HTML document as a tree of objects. JavaScript uses the DOM to read and modify page content, structure, and styling at runtime.</p>
+
+    <h2>Promise</h2>
+    <p>An object introduced in ES2015 representing the eventual result of an asynchronous operation. A Promise is pending, fulfilled (with a value), or rejected (with a reason).</p>
+
+    <h2>async/await</h2>
+    <p>Syntax introduced in ES2017 that allows asynchronous code to be written like synchronous code. An <code>async</code> function always returns a Promise; <code>await</code> pauses execution inside it until a Promise settles.</p>
+
+    <h2>JScript</h2>
+    <p>Microsoft's implementation of JavaScript, introduced in Internet Explorer 3.0 in 1996. JScript included proprietary extensions and differed from Netscape's implementation in ways that created significant compatibility problems.</p>
+
+    <h2>ECMA-262</h2>
+    <p>The official designation of the ECMAScript Language Specification document. The number 262 is the Ecma project number assigned when JavaScript was first submitted for standardization in 1996.</p>
+
+    <h2>Polyfill</h2>
+    <p>JavaScript code that implements a modern API in environments that do not natively support it. Unlike a transpiler (which converts syntax), a polyfill adds missing runtime functionality.</p>
+
+    <h2>Event loop</h2>
+    <p>The mechanism that allows JavaScript &mdash; a single-threaded language &mdash; to handle asynchronous operations. The event loop continuously checks a message queue and executes callbacks when their corresponding events have completed.</p>
+  </main>
+
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <h3>Era Pages</h3>
+      <ul>
+        <li><a href="1995.html">1995 &mdash; Birth of JS</a></li>
+        <li><a href="1999.html">1999 &mdash; ECMAScript 3</a></li>
+        <li><a href="2009.html">2009 &mdash; ECMAScript 5</a></li>
+        <li><a href="2015.html">2015 &mdash; ES2015</a></li>
+        <li><a href="2025.html">2025 &mdash; Modern JS</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-card">
+      <h3>Reference</h3>
+      <ul>
+        <li><strong>Glossary</strong></li>
+        <li><a href="contributors.html">Contributors</a></li>
+        <li><a href="discussion.html">Discussion</a></li>
+        <li><a href="bibliography.html">Bibliography</a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<site-footer>
+  JavaScript History Archive &nbsp;|&nbsp;
+  <a href="../index.html">Web History Hub</a>
+</site-footer>
+
+</body>
+</html>
