@@ -83,7 +83,7 @@ body {
 
 #main {
   float: left;
-  width: 620px;
+  width: 596px;
   background-color: #ffffff;
   border: 1px solid #cccccc;
   padding: 20px;
@@ -91,7 +91,7 @@ body {
 
 #sidebar {
   float: right;
-  width: 220px;
+  width: 218px;
   background-color: #f2f6fa;
   border: 1px solid #cccccc;
   padding: 14px;
