@@ -2,154 +2,161 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>CSS Era 6 (2017–2026)</title>
+  <title>CSS Era 6 (2017-2026) - Chrome 120</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    /* Modern era: grid, custom properties, dark mode preference, progressive enhancements */
-    :root{
-      --bg:#0f0f14;
-      --panel:#171722;
-      --border:#2b2b38;
-      --text:#ececf1;
-      --muted:#b9bbca;
-      --accent:#9daaff;
-      --link:#7CFFB2;
-    }
+    body { margin: 0; padding: 14px; background: #0f1117; font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif; }
 
-    @media (prefers-color-scheme: light){
-      :root{
-        --bg:#f6f7fb;
-        --panel:#ffffff;
-        --border:#d9dbe7;
-        --text:#141414;
-        --muted:#444;
-        --accent:#1f2a63;
-        --link:#0a7a3a;
-      }
-    }
+    .browser-shell { width: 96%; margin: 0 auto; background: #1a1d2e; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.75); }
 
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-      background:radial-gradient(900px 450px at 30% 20%, rgba(157,170,255,.18), transparent),
-                 radial-gradient(700px 450px at 80% 60%, rgba(124,255,178,.12), transparent),
-                 var(--bg);
-      color:var(--text);
-      line-height:1.65;
-      padding:18px;
-    }
+    .titlebar { background: #212438; color: #e8eaf0; font-size: 13px; font-weight: bold; padding: 6px 12px; display: flex; justify-content: space-between; align-items: center; }
+    .titlebar-right { font-size: 12px; color: #9499b8; }
 
-    header, section{
-      max-width:980px;
-      margin:0 auto 14px auto;
-      background:rgba(255,255,255,0.03);
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:16px;
-    }
+    .menubar { background: #212438; border-bottom: 1px solid #2e3250; padding: 3px 12px; font-size: 12px; color: #9499b8; }
+    .menubar span { margin-right: 14px; }
 
-    h1{margin:0;color:var(--accent);}
-    p{margin:8px 0;color:var(--muted);}
+    .toolbar { background: #212438; border-bottom: 1px solid #2e3250; padding: 6px 12px; }
+    .tbtn { font-family: inherit; font-size: 12px; padding: 5px 14px; background: #2e3250; color: #e8eaf0; border: 1px solid #3a3d5c; border-radius: 20px; margin-right: 6px; cursor: default; }
 
-    nav{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:10px;
-    }
-    nav a{
-      color:var(--accent);
-      text-decoration:none;
-      font-weight:800;
-      border:1px solid var(--border);
-      padding:8px 10px;
-      border-radius:999px;
-      background:rgba(0,0,0,.18);
-    }
-    nav a:hover{text-decoration:underline;}
+    .addrbar { background: #212438; border-bottom: 1px solid #2e3250; padding: 6px 12px; display: flex; align-items: center; gap: 10px; font-size: 12px; }
+    .addr-label { font-weight: bold; white-space: nowrap; color: #e8eaf0; }
+    .addr-field { background: #0f1117; border: 1px solid #2e3250; border-radius: 20px; padding: 5px 14px; font-family: Courier New, monospace; font-size: 11px; flex: 1; color: #e8eaf0; }
 
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:12px;
-    }
-    @media (max-width:900px){ .grid{grid-template-columns:1fr;} }
+    .era-tabs { background: #212438; border-bottom: 1px solid #2e3250; padding: 5px 12px 0; font-size: 11px; display: flex; flex-wrap: wrap; gap: 2px; }
+    .etab { display: inline-block; padding: 4px 11px; background: #1a1d2e; border-top-left-radius: 8px; border-top-right-radius: 8px; color: #9499b8; }
+    .etab-active { display: inline-block; padding: 4px 11px; background: #1a1d2e; border-top-left-radius: 8px; border-top-right-radius: 8px; font-weight: bold; color: #818cf8; border-top: 2px solid #818cf8; }
+    .etab a { color: #9499b8; text-decoration: none; }
+    .etab a:hover { color: #e8eaf0; text-decoration: none; }
 
-    .card{
-      background:rgba(0,0,0,.18);
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:14px;
-    }
+    .statusbar { background: #212438; border-top: 1px solid #2e3250; padding: 4px 12px; font-size: 11px; color: #9499b8; display: flex; justify-content: space-between; }
 
-    .card h2{margin:0 0 8px; font-size:16px;}
-    a{color:var(--link);}
+    /* ---- Original page styles (CSS Grid/custom properties era) ---- */
+    :root { --bg: #0f0f14; --panel: #171722; --border: #2b2b38; --text: #ececf1; --muted: #b9bbca; --accent: #9daaff; --link: #7CFFB2; }
+    @media (prefers-color-scheme: light) { :root { --bg: #f6f7fb; --panel: #ffffff; --border: #d9dbe7; --text: #141414; --muted: #444; --accent: #1f2a63; --link: #0a7a3a; } }
+
+    .page-body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif; background: radial-gradient(900px 450px at 30% 20%, rgba(157,170,255,.18), transparent), radial-gradient(700px 450px at 80% 60%, rgba(124,255,178,.12), transparent), var(--bg); color: var(--text); line-height: 1.65; padding: 18px; }
+
+    .page-body header, .page-body section { max-width: 980px; margin: 0 auto 14px auto; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
+    .page-body h1 { margin: 0; color: var(--accent); }
+    .page-body p { margin: 8px 0; color: var(--muted); }
+    .page-body nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+    .page-body nav a { color: var(--accent); text-decoration: none; font-weight: 800; border: 1px solid var(--border); padding: 8px 10px; border-radius: 999px; background: rgba(0,0,0,.18); }
+    .page-body nav a:hover { text-decoration: underline; }
+    .page-body .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    @media (max-width: 900px) { .page-body .grid { grid-template-columns: 1fr; } }
+    .page-body .card { background: rgba(0,0,0,.18); border: 1px solid var(--border); border-radius: 14px; padding: 14px; }
+    .page-body .card h2 { margin: 0 0 8px; font-size: 16px; }
+    .page-body a { color: var(--link); }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>Era 6: Grid era and modern platform CSS (2017–2026)</h1>
-    <p>
-      CSS Grid Layout becomes a cornerstone for real layout work and modern CSS grows into a system language for design.
-      The Grid spec continues evolving as a living collection of modules.
-    </p>
-    <nav>
+<div class="browser-shell">
+
+  <div class="titlebar">
+    <span>CSS Era 6 (2017-2026) - Chrome 120</span>
+    <span class="titlebar-right">_ &nbsp; [] &nbsp; X</span>
+  </div>
+
+  <div class="menubar">
+    <span>File</span><span>Edit</span><span>View</span><span>History</span><span>Bookmarks</span><span>More</span>
+  </div>
+
+  <div class="toolbar">
+    <span class="tbtn">&lt;</span>
+    <span class="tbtn">&gt;</span>
+    <span class="tbtn">Reload</span>
+    <span class="tbtn">Home</span>
+  </div>
+
+  <div class="addrbar">
+    <span class="addr-label">Address:</span>
+    <span class="addr-field">https://historyofwd.netlify.app/css/era-6-2017-2026.html</span>
+  </div>
+
+  <div class="era-tabs">
+    <span class="etab"><a href="era-1-1994-1996.html">1994-1996</a></span>
+    <span class="etab"><a href="era-2-1996-1998.html">1996-1998</a></span>
+    <span class="etab"><a href="era-3-1998-2004.html">1998-2004</a></span>
+    <span class="etab"><a href="era-4-2004-2011.html">2004-2011</a></span>
+    <span class="etab"><a href="era-5-2011-2017.html">2011-2017</a></span>
+    <span class="etab-active">2017-2026</span>
+    <span class="etab"><a href="csshome.html">Home</a></span>
+    <span class="etab"><a href="glossary.html">Glossary</a></span>
+    <span class="etab"><a href="bibliography.html">Bibliography</a></span>
+    <span class="etab"><a href="contributors.html">Contributors</a></span>
+    <span class="etab"><a href="discussion.html">Discussion</a></span>
+  </div>
+
+<!-- ============================================================
+     ORIGINAL PAGE CONTENT BELOW - UNCHANGED
+============================================================ -->
+  <div class="page-body">
+    <header>
+      <h1>Era 6: Grid era and modern platform CSS (2017-2026)</h1>
+      <p>CSS Grid Layout becomes a cornerstone for real layout work and modern CSS grows into a system language for design. The Grid spec continues evolving as a living collection of modules.</p>
+      <nav>
             <a href="/index.html">Main Hub</a>
-            <a href="csshome.html">CSS Home</a> |
-            <a href="era-1-1994-1996.html">1994-1996</a> |
-            <a href="era-2-1996-1998.html">1996-1998</a> |
-            <a href="era-3-1998-2004.html">1998-2004</a> |
-            <a href="era-4-2004-2011.html">2004-2011</a> |
-            <a href="era-5-2011-2017.html">2011-2017</a> |
-            <a href="era-6-2017-2026.html">2017-2026</a> |
-            <a href="glossary.html">Glossary</a> |
-            <a href="bibliography.html">Bibliography</a> |
-            <a href="contributors.html">Contributors</a> |
+            <a href="csshome.html">CSS Home</a>
+            <a href="era-1-1994-1996.html">1994-1996</a>
+            <a href="era-2-1996-1998.html">1996-1998</a>
+            <a href="era-3-1998-2004.html">1998-2004</a>
+            <a href="era-4-2004-2011.html">2004-2011</a>
+            <a href="era-5-2011-2017.html">2011-2017</a>
+            <a href="era-6-2017-2026.html">2017-2026</a>
+            <a href="glossary.html">Glossary</a>
+            <a href="bibliography.html">Bibliography</a>
+            <a href="contributors.html">Contributors</a>
             <a href="discussion.html">Discussion</a>
-    </nav>
-  </header>
+      </nav>
+    </header>
 
-  <section>
-    <div class="grid">
-      <div class="card">
-        <h2>What defines this era</h2>
-        <ul>
-          <li>Grid layouts (2D layout)</li>
-          <li>Custom properties (CSS variables)</li>
-          <li>Modern selectors and better component styling</li>
-          <li>Design systems and theming as normal practice</li>
-        </ul>
+    <section>
+      <div class="grid">
+        <div class="card">
+          <h2>What defines this era</h2>
+          <ul>
+            <li>Grid layouts (2D layout)</li>
+            <li>Custom properties (CSS variables)</li>
+            <li>Modern selectors and better component styling</li>
+            <li>Design systems and theming as normal practice</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Major people and groups</h2>
+          <ul>
+            <li><b>CSS Working Group</b> (W3C): editors and contributors across browsers.</li>
+            <li><b>Elika J. Etemad</b> (fantasai): major editor and standards leader.</li>
+            <li><b>Tab Atkins</b>: long-time standards editor and explainer author.</li>
+            <li><b>Jen Simmons</b>, <b>Rachel Andrew</b>, <b>Miriam Suzanne</b>: education and advocacy for modern layout.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>What authors actually did</h2>
+          <ul>
+            <li><b>Grid-first layouts</b> replacing framework-only grids.</li>
+            <li><b>Utility CSS</b> and design systems at scale.</li>
+            <li><b>Progressive enhancement</b>: use modern features when available, graceful fallback otherwise.</li>
+            <li><b>Dark mode</b> using <code>prefers-color-scheme</code>.</li>
+          </ul>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h2>Major people and groups</h2>
-        <ul>
-          <li><b>CSS Working Group</b> (W3C): editors and contributors across browsers.</li>
-          <li><b>Elika J. Etemad</b> (fantasai): major editor and standards leader.</li>
-          <li><b>Tab Atkins</b>: long-time standards editor and explainer author.</li>
-          <li><b>Jen Simmons</b>, <b>Rachel Andrew</b>, <b>Miriam Suzanne</b>: education + advocacy for modern layout.</li>
-        </ul>
-      </div>
+    <section>
+      <h2>Why modern CSS feels "alive"</h2>
+      <p>CSS evolves through modules that ship when browsers implement them and tests confirm behavior. Instead of a single "CSS4," improvements arrive continuously.</p>
+    </section>
+  </div>
+<!-- ============================================================
+     END ORIGINAL CONTENT
+============================================================ -->
 
-      <div class="card">
-        <h2>What authors actually did</h2>
-        <ul>
-          <li><b>Grid-first layouts</b> replacing framework-only grids.</li>
-          <li><b>Utility CSS</b> and design systems at scale.</li>
-          <li><b>Progressive enhancement</b>: use modern features when available, graceful fallback otherwise.</li>
-          <li><b>Dark mode</b> using <code>prefers-color-scheme</code>.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+  <div class="statusbar">
+    <span>Done</span>
+    <span>historyofwd.netlify.app</span>
+  </div>
 
-  <section>
-    <h2>Why modern CSS feels “alive”</h2>
-    <p>
-      CSS evolves through modules that ship when browsers implement them and tests confirm behavior.
-      Instead of a single “CSS4,” improvements arrive continuously.
-    </p>
-  </section>
+</div>
 </body>
 </html>

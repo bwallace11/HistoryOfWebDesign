@@ -4,10 +4,92 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bibliography – JavaScript Archive</title>
-  <link rel="stylesheet" href="style/2025.css">
+  <style>
+    :root { --bg: #0f1117; --shell: #1a1d2e; --border: #2e3250; --titlebar: #212438; --fg: #e8eaf0; --muted: #9499b8; --accent: #6366f1; --tab-active: #818cf8; }
+    body { margin: 0; padding: 14px; background: var(--bg); font-family: system-ui, -apple-system, Segoe UI, sans-serif; }
+    .browser-shell { width: 96%; margin: 0 auto; background: var(--shell); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.8); }
+    .titlebar { background: var(--titlebar); color: var(--fg); font-size: 13px; font-weight: bold; padding: 7px 14px; display: flex; justify-content: space-between; align-items: center; }
+    .titlebar-right { font-size: 12px; color: var(--muted); }
+    .menubar { background: var(--titlebar); border-bottom: 1px solid var(--border); padding: 3px 14px; font-size: 12px; color: var(--muted); }
+    .menubar span { margin-right: 16px; }
+    .toolbar { background: var(--titlebar); border-bottom: 1px solid var(--border); padding: 7px 14px; display: flex; gap: 8px; }
+    .tbtn { font-family: inherit; font-size: 12px; padding: 5px 16px; background: var(--accent); color: #fff; border: none; border-radius: 20px; cursor: default; }
+    .addrbar { background: var(--titlebar); border-bottom: 1px solid var(--border); padding: 7px 14px; display: flex; align-items: center; gap: 12px; font-size: 12px; }
+    .addr-label { font-weight: bold; white-space: nowrap; color: var(--fg); }
+    .addr-field { background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 6px 16px; font-family: Courier New, monospace; font-size: 11px; flex: 1; color: var(--fg); }
+    .era-tabs { background: var(--titlebar); border-bottom: 1px solid var(--border); padding: 6px 14px 0; display: flex; flex-wrap: wrap; gap: 3px; font-size: 11px; }
+    .etab { display: inline-block; padding: 4px 12px; background: var(--shell); border-top-left-radius: 8px; border-top-right-radius: 8px; color: var(--muted); }
+    .etab a { color: var(--muted); text-decoration: none; }
+    .etab a:hover { color: var(--fg); }
+    .statusbar { background: var(--titlebar); border-top: 1px solid var(--border); padding: 4px 14px; font-size: 11px; color: var(--muted); display: flex; justify-content: space-between; }
+    /* Content styles */
+    site-header, site-nav, site-footer { display: block; }
+    site-header .header-inner { padding: 20px 20px 14px; background: radial-gradient(600px 200px at 20% 50%, rgba(99,102,241,.3), transparent), #212438; }
+    site-header .header-inner h1 { margin: 0 0 4px; color: #818cf8; font-size: 22px; }
+    site-header .header-inner p { margin: 0; color: #9499b8; font-size: 13px; }
+    site-nav { background: #212438; border-bottom: 1px solid #2e3250; padding: 8px 16px; }
+    site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+    site-nav ul li a { color: #818cf8; text-decoration: none; font-weight: 700; padding: 5px 10px; border-radius: 999px; border: 1px solid #2e3250; font-size: 12px; background: rgba(0,0,0,.2); }
+    site-nav ul li a:hover { color: #e8eaf0; }
+    site-nav ul li a.active { color: #e8eaf0; background: #6366f1; border-color: #6366f1; }
+    .page-grid { display: grid; grid-template-columns: 1fr 260px; gap: 0; }
+    @media (max-width: 800px) { .page-grid { grid-template-columns: 1fr; } }
+    main { padding: 18px 20px; color: #ececf1; }
+    main h1 { color: #818cf8; margin-top: 0; }
+    main h2 { color: #9daaff; }
+    main h3 { color: #b9bbca; }
+    main p, main li { color: #b9bbca; line-height: 1.65; }
+    main strong { color: #e8eaf0; }
+    main code { background: #2e3250; padding: 2px 6px; border-radius: 4px; font-size: 12px; color: #7CFFB2; }
+    main a { color: #7CFFB2; }
+    .sidebar { background: #171722; border-left: 1px solid #2e3250; padding: 16px; }
+    .sidebar-card { background: rgba(0,0,0,.3); border: 1px solid #2e3250; border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+    .sidebar-card h3 { margin: 0 0 8px; font-size: 13px; color: #9daaff; }
+    .sidebar-card ul { margin: 0; padding-left: 18px; font-size: 12px; color: #9499b8; }
+    .sidebar-card p { font-size: 12px; color: #9499b8; margin: 0; }
+    site-footer { background: #212438; border-top: 1px solid #2e3250; padding: 10px 20px; font-size: 12px; color: #9499b8; }
+    site-footer a { color: #818cf8; }
+    em { color: #b9bbca; }
+</style>
 </head>
 <body>
+<div class="browser-shell">
 
+  <div class="titlebar">
+    <span>Bibliography – JavaScript History Archive</span>
+    <span class="titlebar-right">_ &nbsp; [] &nbsp; X</span>
+  </div>
+
+  <div class="menubar">
+    <span>File</span><span>Edit</span><span>View</span><span>History</span><span>Bookmarks</span><span>More</span>
+  </div>
+
+  <div class="toolbar">
+    <span class="tbtn">&lt;</span>
+    <span class="tbtn">&gt;</span>
+    <span class="tbtn">Reload</span>
+    <span class="tbtn">Home</span>
+  </div>
+
+  <div class="addrbar">
+    <span class="addr-label">Address:</span>
+    <span class="addr-field">https://historyofwd.netlify.app/javascript/bibliography.html</span>
+  </div>
+
+  <div class="era-tabs">
+    <span class="etab"><a href="1995.html">1995</a></span>
+    <span class="etab"><a href="1999.html">1999</a></span>
+    <span class="etab"><a href="2009.html">2009</a></span>
+    <span class="etab"><a href="2015.html">2015</a></span>
+    <span class="etab"><a href="2025.html">2025</a></span>
+    <span class="etab"><a href="jsindex.html">Home</a></span>
+    <span class="etab"><a href="glossary.html">Glossary</a></span>
+    <span class="etab"><a href="bibliography.html">Bibliography</a></span>
+    <span class="etab"><a href="contributors.html">Contributors</a></span>
+    <span class="etab"><a href="discussion.html">Discussion</a></span>
+  </div>
+
+<!-- ORIGINAL CONTENT -->
 <site-header>
   <div class="header-inner">
     <h1>JavaScript History Archive</h1>
@@ -32,30 +114,23 @@
 </site-nav>
 
 <div class="page-grid">
-
   <main>
     <h1>Bibliography</h1>
-
     <h2>Primary Specifications</h2>
-    <p>Ecma International. (1997&ndash;2025). <em>ECMA-262 ECMAScript Language Specification</em>, Editions 1&ndash;15. Ecma International. https://www.ecma-international.org/publications-and-standards/standards/ecma-262/</p>
-
+    <p>Ecma International. (1997&ndash;2025). <em>ECMA-262 ECMAScript Language Specification</em>, Editions 1&ndash;15. https://www.ecma-international.org/publications-and-standards/standards/ecma-262/</p>
     <h2>Historical Works</h2>
     <p>Eich, B., &amp; Wirfs-Brock, A. (2020). <em>JavaScript: The First 20 Years</em>. Proceedings of the ACM on Programming Languages, 4(HOPL). https://dl.acm.org/doi/10.1145/3386327</p>
-
     <h2>Committee Documents</h2>
     <p>TC39. (2024). <em>TC39 Process Document</em>. https://tc39.es/process-document/</p>
     <p>TC39. (2024). <em>TC39 Proposals Repository</em>. https://github.com/tc39/proposals</p>
-
     <h2>Archival Sources</h2>
     <p>Netscape Communications Corporation. (1995). <em>Netscape Navigator 2.0 Beta Release Notes</em>.</p>
     <p>Microsoft Corporation. (1996). <em>JScript Language Reference</em>. Microsoft Developer Network.</p>
-
     <h2>Books</h2>
     <p>Crockford, D. (2008). <em>JavaScript: The Good Parts</em>. O'Reilly Media.</p>
     <p>Flanagan, D. (2020). <em>JavaScript: The Definitive Guide</em> (7th ed.). O'Reilly Media.</p>
     <p>Simpson, K. (2015). <em>You Don't Know JS</em> (series). O'Reilly Media.</p>
   </main>
-
   <aside class="sidebar">
     <div class="sidebar-card">
       <h3>Era Pages</h3>
@@ -77,13 +152,19 @@
       </ul>
     </div>
   </aside>
-
 </div>
 
 <site-footer>
   JavaScript History Archive &nbsp;|&nbsp;
   <a href="../index.html">Web History Hub</a>
 </site-footer>
+<!-- END ORIGINAL CONTENT -->
 
+  <div class="statusbar">
+    <span>Done</span>
+    <span>historyofwd.netlify.app</span>
+  </div>
+
+</div>
 </body>
 </html>

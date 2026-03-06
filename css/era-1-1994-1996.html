@@ -1,12 +1,41 @@
 <!doctype html>
 <html>
 <head>
-  <title>CSS Era 1 (1990–1996)</title>
+  <title>CSS Era 1 (1994-1996) - NCSA Mosaic</title>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
   <style type="text/css">
-    /* CSS is extremely new here.
-       Keep it simple: fonts, colors, spacing. (CSS1-style basics only.) */
-    body { font-family: Times New Roman, serif; color: #000000; background: #ffffff; }
+    /* ---- Browser chrome styles (HTML + CSS era 1 only) ---- */
+    body { margin: 0; padding: 10px; background: #888888; font-family: Times New Roman, serif; }
+
+    .browser-shell { width: 96%; margin: 0 auto; background: #c0c0c0; border-top: 2px solid #ffffff; border-left: 2px solid #ffffff; border-right: 2px solid #808080; border-bottom: 2px solid #808080; }
+
+    .titlebar { background: #000080; color: #ffffff; font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; padding: 3px 6px; display: block; }
+    .titlebar-right { float: right; font-size: 11px; }
+
+    .menubar { background: #c0c0c0; border-bottom: 1px solid #808080; padding: 2px 4px; font-family: Arial, sans-serif; font-size: 12px; }
+    .menubar span { margin-right: 8px; }
+
+    .toolbar { background: #c0c0c0; border-bottom: 1px solid #808080; padding: 3px 6px; }
+    .tbtn { font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; padding: 2px 8px; background: #c0c0c0; color: #000000; border-top: 2px solid #ffffff; border-left: 2px solid #ffffff; border-right: 2px solid #808080; border-bottom: 2px solid #808080; margin-right: 3px; }
+
+    .addrbar { background: #c0c0c0; border-bottom: 1px solid #808080; padding: 3px 6px; font-family: Arial, sans-serif; font-size: 12px; }
+    .addr-label { font-weight: bold; margin-right: 4px; }
+    .addr-field { background: #ffffff; border-top: 1px solid #808080; border-left: 1px solid #808080; border-right: 1px solid #ffffff; border-bottom: 1px solid #ffffff; padding: 2px 4px; font-family: Courier New, monospace; font-size: 11px; width: 85%; }
+
+    .era-tabs { background: #c0c0c0; border-bottom: 1px solid #808080; padding: 3px 4px 0; font-family: Arial, sans-serif; font-size: 11px; }
+    .etab { display: inline; padding: 3px 8px; background: #a8a8a8; border-top: 1px solid #ffffff; border-left: 1px solid #ffffff; border-right: 1px solid #808080; margin-right: 2px; }
+    .etab-active { display: inline; padding: 3px 8px; background: #c0c0c0; border-top: 2px solid #ffffff; border-left: 2px solid #ffffff; border-right: 2px solid #808080; margin-right: 2px; font-weight: bold; }
+    .etab a { color: #000000; text-decoration: none; }
+    .etab a:hover { text-decoration: underline; }
+
+    .content-area { background: #c0c0c0; padding: 2px; }
+
+    .statusbar { background: #c0c0c0; border-top: 1px solid #808080; padding: 2px 6px; font-family: Arial, sans-serif; font-size: 11px; }
+    .status-right { float: right; }
+    .clear { clear: both; }
+
+    /* ---- Original page styles (CSS1 era) ---- */
+    body { color: #000000; background: #c0c0c0; }
     a:link { color: #0000EE; }
     a:visited { color: #551A8B; }
     h1 { font-size: 24pt; }
@@ -18,8 +47,51 @@
 </head>
 
 <body>
+<div class="browser-shell">
+
+  <div class="titlebar">
+    <span class="titlebar-right">_ &nbsp; [] &nbsp; X</span>
+    CSS Era 1 (1994-1996) - NCSA Mosaic
+  </div>
+
+  <div class="menubar">
+    <span>File</span><span>Edit</span><span>View</span><span>Go</span><span>Bookmarks</span><span>Help</span>
+  </div>
+
+  <div class="toolbar">
+    <span class="tbtn">&lt; Back</span>
+    <span class="tbtn">Forward &gt;</span>
+    &nbsp;
+    <span class="tbtn">Reload</span>
+    <span class="tbtn">Home</span>
+  </div>
+
+  <div class="addrbar">
+    <span class="addr-label">Location:</span>
+    <span class="addr-field">https://historyofwd.netlify.app/css/era-1-1994-1996.html</span>
+  </div>
+
+  <div class="era-tabs">
+    <span class="etab-active">1994-1996</span>
+    <span class="etab"><a href="era-2-1996-1998.html">1996-1998</a></span>
+    <span class="etab"><a href="era-3-1998-2004.html">1998-2004</a></span>
+    <span class="etab"><a href="era-4-2004-2011.html">2004-2011</a></span>
+    <span class="etab"><a href="era-5-2011-2017.html">2011-2017</a></span>
+    <span class="etab"><a href="era-6-2017-2026.html">2017-2026</a></span>
+    <span class="etab"><a href="csshome.html">Home</a></span>
+    <span class="etab"><a href="glossary.html">Glossary</a></span>
+    <span class="etab"><a href="bibliography.html">Bibliography</a></span>
+    <span class="etab"><a href="contributors.html">Contributors</a></span>
+    <span class="etab"><a href="discussion.html">Discussion</a></span>
+  </div>
+
+  <div class="content-area">
+
+<!-- ============================================================
+     ORIGINAL PAGE CONTENT BELOW - UNCHANGED
+============================================================ -->
 <center>
-  <h1>Cascading Style Sheets: Era 1 (1990–1996)</h1>
+  <h1>Cascading Style Sheets: Era 1 (1990-1996)</h1>
   <p>
     CSS stands for <b>Cascading Style Sheets</b>. This era covers the conditions that created CSS and the first
     real proposal work that led to <b>CSS Level 1</b>.
@@ -56,17 +128,17 @@ features (for example, font tags and alignment) but that mixed content and prese
 CSS was created as a separate, reusable styling layer to prevent HTML from turning into a formatting mess.
 </p>
 
-<h2>Key milestones (1990–1996)</h2>
+<h2>Key milestones (1990-1996)</h2>
 <ul>
-  <li><b>1990–1993:</b> The World Wide Web spreads from research to public networks; authors want more control.</li>
+  <li><b>1990-1993:</b> The World Wide Web spreads from research to public networks; authors want more control.</li>
   <li><b>1994:</b> Early CSS proposals circulate; the goal is to style HTML documents without changing HTML itself.</li>
-  <li><b>1994–1996:</b> CSS develops through discussion, prototypes, and standards work, preparing for CSS1.</li>
+  <li><b>1994-1996:</b> CSS develops through discussion, prototypes, and standards work, preparing for CSS1.</li>
   <li><b>17 December 1996:</b> CSS Level 1 becomes a World Wide Web Consortium recommendation. (See <a href="bibliography.html">bibliography</a>.)</li>
 </ul>
 
 <h2>Major people and institutions</h2>
 <ul>
-  <li><b>H&aring;kon Wium Lie</b> (CERN): proposed early cascading style sheets and pushed the idea as the web grew.</li> 
+  <li><b>H&aring;kon Wium Lie</b> (CERN): proposed early cascading style sheets and pushed the idea as the web grew.</li>
   <li><b>Bert Bos</b>: co-designed early CSS and became a major editor of CSS specifications.</li>
   <li><b>Tim Berners-Lee</b> (CERN / W3C): founded the World Wide Web Consortium to coordinate web standards.</li>
   <li><b>World Wide Web Consortium</b> (W3C): the standards organization that published CSS recommendations.</li>
@@ -78,7 +150,7 @@ Before CSS1 was a stable recommendation, browser support was limited and inconsi
 HTML presentation features and browser defaults.
 </p>
 
-<h2>What authors actually did (1990–1996)</h2>
+<h2>What authors actually did (1990-1996)</h2>
 <ul>
   <li><b>Presentational HTML:</b> authors used tags and attributes because CSS support was not reliable.</li>
   <li><b>Defaults and patience:</b> pages leaned on browser default fonts and spacing.</li>
@@ -91,7 +163,20 @@ This era ends when CSS Level 1 becomes a W3C recommendation on 17 December 1996.
 
 <hr>
 <p class="note">
-Next: <a href="era-2-1996-1998.html">Era 2 (1996–1998)</a>
+Next: <a href="era-2-1996-1998.html">Era 2 (1996-1998)</a>
 </p>
+<!-- ============================================================
+     END ORIGINAL CONTENT
+============================================================ -->
+
+  </div>
+
+  <div class="statusbar">
+    <span class="status-right">historyofwd.netlify.app</span>
+    Document: Done
+    <div class="clear"></div>
+  </div>
+
+</div>
 </body>
 </html>

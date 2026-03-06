@@ -5,34 +5,79 @@
   <title>Web History Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      background: #000000;
-      font-family: "Arial", sans-serif;
-      padding: 32px 16px;
-      min-height: 100vh;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
+    /* ================================================================
+       CSS CUSTOM PROPERTIES
+       Every visual property is a variable. JS swaps one class on
+       <body> and the 1.4s transitions do the morphing.
+    ================================================================ */
+    :root {
+      --bg:             #000000;
+      --chrome-bg:      #c0c0c0;
+      --chrome-hi:      #ffffff;
+      --chrome-lo:      #808080;
+      --titlebar-bg:    #000080;
+      --titlebar-fg:    #ffffff;
+      --toolbar-bg:     #c0c0c0;
+      --toolbar-border: 1px solid #808080;
+      --addr-bg:        #c0c0c0;
+      --addr-input-bg:  #ffffff;
+      --addr-input-fg:  #000000;
+      --btn-bg:         #c0c0c0;
+      --btn-fg:         #000000;
+      --tab-active-bg:  #c0c0c0;
+      --tab-active-fg:  #000000;
+      --tab-idle-bg:    #a8a8a8;
+      --tab-hover-bg:   #d4d4d4;
+      --content-bg:     #c0c0c0;
+      --status-bg:      #c0c0c0;
+      --status-fg:      #000000;
+      --card-h2:        #000080;
+      --shell-r:        0px;
+      --btn-r:          0px;
+      --addr-r:         0px;
+      --tab-r:          1px 1px 0 0;
+      --font:           "Arial", sans-serif;
+      --fsize:          12px;
+      --shadow:         2px 2px 0 #000000;
+      --bar-color:      #000080;
     }
 
-    /* ── 90s browser window ── */
-    .browser {
+    html, body {
+      min-height: 100%;
+      background: var(--bg);
+      font-family: var(--font);
+      font-size: var(--fsize);
+      transition: background-color 1.4s ease;
+    }
+
+    /* ================================================================
+       BROWSER SHELL
+    ================================================================ */
+    .shell {
       width: 100%;
-      max-width: 960px;
-      background: #c0c0c0;
-      border-top: 2px solid #ffffff;
-      border-left: 2px solid #ffffff;
-      border-right: 2px solid #808080;
-      border-bottom: 2px solid #808080;
-      box-shadow: 2px 2px 0 #000;
+      max-width: 1160px;
+      margin: 20px auto 36px;
+      background: var(--chrome-bg);
+      border-top:    2px solid var(--chrome-hi);
+      border-left:   2px solid var(--chrome-hi);
+      border-right:  2px solid var(--chrome-lo);
+      border-bottom: 2px solid var(--chrome-lo);
+      box-shadow: var(--shadow);
+      border-radius: var(--shell-r);
+      overflow: hidden;
+      transition:
+        background-color 1.4s ease,
+        border-color     1.4s ease,
+        border-radius    1.4s ease,
+        box-shadow       1.4s ease;
     }
 
     /* Title bar */
     .titlebar {
-      background: #000080;
-      color: #ffffff;
+      background: var(--titlebar-bg);
+      color: var(--titlebar-fg);
       font-weight: bold;
       font-size: 13px;
       padding: 4px 8px;
@@ -40,288 +85,838 @@
       align-items: center;
       justify-content: space-between;
       user-select: none;
+      transition: background-color 1.4s ease, color 1.4s ease;
     }
-    .titlebar-btns {
-      display: flex;
-      gap: 2px;
+    .title-left { display: flex; align-items: center; gap: 6px; }
+    .title-dot {
+      width: 13px; height: 13px;
+      border: 1px solid var(--titlebar-fg);
+      border-radius: 50%;
+      flex-shrink: 0;
+      transition: border-color 1.4s ease;
     }
-    .titlebar-btns span {
-      display: inline-block;
-      width: 16px;
-      height: 14px;
-      background: #c0c0c0;
-      color: #000;
-      font-size: 10px;
-      font-weight: bold;
-      text-align: center;
-      line-height: 14px;
-      border-top: 1px solid #fff;
-      border-left: 1px solid #fff;
-      border-right: 1px solid #808080;
-      border-bottom: 1px solid #808080;
-      cursor: default;
+    .winbtns { display: flex; gap: 2px; }
+    .winbtn {
+      width: 16px; height: 14px;
+      background: var(--btn-bg);
+      color: var(--btn-fg);
+      font-size: 9px; font-weight: bold;
+      text-align: center; line-height: 14px;
+      border-top: 1px solid var(--chrome-hi); border-left: 1px solid var(--chrome-hi);
+      border-right: 1px solid var(--chrome-lo); border-bottom: 1px solid var(--chrome-lo);
+      border-radius: var(--btn-r); cursor: default;
+      transition: background-color 1.4s ease, color 1.4s ease,
+                  border-color 1.4s ease, border-radius 1.4s ease;
     }
 
     /* Menu bar */
     .menubar {
-      background: #c0c0c0;
-      border-bottom: 1px solid #808080;
+      background: var(--toolbar-bg);
+      border-bottom: var(--toolbar-border);
       padding: 2px 4px;
-      font-size: 13px;
-      display: flex;
-      gap: 2px;
+      display: flex; gap: 2px;
+      transition: background-color 1.4s ease, border-color 1.4s ease;
     }
-    .menubar span {
-      padding: 2px 8px;
-      cursor: default;
+    .mitem {
+      padding: 2px 8px; font-size: 12px;
+      color: var(--btn-fg); cursor: default;
+      border-radius: var(--btn-r);
+      transition: color 1.4s ease, border-radius 1.4s ease;
     }
-    .menubar span:hover {
-      background: #000080;
-      color: #fff;
+    .mitem:hover { background: var(--titlebar-bg); color: var(--titlebar-fg); }
+
+    /* Toolbar */
+    .toolbar {
+      background: var(--toolbar-bg);
+      border-bottom: var(--toolbar-border);
+      padding: 3px 6px;
+      display: flex; align-items: center; gap: 4px;
+      transition: background-color 1.4s ease, border-color 1.4s ease;
     }
+    .tbtn {
+      padding: 3px 11px;
+      font-family: var(--font); font-size: 12px; font-weight: bold;
+      background: var(--btn-bg); color: var(--btn-fg);
+      border-top: 2px solid var(--chrome-hi); border-left: 2px solid var(--chrome-hi);
+      border-right: 2px solid var(--chrome-lo); border-bottom: 2px solid var(--chrome-lo);
+      border-radius: var(--btn-r); cursor: pointer;
+      transition: background-color 1.4s ease, color 1.4s ease,
+                  border-color 1.4s ease, border-radius 1.4s ease;
+    }
+    .tbtn:active {
+      border-top: 2px solid var(--chrome-lo); border-left: 2px solid var(--chrome-lo);
+      border-right: 2px solid var(--chrome-hi); border-bottom: 2px solid var(--chrome-hi);
+    }
+    .tsep { width: 1px; height: 20px; background: var(--chrome-lo); margin: 0 3px;
+            transition: background-color 1.4s ease; }
 
     /* Address bar */
-    .addressbar {
-      background: #c0c0c0;
+    .addrbar {
+      background: var(--addr-bg);
+      border-bottom: var(--toolbar-border);
       padding: 4px 6px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      border-bottom: 2px solid #808080;
-      font-size: 13px;
+      display: flex; align-items: center; gap: 6px;
+      transition: background-color 1.4s ease, border-color 1.4s ease;
     }
-    .addressbar label {
-      font-weight: bold;
-      white-space: nowrap;
+    .addr-label {
+      font-weight: bold; font-size: 12px; white-space: nowrap;
+      color: var(--btn-fg); transition: color 1.4s ease;
     }
-    .addressbar input {
+    .addr-input {
       flex: 1;
-      font-family: "Courier New", monospace;
-      font-size: 12px;
-      padding: 2px 4px;
-      background: #fff;
-      border-top: 2px solid #808080;
-      border-left: 2px solid #808080;
-      border-right: 2px solid #fff;
-      border-bottom: 2px solid #fff;
-      color: #000;
+      font-family: "Courier New", monospace; font-size: 12px; padding: 2px 6px;
+      background: var(--addr-input-bg); color: var(--addr-input-fg);
+      border-top: 2px solid var(--chrome-lo); border-left: 2px solid var(--chrome-lo);
+      border-right: 2px solid var(--chrome-hi); border-bottom: 2px solid var(--chrome-hi);
+      border-radius: var(--addr-r); outline: none;
+      transition: background-color 1.4s ease, color 1.4s ease,
+                  border-color 1.4s ease, border-radius 1.4s ease;
     }
     .go-btn {
-      padding: 2px 10px;
-      font-size: 12px;
+      padding: 2px 12px;
+      font-family: var(--font); font-size: 12px; font-weight: bold;
+      background: var(--btn-bg); color: var(--btn-fg);
+      border-top: 2px solid var(--chrome-hi); border-left: 2px solid var(--chrome-hi);
+      border-right: 2px solid var(--chrome-lo); border-bottom: 2px solid var(--chrome-lo);
+      border-radius: var(--btn-r); cursor: pointer;
+      transition: background-color 1.4s ease, color 1.4s ease,
+                  border-color 1.4s ease, border-radius 1.4s ease;
+    }
+
+    /* Section tabs */
+    .stabs {
+      background: var(--toolbar-bg);
+      border-bottom: var(--toolbar-border);
+      display: flex; gap: 2px; padding: 4px 6px 0;
+      transition: background-color 1.4s ease, border-color 1.4s ease;
+    }
+    .stab {
+      padding: 5px 18px;
+      font-family: var(--font); font-size: 13px; font-weight: bold;
+      background: var(--tab-idle-bg); color: var(--btn-fg);
+      border-top: 2px solid var(--chrome-hi); border-left: 2px solid var(--chrome-hi);
+      border-right: 2px solid var(--chrome-lo); border-bottom: none;
+      border-radius: var(--tab-r); cursor: pointer;
+      transition: background-color 1.4s ease, color 1.4s ease,
+                  border-color 1.4s ease, border-radius 1.4s ease;
+    }
+    .stab.active {
+      background: var(--tab-active-bg); color: var(--tab-active-fg);
+      border-bottom: 2px solid var(--tab-active-bg); margin-bottom: -2px;
+    }
+    .stab:hover:not(.active) { background: var(--tab-hover-bg); }
+
+    /* Era sub-tabs */
+    .etabs {
+      background: var(--toolbar-bg);
+      border-bottom: var(--toolbar-border);
+      display: flex; flex-wrap: wrap; gap: 2px; padding: 3px 6px 0;
+      transition: background-color 1.4s ease, border-color 1.4s ease;
+    }
+    .etab {
+      padding: 4px 12px;
+      font-family: var(--font); font-size: 12px;
+      background: var(--tab-idle-bg); color: var(--btn-fg);
+      border-top: 2px solid var(--chrome-hi); border-left: 2px solid var(--chrome-hi);
+      border-right: 2px solid var(--chrome-lo); border-bottom: none;
+      border-radius: var(--tab-r); cursor: pointer; white-space: nowrap;
+      transition: background-color 1.4s ease, color 1.4s ease,
+                  border-color 1.4s ease, border-radius 1.4s ease;
+    }
+    .etab.active {
+      background: var(--tab-active-bg); color: var(--tab-active-fg);
       font-weight: bold;
-      background: #c0c0c0;
-      border-top: 2px solid #fff;
-      border-left: 2px solid #fff;
-      border-right: 2px solid #808080;
-      border-bottom: 2px solid #808080;
-      cursor: pointer;
+      border-bottom: 2px solid var(--tab-active-bg); margin-bottom: -2px;
     }
-    .go-btn:active {
-      border-top: 2px solid #808080;
-      border-left: 2px solid #808080;
-      border-right: 2px solid #fff;
-      border-bottom: 2px solid #fff;
+    .etab:hover:not(.active) { background: var(--tab-hover-bg); }
+
+    /* Viewport */
+    .viewport { position: relative; background: var(--content-bg);
+                transition: background-color 1.4s ease; }
+
+    /* Progress bar */
+    .progbar {
+      position: absolute; top: 0; left: 0;
+      height: 3px; width: 0%; opacity: 1;
+      background: var(--bar-color); pointer-events: none;
+      transition: background-color 1.4s ease;
     }
 
-    /* Page content area */
-    .content {
-      background: #c0c0c0;
-      padding: 16px 18px 18px;
+    /* Hub home */
+    .hub-home {
+      padding: 18px 20px 22px;
+      background: var(--content-bg); color: var(--btn-fg);
+      transition: background-color 1.4s ease, color 1.4s ease;
     }
+    .hub-title {
+      font-size: 20px; font-weight: bold; color: var(--card-h2);
+      margin-bottom: 8px; transition: color 1.4s ease;
+    }
+    .hub-desc { font-size: 13px; line-height: 1.55; margin-bottom: 16px; }
+    .hub-inset {
+      background: var(--chrome-bg);
+      border-top: 2px solid var(--chrome-lo); border-left: 2px solid var(--chrome-lo);
+      border-right: 2px solid var(--chrome-hi); border-bottom: 2px solid var(--chrome-hi);
+      padding: 14px; border-radius: var(--shell-r);
+      transition: background-color 1.4s ease, border-color 1.4s ease, border-radius 1.4s ease;
+    }
+    .hub-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    @media(max-width:640px){ .hub-cards{ grid-template-columns:1fr; } }
+    .hub-card {
+      background: var(--chrome-bg);
+      border-top: 2px solid var(--chrome-hi); border-left: 2px solid var(--chrome-hi);
+      border-right: 2px solid var(--chrome-lo); border-bottom: 2px solid var(--chrome-lo);
+      padding: 10px 12px; border-radius: var(--btn-r);
+      transition: background-color 1.4s ease, border-color 1.4s ease, border-radius 1.4s ease;
+    }
+    .hub-card h2 {
+      font-size: 14px; font-weight: bold; color: var(--card-h2);
+      margin-bottom: 6px; border-bottom: 1px solid var(--chrome-lo); padding-bottom: 4px;
+      transition: color 1.4s ease, border-color 1.4s ease;
+    }
+    .hub-card p { font-size: 12px; line-height: 1.5; margin-bottom: 10px; }
+    .hub-btn {
+      display: inline-block; font-size: 12px; font-weight: bold;
+      color: var(--btn-fg); padding: 3px 10px;
+      background: var(--btn-bg);
+      border-top: 2px solid var(--chrome-hi); border-left: 2px solid var(--chrome-hi);
+      border-right: 2px solid var(--chrome-lo); border-bottom: 2px solid var(--chrome-lo);
+      border-radius: var(--btn-r); cursor: pointer; font-family: var(--font);
+      transition: background-color 1.4s ease, color 1.4s ease,
+                  border-color 1.4s ease, border-radius 1.4s ease;
+    }
+    .hub-btn:hover { filter: brightness(1.08); }
+    .hub-note {
+      margin-top: 14px; padding: 8px 10px;
+      background: var(--chrome-bg);
+      border-top: 2px solid var(--chrome-lo); border-left: 2px solid var(--chrome-lo);
+      border-right: 2px solid var(--chrome-hi); border-bottom: 2px solid var(--chrome-hi);
+      font-size: 12px; line-height: 1.55; border-radius: var(--btn-r);
+      transition: background-color 1.4s ease, border-color 1.4s ease, border-radius 1.4s ease;
+    }
+    .hub-note strong { color: var(--card-h2); transition: color 1.4s ease; }
 
-    .page-title {
-      font-size: 20px;
-      font-weight: bold;
-      color: #000080;
-      margin-bottom: 6px;
-    }
-    .page-desc {
-      font-size: 13px;
-      color: #000;
-      margin-bottom: 16px;
-      line-height: 1.5;
-    }
-
-    /* Inset panel for the 3 cards */
-    .inset {
-      background: #c0c0c0;
-      border-top: 2px solid #808080;
-      border-left: 2px solid #808080;
-      border-right: 2px solid #fff;
-      border-bottom: 2px solid #fff;
-      padding: 14px;
-    }
-
-    .cards-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    @media (max-width: 640px) {
-      .cards-row { grid-template-columns: 1fr; }
-    }
-
-    .card {
-      background: #c0c0c0;
-      border-top: 2px solid #fff;
-      border-left: 2px solid #fff;
-      border-right: 2px solid #808080;
-      border-bottom: 2px solid #808080;
-      padding: 10px 12px;
-    }
-    .card h2 {
-      font-size: 14px;
-      font-weight: bold;
-      color: #000080;
-      margin-bottom: 6px;
-      border-bottom: 1px solid #808080;
-      padding-bottom: 4px;
-    }
-    .card p {
-      font-size: 12px;
-      color: #000;
-      line-height: 1.5;
-      margin-bottom: 10px;
-    }
-    .card a {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: bold;
-      color: #000;
-      text-decoration: none;
-      padding: 3px 10px;
-      background: #c0c0c0;
-      border-top: 2px solid #fff;
-      border-left: 2px solid #fff;
-      border-right: 2px solid #808080;
-      border-bottom: 2px solid #808080;
-    }
-    .card a:hover {
-      background: #d4d4d4;
-    }
-    .card a:active {
-      border-top: 2px solid #808080;
-      border-left: 2px solid #808080;
-      border-right: 2px solid #fff;
-      border-bottom: 2px solid #fff;
+    /* Content iframe — 820px tall */
+    .cframe {
+      width: 100%; height: 820px;
+      border: none; display: block;
     }
 
     /* Status bar */
     .statusbar {
-      background: #c0c0c0;
-      border-top: 2px solid #808080;
-      padding: 4px 8px;
-      font-size: 11px;
-      color: #000;
-      display: flex;
-      gap: 8px;
+      background: var(--status-bg); border-top: var(--toolbar-border);
+      padding: 3px 8px; font-size: 11px; color: var(--status-fg);
+      display: flex; gap: 6px;
+      transition: background-color 1.4s ease, color 1.4s ease, border-color 1.4s ease;
     }
-    .status-panel {
-      border-top: 1px solid #808080;
-      border-left: 1px solid #808080;
-      border-right: 1px solid #fff;
-      border-bottom: 1px solid #fff;
-      padding: 1px 6px;
-      flex: 1;
+    .spanel {
+      border-top: 1px solid var(--chrome-lo); border-left: 1px solid var(--chrome-lo);
+      border-right: 1px solid var(--chrome-hi); border-bottom: 1px solid var(--chrome-hi);
+      padding: 1px 6px; flex: 1;
+      transition: border-color 1.4s ease;
     }
-    .status-panel.narrow {
-      flex: 0 0 auto;
-      min-width: 120px;
+    .spanel.narrow { flex: 0 0 auto; min-width: 140px; }
+
+    /* Era badge */
+    .era-badge {
+      position: fixed; bottom: 14px; right: 14px;
+      padding: 5px 13px; font-size: 11px; font-weight: bold;
+      font-family: var(--font);
+      background: var(--titlebar-bg); color: var(--titlebar-fg);
+      border-radius: var(--btn-r); opacity: 0.88; pointer-events: none; z-index: 999;
+      transition: background-color 1.4s ease, color 1.4s ease, border-radius 1.4s ease;
     }
 
-    /* Footer note */
-    .footer-note {
-      margin-top: 14px;
-      padding: 8px 10px;
-      background: #c0c0c0;
-      border-top: 2px solid #808080;
-      border-left: 2px solid #808080;
-      border-right: 2px solid #fff;
-      border-bottom: 2px solid #fff;
-      font-size: 12px;
-      color: #000;
-      line-height: 1.55;
+    /* ================================================================
+       ERA THEME CLASSES — applied to <body>
+    ================================================================ */
+
+    /* HOME */
+    .t-home {
+      --bg:#000000; --chrome-bg:#c0c0c0; --chrome-hi:#ffffff; --chrome-lo:#808080;
+      --titlebar-bg:#000080; --titlebar-fg:#ffffff;
+      --toolbar-bg:#c0c0c0; --toolbar-border:1px solid #808080;
+      --addr-bg:#c0c0c0; --addr-input-bg:#ffffff; --addr-input-fg:#000000;
+      --btn-bg:#c0c0c0; --btn-fg:#000000;
+      --tab-active-bg:#c0c0c0; --tab-active-fg:#000000;
+      --tab-idle-bg:#a8a8a8; --tab-hover-bg:#d4d4d4;
+      --content-bg:#c0c0c0; --status-bg:#c0c0c0; --status-fg:#000000;
+      --card-h2:#000080;
+      --shell-r:0px; --btn-r:0px; --addr-r:0px; --tab-r:1px 1px 0 0;
+      --font:"Arial",sans-serif; --fsize:12px;
+      --shadow:2px 2px 0 #000000; --bar-color:#000080;
     }
-    .footer-note strong {
-      color: #000080;
+
+    /* HTML 1990-1994 — Mosaic, Times serif, hard gray */
+    .t-html-1990 {
+      --bg:#888888; --chrome-bg:#c0c0c0; --chrome-hi:#ffffff; --chrome-lo:#808080;
+      --titlebar-bg:#000080; --titlebar-fg:#ffffff;
+      --toolbar-bg:#c0c0c0; --toolbar-border:1px solid #808080;
+      --addr-bg:#c0c0c0; --addr-input-bg:#ffffff; --addr-input-fg:#000000;
+      --btn-bg:#c0c0c0; --btn-fg:#000000;
+      --tab-active-bg:#c0c0c0; --tab-active-fg:#000000;
+      --tab-idle-bg:#a8a8a8; --tab-hover-bg:#d4d4d4;
+      --content-bg:#c0c0c0; --status-bg:#c0c0c0; --status-fg:#000000;
+      --card-h2:#000080;
+      --shell-r:0px; --btn-r:0px; --addr-r:0px; --tab-r:1px 1px 0 0;
+      --font:"Times New Roman",Times,serif; --fsize:12px;
+      --shadow:3px 3px 0 #000000; --bar-color:#000080;
+    }
+
+    /* HTML 1994-1997 — Netscape Navigator, Arial, navy blue */
+    .t-html-1994 {
+      --bg:#6a6a6a; --chrome-bg:#c0c0c0; --chrome-hi:#ffffff; --chrome-lo:#808080;
+      --titlebar-bg:#000099; --titlebar-fg:#ffffff;
+      --toolbar-bg:#c0c0c0; --toolbar-border:1px solid #808080;
+      --addr-bg:#c0c0c0; --addr-input-bg:#ffffff; --addr-input-fg:#000000;
+      --btn-bg:#c0c0c0; --btn-fg:#000000;
+      --tab-active-bg:#c0c0c0; --tab-active-fg:#000000;
+      --tab-idle-bg:#aaaaaa; --tab-hover-bg:#d4d4d4;
+      --content-bg:#c0c0c0; --status-bg:#c0c0c0; --status-fg:#000000;
+      --card-h2:#0000cc;
+      --shell-r:0px; --btn-r:0px; --addr-r:0px; --tab-r:1px 1px 0 0;
+      --font:"Arial",Helvetica,sans-serif; --fsize:12px;
+      --shadow:2px 2px 0 #000000; --bar-color:#000099;
+    }
+
+    /* HTML 1997-2003 — IE5/6, Tahoma, warm WinXP gray */
+    .t-html-1997 {
+      --bg:#4a5566; --chrome-bg:#d4d0c8; --chrome-hi:#f0ece0; --chrome-lo:#a09888;
+      --titlebar-bg:#0a246a; --titlebar-fg:#ffffff;
+      --toolbar-bg:#d4d0c8; --toolbar-border:1px solid #a09888;
+      --addr-bg:#d4d0c8; --addr-input-bg:#ffffff; --addr-input-fg:#000000;
+      --btn-bg:#d4d0c8; --btn-fg:#000000;
+      --tab-active-bg:#d4d0c8; --tab-active-fg:#000000;
+      --tab-idle-bg:#b8b4ac; --tab-hover-bg:#e0dcd4;
+      --content-bg:#f0f0ee; --status-bg:#d4d0c8; --status-fg:#333333;
+      --card-h2:#0000cc;
+      --shell-r:0px; --btn-r:2px; --addr-r:0px; --tab-r:2px 2px 0 0;
+      --font:"Tahoma","Arial",sans-serif; --fsize:11px;
+      --shadow:1px 1px 5px rgba(0,0,0,0.5); --bar-color:#0a246a;
+    }
+
+    /* HTML 2004-2013 — Firefox 3, blue-gray, slight rounding */
+    .t-html-2004 {
+      --bg:#3a4a5a; --chrome-bg:#e8e8ec; --chrome-hi:#f8f8fc; --chrome-lo:#b0b0b8;
+      --titlebar-bg:#2a5f96; --titlebar-fg:#ffffff;
+      --toolbar-bg:#e0e0e8; --toolbar-border:1px solid #b8b8c0;
+      --addr-bg:#e8e8ec; --addr-input-bg:#ffffff; --addr-input-fg:#111111;
+      --btn-bg:#dcdce4; --btn-fg:#111111;
+      --tab-active-bg:#f4f4f8; --tab-active-fg:#111111;
+      --tab-idle-bg:#d0d0d8; --tab-hover-bg:#e4e4ec;
+      --content-bg:#f4f4f8; --status-bg:#e0e0e8; --status-fg:#333333;
+      --card-h2:#0055cc;
+      --shell-r:4px; --btn-r:3px; --addr-r:12px; --tab-r:4px 4px 0 0;
+      --font:"Segoe UI","Tahoma",sans-serif; --fsize:12px;
+      --shadow:0 2px 10px rgba(0,0,0,0.4); --bar-color:#2a5f96;
+    }
+
+    /* HTML 2014-Now — Chrome dark, flat, fully rounded */
+    .t-html-2014 {
+      --bg:#202124; --chrome-bg:#3c4043; --chrome-hi:#5f6368; --chrome-lo:#202124;
+      --titlebar-bg:#292b2f; --titlebar-fg:#e8eaed;
+      --toolbar-bg:#3c4043; --toolbar-border:1px solid #5f6368;
+      --addr-bg:#292b2f; --addr-input-bg:#202124; --addr-input-fg:#e8eaed;
+      --btn-bg:#5f6368; --btn-fg:#e8eaed;
+      --tab-active-bg:#ffffff; --tab-active-fg:#202124;
+      --tab-idle-bg:#35363a; --tab-hover-bg:#4a4d51;
+      --content-bg:#ffffff; --status-bg:#3c4043; --status-fg:#bdc1c6;
+      --card-h2:#1a73e8;
+      --shell-r:10px; --btn-r:20px; --addr-r:20px; --tab-r:8px 8px 0 0;
+      --font:"Segoe UI",system-ui,sans-serif; --fsize:13px;
+      --shadow:0 4px 20px rgba(0,0,0,0.65); --bar-color:#1a73e8;
+    }
+
+    /* CSS 1994-1996 — Mosaic, Times, hard boxy gray */
+    .t-css-1994 {
+      --bg:#888888; --chrome-bg:#c0c0c0; --chrome-hi:#ffffff; --chrome-lo:#808080;
+      --titlebar-bg:#000080; --titlebar-fg:#ffffff;
+      --toolbar-bg:#c0c0c0; --toolbar-border:1px solid #808080;
+      --addr-bg:#c0c0c0; --addr-input-bg:#ffffff; --addr-input-fg:#000000;
+      --btn-bg:#c0c0c0; --btn-fg:#000000;
+      --tab-active-bg:#c0c0c0; --tab-active-fg:#000000;
+      --tab-idle-bg:#a8a8a8; --tab-hover-bg:#d4d4d4;
+      --content-bg:#c0c0c0; --status-bg:#c0c0c0; --status-fg:#000000;
+      --card-h2:#000080;
+      --shell-r:0px; --btn-r:0px; --addr-r:0px; --tab-r:0px 0px 0 0;
+      --font:"Times New Roman",Times,serif; --fsize:12px;
+      --shadow:3px 3px 0 #000000; --bar-color:#000080;
+    }
+
+    /* CSS 1996-1998 — Netscape 3, Arial, CSS1 gray */
+    .t-css-1996 {
+      --bg:#777777; --chrome-bg:#c0c0c0; --chrome-hi:#ffffff; --chrome-lo:#808080;
+      --titlebar-bg:#000080; --titlebar-fg:#ffffff;
+      --toolbar-bg:#c0c0c0; --toolbar-border:1px solid #808080;
+      --addr-bg:#c0c0c0; --addr-input-bg:#ffffff; --addr-input-fg:#000000;
+      --btn-bg:#c0c0c0; --btn-fg:#000000;
+      --tab-active-bg:#c0c0c0; --tab-active-fg:#000000;
+      --tab-idle-bg:#aaaaaa; --tab-hover-bg:#d4d4d4;
+      --content-bg:#c0c0c0; --status-bg:#c0c0c0; --status-fg:#000000;
+      --card-h2:#0000cc;
+      --shell-r:0px; --btn-r:0px; --addr-r:0px; --tab-r:1px 1px 0 0;
+      --font:"Arial",Helvetica,sans-serif; --fsize:13px;
+      --shadow:2px 2px 0 #000000; --bar-color:#000080;
+    }
+
+    /* CSS 1998-2004 — IE5.5, CSS2, portal-era dark navy/gold */
+    .t-css-1998 {
+      --bg:#003366; --chrome-bg:#d4d0c8; --chrome-hi:#f0ece0; --chrome-lo:#a09888;
+      --titlebar-bg:#003366; --titlebar-fg:#ffcc00;
+      --toolbar-bg:#d4d0c8; --toolbar-border:1px solid #a09888;
+      --addr-bg:#d4d0c8; --addr-input-bg:#ffffff; --addr-input-fg:#000000;
+      --btn-bg:#d4d0c8; --btn-fg:#000066;
+      --tab-active-bg:#d4d0c8; --tab-active-fg:#000066;
+      --tab-idle-bg:#b8b4ac; --tab-hover-bg:#e0dcd4;
+      --content-bg:#ffffff; --status-bg:#d4d0c8; --status-fg:#333333;
+      --card-h2:#000066;
+      --shell-r:0px; --btn-r:0px; --addr-r:0px; --tab-r:0px 0px 0 0;
+      --font:"Verdana","Arial",sans-serif; --fsize:12px;
+      --shadow:2px 2px 6px rgba(0,0,0,0.5); --bar-color:#003366;
+    }
+
+    /* CSS 2004-2011 — IE7/FF2, CSS 2.1, blue corporate */
+    .t-css-2004 {
+      --bg:#2a3a4a; --chrome-bg:#e4e4e4; --chrome-hi:#f8f8f8; --chrome-lo:#b8b8b8;
+      --titlebar-bg:#003366; --titlebar-fg:#ffffff;
+      --toolbar-bg:#e0e0e0; --toolbar-border:1px solid #c0c0c0;
+      --addr-bg:#e4e4e4; --addr-input-bg:#ffffff; --addr-input-fg:#111111;
+      --btn-bg:#dcdcdc; --btn-fg:#111111;
+      --tab-active-bg:#f0f0f0; --tab-active-fg:#111111;
+      --tab-idle-bg:#cccccc; --tab-hover-bg:#e8e8e8;
+      --content-bg:#f0f0f0; --status-bg:#e0e0e0; --status-fg:#333333;
+      --card-h2:#003366;
+      --shell-r:2px; --btn-r:2px; --addr-r:2px; --tab-r:2px 2px 0 0;
+      --font:"Tahoma","Arial",sans-serif; --fsize:12px;
+      --shadow:1px 1px 6px rgba(0,0,0,0.35); --bar-color:#003366;
+    }
+
+    /* CSS 2011-2017 — Chrome/FF flat, CSS3, Material blue */
+    .t-css-2011 {
+      --bg:#eeeeee; --chrome-bg:#f5f5f5; --chrome-hi:#ffffff; --chrome-lo:#dddddd;
+      --titlebar-bg:#1565c0; --titlebar-fg:#ffffff;
+      --toolbar-bg:#f5f5f5; --toolbar-border:1px solid #dddddd;
+      --addr-bg:#f5f5f5; --addr-input-bg:#ffffff; --addr-input-fg:#222222;
+      --btn-bg:#e8e8e8; --btn-fg:#222222;
+      --tab-active-bg:#ffffff; --tab-active-fg:#1565c0;
+      --tab-idle-bg:#e0e0e0; --tab-hover-bg:#ebebeb;
+      --content-bg:#f5f5f5; --status-bg:#f5f5f5; --status-fg:#555555;
+      --card-h2:#1565c0;
+      --shell-r:4px; --btn-r:4px; --addr-r:14px; --tab-r:5px 5px 0 0;
+      --font:"Segoe UI","Helvetica Neue",sans-serif; --fsize:13px;
+      --shadow:0 2px 10px rgba(0,0,0,0.15); --bar-color:#1565c0;
+    }
+
+    /* CSS 2017-2026 — Modern dark, Grid era, indigo */
+    .t-css-2017 {
+      --bg:#0f1117; --chrome-bg:#1a1d2e; --chrome-hi:#818cf8; --chrome-lo:#2e3250;
+      --titlebar-bg:#212438; --titlebar-fg:#e8eaf0;
+      --toolbar-bg:#212438; --toolbar-border:1px solid #2e3250;
+      --addr-bg:#212438; --addr-input-bg:#0f1117; --addr-input-fg:#e8eaf0;
+      --btn-bg:#2e3250; --btn-fg:#e8eaf0;
+      --tab-active-bg:#1a1d2e; --tab-active-fg:#818cf8;
+      --tab-idle-bg:#212438; --tab-hover-bg:#2e3250;
+      --content-bg:#1a1d2e; --status-bg:#212438; --status-fg:#9499b8;
+      --card-h2:#818cf8;
+      --shell-r:10px; --btn-r:20px; --addr-r:20px; --tab-r:8px 8px 0 0;
+      --font:"Segoe UI",system-ui,sans-serif; --fsize:13px;
+      --shadow:0 8px 32px rgba(0,0,0,0.75); --bar-color:#818cf8;
+    }
+
+    /* JS 1995 — Netscape 2, raw HTML, hard Win95 gray */
+    .t-js-1995 {
+      --bg:#888888; --chrome-bg:#c0c0c0; --chrome-hi:#ffffff; --chrome-lo:#808080;
+      --titlebar-bg:#000080; --titlebar-fg:#ffffff;
+      --toolbar-bg:#c0c0c0; --toolbar-border:1px solid #808080;
+      --addr-bg:#c0c0c0; --addr-input-bg:#ffffff; --addr-input-fg:#000000;
+      --btn-bg:#c0c0c0; --btn-fg:#000000;
+      --tab-active-bg:#c0c0c0; --tab-active-fg:#000000;
+      --tab-idle-bg:#a8a8a8; --tab-hover-bg:#d4d4d4;
+      --content-bg:#c0c0c0; --status-bg:#c0c0c0; --status-fg:#000000;
+      --card-h2:#0000ff;
+      --shell-r:0px; --btn-r:0px; --addr-r:0px; --tab-r:0px 0px 0 0;
+      --font:"Arial",Helvetica,sans-serif; --fsize:12px;
+      --shadow:3px 3px 0 #000000; --bar-color:#000080;
+    }
+
+    /* JS 1999 — CSS1, Netscape 4 / IE4, navy */
+    .t-js-1999 {
+      --bg:#999999; --chrome-bg:#cccccc; --chrome-hi:#ffffff; --chrome-lo:#888888;
+      --titlebar-bg:#000066; --titlebar-fg:#ffffff;
+      --toolbar-bg:#cccccc; --toolbar-border:1px solid #888888;
+      --addr-bg:#cccccc; --addr-input-bg:#ffffff; --addr-input-fg:#000000;
+      --btn-bg:#cccccc; --btn-fg:#000000;
+      --tab-active-bg:#cccccc; --tab-active-fg:#000000;
+      --tab-idle-bg:#aaaaaa; --tab-hover-bg:#d8d8d8;
+      --content-bg:#cccccc; --status-bg:#cccccc; --status-fg:#000000;
+      --card-h2:#0000cc;
+      --shell-r:0px; --btn-r:0px; --addr-r:0px; --tab-r:1px 1px 0 0;
+      --font:"Arial",Helvetica,sans-serif; --fsize:13px;
+      --shadow:2px 2px 0 #000000; --bar-color:#000066;
+    }
+
+    /* JS 2009 — CSS 2.1, IE8/FF3, blue corporate */
+    .t-js-2009 {
+      --bg:#e0e4e8; --chrome-bg:#e4e8ec; --chrome-hi:#f8f8f8; --chrome-lo:#a0aab4;
+      --titlebar-bg:#1a3a5c; --titlebar-fg:#ffffff;
+      --toolbar-bg:#dce3ea; --toolbar-border:1px solid #a0aab4;
+      --addr-bg:#e4e8ec; --addr-input-bg:#ffffff; --addr-input-fg:#222222;
+      --btn-bg:#dce3ea; --btn-fg:#1a3a5c;
+      --tab-active-bg:#f0f4f8; --tab-active-fg:#1a3a5c;
+      --tab-idle-bg:#c8d0d8; --tab-hover-bg:#dce3ea;
+      --content-bg:#e8e8e8; --status-bg:#dce3ea; --status-fg:#333333;
+      --card-h2:#1a3a5c;
+      --shell-r:0px; --btn-r:2px; --addr-r:2px; --tab-r:2px 2px 0 0;
+      --font:"Verdana","Tahoma",sans-serif; --fsize:12px;
+      --shadow:0 1px 5px rgba(0,0,0,0.3); --bar-color:#2c5f8a;
+    }
+
+    /* JS 2015 — CSS3/Flexbox, Material blue, flat design */
+    .t-js-2015 {
+      --bg:#f0f2f5; --chrome-bg:#fafafa; --chrome-hi:#ffffff; --chrome-lo:#e0e0e0;
+      --titlebar-bg:#1565c0; --titlebar-fg:#ffffff;
+      --toolbar-bg:#fafafa; --toolbar-border:1px solid #e0e0e0;
+      --addr-bg:#fafafa; --addr-input-bg:#ffffff; --addr-input-fg:#222222;
+      --btn-bg:#f0f0f0; --btn-fg:#1565c0;
+      --tab-active-bg:#ffffff; --tab-active-fg:#1565c0;
+      --tab-idle-bg:#e8eaf0; --tab-hover-bg:#f4f4f8;
+      --content-bg:#f5f5f5; --status-bg:#1565c0; --status-fg:#ffffff;
+      --card-h2:#1565c0;
+      --shell-r:4px; --btn-r:4px; --addr-r:16px; --tab-r:5px 5px 0 0;
+      --font:"Segoe UI","Helvetica Neue",sans-serif; --fsize:13px;
+      --shadow:0 2px 8px rgba(0,0,0,0.18); --bar-color:#1976d2;
+    }
+
+    /* JS 2025 — Modern dark, CSS Grid/variables, indigo-violet */
+    .t-js-2025 {
+      --bg:#0f1117; --chrome-bg:#1a1d2e; --chrome-hi:#6366f1; --chrome-lo:#2e3250;
+      --titlebar-bg:#212438; --titlebar-fg:#e8eaf0;
+      --toolbar-bg:#212438; --toolbar-border:1px solid #2e3250;
+      --addr-bg:#212438; --addr-input-bg:#0f1117; --addr-input-fg:#e8eaf0;
+      --btn-bg:#6366f1; --btn-fg:#ffffff;
+      --tab-active-bg:#1a1d2e; --tab-active-fg:#818cf8;
+      --tab-idle-bg:#212438; --tab-hover-bg:#2e3250;
+      --content-bg:#1a1d2e; --status-bg:#212438; --status-fg:#9499b8;
+      --card-h2:#818cf8;
+      --shell-r:12px; --btn-r:20px; --addr-r:20px; --tab-r:8px 8px 0 0;
+      --font:"Segoe UI",system-ui,sans-serif; --fsize:13px;
+      --shadow:0 8px 40px rgba(0,0,0,0.8); --bar-color:#6366f1;
     }
   </style>
 </head>
-<body>
-  <div class="browser">
+<body class="t-home">
 
-    <!-- Title bar -->
-    <div class="titlebar">
-      <span>Web History Hub – Netscape Navigator</span>
-      <div class="titlebar-btns">
-        <span>_</span>
-        <span>□</span>
-        <span>✕</span>
-      </div>
+<div class="shell">
+
+  <!-- Title bar -->
+  <div class="titlebar">
+    <div class="title-left">
+      <span class="title-dot"></span>
+      <span id="btitle">Web History Hub - Netscape Navigator</span>
     </div>
-
-    <!-- Menu bar 
-    <div class="menubar">
-      <span>File</span>
-      <span>Edit</span>
-      <span>View</span>
-      <span>Go</span>
-      <span>Bookmarks</span>
-      <span>Help</span>
-    </div> -->
-
-    <!-- Address bar -->
-    <div class="addressbar">
-      <label>Address:</label>
-      <input type="text" value="https://historyofwd.netlify.app/" readonly>
-      <button class="go-btn">Go</button>
+    <div class="winbtns">
+      <span class="winbtn">_</span>
+      <span class="winbtn">[]</span>
+      <span class="winbtn">X</span>
     </div>
+  </div>
 
-    <!-- Page content -->
-    <div class="content">
-      <div class="page-title">Web History Hub</div>
-      <p class="page-desc">
+  <!-- Menu bar -->
+  <div class="menubar">
+    <span class="mitem">File</span>
+    <span class="mitem">Edit</span>
+    <span class="mitem">View</span>
+    <span class="mitem">Go</span>
+    <span class="mitem">Bookmarks</span>
+    <span class="mitem">Help</span>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button class="tbtn" onclick="navBack()">Back</button>
+    <button class="tbtn" onclick="navFwd()">Forward</button>
+    <div class="tsep"></div>
+    <button class="tbtn" onclick="reloadFr()">Reload</button>
+    <button class="tbtn" onclick="goHome()">Home</button>
+  </div>
+
+  <!-- Address bar -->
+  <div class="addrbar">
+    <span class="addr-label">Address:</span>
+    <input class="addr-input" id="addr" type="text" value="https://historyofwd.netlify.app/" readonly>
+    <button class="go-btn">Go</button>
+  </div>
+
+  <!-- Section tabs -->
+  <div class="stabs">
+    <div class="stab active" id="st-home" onclick="showSec('home')">Hub</div>
+    <div class="stab"        id="st-html" onclick="showSec('html')">HTML History</div>
+    <div class="stab"        id="st-css"  onclick="showSec('css')">CSS History</div>
+    <div class="stab"        id="st-js"   onclick="showSec('js')">JavaScript History</div>
+  </div>
+
+  <!-- Era sub-tabs -->
+  <div class="etabs" id="etabs" style="display:none"></div>
+
+  <!-- Viewport -->
+  <div class="viewport">
+    <div class="progbar" id="pbar"></div>
+
+    <!-- Hub home -->
+    <div class="hub-home" id="hubhome">
+      <div class="hub-title">Web History Hub</div>
+      <p class="hub-desc">
         A complete historical archive of the three core technologies of the World Wide Web:
         <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>.
-        The CSS history section is currently live. HTML and JavaScript are available below.
+        Each section uses only the technologies available during the era it covers.
+        The browser chrome above morphs gradually as you travel through time.
       </p>
-
-      <div class="inset">
-        <div class="cards-row">
-
-          <div class="card">
+      <div class="hub-inset">
+        <div class="hub-cards">
+          <div class="hub-card">
             <h2>HTML History</h2>
-            <p>Explore the origins of HTML, from Tim Berners-Lee's first proposal in 1989 to HTML5 and the living standard maintained by WHATWG today.</p>
-            <a href="/html/htmlhome.html">Open HTML Section</a>
+            <p>Explore the origins of HTML from Tim Berners-Lee's first proposal in 1989 through HTML5 and the Living Standard. Era pages use HTML only — no CSS, no JavaScript.</p>
+            <span class="hub-btn" onclick="showSec('html')">Open HTML Section</span>
           </div>
-
-          <div class="card">
+          <div class="hub-card">
             <h2>CSS History</h2>
-            <p>From Håkon Wium Lie's 1994 proposal to modern layout systems like Grid and Flexbox — broken into real historical eras.</p>
-            <a href="/css/csshome.html">Open CSS Section</a>
+            <p>From Hakon Wium Lie's 1994 proposal to modern Grid and Flexbox. Each era page uses only the HTML and CSS available at that time — no JavaScript.</p>
+            <span class="hub-btn" onclick="showSec('css')">Open CSS Section</span>
           </div>
-
-          <div class="card">
+          <div class="hub-card">
             <h2>JavaScript History</h2>
-            <p>From Brendan Eich's ten-day creation at Netscape in 1995 to the annual ECMAScript release cycle managed by TC39 today.</p>
-            <a href="javascript/jsindex.html">Open JavaScript Section</a>
+            <p>From Brendan Eich's ten-day creation at Netscape in 1995 to the annual ECMAScript release cycle managed by TC39. Each era uses HTML, CSS, and JavaScript from that period.</p>
+            <span class="hub-btn" onclick="showSec('js')">Open JavaScript Section</span>
           </div>
-
         </div>
       </div>
-
-      <div class="footer-note">
-        <strong>A note on design:</strong> Each section of this archive is intentionally built using only the HTML, CSS, and JavaScript available during the era it covers. Earlier eras have no styling or primitive layouts; later eras use modern techniques. The visual differences between sections are not errors — they are the historical record. This hub uses a neutral 1990s browser aesthetic as a wrapper for all three sections.
+      <div class="hub-note">
+        <strong>Note on design:</strong> Each section is built using only the technologies available during the era it covers. Earlier eras have no styling or primitive layouts; later eras use modern techniques. The visual differences are not errors — they are the historical record. The browser chrome above morphs gradually with each era to show how browsers themselves changed over time.
       </div>
     </div>
 
-    <!-- Status bar -->
-    <div class="statusbar">
-      <div class="status-panel">Document: Done</div>
-      <div class="status-panel narrow">historyofwd.netlify.app</div>
-    </div>
-
+    <!-- Content iframe -->
+    <iframe class="cframe" id="cfr" title="Era content"
+            sandbox="allow-scripts allow-same-origin"
+            style="display:none"></iframe>
   </div>
+
+  <!-- Status bar -->
+  <div class="statusbar">
+    <div class="spanel"        id="sleft">Document: Done</div>
+    <div class="spanel narrow" id="sright">historyofwd.netlify.app</div>
+  </div>
+
+</div>
+
+<div class="era-badge" id="ebadge">Hub</div>
+
+<script>
+  /* ================================================================
+     SECTION / ERA DATA
+     HTML pages: HTML only (no CSS, no JS inside those files)
+     CSS pages:  HTML + era CSS only (no JS inside those files)
+     JS pages:   HTML + era CSS + era JS
+     The morphing chrome lives entirely in THIS hub page and never
+     touches the era content files.
+  ================================================================ */
+  var D = {
+    html: {
+      eras: [
+        { label:'1990-1994',    url:'html/era1-1990-1994.html',  theme:'t-html-1990', year:'1990-1994',   brw:'NCSA Mosaic 1.0' },
+        { label:'1994-1997',    url:'html/era2-1994-1997.html',  theme:'t-html-1994', year:'1994-1997',   brw:'Netscape Navigator 2' },
+        { label:'1997-2003',    url:'html/era3-1997-2003.html',  theme:'t-html-1997', year:'1997-2003',   brw:'Internet Explorer 5' },
+        { label:'2004-2013',    url:'html/era4-2004-2013.html',  theme:'t-html-2004', year:'2004-2013',   brw:'Firefox 3' },
+        { label:'2014-Present', url:'html/era5-2014-now.html',   theme:'t-html-2014', year:'2014-Now',    brw:'Chrome 100' },
+        { label:'Home',         url:'html/htmlhome.html',        theme:'t-html-1994', year:'1994',        brw:'Netscape Navigator' },
+        { label:'Glossary',     url:'html/glossary.html',        theme:'t-html-2004', year:'2004',        brw:'Firefox' },
+        { label:'Bibliography', url:'html/bibliography.html',    theme:'t-html-2014', year:'2014',        brw:'Chrome' },
+        { label:'Contributors', url:'html/contributors.html',    theme:'t-html-2014', year:'2014',        brw:'Chrome' },
+        { label:'Discussion',   url:'html/discussion.html',      theme:'t-html-2014', year:'2014',        brw:'Chrome' }
+      ]
+    },
+    css: {
+      eras: [
+        { label:'1994-1996',    url:'css/era-1-1994-1996.html', theme:'t-css-1994', year:'1994-1996',  brw:'Mosaic / early Netscape' },
+        { label:'1996-1998',    url:'css/era-2-1996-1998.html', theme:'t-css-1996', year:'1996-1998',  brw:'Netscape Navigator 3' },
+        { label:'1998-2004',    url:'css/era-3-1998-2004.html', theme:'t-css-1998', year:'1998-2004',  brw:'Internet Explorer 5.5' },
+        { label:'2004-2011',    url:'css/era-4-2004-2011.html', theme:'t-css-2004', year:'2004-2011',  brw:'Internet Explorer 7' },
+        { label:'2011-2017',    url:'css/era-5-2011-2017.html', theme:'t-css-2011', year:'2011-2017',  brw:'Chrome 30' },
+        { label:'2017-2026',    url:'css/era-6-2017-2026.html', theme:'t-css-2017', year:'2017-2026',  brw:'Chrome 120' },
+        { label:'Home',         url:'css/csshome.html',         theme:'t-css-1994', year:'1994',       brw:'Netscape' },
+        { label:'Glossary',     url:'css/glossary.html',        theme:'t-css-2017', year:'2017',       brw:'Chrome 120' },
+        { label:'Bibliography', url:'css/bibliography.html',    theme:'t-css-2017', year:'2017',       brw:'Chrome 120' },
+        { label:'Contributors', url:'css/contributors.html',    theme:'t-css-2017', year:'2017',       brw:'Chrome 120' },
+        { label:'Discussion',   url:'css/discussion.html',      theme:'t-css-2017', year:'2017',       brw:'Chrome 120' }
+      ]
+    },
+    js: {
+      eras: [
+        { label:'1995',         url:'javascript/1995.html',            theme:'t-js-1995', year:'1995', brw:'Netscape Navigator 2.0' },
+        { label:'1999',         url:'javascript/1999.html',            theme:'t-js-1999', year:'1999', brw:'Netscape Navigator 4' },
+        { label:'2009',         url:'javascript/2009.html',            theme:'t-js-2009', year:'2009', brw:'Internet Explorer 8' },
+        { label:'2015',         url:'javascript/2015.html',            theme:'t-js-2015', year:'2015', brw:'Chrome 46' },
+        { label:'2025',         url:'javascript/2025.html',            theme:'t-js-2025', year:'2025', brw:'Chrome 130' },
+        { label:'Home',         url:'javascript/jsindex.html',         theme:'t-js-2025', year:'2025', brw:'Chrome 130' },
+        { label:'Glossary',     url:'javascript/glossary.html',        theme:'t-js-2025', year:'2025', brw:'Chrome 130' },
+        { label:'Bibliography', url:'javascript/bibliography.html',    theme:'t-js-2025', year:'2025', brw:'Chrome 130' },
+        { label:'Contributors', url:'javascript/contributors.html',    theme:'t-js-2025', year:'2025', brw:'Chrome 130' },
+        { label:'Discussion',   url:'javascript/discussion.html',      theme:'t-js-2025', year:'2025', brw:'Chrome 130' }
+      ]
+    }
+  };
+
+  var ALL_T = [
+    't-home',
+    't-html-1990','t-html-1994','t-html-1997','t-html-2004','t-html-2014',
+    't-css-1994','t-css-1996','t-css-1998','t-css-2004','t-css-2011','t-css-2017',
+    't-js-1995','t-js-1999','t-js-2009','t-js-2015','t-js-2025'
+  ];
+
+  /* State */
+  var curSec = 'home';
+  var curIdx = -1;
+  var histStack = [];
+  var fwdStack  = [];
+
+  /* DOM */
+  var bd      = document.body;
+  var fr      = document.getElementById('cfr');
+  var hh      = document.getElementById('hubhome');
+  var etabs   = document.getElementById('etabs');
+  var addr    = document.getElementById('addr');
+  var pbar    = document.getElementById('pbar');
+  var sleft   = document.getElementById('sleft');
+  var sright  = document.getElementById('sright');
+  var ebadge  = document.getElementById('ebadge');
+  var btitle  = document.getElementById('btitle');
+
+  /* ---- Theme ---- */
+  function applyT(theme, year, brw) {
+    ALL_T.forEach(function(t){ bd.classList.remove(t); });
+    bd.classList.add(theme);
+    ebadge.textContent = year;
+    btitle.textContent = 'Web History Hub - ' + brw;
+  }
+
+  /* ---- Progress bar ---- */
+  var ptimer;
+  function startP(url) {
+    clearTimeout(ptimer);
+    pbar.style.transition = 'none';
+    pbar.style.width = '0%';
+    pbar.style.opacity = '1';
+    setTimeout(function(){
+      pbar.style.transition = 'width 0.5s ease';
+      pbar.style.width = '72%';
+    }, 16);
+    sleft.textContent = 'Loading ' + url;
+  }
+  function endP() {
+    pbar.style.transition = 'width 0.3s ease';
+    pbar.style.width = '100%';
+    ptimer = setTimeout(function(){
+      pbar.style.transition = 'opacity 0.4s ease';
+      pbar.style.opacity = '0';
+      sleft.textContent = 'Document: Done';
+      setTimeout(function(){ pbar.style.width='0%'; pbar.style.opacity='1'; }, 450);
+    }, 300);
+  }
+
+  /* ---- Navigate ---- */
+  function nav(sec, idx, push) {
+    if (push === undefined) push = true;
+    if (push) {
+      histStack.push({ sec: curSec, idx: curIdx });
+      fwdStack = [];
+    }
+    curSec = sec;
+    curIdx = idx;
+    var e = D[sec].eras[idx];
+    applyT(e.theme, e.year, e.brw);
+    addr.value = 'https://historyofwd.netlify.app/' + e.url;
+    sright.textContent = 'historyofwd.netlify.app';
+    startP(e.url);
+    hh.style.display = 'none';
+    fr.style.display = 'block';
+    fr.onload = endP;
+    fr.src = e.url;
+  }
+
+  /* ---- Show section ---- */
+  function showSec(sec) {
+    ['home','html','css','js'].forEach(function(s){
+      document.getElementById('st-'+s).classList.toggle('active', s===sec);
+    });
+    if (sec === 'home') {
+      curSec = 'home'; curIdx = -1;
+      etabs.style.display = 'none';
+      etabs.innerHTML = '';
+      fr.style.display = 'none';
+      hh.style.display = 'block';
+      applyT('t-home', 'Hub', 'Netscape Navigator');
+      addr.value = 'https://historyofwd.netlify.app/';
+      sleft.textContent = 'Document: Done';
+      sright.textContent = 'historyofwd.netlify.app';
+      return;
+    }
+    buildTabs(sec);
+    pickEra(sec, 0);
+  }
+
+  /* ---- Build era tabs ---- */
+  function buildTabs(sec) {
+    ['home','html','css','js'].forEach(function(s){
+      document.getElementById('st-'+s).classList.toggle('active', s===sec);
+    });
+    etabs.style.display = 'flex';
+    etabs.innerHTML = '';
+    D[sec].eras.forEach(function(e, i){
+      var t = document.createElement('div');
+      t.className = 'etab';
+      t.textContent = e.label;
+      t.onclick = (function(ii){ return function(){ pickEra(sec, ii); }; })(i);
+      etabs.appendChild(t);
+    });
+  }
+
+  function pickEra(sec, idx) {
+    var ts = etabs.querySelectorAll('.etab');
+    ts.forEach(function(t,i){ t.classList.toggle('active', i===idx); });
+    nav(sec, idx);
+  }
+
+  /* ---- Back / Forward / Reload / Home ---- */
+  function navBack() {
+    if (!histStack.length) return;
+    var prev = histStack.pop();
+    fwdStack.push({ sec: curSec, idx: curIdx });
+    if (prev.sec === 'home') { showSec('home'); return; }
+    buildTabs(prev.sec);
+    nav(prev.sec, prev.idx, false);
+    syncTabs(prev.idx);
+  }
+  function navFwd() {
+    if (!fwdStack.length) return;
+    var nxt = fwdStack.pop();
+    histStack.push({ sec: curSec, idx: curIdx });
+    if (nxt.sec === 'home') { showSec('home'); return; }
+    buildTabs(nxt.sec);
+    nav(nxt.sec, nxt.idx, false);
+    syncTabs(nxt.idx);
+  }
+  function syncTabs(idx) {
+    var ts = etabs.querySelectorAll('.etab');
+    ts.forEach(function(t,i){ t.classList.toggle('active', i===idx); });
+  }
+  function reloadFr() {
+    if (fr.style.display === 'none') return;
+    startP(fr.src);
+    fr.onload = endP;
+    fr.src = fr.src;
+  }
+  function goHome() { showSec('home'); }
+</script>
+
 </body>
 </html>

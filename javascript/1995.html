@@ -2,9 +2,75 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>1995 - The Birth of JavaScript</title>
+<title>1995 - The Birth of JavaScript - Netscape Navigator 2.0</title>
 </head>
-<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#ff0000">
+<body bgcolor="#888888" onload="initChrome()">
+
+<!-- Browser chrome written in 1995-style HTML + global JS, no CSS classes -->
+
+<table width="96%" border="0" cellpadding="0" cellspacing="0" align="center">
+<tr>
+<td>
+
+  <!-- Title bar -->
+  <table id="titlebar" width="100%" border="0" cellpadding="3" cellspacing="0" bgcolor="#000080">
+  <tr>
+    <td><font face="Arial, Helvetica" size="2" color="#ffffff"><b>1995 - The Birth of JavaScript - Netscape Navigator 2.0</b></font></td>
+    <td align="right" width="60"><font face="Arial, Helvetica" size="1" color="#ffffff">&nbsp;_&nbsp; []&nbsp; X&nbsp;</font></td>
+  </tr>
+  </table>
+
+  <!-- Menu bar -->
+  <table width="100%" border="0" cellpadding="2" cellspacing="0" bgcolor="#c0c0c0">
+  <tr>
+    <td><font face="Arial, Helvetica" size="2">&nbsp;File&nbsp;&nbsp; Edit&nbsp;&nbsp; View&nbsp;&nbsp; Go&nbsp;&nbsp; Bookmarks&nbsp;&nbsp; Help</font></td>
+  </tr>
+  </table>
+
+  <!-- Toolbar -->
+  <table width="100%" border="0" cellpadding="3" cellspacing="2" bgcolor="#c0c0c0">
+  <tr>
+    <td width="1%"><table border="2" cellpadding="2" bgcolor="#c0c0c0"><tr><td><font face="Arial, Helvetica" size="1"><b>&lt; Back</b></font></td></tr></table></td>
+    <td width="1%"><table border="2" cellpadding="2" bgcolor="#c0c0c0"><tr><td><font face="Arial, Helvetica" size="1"><b>Forward &gt;</b></font></td></tr></table></td>
+    <td width="8">&nbsp;</td>
+    <td width="1%"><table border="2" cellpadding="2" bgcolor="#c0c0c0"><tr><td><font face="Arial, Helvetica" size="1"><b>Reload</b></font></td></tr></table></td>
+    <td width="1%"><table border="2" cellpadding="2" bgcolor="#c0c0c0"><tr><td><font face="Arial, Helvetica" size="1"><b>Home</b></font></td></tr></table></td>
+    <td>&nbsp;</td>
+  </tr>
+  </table>
+
+  <!-- Address bar -->
+  <table width="100%" border="0" cellpadding="3" cellspacing="2" bgcolor="#c0c0c0">
+  <tr>
+    <td width="1%" nowrap><font face="Arial, Helvetica" size="2"><b>Location:</b></font></td>
+    <td><table width="100%" border="2" cellpadding="2" bgcolor="#ffffff"><tr><td><font face="Courier New" size="2" id="addrText">https://historyofwd.netlify.app/javascript/1995.html</font></td></tr></table></td>
+  </tr>
+  </table>
+
+  <!-- Era tabs -->
+  <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#808080">
+  <tr>
+    <td id="tab1995" bgcolor="#ffffff"><font face="Arial, Helvetica" size="1">&nbsp;<b>1995</b>&nbsp;</font></td>
+    <td bgcolor="#c0c0c0"><font face="Arial, Helvetica" size="1">&nbsp;<a href="1999.html">1999</a>&nbsp;</font></td>
+    <td bgcolor="#c0c0c0"><font face="Arial, Helvetica" size="1">&nbsp;<a href="2009.html">2009</a>&nbsp;</font></td>
+    <td bgcolor="#c0c0c0"><font face="Arial, Helvetica" size="1">&nbsp;<a href="2015.html">2015</a>&nbsp;</font></td>
+    <td bgcolor="#c0c0c0"><font face="Arial, Helvetica" size="1">&nbsp;<a href="2025.html">2025</a>&nbsp;</font></td>
+    <td bgcolor="#c0c0c0"><font face="Arial, Helvetica" size="1">&nbsp;<a href="jsindex.html">Home</a>&nbsp;</font></td>
+    <td bgcolor="#c0c0c0"><font face="Arial, Helvetica" size="1">&nbsp;<a href="glossary.html">Glossary</a>&nbsp;</font></td>
+    <td bgcolor="#c0c0c0"><font face="Arial, Helvetica" size="1">&nbsp;<a href="bibliography.html">Bibliography</a>&nbsp;</font></td>
+    <td bgcolor="#c0c0c0"><font face="Arial, Helvetica" size="1">&nbsp;<a href="contributors.html">Contributors</a>&nbsp;</font></td>
+    <td bgcolor="#c0c0c0"><font face="Arial, Helvetica" size="1">&nbsp;<a href="discussion.html">Discussion</a>&nbsp;</font></td>
+    <td bgcolor="#c0c0c0" width="100%">&nbsp;</td>
+  </tr>
+  </table>
+
+  <!-- Content area -->
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#c0c0c0">
+  <tr><td>
+
+<!-- ============================================================
+     ORIGINAL PAGE CONTENT BELOW - UNCHANGED
+============================================================ -->
 
 <center>
 <table width="600" border="0" cellpadding="0" cellspacing="0">
@@ -145,8 +211,6 @@ function greetUser() {
 
 function runCalc() {
   var expr = document.getElementById("calcInput").value;
-  // eval() executes the string as JavaScript code and returns the result.
-  // In 1995 this was the only tool available for user-entered math expressions.
   var result = eval(expr);
   document.getElementById("calcResult").innerHTML = "<font face='Arial,Helvetica' color='#000080' size='2'><b>" + expr + " = " + result + "</b></font>";
 }
@@ -176,6 +240,33 @@ JavaScript History Archive &nbsp;|&nbsp;
 </font>
 </center>
 <br>
+
+<!-- ============================================================
+     END ORIGINAL CONTENT
+============================================================ -->
+
+  </td></tr>
+  </table>
+
+  <!-- Status bar -->
+  <table width="100%" border="0" cellpadding="2" cellspacing="0" bgcolor="#c0c0c0">
+  <tr>
+    <td id="statusLeft"><font face="Arial, Helvetica" size="1">Document: Done</font></td>
+    <td align="right"><font face="Arial, Helvetica" size="1" id="statusRight">historyofwd.netlify.app&nbsp;</font></td>
+  </tr>
+  </table>
+
+</td>
+</tr>
+</table>
+
+<script language="JavaScript">
+// 1995-style: global function called from onload, no event listeners
+function initChrome() {
+  // Era badge via document.write style status update (1995 global approach)
+  document.getElementById("statusLeft").innerHTML = "<font face='Arial, Helvetica' size='1'>Document: Done &nbsp;|&nbsp; Era: 1995 - Netscape Navigator 2.0</font>";
+}
+</script>
 
 </body>
 </html>

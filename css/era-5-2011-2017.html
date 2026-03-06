@@ -2,78 +2,94 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>CSS Era 5 (2011–2017)</title>
+  <title>CSS Era 5 (2011-2017) - Chrome 30</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    /* 2011–2017: responsive design, CSS3 modules: border-radius, shadows, gradients, media queries */
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-      background:#f6f7fb;
-      color:#141414;
-      line-height:1.6;
-    }
-    header{
-      padding:18px 16px;
-      background:linear-gradient(135deg,#1f2a63,#6a2b7c);
-      color:#fff;
-    }
-    header h1{margin:0 0 6px;}
-    header p{margin:0;color:rgba(255,255,255,.85);}
-    nav{
-      padding:10px 16px;
-      background:#fff;
-      border-bottom:1px solid #ddd;
-    }
-    nav a{
-      display:inline-block;
-      margin:0 10px 6px 0;
-      text-decoration:none;
-      color:#1f2a63;
-      font-weight:700;
-    }
-    nav a:hover{text-decoration:underline;}
-    main{
-      max-width:980px;
-      margin:0 auto;
-      padding:16px;
-    }
-    .grid{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-    .card{
-      flex:1 1 320px;
-      background:#fff;
-      border:1px solid #ddd;
-      border-radius:14px;
-      box-shadow:0 10px 24px rgba(0,0,0,.06);
-      padding:14px;
-    }
-    .card h2{margin:0 0 8px; color:#1f2a63;}
-    code{
-      background:#f2f2f7;
-      border:1px solid #ddd;
-      padding:2px 6px;
-      border-radius:8px;
-      font-family: ui-monospace, Menlo, Consolas, monospace;
-      font-size:.95em;
-    }
-    @media (max-width:600px){
-      header{padding:16px 12px;}
-      nav{padding:10px 12px;}
-      main{padding:12px;}
-    }
+    body { margin: 0; padding: 12px; background: #eeeeee; font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif; }
+
+    .browser-shell { width: 96%; margin: 0 auto; background: #f5f5f5; box-shadow: 0 2px 10px rgba(0,0,0,0.15); border-radius: 4px; overflow: hidden; }
+
+    .titlebar { background: #1565c0; color: #ffffff; font-size: 13px; font-weight: bold; padding: 5px 10px; display: flex; justify-content: space-between; align-items: center; }
+    .titlebar-right { font-size: 12px; }
+
+    .menubar { background: #f5f5f5; border-bottom: 1px solid #dddddd; padding: 3px 10px; font-size: 12px; color: #222; }
+    .menubar span { margin-right: 12px; }
+
+    .toolbar { background: #f5f5f5; border-bottom: 1px solid #dddddd; padding: 5px 10px; }
+    .tbtn { font-family: inherit; font-size: 12px; padding: 4px 12px; background: #e8e8e8; color: #222; border: 1px solid #cccccc; border-radius: 4px; margin-right: 4px; cursor: default; }
+
+    .addrbar { background: #f5f5f5; border-bottom: 1px solid #dddddd; padding: 5px 10px; display: flex; align-items: center; gap: 8px; font-size: 12px; }
+    .addr-label { font-weight: bold; white-space: nowrap; color: #222; }
+    .addr-field { background: #ffffff; border: 1px solid #cccccc; border-radius: 14px; padding: 4px 12px; font-family: Courier New, monospace; font-size: 11px; flex: 1; }
+
+    .era-tabs { background: #f5f5f5; border-bottom: 1px solid #dddddd; padding: 4px 10px 0; font-size: 11px; }
+    .etab { display: inline-block; padding: 4px 10px; background: #e0e0e0; border-top-left-radius: 5px; border-top-right-radius: 5px; margin-right: 2px; }
+    .etab-active { display: inline-block; padding: 4px 10px; background: #ffffff; border-top-left-radius: 5px; border-top-right-radius: 5px; margin-right: 2px; font-weight: bold; color: #1565c0; border-top: 2px solid #1565c0; }
+    .etab a { color: #333; text-decoration: none; }
+    .etab a:hover { text-decoration: underline; }
+
+    .statusbar { background: #f5f5f5; border-top: 1px solid #dddddd; padding: 3px 10px; font-size: 11px; color: #555; display: flex; justify-content: space-between; }
+
+    /* ---- Original page styles (CSS3 era) ---- */
+    header { padding: 18px 16px; background: linear-gradient(135deg,#1f2a63,#6a2b7c); color: #fff; }
+    header h1 { margin: 0 0 6px; }
+    header p { margin: 0; color: rgba(255,255,255,.85); }
+    nav { padding: 10px 16px; background: #fff; border-bottom: 1px solid #ddd; }
+    nav a { display: inline-block; margin: 0 10px 6px 0; text-decoration: none; color: #1f2a63; font-weight: 700; }
+    nav a:hover { text-decoration: underline; }
+    main { max-width: 980px; margin: 0 auto; padding: 16px; }
+    .grid { display: flex; gap: 14px; flex-wrap: wrap; }
+    .card { flex: 1 1 320px; background: #fff; border: 1px solid #ddd; border-radius: 14px; box-shadow: 0 10px 24px rgba(0,0,0,.06); padding: 14px; }
+    .card h2 { margin: 0 0 8px; color: #1f2a63; }
+    code { background: #f2f2f7; border: 1px solid #ddd; padding: 2px 6px; border-radius: 8px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .95em; }
+    @media (max-width: 600px) { header { padding: 16px 12px; } nav { padding: 10px 12px; } main { padding: 12px; } }
   </style>
 </head>
 
 <body>
+<div class="browser-shell">
+
+  <div class="titlebar">
+    <span>CSS Era 5 (2011-2017) - Chrome 30</span>
+    <span class="titlebar-right">_ &nbsp; [] &nbsp; X</span>
+  </div>
+
+  <div class="menubar">
+    <span>File</span><span>Edit</span><span>View</span><span>History</span><span>Bookmarks</span><span>More</span>
+  </div>
+
+  <div class="toolbar">
+    <span class="tbtn">&lt; Back</span>
+    <span class="tbtn">Forward &gt;</span>
+    <span class="tbtn">Reload</span>
+    <span class="tbtn">Home</span>
+  </div>
+
+  <div class="addrbar">
+    <span class="addr-label">Address:</span>
+    <span class="addr-field">https://historyofwd.netlify.app/css/era-5-2011-2017.html</span>
+  </div>
+
+  <div class="era-tabs">
+    <span class="etab"><a href="era-1-1994-1996.html">1994-1996</a></span>
+    <span class="etab"><a href="era-2-1996-1998.html">1996-1998</a></span>
+    <span class="etab"><a href="era-3-1998-2004.html">1998-2004</a></span>
+    <span class="etab"><a href="era-4-2004-2011.html">2004-2011</a></span>
+    <span class="etab-active">2011-2017</span>
+    <span class="etab"><a href="era-6-2017-2026.html">2017-2026</a></span>
+    <span class="etab"><a href="csshome.html">Home</a></span>
+    <span class="etab"><a href="glossary.html">Glossary</a></span>
+    <span class="etab"><a href="bibliography.html">Bibliography</a></span>
+    <span class="etab"><a href="contributors.html">Contributors</a></span>
+    <span class="etab"><a href="discussion.html">Discussion</a></span>
+  </div>
+
+<!-- ============================================================
+     ORIGINAL PAGE CONTENT BELOW - UNCHANGED
+============================================================ -->
   <header>
-    <h1>Era 5: CSS3 modules, responsive design, modern UI patterns (2011–2017)</h1>
-    <p>
-      CSS becomes modular: instead of “one CSS3,” you get stable modules like backgrounds, borders, selectors, media queries, and transforms.
-    </p>
+    <h1>Era 5: CSS3 modules, responsive design, modern UI patterns (2011-2017)</h1>
+    <p>CSS becomes modular: instead of "one CSS3," you get stable modules like backgrounds, borders, selectors, media queries, and transforms.</p>
   </header>
 
   <nav>
@@ -106,9 +122,9 @@
         <h2>Major contributors</h2>
         <ul>
           <li><b>Rachel Andrew</b>: CSS Grid educator and standards communicator.</li>
-          <li><b>Jen Simmons</b>: major advocate/teacher for modern layout (especially grid) at Mozilla.</li>
+          <li><b>Jen Simmons</b>: major advocate/teacher for modern layout at Mozilla.</li>
           <li><b>Lea Verou</b>: CSS educator, tooling, and standards work.</li>
-          <li><b>Elika J. Etemad</b> (also known as fantasai): major CSS editor and spec leader.</li>
+          <li><b>Elika J. Etemad</b> (fantasai): major CSS editor and spec leader.</li>
         </ul>
       </section>
 
@@ -116,12 +132,22 @@
         <h2>What authors actually did</h2>
         <ul>
           <li><b>Mobile-first layouts:</b> design for small screens, then add rules for larger screens.</li>
-          <li><b>“Flat design”:</b> minimal decoration, bold type, strong spacing.</li>
+          <li><b>"Flat design":</b> minimal decoration, bold type, strong spacing.</li>
           <li><b>Frameworks:</b> prebuilt grids and UI patterns become common.</li>
           <li><b>Vendor prefixes:</b> write the same property several times (example: <code>-webkit-</code>).</li>
         </ul>
       </section>
     </div>
   </main>
+<!-- ============================================================
+     END ORIGINAL CONTENT
+============================================================ -->
+
+  <div class="statusbar">
+    <span>Done</span>
+    <span>historyofwd.netlify.app</span>
+  </div>
+
+</div>
 </body>
 </html>

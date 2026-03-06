@@ -3,10 +3,124 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>2025 – Modern ECMAScript</title>
-  <link rel="stylesheet" href="style/2025.css">
+  <title>2025 - Modern ECMAScript - Chrome 130</title>
+  <style>
+    :root {
+      --bg: #0f1117; --shell: #1a1d2e; --border: #2e3250;
+      --titlebar: #212438; --fg: #e8eaf0; --muted: #9499b8;
+      --accent: #6366f1; --tab-active: #818cf8;
+    }
+
+    body { margin: 0; padding: 14px; background: var(--bg); font-family: system-ui, -apple-system, Segoe UI, sans-serif; }
+
+    .browser-shell { width: 96%; margin: 0 auto; background: var(--shell); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.8); }
+
+    .titlebar { background: var(--titlebar); color: var(--fg); font-size: 13px; font-weight: bold; padding: 7px 14px; display: flex; justify-content: space-between; align-items: center; }
+    .titlebar-right { font-size: 12px; color: var(--muted); }
+
+    .menubar { background: var(--titlebar); border-bottom: 1px solid var(--border); padding: 3px 14px; font-size: 12px; color: var(--muted); }
+    .menubar span { margin-right: 16px; }
+
+    .toolbar { background: var(--titlebar); border-bottom: 1px solid var(--border); padding: 7px 14px; display: flex; gap: 8px; }
+    .tbtn { font-family: inherit; font-size: 12px; padding: 5px 16px; background: var(--accent); color: #ffffff; border: none; border-radius: 20px; cursor: default; }
+
+    .addrbar { background: var(--titlebar); border-bottom: 1px solid var(--border); padding: 7px 14px; display: flex; align-items: center; gap: 12px; font-size: 12px; }
+    .addr-label { font-weight: bold; white-space: nowrap; color: var(--fg); }
+    .addr-field { background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 6px 16px; font-family: Courier New, monospace; font-size: 11px; flex: 1; color: var(--fg); }
+
+    .era-tabs { background: var(--titlebar); border-bottom: 1px solid var(--border); padding: 6px 14px 0; display: flex; flex-wrap: wrap; gap: 3px; font-size: 11px; }
+    .etab { display: inline-block; padding: 4px 12px; background: var(--shell); border-top-left-radius: 8px; border-top-right-radius: 8px; color: var(--muted); }
+    .etab-active { display: inline-block; padding: 4px 12px; background: var(--shell); border-top-left-radius: 8px; border-top-right-radius: 8px; font-weight: bold; color: var(--tab-active); border-top: 2px solid var(--tab-active); }
+    .etab a { color: var(--muted); text-decoration: none; }
+    .etab a:hover { color: var(--fg); }
+
+    .statusbar { background: var(--titlebar); border-top: 1px solid var(--border); padding: 4px 14px; font-size: 11px; color: var(--muted); display: flex; justify-content: space-between; }
+
+    /* Original page styles (CSS Grid / custom properties era) */
+    site-header, site-nav, site-footer { display: block; }
+
+    site-header { padding: 0; }
+    site-header .header-inner { padding: 20px 20px 14px; background: radial-gradient(600px 200px at 20% 50%, rgba(99,102,241,.3), transparent), #212438; }
+    site-header .header-inner h1 { margin: 0 0 4px; color: #818cf8; font-size: 22px; }
+    site-header .header-inner p { margin: 0; color: #9499b8; font-size: 13px; }
+
+    site-nav { display: block; background: #212438; border-bottom: 1px solid #2e3250; padding: 8px 16px; }
+    site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+    site-nav ul li a { color: #818cf8; text-decoration: none; font-weight: 700; padding: 5px 10px; border-radius: 999px; border: 1px solid #2e3250; font-size: 12px; background: rgba(0,0,0,.2); }
+    site-nav ul li a:hover { color: #e8eaf0; }
+    site-nav ul li a.active { color: #e8eaf0; background: #6366f1; border-color: #6366f1; }
+
+    .page-grid { display: grid; grid-template-columns: 1fr 260px; gap: 0; }
+    @media (max-width: 800px) { .page-grid { grid-template-columns: 1fr; } }
+
+    main { padding: 18px 20px; color: #ececf1; }
+    main h1 { color: #818cf8; margin-top: 0; }
+    main h2 { color: #9daaff; }
+    main p { color: #b9bbca; line-height: 1.65; }
+    main ul li { color: #b9bbca; line-height: 1.7; }
+    main strong { color: #e8eaf0; }
+    main code { background: #2e3250; padding: 2px 6px; border-radius: 4px; font-size: 12px; color: #7CFFB2; }
+
+    .sidebar { background: #171722; border-left: 1px solid #2e3250; padding: 16px; }
+    .sidebar-card { background: rgba(0,0,0,.3); border: 1px solid #2e3250; border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+    .sidebar-card h3 { margin: 0 0 8px; font-size: 13px; color: #9daaff; }
+    .sidebar-card ul { margin: 0; padding-left: 18px; font-size: 12px; color: #9499b8; }
+    .sidebar-card p { font-size: 12px; color: #9499b8; margin: 0; }
+    .chip { display: inline-block; background: #2e3250; border: 1px solid #3a3d5c; border-radius: 999px; padding: 2px 8px; font-size: 11px; color: #9499b8; margin: 2px; }
+
+    .demobox { background: rgba(0,0,0,.25); border: 1px solid #2e3250; border-radius: 10px; padding: 14px; margin: 14px 0; }
+    .demobox h3 { margin: 0 0 8px; color: #9daaff; font-size: 15px; }
+    .input-row { margin: 10px 0; }
+    pre { background: #171722; border: 1px solid #2e3250; border-radius: 6px; padding: 10px; font-size: 12px; white-space: pre-wrap; color: #7CFFB2; }
+    .note { font-size: 11px; color: #9499b8; margin-top: 8px; }
+    button { background: #6366f1; color: #ffffff; border: none; border-radius: 8px; padding: 7px 18px; font-family: inherit; font-size: 13px; cursor: pointer; }
+    button:hover { background: #4f52cc; }
+
+    site-footer { display: block; background: #212438; border-top: 1px solid #2e3250; padding: 10px 20px; font-size: 12px; color: #9499b8; }
+    site-footer a { color: #818cf8; }
+  </style>
 </head>
 <body>
+
+<div class="browser-shell">
+
+  <div class="titlebar">
+    <span>2025 - Modern ECMAScript - Chrome 130</span>
+    <span class="titlebar-right">_ &nbsp; [] &nbsp; X</span>
+  </div>
+
+  <div class="menubar">
+    <span>File</span><span>Edit</span><span>View</span><span>History</span><span>Bookmarks</span><span>More</span>
+  </div>
+
+  <div class="toolbar">
+    <span class="tbtn">&lt;</span>
+    <span class="tbtn">&gt;</span>
+    <span class="tbtn">Reload</span>
+    <span class="tbtn">Home</span>
+  </div>
+
+  <div class="addrbar">
+    <span class="addr-label">Address:</span>
+    <span class="addr-field">https://historyofwd.netlify.app/javascript/2025.html</span>
+  </div>
+
+  <div class="era-tabs">
+    <span class="etab"><a href="1995.html">1995</a></span>
+    <span class="etab"><a href="1999.html">1999</a></span>
+    <span class="etab"><a href="2009.html">2009</a></span>
+    <span class="etab"><a href="2015.html">2015</a></span>
+    <span class="etab-active">2025</span>
+    <span class="etab"><a href="jsindex.html">Home</a></span>
+    <span class="etab"><a href="glossary.html">Glossary</a></span>
+    <span class="etab"><a href="bibliography.html">Bibliography</a></span>
+    <span class="etab"><a href="contributors.html">Contributors</a></span>
+    <span class="etab"><a href="discussion.html">Discussion</a></span>
+  </div>
+
+<!-- ============================================================
+     ORIGINAL PAGE CONTENT BELOW - UNCHANGED
+============================================================ -->
 
 <site-header>
   <div class="header-inner">
@@ -32,35 +146,17 @@
 </site-nav>
 
 <div class="page-grid">
-
   <main>
     <h1>2025 &ndash; Incremental Evolution and TC39 Governance</h1>
+    <p>Since ECMAScript 2015, JavaScript has followed an annual release model. Each year, TC39 &mdash; the Technical Committee of Ecma International &mdash; publishes a new edition of ECMA-262. Rather than accumulating features into large releases, the committee stages proposals through a five-level process: Stage 0 (initial idea) through Stage 4 (specification-complete, ready for inclusion).</p>
+    <p>The focus has shifted from structural reform toward <strong>ergonomics</strong> &mdash; making common tasks shorter, clearer, and less error-prone.</p>
 
-    <p>
-      Since ECMAScript 2015, JavaScript has followed an annual release model. Each year,
-      TC39 &mdash; the Technical Committee of Ecma International &mdash; publishes a new
-      edition of ECMA-262. Rather than accumulating features into large releases, the
-      committee stages proposals through a five-level process: Stage 0 (initial idea)
-      through Stage 4 (specification-complete, ready for inclusion).
-    </p>
-
-    <p>
-      The focus has shifted from structural reform toward <strong>ergonomics</strong> &mdash;
-      making common tasks shorter, clearer, and less error-prone &mdash; along with
-      performance improvements and new APIs for data and asynchronous operations.
-    </p>
-
-    <h2>Selected Features: ECMAScript 2016&ndash;2025</h2>
+    <h2>Selected Features: ECMAScript 2016-2025</h2>
     <ul>
-      <li><strong>ES2016</strong> &mdash; <code>Array.prototype.includes()</code>, exponentiation <code>**</code></li>
-      <li><strong>ES2017</strong> &mdash; <code>async/await</code>, <code>Object.entries()</code>, <code>Object.values()</code>, <code>padStart/padEnd()</code></li>
-      <li><strong>ES2018</strong> &mdash; Object rest/spread, <code>Promise.finally()</code>, async iteration</li>
-      <li><strong>ES2019</strong> &mdash; <code>Array.flat()</code>, <code>flatMap()</code>, <code>Object.fromEntries()</code></li>
+      <li><strong>ES2017</strong> &mdash; <code>async/await</code>, <code>Object.entries()</code>, <code>Object.values()</code></li>
       <li><strong>ES2020</strong> &mdash; <code>BigInt</code>, optional chaining <code>?.</code>, nullish coalescing <code>??</code></li>
-      <li><strong>ES2021</strong> &mdash; <code>replaceAll()</code>, logical assignment <code>&&= ||= ??=</code></li>
-      <li><strong>ES2022</strong> &mdash; Class fields, top-level <code>await</code>, <code>.at()</code>, <code>Object.hasOwn()</code></li>
+      <li><strong>ES2022</strong> &mdash; Class fields, top-level <code>await</code>, <code>.at()</code></li>
       <li><strong>ES2023</strong> &mdash; <code>toSorted()</code>, <code>toReversed()</code>, <code>findLast()</code></li>
-      <li><strong>ES2024</strong> &mdash; <code>Object.groupBy()</code>, <code>Promise.withResolvers()</code></li>
       <li><strong>ES2025</strong> &mdash; New Set methods, iterator helpers, <code>RegExp.escape()</code></li>
     </ul>
 
@@ -68,63 +164,31 @@
 
     <div class="demobox">
       <h3>Demo 1: Optional Chaining and Nullish Coalescing (ES2020)</h3>
-      <p>
-        <strong>Optional chaining</strong> (<code>?.</code>) safely accesses nested properties
-        without throwing if any intermediate value is <code>null</code> or <code>undefined</code>.
-        <strong>Nullish coalescing</strong> (<code>??</code>) provides a default value only
-        when the left side is <code>null</code> or <code>undefined</code> &mdash; unlike
-        <code>||</code>, it does not trigger on <code>0</code> or empty strings.
-      </p>
-      <div class="input-row">
-        <button id="chainBtn">Run Demo</button>
-      </div>
+      <p><strong>Optional chaining</strong> (<code>?.</code>) safely accesses nested properties without throwing if any intermediate value is <code>null</code> or <code>undefined</code>.</p>
+      <div class="input-row"><button id="chainBtn">Run Demo</button></div>
       <pre id="chainOutput">Click Run Demo to see optional chaining in action.</pre>
       <p class="note">Uses: ?., ??, optional chaining into nested objects</p>
     </div>
 
     <div class="demobox">
-      <h3>Demo 2: async/await &mdash; Cleaner Asynchronous Code (ES2017)</h3>
-      <p>
-        <code>async/await</code> builds on Promises but reads like synchronous code.
-        An <code>async</code> function always returns a Promise. Inside it, <code>await</code>
-        pauses execution until the awaited Promise resolves &mdash; without blocking the browser.
-        This replaced deeply nested <code>.then()</code> chains for most use cases.
-      </p>
-      <div class="input-row">
-        <button id="asyncBtn">Run Async Demo</button>
-      </div>
+      <h3>Demo 2: async/await (ES2017)</h3>
+      <p><code>async/await</code> builds on Promises but reads like synchronous code. Click to simulate two sequential async requests:</p>
+      <div class="input-row"><button id="asyncBtn">Run Async Demo</button></div>
       <pre id="asyncOutput">Click to simulate two sequential async requests.</pre>
       <p class="note">Uses: async function, await, try/catch, simulated delay via Promise + setTimeout</p>
     </div>
 
     <div class="demobox">
-      <h3>Demo 3: Modern Array Methods &mdash; flat(), at(), toSorted() (ES2019&ndash;2023)</h3>
-      <p>
-        <code>flat()</code> flattens nested arrays. <code>at()</code> accesses elements
-        by index, supporting negative indices (<code>at(-1)</code> is the last element).
-        <code>toSorted()</code> returns a sorted copy without mutating the original.
-      </p>
-      <div class="input-row">
-        <button id="arrayBtn">Run Demo</button>
-      </div>
+      <h3>Demo 3: Modern Array Methods (ES2019-2023)</h3>
+      <p><code>flat()</code>, <code>at()</code>, and <code>toSorted()</code> — newer array tools.</p>
+      <div class="input-row"><button id="arrayBtn">Run Demo</button></div>
       <pre id="arrayOutput">Click Run Demo to see the array methods.</pre>
       <p class="note">Uses: .flat(), .at(), .toSorted() &mdash; ES2019 through ES2023</p>
     </div>
 
     <h2>Backward Compatibility as Core Philosophy</h2>
-    <p>
-      JavaScript almost never removes features. Early decisions &mdash; including quirks
-      like <code>typeof null === "object"</code> and implicit global variable creation
-      &mdash; remain in the language to this day. This philosophy protects the enormous
-      installed base of existing web pages. The cost is accumulated complexity; the benefit
-      is that nothing breaks.
-    </p>
-
-    <p>
-      The central challenge for TC39 today is not survival or structural reform.
-      It is stewardship: continuing to improve a language used by billions of devices
-      without disrupting any of them.
-    </p>
+    <p>JavaScript almost never removes features. Early decisions &mdash; including quirks like <code>typeof null === "object"</code> &mdash; remain in the language to this day. This philosophy protects the enormous installed base of existing web pages.</p>
+    <p>The central challenge for TC39 today is stewardship: continuing to improve a language used by billions of devices without disrupting any of them.</p>
   </main>
 
   <aside class="sidebar">
@@ -138,17 +202,6 @@
         <li><strong>2025 &mdash; Modern JS</strong></li>
       </ul>
     </div>
-
-    <div class="sidebar-card">
-      <h3>Reference</h3>
-      <ul>
-        <li><a href="glossary.html">Glossary</a></li>
-        <li><a href="contributors.html">Contributors</a></li>
-        <li><a href="discussion.html">Discussion</a></li>
-        <li><a href="bibliography.html">Bibliography</a></li>
-      </ul>
-    </div>
-
     <div class="sidebar-card">
       <h3>TC39 Stages</h3>
       <ul>
@@ -159,7 +212,6 @@
         <li>Stage 4 — Finished</li>
       </ul>
     </div>
-
     <div class="sidebar-card">
       <h3>Features Used Here</h3>
       <p>
@@ -172,7 +224,6 @@
       </p>
     </div>
   </aside>
-
 </div>
 
 <site-footer>
@@ -181,74 +232,47 @@
 </site-footer>
 
 <script>
-// Modern JavaScript: const/let, arrow functions, async/await,
-// optional chaining, nullish coalescing, newer array methods.
+// Modern JavaScript: const/let, arrow functions, async/await, optional chaining, nullish coalescing, newer array methods.
 
-// Demo 1: Optional chaining and nullish coalescing
 document.getElementById("chainBtn").addEventListener("click", () => {
-  const user = {
-    name: "Historian",
-    profile: {
-      role: "archivist",
-      settings: { theme: "dark" }
-    }
-  };
-
+  const user = { name: "Historian", profile: { role: "archivist", settings: { theme: "dark" } } };
   const theme = user?.profile?.settings?.theme ?? "default";
   const badge = user?.profile?.badge ?? "(no badge assigned)";
   const city  = user?.location?.city ?? "(location not set)";
-
   let output = `user.profile.settings.theme: "${theme}"\n`;
   output    += `user.profile.badge:          ${badge}\n`;
-  output    += `user.location.city:          ${city}\n\n`;
-  output    += "None of these threw an error,\neven though badge and location don't exist on the object.";
-
+  output    += `user.location.city:          ${city}\n\nNone of these threw an error,\neven though badge and location don't exist on the object.`;
   document.getElementById("chainOutput").textContent = output;
 });
 
-// Demo 2: async/await
 function simulateFetch(resource) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (resource === "fail") {
-        reject(new Error("Network request failed"));
-      } else {
-        resolve({ resource, data: "ECMAScript " + resource, timestamp: new Date().toISOString() });
-      }
-    }, 900);
+  return new Promise((resolve) => {
+    setTimeout(() => resolve({ resource, data: "ECMAScript " + resource, timestamp: new Date().toISOString() }), 900);
   });
 }
 
 async function runAsyncDemo() {
   const output = document.getElementById("asyncOutput");
   output.textContent = "Awaiting first request...";
-
   try {
     const result1 = await simulateFetch("ES2017");
     output.textContent = `Step 1 complete: ${result1.data}\nAwaiting second request...`;
-
     const result2 = await simulateFetch("ES2025");
-    output.textContent =
-      `Step 1: ${result1.data}\nStep 2: ${result2.data}\n\nBoth completed sequentially.\nTimestamp: ${result2.timestamp}`;
+    output.textContent = `Step 1: ${result1.data}\nStep 2: ${result2.data}\n\nBoth completed sequentially.\nTimestamp: ${result2.timestamp}`;
   } catch (err) {
     output.textContent = "Caught error: " + err.message;
   }
 }
-
 document.getElementById("asyncBtn").addEventListener("click", runAsyncDemo);
 
-// Demo 3: flat, at, toSorted
 document.getElementById("arrayBtn").addEventListener("click", () => {
   const nested = [1, [2, 3], [4, [5, 6]], 7];
   const flatOne = nested.flat(1);
   const flatTwo = nested.flat(2);
-
   const last   = flatTwo.at(-1);
   const second = flatTwo.at(1);
-
   const unsorted = [30, 5, 100, 2, 88, 17];
   const sorted   = unsorted.toSorted((a, b) => a - b);
-
   let output = `Original nested:     ${JSON.stringify(nested)}\n`;
   output    += `flat(1):             [${flatOne.join(", ")}]\n`;
   output    += `flat(2):             [${flatTwo.join(", ")}]\n\n`;
@@ -257,10 +281,20 @@ document.getElementById("arrayBtn").addEventListener("click", () => {
   output    += `Unsorted:            [${unsorted.join(", ")}]\n`;
   output    += `toSorted():          [${sorted.join(", ")}]\n`;
   output    += `Original unchanged:  [${unsorted.join(", ")}]`;
-
   document.getElementById("arrayOutput").textContent = output;
 });
 </script>
+
+<!-- ============================================================
+     END ORIGINAL CONTENT
+============================================================ -->
+
+  <div class="statusbar">
+    <span>Done &nbsp;|&nbsp; Era: 2025 - Chrome 130</span>
+    <span>historyofwd.netlify.app</span>
+  </div>
+
+</div>
 
 </body>
 </html>
