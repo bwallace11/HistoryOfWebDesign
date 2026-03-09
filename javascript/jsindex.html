@@ -5,24 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Home – JavaScript Archive</title>
   <style>
-    :root { --bg: #0f1117; --shell: #1a1d2e; --border: #2e3250; --titlebar: #212438; --fg: #e8eaf0; --muted: #9499b8; --accent: #6366f1; --tab-active: #818cf8; }
-    body { margin: 0; padding: 14px; background: var(--bg); font-family: system-ui, -apple-system, Segoe UI, sans-serif; }
-    .browser-shell { width: 96%; margin: 0 auto; background: var(--shell); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.8); }
-    .titlebar { background: var(--titlebar); color: var(--fg); font-size: 13px; font-weight: bold; padding: 7px 14px; display: flex; justify-content: space-between; align-items: center; }
-    .titlebar-right { font-size: 12px; color: var(--muted); }
-    .menubar { background: var(--titlebar); border-bottom: 1px solid var(--border); padding: 3px 14px; font-size: 12px; color: var(--muted); }
-    .menubar span { margin-right: 16px; }
-    .toolbar { background: var(--titlebar); border-bottom: 1px solid var(--border); padding: 7px 14px; display: flex; gap: 8px; }
-    .tbtn { font-family: inherit; font-size: 12px; padding: 5px 16px; background: var(--accent); color: #fff; border: none; border-radius: 20px; cursor: default; }
-    .addrbar { background: var(--titlebar); border-bottom: 1px solid var(--border); padding: 7px 14px; display: flex; align-items: center; gap: 12px; font-size: 12px; }
-    .addr-label { font-weight: bold; white-space: nowrap; color: var(--fg); }
-    .addr-field { background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 6px 16px; font-family: Courier New, monospace; font-size: 11px; flex: 1; color: var(--fg); }
-    .era-tabs { background: var(--titlebar); border-bottom: 1px solid var(--border); padding: 6px 14px 0; display: flex; flex-wrap: wrap; gap: 3px; font-size: 11px; }
-    .etab { display: inline-block; padding: 4px 12px; background: var(--shell); border-top-left-radius: 8px; border-top-right-radius: 8px; color: var(--muted); }
-    .etab a { color: var(--muted); text-decoration: none; }
-    .etab a:hover { color: var(--fg); }
-    .statusbar { background: var(--titlebar); border-top: 1px solid var(--border); padding: 4px 14px; font-size: 11px; color: var(--muted); display: flex; justify-content: space-between; }
     /* Content styles */
+    body { margin: 0; }
     site-header, site-nav, site-footer { display: block; }
     site-header .header-inner { padding: 20px 20px 14px; background: radial-gradient(600px 200px at 20% 50%, rgba(99,102,241,.3), transparent), #212438; }
     site-header .header-inner h1 { margin: 0 0 4px; color: #818cf8; font-size: 22px; }
@@ -53,41 +37,6 @@
 </style>
 </head>
 <body>
-<div class="browser-shell">
-
-  <div class="titlebar">
-    <span>Home – JavaScript History Archive</span>
-    <span class="titlebar-right">_ &nbsp; [] &nbsp; X</span>
-  </div>
-
-  <div class="menubar">
-    <span>File</span><span>Edit</span><span>View</span><span>History</span><span>Bookmarks</span><span>More</span>
-  </div>
-
-  <div class="toolbar">
-    <span class="tbtn">&lt;</span>
-    <span class="tbtn">&gt;</span>
-    <span class="tbtn">Reload</span>
-    <span class="tbtn">Home</span>
-  </div>
-
-  <div class="addrbar">
-    <span class="addr-label">Address:</span>
-    <span class="addr-field">https://historyofwd.netlify.app/javascript/jsindex.html</span>
-  </div>
-
-  <div class="era-tabs">
-    <span class="etab"><a href="1995.html">1995</a></span>
-    <span class="etab"><a href="1999.html">1999</a></span>
-    <span class="etab"><a href="2009.html">2009</a></span>
-    <span class="etab"><a href="2015.html">2015</a></span>
-    <span class="etab"><a href="2025.html">2025</a></span>
-    <span class="etab"><a href="jsindex.html">Home</a></span>
-    <span class="etab"><a href="glossary.html">Glossary</a></span>
-    <span class="etab"><a href="bibliography.html">Bibliography</a></span>
-    <span class="etab"><a href="contributors.html">Contributors</a></span>
-    <span class="etab"><a href="discussion.html">Discussion</a></span>
-  </div>
 
 <!-- ORIGINAL CONTENT -->
 <site-header>
@@ -96,22 +45,6 @@
     <p>A historical record of the ECMAScript specification &mdash; 1995 to 2025</p>
   </div>
 </site-header>
-
-<site-nav>
-  <ul>
-    <li><a href="jsindex.html" class="active">Home</a></li>
-    <li><a href="1995.html">1995</a></li>
-    <li><a href="1999.html">1999</a></li>
-    <li><a href="2009.html">2009</a></li>
-    <li><a href="2015.html">2015</a></li>
-    <li><a href="2025.html">2025</a></li>
-    <li><a href="glossary.html">Glossary</a></li>
-    <li><a href="contributors.html">Contributors</a></li>
-    <li><a href="discussion.html">Discussion</a></li>
-    <li><a href="bibliography.html">Bibliography</a></li>
-    <li><a href="../index.html">Hub Home</a></li>
-  </ul>
-</site-nav>
 
 <div class="page-grid">
   <main>
@@ -163,15 +96,9 @@
 
 <site-footer>
   JavaScript History Archive &nbsp;|&nbsp;
-  <a href="../index.html">Web History Hub</a>
+  <a href="../index.html" target="_top">Web History Hub</a>
 </site-footer>
 <!-- END ORIGINAL CONTENT -->
 
-  <div class="statusbar">
-    <span>Done</span>
-    <span>historyofwd.netlify.app</span>
-  </div>
-
-</div>
 </body>
 </html>

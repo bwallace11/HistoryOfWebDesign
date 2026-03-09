@@ -5,110 +5,79 @@
   <title>CSS Era 6 (2017-2026) - Chrome 120</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { margin: 0; padding: 14px; background: #0f1117; font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #fff; min-height: 100vh; }
 
-    .browser-shell { width: 96%; margin: 0 auto; background: #1a1d2e; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.75); }
+    .page-body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      color: #1f2328;
+      line-height: 1.6;
+      font-size: 15px;
+    }
 
-    .titlebar { background: #212438; color: #e8eaf0; font-size: 13px; font-weight: bold; padding: 6px 12px; display: flex; justify-content: space-between; align-items: center; }
-    .titlebar-right { font-size: 12px; color: #9499b8; }
+    .page-body header {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 24px 20px;
+      border-bottom: 1px solid #d1d6db;
+      background: none;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+    }
+    .page-body h1 { margin: 0 0 6px; font-size: 24px; font-weight: 600; color: #1f2328; }
+    .page-body header p { margin: 0; color: #656d76; font-size: 15px; line-height: 1.55; }
 
-    .menubar { background: #212438; border-bottom: 1px solid #2e3250; padding: 3px 12px; font-size: 12px; color: #9499b8; }
-    .menubar span { margin-right: 14px; }
+    .page-body nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .page-body nav a {
+      color: #0969da;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 5px 12px;
+      border: 1px solid #d1d6db;
+      border-radius: 6px;
+      background: #f6f8fa;
+    }
+    .page-body nav a:hover { background: #eaeef2; }
 
-    .toolbar { background: #212438; border-bottom: 1px solid #2e3250; padding: 6px 12px; }
-    .tbtn { font-family: inherit; font-size: 12px; padding: 5px 14px; background: #2e3250; color: #e8eaf0; border: 1px solid #3a3d5c; border-radius: 20px; margin-right: 6px; cursor: default; }
+    .page-body section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px 24px;
+      background: none;
+      border: none;
+      border-radius: 0;
+    }
 
-    .addrbar { background: #212438; border-bottom: 1px solid #2e3250; padding: 6px 12px; display: flex; align-items: center; gap: 10px; font-size: 12px; }
-    .addr-label { font-weight: bold; white-space: nowrap; color: #e8eaf0; }
-    .addr-field { background: #0f1117; border: 1px solid #2e3250; border-radius: 20px; padding: 5px 14px; font-family: Courier New, monospace; font-size: 11px; flex: 1; color: #e8eaf0; }
+    .page-body .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 800px) { .page-body .grid { grid-template-columns: 1fr; } }
 
-    .era-tabs { background: #212438; border-bottom: 1px solid #2e3250; padding: 5px 12px 0; font-size: 11px; display: flex; flex-wrap: wrap; gap: 2px; }
-    .etab { display: inline-block; padding: 4px 11px; background: #1a1d2e; border-top-left-radius: 8px; border-top-right-radius: 8px; color: #9499b8; }
-    .etab-active { display: inline-block; padding: 4px 11px; background: #1a1d2e; border-top-left-radius: 8px; border-top-right-radius: 8px; font-weight: bold; color: #818cf8; border-top: 2px solid #818cf8; }
-    .etab a { color: #9499b8; text-decoration: none; }
-    .etab a:hover { color: #e8eaf0; text-decoration: none; }
+    .page-body .card {
+      background: #f6f8fa;
+      border: 1px solid #d1d6db;
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .page-body .card h2 { margin: 0 0 10px; font-size: 15px; font-weight: 600; color: #1f2328; }
+    .page-body .card ul { margin: 0; padding-left: 20px; }
+    .page-body .card li { color: #656d76; font-size: 14px; line-height: 1.7; }
 
-    .statusbar { background: #212438; border-top: 1px solid #2e3250; padding: 4px 12px; font-size: 11px; color: #9499b8; display: flex; justify-content: space-between; }
-
-    /* ---- Original page styles (CSS Grid/custom properties era) ---- */
-    :root { --bg: #0f0f14; --panel: #171722; --border: #2b2b38; --text: #ececf1; --muted: #b9bbca; --accent: #9daaff; --link: #7CFFB2; }
-    @media (prefers-color-scheme: light) { :root { --bg: #f6f7fb; --panel: #ffffff; --border: #d9dbe7; --text: #141414; --muted: #444; --accent: #1f2a63; --link: #0a7a3a; } }
-
-    .page-body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif; background: radial-gradient(900px 450px at 30% 20%, rgba(157,170,255,.18), transparent), radial-gradient(700px 450px at 80% 60%, rgba(124,255,178,.12), transparent), var(--bg); color: var(--text); line-height: 1.65; padding: 18px; }
-
-    .page-body header, .page-body section { max-width: 980px; margin: 0 auto 14px auto; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
-    .page-body h1 { margin: 0; color: var(--accent); }
-    .page-body p { margin: 8px 0; color: var(--muted); }
-    .page-body nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
-    .page-body nav a { color: var(--accent); text-decoration: none; font-weight: 800; border: 1px solid var(--border); padding: 8px 10px; border-radius: 999px; background: rgba(0,0,0,.18); }
-    .page-body nav a:hover { text-decoration: underline; }
-    .page-body .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    @media (max-width: 900px) { .page-body .grid { grid-template-columns: 1fr; } }
-    .page-body .card { background: rgba(0,0,0,.18); border: 1px solid var(--border); border-radius: 14px; padding: 14px; }
-    .page-body .card h2 { margin: 0 0 8px; font-size: 16px; }
-    .page-body a { color: var(--link); }
+    .page-body section > h2 { font-size: 18px; font-weight: 600; color: #1f2328; margin: 0 0 8px; }
+    .page-body p { margin: 8px 0; color: #656d76; }
+    .page-body a { color: #0969da; }
+    .page-body code { background: #eff1f3; padding: 2px 5px; border-radius: 4px; font-size: 0.9em; }
   </style>
 </head>
 
 <body>
-<div class="browser-shell">
-
-  <div class="titlebar">
-    <span>CSS Era 6 (2017-2026) - Chrome 120</span>
-    <span class="titlebar-right">_ &nbsp; [] &nbsp; X</span>
-  </div>
-
-  <div class="menubar">
-    <span>File</span><span>Edit</span><span>View</span><span>History</span><span>Bookmarks</span><span>More</span>
-  </div>
-
-  <div class="toolbar">
-    <span class="tbtn">&lt;</span>
-    <span class="tbtn">&gt;</span>
-    <span class="tbtn">Reload</span>
-    <span class="tbtn">Home</span>
-  </div>
-
-  <div class="addrbar">
-    <span class="addr-label">Address:</span>
-    <span class="addr-field">https://historyofwd.netlify.app/css/era-6-2017-2026.html</span>
-  </div>
-
-  <div class="era-tabs">
-    <span class="etab"><a href="era-1-1994-1996.html">1994-1996</a></span>
-    <span class="etab"><a href="era-2-1996-1998.html">1996-1998</a></span>
-    <span class="etab"><a href="era-3-1998-2004.html">1998-2004</a></span>
-    <span class="etab"><a href="era-4-2004-2011.html">2004-2011</a></span>
-    <span class="etab"><a href="era-5-2011-2017.html">2011-2017</a></span>
-    <span class="etab-active">2017-2026</span>
-    <span class="etab"><a href="csshome.html">Home</a></span>
-    <span class="etab"><a href="glossary.html">Glossary</a></span>
-    <span class="etab"><a href="bibliography.html">Bibliography</a></span>
-    <span class="etab"><a href="contributors.html">Contributors</a></span>
-    <span class="etab"><a href="discussion.html">Discussion</a></span>
-  </div>
-
-<!-- ============================================================
-     ORIGINAL PAGE CONTENT BELOW - UNCHANGED
-============================================================ -->
   <div class="page-body">
     <header>
       <h1>Era 6: Grid era and modern platform CSS (2017-2026)</h1>
       <p>CSS Grid Layout becomes a cornerstone for real layout work and modern CSS grows into a system language for design. The Grid spec continues evolving as a living collection of modules.</p>
-      <nav>
-            <a href="/index.html">Main Hub</a>
-            <a href="csshome.html">CSS Home</a>
-            <a href="era-1-1994-1996.html">1994-1996</a>
-            <a href="era-2-1996-1998.html">1996-1998</a>
-            <a href="era-3-1998-2004.html">1998-2004</a>
-            <a href="era-4-2004-2011.html">2004-2011</a>
-            <a href="era-5-2011-2017.html">2011-2017</a>
-            <a href="era-6-2017-2026.html">2017-2026</a>
-            <a href="glossary.html">Glossary</a>
-            <a href="bibliography.html">Bibliography</a>
-            <a href="contributors.html">Contributors</a>
-            <a href="discussion.html">Discussion</a>
-      </nav>
     </header>
 
     <section>
@@ -148,15 +117,5 @@
       <p>CSS evolves through modules that ship when browsers implement them and tests confirm behavior. Instead of a single "CSS4," improvements arrive continuously.</p>
     </section>
   </div>
-<!-- ============================================================
-     END ORIGINAL CONTENT
-============================================================ -->
-
-  <div class="statusbar">
-    <span>Done</span>
-    <span>historyofwd.netlify.app</span>
-  </div>
-
-</div>
 </body>
 </html>

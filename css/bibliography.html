@@ -1,96 +1,48 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Bibliography - CSS History Archive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { margin: 0; padding: 10px; background: #2a3a4a; font-family: Arial, Helvetica, sans-serif; }
-    .browser-shell { width: 96%; margin: 0 auto; background: #e4e4e4; border: 1px solid #999; }
-    .titlebar { background: #003366; color: #ffffff; font-size: 13px; font-weight: bold; padding: 4px 8px; overflow: hidden; }
-    .titlebar-right { float: right; font-size: 11px; }
-    .clear { clear: both; }
-    .menubar { background: #e0e0e0; border-bottom: 1px solid #c0c0c0; padding: 2px 8px; font-size: 12px; }
-    .menubar span { margin-right: 12px; }
-    .toolbar { background: #e0e0e0; border-bottom: 1px solid #c0c0c0; padding: 4px 8px; overflow: hidden; }
-    .tbtn { font-size: 11px; padding: 3px 10px; background: #dcdcdc; border: 1px solid #999; margin-right: 4px; }
-    .addrbar { background: #e4e4e4; border-bottom: 1px solid #c0c0c0; padding: 4px 8px; overflow: hidden; font-size: 12px; }
-    .addr-label { font-weight: bold; margin-right: 6px; float: left; line-height: 22px; }
-    .addr-field { background: #ffffff; border: 1px solid #999; padding: 3px 6px; font-family: Courier New, monospace; font-size: 11px; float: left; width: 82%; }
-    .era-tabs { background: #e0e0e0; border-bottom: 1px solid #c0c0c0; padding: 4px 8px 0; overflow: hidden; font-size: 11px; }
-    .etab { display: inline-block; padding: 3px 9px; background: #cccccc; border-top: 1px solid #999; border-left: 1px solid #999; border-right: 1px solid #999; margin-right: 2px; }
-    .etab a { color: #003366; text-decoration: none; }
-    .etab a:hover { text-decoration: underline; }
-    .statusbar { background: #e0e0e0; border-top: 1px solid #c0c0c0; padding: 3px 8px; overflow: hidden; font-size: 11px; color: #333; }
-    .status-right { float: right; }
-    .content-area { background: #f4f4f4; padding: 14px; }
-</style>
+    :root { --bg: #0f0f14; --panel: #171722; --border: #2b2b38; --text: #ececf1; --muted: #b9bbca; --accent: #9daaff; --link: #7CFFB2; }
+    @media (prefers-color-scheme: light) { :root { --bg: #f6f7fb; --panel: #ffffff; --border: #d9dbe7; --text: #141414; --muted: #444; --accent: #1f2a63; --link: #0a7a3a; } }
+
+    .page-body { margin: 0; min-height: 100vh; font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif; background: radial-gradient(900px 450px at 30% 20%, rgba(157,170,255,.18), transparent), radial-gradient(700px 450px at 80% 60%, rgba(124,255,178,.12), transparent), var(--bg); color: var(--text); line-height: 1.65; padding: 18px; }
+    body { margin: 0; background: var(--bg); }
+    .page-body header, .page-body section { max-width: 980px; margin: 0 auto 14px auto; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
+    .page-body h1 { margin: 0; color: var(--accent); }
+    .page-body h2 { margin: 0 0 8px; font-size: 16px; color: var(--accent); }
+    .page-body p { margin: 8px 0; color: var(--muted); }
+    .page-body em { color: var(--text); }
+    .page-body a { color: var(--link); }
+  </style>
 </head>
 <body>
-<div class="browser-shell">
+  <div class="page-body">
+    <header>
+      <h1>Bibliography</h1>
+    </header>
 
-  <div class="titlebar">
-    <span class="titlebar-right">_ &nbsp; [] &nbsp; X</span>
-    Bibliography - CSS History Archive - Internet Explorer 7
-    <div class="clear"></div>
+    <section>
+      <h2>Primary Specifications</h2>
+      <p>Lie, H. W., &amp; Bos, B. (1996). <em>Cascading Style Sheets, Level 1</em>. W3C Recommendation. https://www.w3.org/TR/REC-CSS1</p>
+      <p>Bos, B., Lie, H. W., Lilley, C., &amp; Jacobs, I. (1998). <em>Cascading Style Sheets, Level 2 CSS2 Specification</em>. W3C Recommendation. https://www.w3.org/TR/CSS2/</p>
+      <p>W3C. (2011). <em>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</em>. W3C Recommendation. https://www.w3.org/TR/CSS2/</p>
+      <p>W3C CSS Working Group. (ongoing). <em>CSS Snapshot</em>. https://www.w3.org/TR/css/</p>
+    </section>
+
+    <section>
+      <h2>Historical Works</h2>
+      <p>Lie, H. W. (1994). <em>Cascading HTML style sheets &mdash; a proposal</em>. CERN/W3C proposal document.</p>
+      <p>Bos, B., et al. (2005). <em>Cascading Style Sheets: Designing for the Web</em> (3rd ed.). Addison-Wesley.</p>
+    </section>
+
+    <section>
+      <h2>Further Reading</h2>
+      <p>Meyer, E. (2004). <em>CSS: The Definitive Guide</em>. O'Reilly Media.</p>
+      <p>Verou, L. (2015). <em>CSS Secrets</em>. O'Reilly Media.</p>
+    </section>
   </div>
-
-  <div class="menubar">
-    <span>File</span><span>Edit</span><span>View</span><span>Favorites</span><span>Tools</span><span>Help</span>
-  </div>
-
-  <div class="toolbar">
-    <span class="tbtn">&lt; Back</span>
-    <span class="tbtn">Forward &gt;</span>
-    <span class="tbtn">Refresh</span>
-    <span class="tbtn">Home</span>
-    <div class="clear"></div>
-  </div>
-
-  <div class="addrbar">
-    <span class="addr-label">Address:</span>
-    <span class="addr-field">https://historyofwd.netlify.app/css/bibliography.html</span>
-    <div class="clear"></div>
-  </div>
-
-  <div class="era-tabs">
-    <span class="etab"><a href="era-1-1994-1996.html">1994-1996</a></span>
-    <span class="etab"><a href="era-2-1996-1998.html">1996-1998</a></span>
-    <span class="etab"><a href="era-3-1998-2004.html">1998-2004</a></span>
-    <span class="etab"><a href="era-4-2004-2011.html">2004-2011</a></span>
-    <span class="etab"><a href="era-5-2011-2017.html">2011-2017</a></span>
-    <span class="etab"><a href="era-6-2017-2026.html">2017-2026</a></span>
-    <span class="etab"><a href="csshome.html">Home</a></span>
-    <span class="etab"><a href="glossary.html">Glossary</a></span>
-    <span class="etab"><a href="bibliography.html">Bibliography</a></span>
-    <span class="etab"><a href="contributors.html">Contributors</a></span>
-    <span class="etab"><a href="discussion.html">Discussion</a></span>
-    <div class="clear"></div>
-  </div>
-
-  <div class="content-area">
-<h1>Bibliography</h1>
-
-<h2>Primary Specifications</h2>
-<p>Lie, H. W., &amp; Bos, B. (1996). <em>Cascading Style Sheets, Level 1</em>. W3C Recommendation. https://www.w3.org/TR/REC-CSS1</p>
-<p>Bos, B., Lie, H. W., Lilley, C., &amp; Jacobs, I. (1998). <em>Cascading Style Sheets, Level 2 CSS2 Specification</em>. W3C Recommendation. https://www.w3.org/TR/CSS2/</p>
-<p>W3C. (2011). <em>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</em>. W3C Recommendation. https://www.w3.org/TR/CSS2/</p>
-<p>W3C CSS Working Group. (ongoing). <em>CSS Snapshot</em>. https://www.w3.org/TR/css/</p>
-
-<h2>Historical Works</h2>
-<p>Lie, H. W. (1994). <em>Cascading HTML style sheets &mdash; a proposal</em>. CERN/W3C proposal document.</p>
-<p>Bos, B., et al. (2005). <em>Cascading Style Sheets: Designing for the Web</em> (3rd ed.). Addison-Wesley.</p>
-
-<h2>Further Reading</h2>
-<p>Meyer, E. (2004). <em>CSS: The Definitive Guide</em>. O'Reilly Media.</p>
-<p>Verou, L. (2015). <em>CSS Secrets</em>. O'Reilly Media.</p>
-  </div>
-
-  <div class="statusbar">
-    <span class="status-right">historyofwd.netlify.app</span>
-    Done
-    <div class="clear"></div>
-  </div>
-
-</div>
 </body>
 </html>

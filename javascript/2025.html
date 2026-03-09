@@ -5,122 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>2025 - Modern ECMAScript - Chrome 130</title>
   <style>
-    :root {
-      --bg: #0f1117; --shell: #1a1d2e; --border: #2e3250;
-      --titlebar: #212438; --fg: #e8eaf0; --muted: #9499b8;
-      --accent: #6366f1; --tab-active: #818cf8;
-    }
-
-    body { margin: 0; padding: 14px; background: var(--bg); font-family: system-ui, -apple-system, Segoe UI, sans-serif; }
-
-    .browser-shell { width: 96%; margin: 0 auto; background: var(--shell); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.8); }
-
-    .titlebar { background: var(--titlebar); color: var(--fg); font-size: 13px; font-weight: bold; padding: 7px 14px; display: flex; justify-content: space-between; align-items: center; }
-    .titlebar-right { font-size: 12px; color: var(--muted); }
-
-    .menubar { background: var(--titlebar); border-bottom: 1px solid var(--border); padding: 3px 14px; font-size: 12px; color: var(--muted); }
-    .menubar span { margin-right: 16px; }
-
-    .toolbar { background: var(--titlebar); border-bottom: 1px solid var(--border); padding: 7px 14px; display: flex; gap: 8px; }
-    .tbtn { font-family: inherit; font-size: 12px; padding: 5px 16px; background: var(--accent); color: #ffffff; border: none; border-radius: 20px; cursor: default; }
-
-    .addrbar { background: var(--titlebar); border-bottom: 1px solid var(--border); padding: 7px 14px; display: flex; align-items: center; gap: 12px; font-size: 12px; }
-    .addr-label { font-weight: bold; white-space: nowrap; color: var(--fg); }
-    .addr-field { background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 6px 16px; font-family: Courier New, monospace; font-size: 11px; flex: 1; color: var(--fg); }
-
-    .era-tabs { background: var(--titlebar); border-bottom: 1px solid var(--border); padding: 6px 14px 0; display: flex; flex-wrap: wrap; gap: 3px; font-size: 11px; }
-    .etab { display: inline-block; padding: 4px 12px; background: var(--shell); border-top-left-radius: 8px; border-top-right-radius: 8px; color: var(--muted); }
-    .etab-active { display: inline-block; padding: 4px 12px; background: var(--shell); border-top-left-radius: 8px; border-top-right-radius: 8px; font-weight: bold; color: var(--tab-active); border-top: 2px solid var(--tab-active); }
-    .etab a { color: var(--muted); text-decoration: none; }
-    .etab a:hover { color: var(--fg); }
-
-    .statusbar { background: var(--titlebar); border-top: 1px solid var(--border); padding: 4px 14px; font-size: 11px; color: var(--muted); display: flex; justify-content: space-between; }
-
-    /* Original page styles (CSS Grid / custom properties era) */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { margin: 0; background: #fff; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; color: #1f2328; font-size: 15px; line-height: 1.6; }
     site-header, site-nav, site-footer { display: block; }
 
     site-header { padding: 0; }
-    site-header .header-inner { padding: 20px 20px 14px; background: radial-gradient(600px 200px at 20% 50%, rgba(99,102,241,.3), transparent), #212438; }
-    site-header .header-inner h1 { margin: 0 0 4px; color: #818cf8; font-size: 22px; }
-    site-header .header-inner p { margin: 0; color: #9499b8; font-size: 13px; }
+    site-header .header-inner { padding: 20px 24px 14px; background: #fff; border-bottom: 1px solid #d1d6db; }
+    site-header .header-inner h1 { margin: 0 0 4px; color: #1f2328; font-size: 20px; font-weight: 600; }
+    site-header .header-inner p { margin: 0; color: #656d76; font-size: 13px; }
 
-    site-nav { display: block; background: #212438; border-bottom: 1px solid #2e3250; padding: 8px 16px; }
-    site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
-    site-nav ul li a { color: #818cf8; text-decoration: none; font-weight: 700; padding: 5px 10px; border-radius: 999px; border: 1px solid #2e3250; font-size: 12px; background: rgba(0,0,0,.2); }
-    site-nav ul li a:hover { color: #e8eaf0; }
-    site-nav ul li a.active { color: #e8eaf0; background: #6366f1; border-color: #6366f1; }
+    site-nav { display: block; background: #f6f8fa; border-bottom: 1px solid #d1d6db; padding: 6px 20px; }
+    site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 2px; }
+    site-nav ul li a { color: #656d76; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; font-size: 13px; }
+    site-nav ul li a:hover { color: #1f2328; background: #eaeef2; }
+    site-nav ul li a.active { color: #fff; background: #0969da; }
 
-    .page-grid { display: grid; grid-template-columns: 1fr 260px; gap: 0; }
+    .page-grid { display: grid; grid-template-columns: 1fr 240px; gap: 24px; max-width: 1060px; margin: 0 auto; padding: 24px 20px; }
     @media (max-width: 800px) { .page-grid { grid-template-columns: 1fr; } }
 
-    main { padding: 18px 20px; color: #ececf1; }
-    main h1 { color: #818cf8; margin-top: 0; }
-    main h2 { color: #9daaff; }
-    main p { color: #b9bbca; line-height: 1.65; }
-    main ul li { color: #b9bbca; line-height: 1.7; }
-    main strong { color: #e8eaf0; }
-    main code { background: #2e3250; padding: 2px 6px; border-radius: 4px; font-size: 12px; color: #7CFFB2; }
+    main { color: #1f2328; }
+    main h1 { color: #1f2328; font-size: 22px; font-weight: 600; margin-top: 0; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #d1d6db; }
+    main h2 { color: #1f2328; font-size: 17px; font-weight: 600; margin-top: 28px; margin-bottom: 10px; }
+    main p { color: #656d76; line-height: 1.65; margin-bottom: 12px; }
+    main ul { margin: 0 0 14px; padding-left: 24px; }
+    main ul li { color: #656d76; line-height: 1.7; margin-bottom: 4px; }
+    main strong { color: #1f2328; }
+    main code { background: #eff1f3; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #1f2328; }
 
-    .sidebar { background: #171722; border-left: 1px solid #2e3250; padding: 16px; }
-    .sidebar-card { background: rgba(0,0,0,.3); border: 1px solid #2e3250; border-radius: 10px; padding: 12px; margin-bottom: 12px; }
-    .sidebar-card h3 { margin: 0 0 8px; font-size: 13px; color: #9daaff; }
-    .sidebar-card ul { margin: 0; padding-left: 18px; font-size: 12px; color: #9499b8; }
-    .sidebar-card p { font-size: 12px; color: #9499b8; margin: 0; }
-    .chip { display: inline-block; background: #2e3250; border: 1px solid #3a3d5c; border-radius: 999px; padding: 2px 8px; font-size: 11px; color: #9499b8; margin: 2px; }
+    .sidebar { }
+    .sidebar-card { background: #f6f8fa; border: 1px solid #d1d6db; border-radius: 8px; padding: 14px; margin-bottom: 14px; }
+    .sidebar-card h3 { margin: 0 0 8px; font-size: 12px; font-weight: 600; color: #656d76; text-transform: uppercase; letter-spacing: 0.5px; }
+    .sidebar-card ul { margin: 0; padding-left: 18px; font-size: 13px; color: #656d76; list-style: disc; }
+    .sidebar-card ul li { margin-bottom: 3px; border: none; padding: 0; }
+    .sidebar-card p { font-size: 13px; color: #656d76; margin: 0; }
+    .chip { display: inline-block; background: #ddf4ff; border: 1px solid rgba(84,174,255,0.4); border-radius: 16px; padding: 2px 8px; font-size: 11px; color: #0969da; margin: 2px; }
 
-    .demobox { background: rgba(0,0,0,.25); border: 1px solid #2e3250; border-radius: 10px; padding: 14px; margin: 14px 0; }
-    .demobox h3 { margin: 0 0 8px; color: #9daaff; font-size: 15px; }
+    .demobox { background: #f6f8fa; border: 1px solid #d1d6db; border-radius: 8px; padding: 16px; margin: 16px 0; }
+    .demobox h3 { margin: 0 0 8px; color: #1f2328; font-size: 15px; font-weight: 600; }
     .input-row { margin: 10px 0; }
-    pre { background: #171722; border: 1px solid #2e3250; border-radius: 6px; padding: 10px; font-size: 12px; white-space: pre-wrap; color: #7CFFB2; }
-    .note { font-size: 11px; color: #9499b8; margin-top: 8px; }
-    button { background: #6366f1; color: #ffffff; border: none; border-radius: 8px; padding: 7px 18px; font-family: inherit; font-size: 13px; cursor: pointer; }
-    button:hover { background: #4f52cc; }
+    pre { background: #24292f; border-radius: 6px; padding: 12px 14px; font-size: 13px; white-space: pre-wrap; color: #e6edf3; line-height: 1.5; }
+    .note { font-size: 12px; color: #8b949e; margin-top: 8px; }
+    button { background: #0969da; color: #fff; border: 1px solid rgba(27,31,36,.15); border-radius: 6px; padding: 7px 16px; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer; }
+    button:hover { background: #0860ca; }
 
-    site-footer { display: block; background: #212438; border-top: 1px solid #2e3250; padding: 10px 20px; font-size: 12px; color: #9499b8; }
-    site-footer a { color: #818cf8; }
+    site-footer { display: block; background: #f6f8fa; border-top: 1px solid #d1d6db; padding: 12px 24px; font-size: 12px; color: #656d76; }
+    site-footer a { color: #0969da; }
   </style>
 </head>
 <body>
-
-<div class="browser-shell">
-
-  <div class="titlebar">
-    <span>2025 - Modern ECMAScript - Chrome 130</span>
-    <span class="titlebar-right">_ &nbsp; [] &nbsp; X</span>
-  </div>
-
-  <div class="menubar">
-    <span>File</span><span>Edit</span><span>View</span><span>History</span><span>Bookmarks</span><span>More</span>
-  </div>
-
-  <div class="toolbar">
-    <span class="tbtn">&lt;</span>
-    <span class="tbtn">&gt;</span>
-    <span class="tbtn">Reload</span>
-    <span class="tbtn">Home</span>
-  </div>
-
-  <div class="addrbar">
-    <span class="addr-label">Address:</span>
-    <span class="addr-field">https://historyofwd.netlify.app/javascript/2025.html</span>
-  </div>
-
-  <div class="era-tabs">
-    <span class="etab"><a href="1995.html">1995</a></span>
-    <span class="etab"><a href="1999.html">1999</a></span>
-    <span class="etab"><a href="2009.html">2009</a></span>
-    <span class="etab"><a href="2015.html">2015</a></span>
-    <span class="etab-active">2025</span>
-    <span class="etab"><a href="jsindex.html">Home</a></span>
-    <span class="etab"><a href="glossary.html">Glossary</a></span>
-    <span class="etab"><a href="bibliography.html">Bibliography</a></span>
-    <span class="etab"><a href="contributors.html">Contributors</a></span>
-    <span class="etab"><a href="discussion.html">Discussion</a></span>
-  </div>
-
-<!-- ============================================================
-     ORIGINAL PAGE CONTENT BELOW - UNCHANGED
-============================================================ -->
 
 <site-header>
   <div class="header-inner">
@@ -128,22 +60,6 @@
     <p>A historical record of the ECMAScript specification &mdash; 1995 to 2025</p>
   </div>
 </site-header>
-
-<site-nav>
-  <ul>
-    <li><a href="jsindex.html">Home</a></li>
-    <li><a href="1995.html">1995</a></li>
-    <li><a href="1999.html">1999</a></li>
-    <li><a href="2009.html">2009</a></li>
-    <li><a href="2015.html">2015</a></li>
-    <li><a href="2025.html" class="active">2025</a></li>
-    <li><a href="glossary.html">Glossary</a></li>
-    <li><a href="contributors.html">Contributors</a></li>
-    <li><a href="discussion.html">Discussion</a></li>
-    <li><a href="bibliography.html">Bibliography</a></li>
-    <li><a href="../index.html">Hub Home</a></li>
-  </ul>
-</site-nav>
 
 <div class="page-grid">
   <main>
@@ -228,7 +144,7 @@
 
 <site-footer>
   JavaScript History Archive &nbsp;|&nbsp;
-  <a href="../index.html">Web History Hub</a>
+  <a href="../index.html" target="_top">Web History Hub</a>
 </site-footer>
 
 <script>
@@ -284,17 +200,6 @@ document.getElementById("arrayBtn").addEventListener("click", () => {
   document.getElementById("arrayOutput").textContent = output;
 });
 </script>
-
-<!-- ============================================================
-     END ORIGINAL CONTENT
-============================================================ -->
-
-  <div class="statusbar">
-    <span>Done &nbsp;|&nbsp; Era: 2025 - Chrome 130</span>
-    <span>historyofwd.netlify.app</span>
-  </div>
-
-</div>
 
 </body>
 </html>
