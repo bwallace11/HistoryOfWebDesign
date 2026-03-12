@@ -157,6 +157,61 @@ theory and browser practice remained wide, but the standard gave the ecosystem s
 to aim for. ES3 remained the effective baseline of the web until ES5 in 2009.
 </p>
 
+<h2>Artifact: The Browser Wars and JavaScript Fragmentation</h2>
+
+<div class="demobox">
+<p>
+<b>Title:</b> Netscape vs Internet Explorer: "DHTML" Wars<br>
+<b>Year:</b> 1997-2001<br>
+<b>Context:</b> Browser vendor competition
+</p>
+<p>
+Both Netscape and Microsoft marketed "Dynamic HTML" (DHTML) &mdash; a combination of
+JavaScript, CSS, and proprietary DOM APIs. The problem was that Netscape's DHTML used
+<code>document.layers</code> while Internet Explorer used <code>document.all</code>.
+Code written for one browser simply failed in the other.
+</p>
+<p>
+Developers wrote browser detection code at the top of every script:
+</p>
+<pre style="background:#ffffff;border:1px solid #888888;padding:6px;font-size:12px">
+var isIE = (navigator.appName == "Microsoft Internet Explorer");
+var isNN = (navigator.appName == "Netscape");
+
+if (isIE) {
+    // use document.all
+} else if (isNN) {
+    // use document.layers
+}
+</pre>
+<p>
+<b>Why it mattered:</b> This fragmentation made JavaScript development painful and
+expensive. The W3C DOM standard (DOM Level 1, 1998) was created to end this chaos
+by providing a single API that all browsers should implement.
+</p>
+</div>
+
+<h2>Artifact: The First JavaScript Book</h2>
+
+<div class="demobox">
+<p>
+<b>Title:</b> "JavaScript: The Definitive Guide"<br>
+<b>Year:</b> 1996 (1st edition)<br>
+<b>Author:</b> David Flanagan (O'Reilly)
+</p>
+<p>
+David Flanagan's book became the standard reference for JavaScript developers.
+Known as "the Rhino book" for its cover illustration, it tracked the language
+through every major revision and became the resource developers turned to when
+browser documentation was unreliable or nonexistent.
+</p>
+<p>
+<b>Why it mattered:</b> In an era before MDN and Stack Overflow, authoritative
+reference books were how developers learned. The Definitive Guide helped
+establish JavaScript as a real language worth studying seriously.
+</p>
+</div>
+
 </div>
 
 <div class="footer">

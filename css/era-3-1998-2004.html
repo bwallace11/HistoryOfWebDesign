@@ -72,6 +72,59 @@
         <h2>Why this era matters</h2>
         <p>CSS2 set the conceptual foundation for modern layout and media styling, even though implementation lagged. It also showed that interoperability requires tests, shared behavior, and patience.</p>
       </div>
+
+      <div class="box">
+        <h2>Artifact: CSS Zen Garden (2003)</h2>
+        <p>
+          <b>Title:</b> CSS Zen Garden<br>
+          <b>Year:</b> 2003<br>
+          <b>Creator:</b> Dave Shea
+        </p>
+        <p>
+          CSS Zen Garden was a website that demonstrated the power of CSS by
+          inviting designers to style the same HTML document in completely
+          different ways. The HTML never changed. Only the CSS was different.
+          Each submission looked like a completely different website.
+        </p>
+        <p>
+          <b>Example of the principle:</b> One stylesheet might create a dark,
+          minimalist design. Another might create a colorful, ornate layout.
+          A third might look like a newspaper. All used the exact same HTML.
+        </p>
+        <p>
+          <b>Why it mattered:</b> CSS Zen Garden proved to skeptics that CSS
+          could handle real design work, not just font colors. It became the
+          most influential argument for separating content from design and
+          convinced a generation of web developers to learn CSS seriously.
+        </p>
+      </div>
+
+      <div class="box">
+        <h2>Artifact: The Box Model Problem</h2>
+        <p>
+          <b>Title:</b> Internet Explorer box model bug<br>
+          <b>Year:</b> 1998-2001<br>
+          <b>Affected browser:</b> Internet Explorer 5/6
+        </p>
+        <p>
+          IE calculated element widths differently from the CSS2 specification.
+          In IE's model, <code>width</code> included padding and border. In the
+          standard model, <code>width</code> was content only. This meant the
+          same CSS produced different layouts in different browsers.
+        </p>
+        <p>
+          Authors invented "box model hacks" to send different width values to
+          different browsers. The problem was so persistent that CSS3 eventually
+          added <code>box-sizing: border-box</code> to let authors opt into
+          the IE behavior, which many designers actually preferred.
+        </p>
+        <p>
+          <b>Why it mattered:</b> The box model bug is the most famous CSS
+          interoperability failure. It taught the standards community that
+          specifications must be tested against real browser implementations,
+          not just published as documents.
+        </p>
+      </div>
     </div>
 
     <div class="clear-float"></div>

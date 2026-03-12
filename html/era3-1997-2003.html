@@ -6,6 +6,7 @@
 <body bgcolor="#c0c0c0" style="margin:0;padding:16px">
 
 <h1>HTML 4.0, HTML 4.01, and XHTML 1.x</h1>
+<p><em>The push toward structure, accessibility, and separation of concerns</em></p>
 
 <div>
   <p>
@@ -15,7 +16,100 @@
     The same element set was later re-expressed as XHTML 1.0 and XHTML 1.1
     using XML syntax.
   </p>
+
+  <p>
+    This was the era when the web standards community began arguing that
+    HTML should describe <strong>what content is</strong>, not
+    <strong>how it looks</strong>. CSS was supposed to handle appearance.
+    In practice, most sites still mixed structure and presentation heavily.
+  </p>
 </div>
+
+<hr>
+
+<h2>Why this era replaced the previous one</h2>
+<p>
+HTML 3.2 had standardized presentational tags like <code>font</code> and
+<code>center</code>, but maintaining large sites built this way was painful.
+Changing a font across 500 pages meant editing 500 files. HTML 4.0 introduced
+the idea that styling should be separated from markup and handled by CSS.
+It deprecated many presentational elements and encouraged authors to use
+<code>class</code> and <code>id</code> attributes with external stylesheets.
+</p>
+
+<hr>
+
+<h2>Artifact: Web Standards Movement and the Browser Wars</h2>
+<table border="2" cellpadding="8" cellspacing="0" width="100%">
+<tr><td bgcolor="#eeeeee">
+<p>
+<b>Title:</b> The Web Standards Project (WaSP)<br>
+<b>Year:</b> 1998<br>
+<b>Founders:</b> George Olsen, Glenn Davis, Jeffrey Zeldman
+</p>
+<p>
+The Web Standards Project was a grassroots advocacy group that pressured
+browser makers to implement W3C standards consistently. Before WaSP,
+web developers had to build separate versions of every site for
+Netscape and Internet Explorer because each browser interpreted HTML
+and CSS differently.
+</p>
+<p>
+<b>Why it mattered:</b> WaSP helped establish the principle that the web
+should be built on open, interoperable standards rather than proprietary
+browser features. Their advocacy directly influenced browser makers to
+improve standards compliance.
+</p>
+</td></tr>
+</table>
+
+<br>
+
+<h2>Artifact: The Frames Experiment</h2>
+<table border="2" cellpadding="8" cellspacing="0" width="100%">
+<tr><td bgcolor="#eeeeee">
+<p>
+<b>Title:</b> Frameset-based website layouts<br>
+<b>Year:</b> 1997-2003<br>
+<b>Technology:</b> HTML frames
+</p>
+<p>
+HTML 4.0 formalized frames, which split the browser window into multiple
+independent panes. A typical frameset site had a navigation frame on the
+left and a content frame on the right. Clicking a link in the navigation
+frame loaded new content in the content frame without refreshing the
+entire page.
+</p>
+<p><b>Example frameset code:</b></p>
+<pre>
+&lt;frameset cols="200,*"&gt;
+  &lt;frame src="nav.html" name="nav"&gt;
+  &lt;frame src="main.html" name="content"&gt;
+  &lt;noframes&gt;
+    &lt;p&gt;Your browser does not support frames.&lt;/p&gt;
+  &lt;/noframes&gt;
+&lt;/frameset&gt;
+</pre>
+<p>
+<b>Why it died:</b> Frames broke bookmarking (the URL never changed),
+confused search engines, and made accessibility nearly impossible.
+They were deprecated in HTML5.
+</p>
+</td></tr>
+</table>
+
+<br>
+
+<hr>
+
+<h2>Limitations designers faced</h2>
+<ul>
+  <li>CSS support was inconsistent across browsers, so many authors still used table layouts.</li>
+  <li>Internet Explorer and Netscape rendered the same page differently.</li>
+  <li>XHTML required strict XML syntax, but served as <code>text/html</code> it was still parsed as tag soup.</li>
+  <li>Frames seemed clever but broke fundamental web conventions like bookmarks and the back button.</li>
+  <li>Accessibility was discussed in specs but rarely implemented in practice.</li>
+</ul>
 
 <h2>Goals of HTML 4.x</h2>
 <ul>
@@ -29,6 +123,7 @@
   <li><strong>W3C HTML Working Group</strong> - developed HTML 4.0/4.01 and XHTML 1.0/1.1.</li>
   <li><strong>Tim Berners-Lee</strong> - W3C Director, guiding the standards direction for HTML.</li>
   <li><strong>Dave Raggett</strong> and other editors - authors of W3C HTML specifications and tutorials.</li>
+  <li><strong>Jeffrey Zeldman</strong> and the Web Standards Project - advocated for consistent browser behavior.</li>
   <li><strong>Accessibility and internationalization groups</strong> within W3C - pushed for better markup for screen readers and non-English text.</li>
 </ul>
 

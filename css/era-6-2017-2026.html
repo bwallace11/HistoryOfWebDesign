@@ -116,6 +116,86 @@
       <h2>Why modern CSS feels "alive"</h2>
       <p>CSS evolves through modules that ship when browsers implement them and tests confirm behavior. Instead of a single "CSS4," improvements arrive continuously.</p>
     </section>
+
+    <section>
+      <div class="grid">
+        <div class="card">
+          <h2>Artifact: CSS Grid Layout (2017)</h2>
+          <p>
+            <strong>Title:</strong> CSS Grid Layout Module Level 1<br>
+            <strong>Year:</strong> 2017<br>
+            <strong>Key educators:</strong> Rachel Andrew, Jen Simmons
+          </p>
+          <p>
+            CSS Grid became available in all major browsers in March 2017.
+            For the first time, CSS had a true two-dimensional layout system.
+            Authors could define rows AND columns simultaneously, place items
+            precisely on a grid, and create complex layouts without hacks.
+          </p>
+          <p><strong>Example Grid code:</strong></p>
+          <pre style="background:#eff1f3;padding:8px;border-radius:4px;font-size:13px;overflow-x:auto">
+.layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 16px;
+}</pre>
+          <p>
+            <strong>Why it mattered:</strong> Grid replaced decades of float
+            hacks, framework grids, and Flexbox workarounds for page layout.
+            Rachel Andrew's educational work and Jen Simmons' "Layout Land"
+            videos taught thousands of developers how to use Grid effectively.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Artifact: CSS Custom Properties (Variables)</h2>
+          <p>
+            <strong>Title:</strong> CSS Custom Properties for Cascading Variables<br>
+            <strong>Year:</strong> 2017 (broad browser support)<br>
+            <strong>Key spec editor:</strong> Tab Atkins
+          </p>
+          <p>
+            Custom properties (CSS variables) let authors define values once
+            and reuse them throughout a stylesheet. Unlike preprocessor variables
+            (Sass, Less), CSS custom properties are live in the browser, cascade
+            normally, and can be changed with JavaScript at runtime.
+          </p>
+          <pre style="background:#eff1f3;padding:8px;border-radius:4px;font-size:13px;overflow-x:auto">
+:root {
+  --color-primary: #0969da;
+  --spacing: 16px;
+}
+.card {
+  color: var(--color-primary);
+  padding: var(--spacing);
+}</pre>
+          <p>
+            <strong>Why it mattered:</strong> Variables made CSS design systems
+            practical. Theming (including dark mode) became a matter of swapping
+            a few variable values rather than rewriting entire stylesheets.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Why this era replaced the previous one</h2>
+          <p>
+            Flexbox solved one-dimensional layout but complex page structures
+            still required nesting and workarounds. CSS Grid provided the
+            missing two-dimensional layout. Custom properties removed the
+            need for CSS preprocessors in many cases. Container queries
+            (arriving in 2023) completed the picture by letting components
+            respond to their own size, not just the viewport.
+          </p>
+          <h3 style="font-size:14px">Limitations that remain</h3>
+          <ul>
+            <li>Some advanced features still lack full browser support.</li>
+            <li>The spec surface area is now enormous; learning CSS is harder than ever.</li>
+            <li>Legacy browser support requirements slow adoption of newest features.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
   </div>
 </body>
 </html>

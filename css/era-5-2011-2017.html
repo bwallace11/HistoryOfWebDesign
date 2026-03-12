@@ -36,6 +36,7 @@
           <li>Responsive design becomes mainstream (media queries + flexible layouts).</li>
           <li>Rounded corners and shadows become normal: <code>border-radius</code>, <code>box-shadow</code>.</li>
           <li>Visual polish without images: gradients, transforms, transitions.</li>
+          <li>Flexbox arrives for one-dimensional layout.</li>
         </ul>
       </section>
 
@@ -46,6 +47,7 @@
           <li><b>Jen Simmons</b>: major advocate/teacher for modern layout at Mozilla.</li>
           <li><b>Lea Verou</b>: CSS educator, tooling, and standards work.</li>
           <li><b>Elika J. Etemad</b> (fantasai): major CSS editor and spec leader.</li>
+          <li><b>Ethan Marcotte</b>: coined "responsive web design."</li>
         </ul>
       </section>
 
@@ -56,6 +58,73 @@
           <li><b>"Flat design":</b> minimal decoration, bold type, strong spacing.</li>
           <li><b>Frameworks:</b> prebuilt grids and UI patterns become common.</li>
           <li><b>Vendor prefixes:</b> write the same property several times (example: <code>-webkit-</code>).</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="grid" style="margin-top:14px">
+      <section class="card">
+        <h2>Artifact: "Responsive Web Design" Article (2010)</h2>
+        <p>
+          <b>Title:</b> "Responsive Web Design"<br>
+          <b>Year:</b> 2010<br>
+          <b>Author:</b> Ethan Marcotte, A List Apart
+        </p>
+        <p>
+          Marcotte proposed three ingredients: fluid grids (percentage widths),
+          flexible images (<code>max-width: 100%</code>), and CSS3 media queries.
+          Together, these techniques let a single codebase adapt to phones,
+          tablets, and desktops.
+        </p>
+        <p><b>Example media query from this era:</b></p>
+        <pre style="background:#f2f2f7;padding:8px;border-radius:4px;font-size:13px;overflow-x:auto">
+@media (max-width: 600px) {
+  .sidebar { display: none; }
+  .content { width: 100%; }
+}</pre>
+        <p>
+          <b>Why it mattered:</b> Before responsive design, companies built
+          separate mobile sites (m.example.com). Marcotte showed that one site
+          could serve all devices, which became the industry standard.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Artifact: Bootstrap CSS Framework (2011)</h2>
+        <p>
+          <b>Title:</b> Bootstrap<br>
+          <b>Year:</b> 2011<br>
+          <b>Creators:</b> Mark Otto and Jacob Thornton at Twitter
+        </p>
+        <p>
+          Bootstrap was an internal tool at Twitter that became the most popular
+          CSS framework in the world. It provided a responsive 12-column grid,
+          pre-styled buttons, forms, navigation, and modals. Developers could
+          build professional-looking sites without writing much custom CSS.
+        </p>
+        <p>
+          <b>Why it mattered:</b> Bootstrap democratized responsive web design.
+          It also showed the demand for layout tools that CSS itself did not yet
+          provide. The popularity of frameworks pushed the CSS Working Group to
+          prioritize native layout features like Flexbox and Grid.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Why this era replaced the previous one</h2>
+        <p>
+          The fixed-width 960px layouts of the CSS 2.1 era could not handle
+          the explosion of mobile devices. When the iPhone launched in 2007,
+          most websites were unreadable on phone screens. CSS3 media queries
+          and Flexbox gave authors the tools to build layouts that adapted
+          to any screen size.
+        </p>
+        <h3>Limitations designers still faced</h3>
+        <ul>
+          <li>Flexbox was one-dimensional only (rows OR columns, not both).</li>
+          <li>Vendor prefixes created maintenance headaches.</li>
+          <li>Old IE versions still required fallbacks for years.</li>
+          <li>Complex grid layouts still required frameworks or hacks.</li>
         </ul>
       </section>
     </div>
