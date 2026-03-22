@@ -7,18 +7,12 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { margin: 0; background: #0F172A; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; color: #E5E7EB; font-size: 15px; line-height: 1.6; }
-    site-header, site-nav, site-footer { display: block; }
+    site-header, site-footer { display: block; }
 
     site-header { padding: 0; }
     site-header .header-inner { padding: 20px 24px 14px; background: linear-gradient(135deg, rgba(59,130,246,.18) 0%, rgba(139,92,246,.18) 100%); border-bottom: 1px solid #1F2937; box-shadow: 0 0 30px rgba(59,130,246,0.2); }
     site-header .header-inner h1 { margin: 0 0 4px; color: #3B82F6; font-size: 20px; font-weight: 600; }
     site-header .header-inner p { margin: 0; color: #9CA3AF; font-size: 13px; }
-
-    site-nav { display: block; background: #111827; border-bottom: 1px solid #1F2937; padding: 6px 20px; }
-    site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 2px; }
-    site-nav ul li a { color: #9CA3AF; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; font-size: 13px; }
-    site-nav ul li a:hover { color: #E5E7EB; background: #1F2937; }
-    site-nav ul li a.active { color: #E5E7EB; background: #3B82F6; }
 
     .page-grid { display: grid; grid-template-columns: 1fr 240px; gap: 24px; max-width: 1060px; margin: 0 auto; padding: 24px 20px; }
     @media (max-width: 800px) { .page-grid { grid-template-columns: 1fr; } }
