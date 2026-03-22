@@ -1,0 +1,317 @@
+/* style/2015.css - CSS3 */
+/* Available: flexbox, border-radius, box-shadow, gradients, transitions,    */
+/* @keyframes, media queries, Google Fonts via @import, calc(),              */
+/* CSS transforms, rgba(), multiple backgrounds, :nth-child, :not selectors  */
+/* This is the "flat design" era — Material Design, Bootstrap aesthetic      */
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Source+Code+Pro:400,600');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #333333;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ---- Header ---- */
+header {
+  background: linear-gradient(135deg, #1565c0 0%, #1976d2 60%, #1e88e5 100%);
+  color: #ffffff;
+  padding: 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 24px 16px;
+}
+
+header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+header p.subtitle {
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+}
+
+/* ---- Navigation ---- */
+nav {
+  background-color: #0d47a1;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+nav ul li a {
+  display: block;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 14px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  letter-spacing: 0.2px;
+}
+
+nav ul li a:hover {
+  background-color: rgba(255,255,255,0.12);
+  color: #ffffff;
+}
+
+nav ul li a.active {
+  background-color: rgba(255,255,255,0.2);
+  color: #ffffff;
+  border-bottom: 3px solid #ffffff;
+}
+
+/* ---- Page layout ---- */
+.container {
+  max-width: 960px;
+  margin: 28px auto;
+  padding: 0 16px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* ---- Main content ---- */
+main {
+  flex: 1;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  padding: 28px 32px;
+}
+
+h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1565c0;
+  border-bottom: 2px solid #e3f2fd;
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+}
+
+h2 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1565c0;
+  margin-top: 24px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 8px;
+}
+
+p {
+  margin-bottom: 14px;
+  color: #444444;
+}
+
+ul {
+  margin-left: 22px;
+  margin-bottom: 14px;
+  color: #444444;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+a {
+  color: #1565c0;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+code {
+  font-family: 'Source Code Pro', 'Courier New', monospace;
+  font-size: 13px;
+  background-color: #e8f4fd;
+  color: #0d47a1;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+/* ---- Demo boxes ---- */
+.demobox {
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-left: 4px solid #1976d2;
+  border-radius: 4px;
+  padding: 18px 20px;
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+.demobox h3 {
+  color: #1565c0;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+input[type="text"],
+input[type="number"] {
+  font-family: 'Source Code Pro', 'Courier New', monospace;
+  font-size: 13px;
+  padding: 7px 10px;
+  border: 1px solid #bdbdbd;
+  border-radius: 3px;
+  background-color: #ffffff;
+  color: #333333;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: #1976d2;
+}
+
+button {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 18px;
+  background-color: #1976d2;
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+button:active {
+  background-color: #0d47a1;
+}
+
+pre {
+  font-family: 'Source Code Pro', 'Courier New', monospace;
+  font-size: 13px;
+  background-color: #263238;
+  color: #aed581;
+  padding: 14px;
+  border-radius: 3px;
+  margin-top: 10px;
+  overflow-x: auto;
+  min-height: 32px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.note {
+  font-size: 12px;
+  color: #757575;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+/* ---- Sidebar ---- */
+aside {
+  width: 220px;
+  flex-shrink: 0;
+}
+
+.sidebar-card {
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.sidebar-card h3 {
+  font-size: 11px;
+  font-weight: 700;
+  color: #757575;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+}
+
+.sidebar-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-card ul li {
+  padding: 3px 0;
+  font-size: 13px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.sidebar-card ul li:last-child {
+  border-bottom: none;
+}
+
+.sidebar-card a {
+  color: #1976d2;
+  font-size: 13px;
+}
+
+.sidebar-card p {
+  font-size: 12px;
+  color: #666666;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* ---- Footer ---- */
+footer {
+  background-color: #1565c0;
+  color: rgba(255,255,255,0.75);
+  text-align: center;
+  font-size: 12px;
+  padding: 14px;
+  margin-top: 16px;
+}
+
+footer a {
+  color: rgba(255,255,255,0.9);
+}
+
+/* ---- Media queries (CSS3) ---- */
+@media (max-width: 700px) {
+  .container {
+    flex-direction: column;
+  }
+  aside {
+    width: 100%;
+  }
+}

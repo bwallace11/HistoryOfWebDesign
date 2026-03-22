@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home – JavaScript Archive</title>
+  <style>
+    /* Content styles */
+    body { margin: 0; }
+    site-header, site-nav, site-footer { display: block; }
+    site-header .header-inner { padding: 20px 20px 14px; background: radial-gradient(600px 200px at 20% 50%, rgba(99,102,241,.3), transparent), #212438; }
+    site-header .header-inner h1 { margin: 0 0 4px; color: #818cf8; font-size: 22px; }
+    site-header .header-inner p { margin: 0; color: #9499b8; font-size: 13px; }
+    site-nav { background: #212438; border-bottom: 1px solid #2e3250; padding: 8px 16px; }
+    site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+    site-nav ul li a { color: #818cf8; text-decoration: none; font-weight: 700; padding: 5px 10px; border-radius: 999px; border: 1px solid #2e3250; font-size: 12px; background: rgba(0,0,0,.2); }
+    site-nav ul li a:hover { color: #e8eaf0; }
+    site-nav ul li a.active { color: #e8eaf0; background: #6366f1; border-color: #6366f1; }
+    .page-grid { display: grid; grid-template-columns: 1fr 260px; gap: 0; }
+    @media (max-width: 800px) { .page-grid { grid-template-columns: 1fr; } }
+    main { padding: 18px 20px; color: #ececf1; }
+    main h1 { color: #818cf8; margin-top: 0; }
+    main h2 { color: #9daaff; }
+    main h3 { color: #b9bbca; }
+    main p, main li { color: #b9bbca; line-height: 1.65; }
+    main strong { color: #e8eaf0; }
+    main code { background: #2e3250; padding: 2px 6px; border-radius: 4px; font-size: 12px; color: #7CFFB2; }
+    main a { color: #7CFFB2; }
+    .sidebar { background: #171722; border-left: 1px solid #2e3250; padding: 16px; }
+    .sidebar-card { background: rgba(0,0,0,.3); border: 1px solid #2e3250; border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+    .sidebar-card h3 { margin: 0 0 8px; font-size: 13px; color: #9daaff; }
+    .sidebar-card ul { margin: 0; padding-left: 18px; font-size: 12px; color: #9499b8; }
+    .sidebar-card p { font-size: 12px; color: #9499b8; margin: 0; }
+    site-footer { background: #212438; border-top: 1px solid #2e3250; padding: 10px 20px; font-size: 12px; color: #9499b8; }
+    site-footer a { color: #818cf8; }
+    em { color: #b9bbca; }
+</style>
+</head>
+<body>
+
+<!-- ORIGINAL CONTENT -->
+<site-header>
+  <div class="header-inner">
+    <h1>JavaScript History Archive</h1>
+    <p>A historical record of the ECMAScript specification &mdash; 1995 to 2025</p>
+  </div>
+</site-header>
+
+<div class="page-grid">
+  <main>
+    <h1>History of JavaScript (1995&ndash;2025)</h1>
+    <p>This archive documents the complete historical evolution of JavaScript, from its creation at Netscape Communications in 1995 to the modern ECMAScript 2025 specification managed by TC39.</p>
+    <p>Each era page is written using only the HTML, CSS, and JavaScript available during that time period. The 1995 page has no stylesheet at all &mdash; CSS did not exist yet. The 1999 page uses basic CSS1. The 2009 page uses CSS2.1 float layouts. The 2015 page uses CSS3 and Flexbox. The 2025 era page uses modern CSS with Grid and custom properties. The visual differences between sections are not errors &mdash; they are the historical record itself.</p>
+    <h2>Eras Covered</h2>
+    <ul>
+      <li><a href="1995.html">1995 &mdash; The Birth of JavaScript</a> &mdash; Brendan Eich, Netscape, and the first ten-day prototype.</li>
+      <li><a href="1999.html">1999 &mdash; ECMAScript 3</a> &mdash; Standardization, the Browser Wars, try/catch.</li>
+      <li><a href="2009.html">2009 &mdash; ECMAScript 5</a> &mdash; Strict mode, JSON, recovery after the ES4 collapse.</li>
+      <li><a href="2015.html">2015 &mdash; ECMAScript 2015 (ES6)</a> &mdash; The largest single upgrade in the language's history.</li>
+      <li><a href="2025.html">2025 &mdash; Modern ECMAScript</a> &mdash; Annual releases and TC39 governance.</li>
+    </ul>
+    <h2>Additional Sections</h2>
+    <ul>
+      <li><a href="glossary.html">Glossary</a> &mdash; Key terms used throughout the archive.</li>
+      <li><a href="contributors.html">Contributors</a> &mdash; Major figures in JavaScript's history.</li>
+      <li><a href="discussion.html">Critical Discussion</a> &mdash; Analysis of the tensions and decisions that shaped the language.</li>
+      <li><a href="bibliography.html">Bibliography</a> &mdash; Primary sources and references.</li>
+    </ul>
+  </main>
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <h3>Era Pages</h3>
+      <ul>
+        <li><a href="1995.html">1995 &mdash; Birth of JS</a></li>
+        <li><a href="1999.html">1999 &mdash; ECMAScript 3</a></li>
+        <li><a href="2009.html">2009 &mdash; ECMAScript 5</a></li>
+        <li><a href="2015.html">2015 &mdash; ES2015</a></li>
+        <li><a href="2025.html">2025 &mdash; Modern JS</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-card">
+      <h3>Reference</h3>
+      <ul>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="contributors.html">Contributors</a></li>
+        <li><a href="discussion.html">Discussion</a></li>
+        <li><a href="bibliography.html">Bibliography</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-card">
+      <h3>About This Archive</h3>
+      <p>Each era page uses only the HTML, CSS, and JavaScript available at the time it covers. The styling differences are intentional and historical.</p>
+    </div>
+  </aside>
+</div>
+
+<site-footer>
+  JavaScript History Archive &nbsp;|&nbsp;
+  <a href="../index.html" target="_top">Web History Hub</a>
+</site-footer>
+<!-- END ORIGINAL CONTENT -->
+
+</body>
+</html>

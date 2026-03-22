@@ -1,0 +1,826 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Web History Hub - Windows Browser</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: var(--font);
+      font-size: var(--fsize);
+      background: var(--bg);
+      transition: background-color 1.2s ease, font-family 0.6s ease;
+    }
+
+    /* Shell */
+    .shell {
+      max-width: 1200px; margin: 18px auto;
+      border-radius: var(--shell-r); box-shadow: var(--shadow);
+      overflow: hidden; border: 2px solid var(--chrome-lo);
+      transition: border-radius 1.2s ease, box-shadow 1.2s ease, border-color 1.2s ease;
+    }
+    .titlebar {
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--titlebar-bg); color: var(--titlebar-fg);
+      padding: 3px 6px; font-size: 12px; font-weight: bold;
+      transition: background-color 1.2s ease, color 1.2s ease;
+    }
+    .title-left { display: flex; align-items: center; gap: 6px; }
+    .title-dot { width: 10px; height: 10px; background: var(--titlebar-fg); border-radius: 50%; opacity: .5; }
+    .winbtns { display: flex; gap: var(--winbtn-gap, 2px); }
+    .winbtn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: var(--winbtn-w, 20px); height: var(--winbtn-h, 18px);
+      font-size: var(--winbtn-fs, 11px); line-height: 1;
+      background: var(--btn-bg); color: var(--btn-fg);
+      border-top: var(--winbtn-brd, 1px) solid var(--chrome-hi);
+      border-left: var(--winbtn-brd, 1px) solid var(--chrome-hi);
+      border-bottom: var(--winbtn-brd, 1px) solid var(--chrome-lo);
+      border-right: var(--winbtn-brd, 1px) solid var(--chrome-lo);
+      border-radius: var(--winbtn-r, 0);
+      transition: background-color 1.2s ease, color 1.2s ease, border-color 1.2s ease, border-radius 1.2s ease, width 1.2s ease, height 1.2s ease;
+    }
+    .wb-close { background: var(--wb-close, var(--btn-bg)); color: var(--wb-close-fg, var(--btn-fg)); }
+    .wb-min { background: var(--wb-min, var(--btn-bg)); color: var(--wb-min-fg, var(--btn-fg)); }
+    .wb-max { background: var(--wb-max, var(--btn-bg)); color: var(--wb-max-fg, var(--btn-fg)); }
+    .menubar {
+      background: var(--toolbar-bg); padding: 2px 8px;
+      border-bottom: var(--toolbar-border); font-size: 12px;
+      transition: background-color 1.2s ease, border-color 1.2s ease;
+    }
+    .mitem { margin-right: 14px; cursor: default; }
+    .toolbar {
+      background: var(--toolbar-bg); padding: 3px 8px;
+      border-bottom: var(--toolbar-border);
+      display: flex; align-items: center; gap: 4px;
+      transition: background-color 1.2s ease, border-color 1.2s ease;
+    }
+    .tbtn {
+      background: var(--btn-bg); color: var(--btn-fg);
+      border-top: 1px solid var(--chrome-hi); border-left: 1px solid var(--chrome-hi);
+      border-bottom: 1px solid var(--chrome-lo); border-right: 1px solid var(--chrome-lo);
+      padding: 2px 10px; font-size: 11px; font-family: inherit; cursor: pointer;
+      border-radius: var(--btn-r);
+      transition: background-color 1.2s ease, color 1.2s ease, border-color 1.2s ease, border-radius 1.2s ease;
+    }
+    .tsep { width: 1px; height: 18px; background: var(--chrome-lo); margin: 0 4px; }
+    .addrbar {
+      background: var(--addr-bg); padding: 3px 8px;
+      border-bottom: var(--toolbar-border);
+      display: flex; align-items: center; gap: 6px;
+      transition: background-color 1.2s ease, border-color 1.2s ease;
+    }
+    .addr-label { font-size: 11px; font-weight: bold; white-space: nowrap; }
+    .addr-input {
+      flex: 1; padding: 2px 6px; font-size: 12px;
+      font-family: "Courier New", monospace;
+      background: var(--addr-input-bg); color: var(--addr-input-fg);
+      min-width: 0;
+      border: 1px inset var(--chrome-lo); border-radius: var(--addr-r);
+      transition: background-color 1.2s ease, color 1.2s ease, border-radius 1.2s ease;
+    }
+    .go-btn {
+      background: var(--btn-bg); color: var(--btn-fg);
+      border: 1px outset var(--chrome-hi); padding: 2px 10px;
+      font-size: 11px; font-family: inherit; cursor: pointer;
+      border-radius: var(--btn-r);
+      transition: background-color 1.2s ease, border-radius 1.2s ease;
+    }
+    .stabs {
+      display: flex; background: var(--toolbar-bg);
+      border-bottom: var(--toolbar-border); padding: 0 4px;
+      transition: background-color 1.2s ease, border-color 1.2s ease;
+    }
+    .stab {
+      padding: 5px 18px; font-size: 12px; font-weight: bold; cursor: pointer;
+      background: var(--tab-idle-bg); color: var(--btn-fg);
+      border: 1px solid var(--chrome-lo); border-bottom: none;
+      border-radius: var(--tab-r); margin-top: 4px;
+      transition: background-color 1.2s ease, color 1.2s ease, border-color 1.2s ease, border-radius 1.2s ease;
+    }
+    .stab.active {
+      background: var(--tab-active-bg); color: var(--tab-active-fg);
+      border-bottom: 1px solid var(--tab-active-bg);
+    }
+    .stab:hover:not(.active) { background: var(--tab-hover-bg); }
+    .etabs {
+      display: none; flex-wrap: wrap; gap: 2px;
+      padding: 4px 8px; background: var(--toolbar-bg);
+      border-bottom: var(--toolbar-border);
+      transition: background-color 1.2s ease, border-color 1.2s ease;
+    }
+    .etab {
+      padding: 3px 12px; font-size: 11px; cursor: pointer;
+      background: var(--tab-idle-bg); color: var(--btn-fg);
+      border: 1px solid var(--chrome-lo); border-radius: var(--btn-r);
+      transition: background-color 1.2s ease, color 1.2s ease, border-color 1.2s ease, border-radius 1.2s ease;
+    }
+    .etab.active { background: var(--tab-active-bg); color: var(--tab-active-fg); font-weight: bold; }
+    .etab:hover:not(.active) { background: var(--tab-hover-bg); }
+    .viewport { background: var(--content-bg); min-height: 400px; position: relative;
+      transition: background-color 1.2s ease; }
+    .progbar {
+      position: absolute; top: 0; left: 0; height: 3px;
+      background: var(--bar-color); width: 0; z-index: 10;
+    }
+    .hub-home { padding: 24px; font-family: "Arial", sans-serif; }
+    .hub-title { font-size: 22px; font-weight: bold; color: var(--card-h2); margin-bottom: 8px; }
+    .hub-desc { line-height: 1.6; margin-bottom: 16px; }
+    .hub-inset { background: var(--content-bg); border: 1px inset var(--chrome-lo); padding: 14px; margin-bottom: 16px; }
+    .hub-cards { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hub-card { flex: 1; min-width: 200px; border: 1px outset var(--chrome-hi); padding: 12px; background: var(--chrome-bg); }
+    .hub-card h2 { font-size: 15px; color: var(--card-h2); margin-bottom: 6px; }
+    .hub-card p { font-size: 12px; line-height: 1.5; margin-bottom: 10px; }
+    .hub-btn {
+      display: inline-block; padding: 4px 14px; font-size: 12px; font-weight: bold; cursor: pointer;
+      background: var(--btn-bg); color: var(--btn-fg);
+      border-top: 1px solid var(--chrome-hi); border-left: 1px solid var(--chrome-hi);
+      border-bottom: 1px solid var(--chrome-lo); border-right: 1px solid var(--chrome-lo);
+      border-radius: var(--btn-r);
+    }
+    .hub-note {
+      margin-top: 12px; padding: 10px; font-size: 12px; line-height: 1.5;
+      background: var(--chrome-bg); border: 1px inset var(--chrome-lo);
+    }
+    .hub-note strong { color: var(--card-h2); }
+    .os-modes { margin-bottom: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .os-btn {
+      display: inline-block; padding: 4px 10px; font-size: 12px; font-weight: bold; cursor: pointer;
+      background: var(--btn-bg); color: var(--btn-fg);
+      border-top: 1px solid var(--chrome-hi); border-left: 1px solid var(--chrome-hi);
+      border-bottom: 1px solid var(--chrome-lo); border-right: 1px solid var(--chrome-lo);
+      border-radius: var(--btn-r);
+    }
+    .os-btn.active { outline: 2px solid var(--bar-color); outline-offset: 1px; }
+    .cframe { width: 100%; height: 820px; border: none; display: block; }
+    .statusbar {
+      background: var(--status-bg); border-top: var(--toolbar-border);
+      padding: 3px 8px; font-size: 11px; color: var(--status-fg);
+      display: flex; gap: 6px;
+      transition: background-color 1.2s ease, color 1.2s ease, border-color 1.2s ease;
+    }
+    .spanel {
+      border-top: 1px solid var(--chrome-lo); border-left: 1px solid var(--chrome-lo);
+      border-right: 1px solid var(--chrome-hi); border-bottom: 1px solid var(--chrome-hi);
+      padding: 1px 6px; flex: 1;
+    }
+    .spanel.narrow { flex: 0 0 auto; min-width: 140px; }
+    .era-badge {
+      position: fixed; bottom: 14px; right: 14px;
+      padding: 5px 13px; font-size: 11px; font-weight: bold;
+      font-family: var(--font);
+      background: var(--titlebar-bg); color: var(--titlebar-fg);
+      border-radius: var(--btn-r); opacity: 0.88; pointer-events: none; z-index: 999;
+      transition: background-color 1.2s ease, color 1.2s ease, border-radius 1.2s ease;
+    }
+
+    /* Era themes */
+    .t-home {
+      --bg:#000; --chrome-bg:#c0c0c0; --chrome-hi:#fff; --chrome-lo:#808080;
+      --titlebar-bg:#000080; --titlebar-fg:#fff;
+      --toolbar-bg:#c0c0c0; --toolbar-border:1px solid #808080;
+      --addr-bg:#c0c0c0; --addr-input-bg:#fff; --addr-input-fg:#000;
+      --btn-bg:#c0c0c0; --btn-fg:#000;
+      --tab-active-bg:#c0c0c0; --tab-active-fg:#000;
+      --tab-idle-bg:#a8a8a8; --tab-hover-bg:#d4d4d4;
+      --content-bg:#c0c0c0; --status-bg:#c0c0c0; --status-fg:#000;
+      --card-h2:#000080;
+      --shell-r:0px; --btn-r:0px; --addr-r:0px; --tab-r:1px 1px 0 0;
+      --font:"Arial",sans-serif; --fsize:12px;
+      --shadow:2px 2px 0 #000; --bar-color:#000080;
+    }
+    .t-html-1990 {
+      --bg:#888; --chrome-bg:#c0c0c0; --chrome-hi:#fff; --chrome-lo:#808080;
+      --titlebar-bg:#000080; --titlebar-fg:#fff;
+      --toolbar-bg:#c0c0c0; --toolbar-border:1px solid #808080;
+      --addr-bg:#c0c0c0; --addr-input-bg:#fff; --addr-input-fg:#000;
+      --btn-bg:#c0c0c0; --btn-fg:#000;
+      --tab-active-bg:#c0c0c0; --tab-active-fg:#000;
+      --tab-idle-bg:#a8a8a8; --tab-hover-bg:#d4d4d4;
+      --content-bg:#c0c0c0; --status-bg:#c0c0c0; --status-fg:#000;
+      --card-h2:#000080;
+      --shell-r:0; --btn-r:0; --addr-r:0; --tab-r:1px 1px 0 0;
+      --font:"Times New Roman",Times,serif; --fsize:12px;
+      --shadow:3px 3px 0 #000; --bar-color:#000080;
+    }
+    .t-html-1994 {
+      --bg:#6a6a6a; --chrome-bg:#c0c0c0; --chrome-hi:#fff; --chrome-lo:#808080;
+      --titlebar-bg:#000099; --titlebar-fg:#fff;
+      --toolbar-bg:#c0c0c0; --toolbar-border:1px solid #808080;
+      --addr-bg:#c0c0c0; --addr-input-bg:#fff; --addr-input-fg:#000;
+      --btn-bg:#c0c0c0; --btn-fg:#000;
+      --tab-active-bg:#c0c0c0; --tab-active-fg:#000;
+      --tab-idle-bg:#aaa; --tab-hover-bg:#d4d4d4;
+      --content-bg:#c0c0c0; --status-bg:#c0c0c0; --status-fg:#000;
+      --card-h2:#0000cc;
+      --shell-r:0; --btn-r:0; --addr-r:0; --tab-r:1px 1px 0 0;
+      --font:"Arial",Helvetica,sans-serif; --fsize:12px;
+      --shadow:2px 2px 0 #000; --bar-color:#000099;
+    }
+    .t-html-1997 {
+      --bg:#4a5566; --chrome-bg:#d4d0c8; --chrome-hi:#f0ece0; --chrome-lo:#a09888;
+      --titlebar-bg:#0a246a; --titlebar-fg:#fff;
+      --toolbar-bg:#d4d0c8; --toolbar-border:1px solid #a09888;
+      --addr-bg:#d4d0c8; --addr-input-bg:#fff; --addr-input-fg:#000;
+      --btn-bg:#d4d0c8; --btn-fg:#000;
+      --tab-active-bg:#d4d0c8; --tab-active-fg:#000;
+      --tab-idle-bg:#b8b4ac; --tab-hover-bg:#e0dcd4;
+      --content-bg:#f0f0ee; --status-bg:#d4d0c8; --status-fg:#333;
+      --card-h2:#0000cc;
+      --shell-r:0; --btn-r:2px; --addr-r:0; --tab-r:2px 2px 0 0;
+      --winbtn-r:2px;
+      --font:"Tahoma","Arial",sans-serif; --fsize:11px;
+      --shadow:1px 1px 5px rgba(0,0,0,.5); --bar-color:#0a246a;
+    }
+    .t-html-2004 {
+      --bg:#3a4a5a; --chrome-bg:#e8e8ec; --chrome-hi:#f8f8fc; --chrome-lo:#b0b0b8;
+      --titlebar-bg:#2a5f96; --titlebar-fg:#fff;
+      --toolbar-bg:#e0e0e8; --toolbar-border:1px solid #b8b8c0;
+      --addr-bg:#e8e8ec; --addr-input-bg:#fff; --addr-input-fg:#111;
+      --btn-bg:#dcdce4; --btn-fg:#111;
+      --tab-active-bg:#f4f4f8; --tab-active-fg:#111;
+      --tab-idle-bg:#d0d0d8; --tab-hover-bg:#e4e4ec;
+      --content-bg:#f4f4f8; --status-bg:#e0e0e8; --status-fg:#333;
+      --card-h2:#0055cc;
+      --shell-r:4px; --btn-r:3px; --addr-r:12px; --tab-r:4px 4px 0 0;
+      --font:"Segoe UI","Tahoma",sans-serif; --fsize:12px;
+      --shadow:0 2px 10px rgba(0,0,0,.4); --bar-color:#2a5f96;
+      --winbtn-r:3px;
+    }
+    .t-html-2014 {
+      --bg:#202124; --chrome-bg:#3c4043; --chrome-hi:#5f6368; --chrome-lo:#202124;
+      --titlebar-bg:#292b2f; --titlebar-fg:#e8eaed;
+      --toolbar-bg:#3c4043; --toolbar-border:1px solid #5f6368;
+      --addr-bg:#292b2f; --addr-input-bg:#202124; --addr-input-fg:#e8eaed;
+      --btn-bg:#5f6368; --btn-fg:#e8eaed;
+      --tab-active-bg:#fff; --tab-active-fg:#202124;
+      --tab-idle-bg:#35363a; --tab-hover-bg:#4a4d51;
+      --content-bg:#fff; --status-bg:#3c4043; --status-fg:#bdc1c6;
+      --card-h2:#1a73e8;
+      --shell-r:10px; --btn-r:20px; --addr-r:20px; --tab-r:8px 8px 0 0;
+      --font:"Segoe UI",system-ui,sans-serif; --fsize:13px;
+      --shadow:0 4px 20px rgba(0,0,0,.65); --bar-color:#1a73e8;
+      --winbtn-r:50%; --winbtn-w:12px; --winbtn-h:12px; --winbtn-fs:0px; --winbtn-brd:0px; --winbtn-gap:8px;
+      --wb-close:#ff5f57; --wb-min:#ffbd2e; --wb-max:#28c940;
+      --wb-close-fg:transparent; --wb-min-fg:transparent; --wb-max-fg:transparent;
+    }
+    .t-css-1994 {
+      --bg:#888; --chrome-bg:#c0c0c0; --chrome-hi:#fff; --chrome-lo:#808080;
+      --titlebar-bg:#000080; --titlebar-fg:#fff;
+      --toolbar-bg:#c0c0c0; --toolbar-border:1px solid #808080;
+      --addr-bg:#c0c0c0; --addr-input-bg:#fff; --addr-input-fg:#000;
+      --btn-bg:#c0c0c0; --btn-fg:#000;
+      --tab-active-bg:#c0c0c0; --tab-active-fg:#000;
+      --tab-idle-bg:#a8a8a8; --tab-hover-bg:#d4d4d4;
+      --content-bg:#c0c0c0; --status-bg:#c0c0c0; --status-fg:#000;
+      --card-h2:#000080;
+      --shell-r:0; --btn-r:0; --addr-r:0; --tab-r:0 0 0 0;
+      --font:"Times New Roman",Times,serif; --fsize:12px;
+      --shadow:3px 3px 0 #000; --bar-color:#000080;
+    }
+    .t-css-1996 {
+      --bg:#777; --chrome-bg:#c0c0c0; --chrome-hi:#fff; --chrome-lo:#808080;
+      --titlebar-bg:#000080; --titlebar-fg:#fff;
+      --toolbar-bg:#c0c0c0; --toolbar-border:1px solid #808080;
+      --addr-bg:#c0c0c0; --addr-input-bg:#fff; --addr-input-fg:#000;
+      --btn-bg:#c0c0c0; --btn-fg:#000;
+      --tab-active-bg:#c0c0c0; --tab-active-fg:#000;
+      --tab-idle-bg:#aaa; --tab-hover-bg:#d4d4d4;
+      --content-bg:#c0c0c0; --status-bg:#c0c0c0; --status-fg:#000;
+      --card-h2:#0000cc;
+      --shell-r:0; --btn-r:0; --addr-r:0; --tab-r:1px 1px 0 0;
+      --font:"Arial",Helvetica,sans-serif; --fsize:13px;
+      --shadow:2px 2px 0 #000; --bar-color:#000080;
+    }
+    .t-css-1998 {
+      --bg:#003366; --chrome-bg:#d4d0c8; --chrome-hi:#f0ece0; --chrome-lo:#a09888;
+      --titlebar-bg:#003366; --titlebar-fg:#fc0;
+      --toolbar-bg:#d4d0c8; --toolbar-border:1px solid #a09888;
+      --addr-bg:#d4d0c8; --addr-input-bg:#fff; --addr-input-fg:#000;
+      --btn-bg:#d4d0c8; --btn-fg:#006;
+      --tab-active-bg:#d4d0c8; --tab-active-fg:#006;
+      --tab-idle-bg:#b8b4ac; --tab-hover-bg:#e0dcd4;
+      --content-bg:#fff; --status-bg:#d4d0c8; --status-fg:#333;
+      --card-h2:#006;
+      --shell-r:0; --btn-r:0; --addr-r:0; --tab-r:0 0 0 0;
+      --font:"Verdana","Arial",sans-serif; --fsize:12px;
+      --shadow:2px 2px 6px rgba(0,0,0,.5); --bar-color:#003366;
+    }
+    .t-css-2004 {
+      --bg:#2a3a4a; --chrome-bg:#e4e4e4; --chrome-hi:#f8f8f8; --chrome-lo:#b8b8b8;
+      --titlebar-bg:#003366; --titlebar-fg:#fff;
+      --toolbar-bg:#e0e0e0; --toolbar-border:1px solid #c0c0c0;
+      --addr-bg:#e4e4e4; --addr-input-bg:#fff; --addr-input-fg:#111;
+      --btn-bg:#dcdcdc; --btn-fg:#111;
+      --tab-active-bg:#f0f0f0; --tab-active-fg:#111;
+      --tab-idle-bg:#ccc; --tab-hover-bg:#e8e8e8;
+      --content-bg:#f0f0f0; --status-bg:#e0e0e0; --status-fg:#333;
+      --card-h2:#003366;
+      --shell-r:2px; --btn-r:2px; --addr-r:2px; --tab-r:2px 2px 0 0;
+      --font:"Tahoma","Arial",sans-serif; --fsize:12px;
+      --shadow:1px 1px 6px rgba(0,0,0,.35); --bar-color:#003366;
+      --winbtn-r:2px;
+    }
+    .t-css-2011 {
+      --bg:#eee; --chrome-bg:#f5f5f5; --chrome-hi:#fff; --chrome-lo:#ddd;
+      --titlebar-bg:#1565c0; --titlebar-fg:#fff;
+      --toolbar-bg:#f5f5f5; --toolbar-border:1px solid #ddd;
+      --addr-bg:#f5f5f5; --addr-input-bg:#fff; --addr-input-fg:#222;
+      --btn-bg:#e8e8e8; --btn-fg:#222;
+      --tab-active-bg:#fff; --tab-active-fg:#1565c0;
+      --tab-idle-bg:#e0e0e0; --tab-hover-bg:#ebebeb;
+      --content-bg:#f5f5f5; --status-bg:#f5f5f5; --status-fg:#555;
+      --card-h2:#1565c0;
+      --shell-r:4px; --btn-r:4px; --addr-r:14px; --tab-r:5px 5px 0 0;
+      --font:"Segoe UI","Helvetica Neue",sans-serif; --fsize:13px;
+      --shadow:0 2px 10px rgba(0,0,0,.15); --bar-color:#1565c0;
+      --winbtn-r:4px;
+    }
+    .t-css-2017 {
+      --bg:#0f1117; --chrome-bg:#1a1d2e; --chrome-hi:#818cf8; --chrome-lo:#2e3250;
+      --titlebar-bg:#212438; --titlebar-fg:#e8eaf0;
+      --toolbar-bg:#212438; --toolbar-border:1px solid #2e3250;
+      --addr-bg:#212438; --addr-input-bg:#0f1117; --addr-input-fg:#e8eaf0;
+      --btn-bg:#2e3250; --btn-fg:#e8eaf0;
+      --tab-active-bg:#1a1d2e; --tab-active-fg:#818cf8;
+      --tab-idle-bg:#212438; --tab-hover-bg:#2e3250;
+      --content-bg:#1a1d2e; --status-bg:#212438; --status-fg:#9499b8;
+      --card-h2:#818cf8;
+      --shell-r:10px; --btn-r:20px; --addr-r:20px; --tab-r:8px 8px 0 0;
+      --font:"Segoe UI",system-ui,sans-serif; --fsize:13px;
+      --shadow:0 8px 32px rgba(0,0,0,.75); --bar-color:#818cf8;
+      --winbtn-r:50%; --winbtn-w:12px; --winbtn-h:12px; --winbtn-fs:0px; --winbtn-brd:0px; --winbtn-gap:8px;
+      --wb-close:#ff5f57; --wb-min:#ffbd2e; --wb-max:#28c940;
+      --wb-close-fg:transparent; --wb-min-fg:transparent; --wb-max-fg:transparent;
+    }
+    .t-js-1995 {
+      --bg:#888; --chrome-bg:#c0c0c0; --chrome-hi:#fff; --chrome-lo:#808080;
+      --titlebar-bg:#000080; --titlebar-fg:#fff;
+      --toolbar-bg:#c0c0c0; --toolbar-border:1px solid #808080;
+      --addr-bg:#c0c0c0; --addr-input-bg:#fff; --addr-input-fg:#000;
+      --btn-bg:#c0c0c0; --btn-fg:#000;
+      --tab-active-bg:#c0c0c0; --tab-active-fg:#000;
+      --tab-idle-bg:#a8a8a8; --tab-hover-bg:#d4d4d4;
+      --content-bg:#c0c0c0; --status-bg:#c0c0c0; --status-fg:#000;
+      --card-h2:#00f;
+      --shell-r:0; --btn-r:0; --addr-r:0; --tab-r:0 0 0 0;
+      --font:"Arial",Helvetica,sans-serif; --fsize:12px;
+      --shadow:3px 3px 0 #000; --bar-color:#000080;
+    }
+    .t-js-1999 {
+      --bg:#999; --chrome-bg:#ccc; --chrome-hi:#fff; --chrome-lo:#888;
+      --titlebar-bg:#006; --titlebar-fg:#fff;
+      --toolbar-bg:#ccc; --toolbar-border:1px solid #888;
+      --addr-bg:#ccc; --addr-input-bg:#fff; --addr-input-fg:#000;
+      --btn-bg:#ccc; --btn-fg:#000;
+      --tab-active-bg:#ccc; --tab-active-fg:#000;
+      --tab-idle-bg:#aaa; --tab-hover-bg:#d8d8d8;
+      --content-bg:#ccc; --status-bg:#ccc; --status-fg:#000;
+      --card-h2:#0000cc;
+      --shell-r:0; --btn-r:0; --addr-r:0; --tab-r:1px 1px 0 0;
+      --font:"Arial",Helvetica,sans-serif; --fsize:13px;
+      --shadow:2px 2px 0 #000; --bar-color:#006;
+    }
+    .t-js-2009 {
+      --bg:#e0e4e8; --chrome-bg:#e4e8ec; --chrome-hi:#f8f8f8; --chrome-lo:#a0aab4;
+      --titlebar-bg:#1a3a5c; --titlebar-fg:#fff;
+      --toolbar-bg:#dce3ea; --toolbar-border:1px solid #a0aab4;
+      --addr-bg:#e4e8ec; --addr-input-bg:#fff; --addr-input-fg:#222;
+      --btn-bg:#dce3ea; --btn-fg:#1a3a5c;
+      --tab-active-bg:#f0f4f8; --tab-active-fg:#1a3a5c;
+      --tab-idle-bg:#c8d0d8; --tab-hover-bg:#dce3ea;
+      --content-bg:#e8e8e8; --status-bg:#dce3ea; --status-fg:#333;
+      --card-h2:#1a3a5c;
+      --shell-r:0; --btn-r:2px; --addr-r:2px; --tab-r:2px 2px 0 0;
+      --font:"Verdana","Tahoma",sans-serif; --fsize:12px;
+      --shadow:0 1px 5px rgba(0,0,0,.3); --bar-color:#2c5f8a;
+      --winbtn-r:2px;
+    }
+    .t-js-2015 {
+      --bg:#f0f2f5; --chrome-bg:#fafafa; --chrome-hi:#fff; --chrome-lo:#e0e0e0;
+      --titlebar-bg:#1565c0; --titlebar-fg:#fff;
+      --toolbar-bg:#fafafa; --toolbar-border:1px solid #e0e0e0;
+      --addr-bg:#fafafa; --addr-input-bg:#fff; --addr-input-fg:#222;
+      --btn-bg:#f0f0f0; --btn-fg:#1565c0;
+      --tab-active-bg:#fff; --tab-active-fg:#1565c0;
+      --tab-idle-bg:#e8eaf0; --tab-hover-bg:#f4f4f8;
+      --content-bg:#f5f5f5; --status-bg:#1565c0; --status-fg:#fff;
+      --card-h2:#1565c0;
+      --shell-r:4px; --btn-r:4px; --addr-r:16px; --tab-r:5px 5px 0 0;
+      --font:"Segoe UI","Helvetica Neue",sans-serif; --fsize:13px;
+      --shadow:0 2px 8px rgba(0,0,0,.18); --bar-color:#1976d2;
+      --winbtn-r:4px;
+    }
+    .t-js-2025 {
+      --bg:#0f1117; --chrome-bg:#1a1d2e; --chrome-hi:#6366f1; --chrome-lo:#2e3250;
+      --titlebar-bg:#212438; --titlebar-fg:#e8eaf0;
+      --toolbar-bg:#212438; --toolbar-border:1px solid #2e3250;
+      --addr-bg:#212438; --addr-input-bg:#0f1117; --addr-input-fg:#e8eaf0;
+      --btn-bg:#6366f1; --btn-fg:#fff;
+      --tab-active-bg:#1a1d2e; --tab-active-fg:#818cf8;
+      --tab-idle-bg:#212438; --tab-hover-bg:#2e3250;
+      --content-bg:#1a1d2e; --status-bg:#212438; --status-fg:#9499b8;
+      --card-h2:#818cf8;
+      --shell-r:12px; --btn-r:20px; --addr-r:20px; --tab-r:8px 8px 0 0;
+      --font:"Segoe UI",system-ui,sans-serif; --fsize:13px;
+      --shadow:0 8px 40px rgba(0,0,0,.8); --bar-color:#6366f1;
+      --winbtn-r:50%; --winbtn-w:12px; --winbtn-h:12px; --winbtn-fs:0px; --winbtn-brd:0px; --winbtn-gap:8px;
+      --wb-close:#ff5f57; --wb-min:#ffbd2e; --wb-max:#28c940;
+      --wb-close-fg:transparent; --wb-min-fg:transparent; --wb-max-fg:transparent;
+    }
+
+    .os-windows .winbtn { border-radius: 0; }
+    .os-windows .wb-min::before { content: '\2015'; }
+    .os-windows .wb-max::before { content: '\25A1'; }
+    .os-windows .wb-close::before { content: '\00D7'; }
+
+    .os-mac .winbtns { gap: 8px; }
+    .os-mac .winbtn {
+      width: 12px; height: 12px; font-size: 0; border-radius: 50%; border: 0;
+      color: transparent;
+    }
+    .os-mac .wb-close { order: 1; background: #ff5f57; }
+    .os-mac .wb-min { order: 2; background: #ffbd2e; }
+    .os-mac .wb-max { order: 3; background: #28c940; }
+    .os-mac .wb-min::before,
+    .os-mac .wb-max::before,
+    .os-mac .wb-close::before { content: ''; }
+
+    .os-linux .winbtn {
+      border-radius: 2px;
+      border: 1px solid var(--chrome-lo);
+      background: #2f3443;
+      color: #d6d8e0;
+    }
+    .os-linux .wb-min::before { content: '\2015'; }
+    .os-linux .wb-max::before { content: '\25A1'; }
+    .os-linux .wb-close::before { content: '\00D7'; color: #ffb3b3; }
+
+    @media (max-width: 1024px) {
+      .shell { margin: 12px; }
+      .hub-home { padding: 18px; }
+      .cframe { height: 70vh; min-height: 460px; }
+    }
+
+    @media (max-width: 768px) {
+      .titlebar,
+      .toolbar,
+      .addrbar,
+      .statusbar {
+        flex-wrap: wrap;
+      }
+      .stabs {
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+      .stab {
+        flex: 0 0 auto;
+        padding: 7px 12px;
+      }
+      .hub-cards {
+        flex-direction: column;
+      }
+      .hub-card {
+        min-width: 100%;
+      }
+      .cframe {
+        height: 68vh;
+        min-height: 380px;
+      }
+      .spanel.narrow {
+        min-width: 0;
+        flex: 1;
+      }
+      .era-badge {
+        right: 8px;
+        bottom: 8px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .shell {
+        margin: 8px;
+        border-width: 1px;
+      }
+      .title-left {
+        min-width: 0;
+      }
+      #btitle {
+        display: inline-block;
+        max-width: 70vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .menubar,
+      .statusbar {
+        display: none;
+      }
+      .toolbar .tsep {
+        display: none;
+      }
+      .addr-label {
+        display: none;
+      }
+      .go-btn {
+        width: 100%;
+      }
+      .hub-home {
+        padding: 14px;
+      }
+      .hub-title {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body class="t-home os-windows">
+
+<div class="shell">
+  <div class="titlebar">
+    <div class="title-left">
+      <span class="title-dot"></span>
+      <span id="btitle">Web History Hub - Windows Browser</span>
+    </div>
+    <div class="winbtns">
+      <span id="wb-min" class="winbtn wb-min" title="Minimize was introduced with graphical window managers in the mid-1980s and became standard on mainstream web browsers in the 1990s to keep a window open without closing it." aria-label="Minimize history and purpose"></span><span id="wb-max" class="winbtn wb-max" title="Resize/Maximize controls appeared in early GUI systems in the 1980s and were standardized in browser chrome by the 1990s so users could quickly switch between full and windowed reading." aria-label="Resize maximize history and purpose"></span><span id="wb-close" class="winbtn wb-close" title="Close/Exit has existed since early desktop GUI windows in the 1980s and became universal in browser interfaces in the 1990s to fully end the current window session." aria-label="Close exit history and purpose"></span>
+    </div>
+  </div>
+  <div class="menubar">
+    <span class="mitem">File</span><span class="mitem">Edit</span><span class="mitem">View</span>
+    <span class="mitem">Go</span><span class="mitem">Bookmarks</span><span class="mitem">Help</span>
+  </div>
+  <div class="toolbar">
+    <button class="tbtn" onclick="navBack()">Back</button>
+    <button class="tbtn" onclick="navFwd()">Forward</button>
+    <div class="tsep"></div>
+    <button class="tbtn" onclick="reloadFr()">Reload</button>
+    <button class="tbtn" onclick="goHome()">Home</button>
+  </div>
+  <div class="addrbar">
+    <span class="addr-label">Address:</span>
+    <input class="addr-input" id="addr" type="text" value="https://historyofwd.netlify.app/" readonly title="Address bar timeline: in the 1990s it was mainly for direct URLs, then keyword search support appeared in the early 2000s, and by the late 2000s browsers merged URL entry and search into one omnibox/search bar." aria-label="Address bar timeline and search evolution">
+    <button class="go-btn">Go</button>
+  </div>
+  <div class="stabs">
+    <div class="stab active" id="st-home" onclick="showSec('home')">Hub</div>
+    <div class="stab" id="st-html" onclick="showSec('html')">HTML History</div>
+    <div class="stab" id="st-css" onclick="showSec('css')">CSS History</div>
+    <div class="stab" id="st-js" onclick="showSec('js')">JavaScript History</div>
+    <div class="stab" id="st-modern" onclick="showSec('modern')">Current Era</div>
+  </div>
+  <div class="etabs" id="etabs"></div>
+
+  <div class="viewport">
+    <div class="progbar" id="pbar"></div>
+    <div class="hub-home" id="hubhome">
+      <div class="hub-title">Web History Hub</div>
+      <p class="hub-desc">
+        A complete historical archive of the three core technologies of the World Wide Web:
+        <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>.
+        Each section uses only the technologies available during the era it covers.
+        The browser chrome above morphs gradually as you travel through time.
+      </p>
+      <div class="os-modes">
+        <button class="os-btn active" id="os-win" onclick="setOS('windows')">Windows</button>
+        <button class="os-btn" id="os-mac" onclick="setOS('mac')">Mac</button>
+        <button class="os-btn" id="os-linux" onclick="setOS('linux')">Linux</button>
+      </div>
+      <div class="hub-inset">
+        <div class="hub-cards">
+          <div class="hub-card">
+            <h2>HTML History</h2>
+            <p>Explore the origins of HTML from Tim Berners-Lee's first proposal in 1989 through HTML5 and the Living Standard. Era pages use HTML only — no CSS, no JavaScript.</p>
+            <span class="hub-btn" onclick="showSec('html')">Open HTML Section</span>
+          </div>
+          <div class="hub-card">
+            <h2>CSS History</h2>
+            <p>From Hakon Wium Lie's 1994 proposal to modern Grid and Flexbox. Each era page uses only the HTML and CSS available at that time — no JavaScript.</p>
+            <span class="hub-btn" onclick="showSec('css')">Open CSS Section</span>
+          </div>
+          <div class="hub-card">
+            <h2>JavaScript History</h2>
+            <p>From Brendan Eich's ten-day creation at Netscape in 1995 to the annual ECMAScript release cycle. Each era uses HTML, CSS, and JavaScript from that period.</p>
+            <span class="hub-btn" onclick="showSec('js')">Open JavaScript Section</span>
+          </div>
+          <div class="hub-card">
+            <h2>Current Era Topics</h2>
+            <p>Explore modern accessibility, future-facing design decisions, resources, and discussions that connect historical web design to present human impact.</p>
+            <span class="hub-btn" onclick="showSec('modern')">Open Current Era</span>
+          </div>
+        </div>
+      </div>
+      <div class="hub-note">
+        <strong>Note on design:</strong> Each section is built using only the technologies available during the era it covers.
+        Earlier eras have no styling or primitive layouts; later eras use modern techniques.
+        The visual differences are not errors — they are the historical record.
+      </div>
+    </div>
+    <iframe class="cframe" id="cfr" title="Era content"
+            sandbox="allow-scripts allow-same-origin allow-top-navigation"
+            style="display:none"></iframe>
+  </div>
+  <div class="statusbar">
+    <div class="spanel" id="sleft">Document: Done</div>
+    <div class="spanel narrow" id="sright">historyofwd.netlify.app</div>
+  </div>
+</div>
+<div class="era-badge" id="ebadge">Hub</div>
+
+<script>
+  var D = {
+    html: {
+      eras: [
+        { label:'Home',         url:'html/htmlhome.html',        theme:'t-html-1994', year:'HTML' },
+        { label:'1990-1994',    url:'html/era1-1990-1994.html',  theme:'t-html-1990', year:'1990-1994' },
+        { label:'1994-1997',    url:'html/era2-1994-1997.html',  theme:'t-html-1994', year:'1994-1997' },
+        { label:'1997-2003',    url:'html/era3-1997-2003.html',  theme:'t-html-1997', year:'1997-2003' },
+        { label:'2004-2013',    url:'html/era4-2004-2013.html',  theme:'t-html-2004', year:'2004-2013' },
+        { label:'2014-Present', url:'html/era5-2014-now.html',   theme:'t-html-2014', year:'2014-Now' },
+        { label:'Glossary',     url:'html/glossary.html',        theme:'t-html-2004', year:'Glossary' },
+        { label:'Bibliography', url:'html/bibliography.html',    theme:'t-html-2014', year:'Bibliography' },
+        { label:'Contributors', url:'html/contributors.html',    theme:'t-html-2014', year:'Contributors' },
+        { label:'Discussion',   url:'html/discussion.html',      theme:'t-html-2014', year:'Discussion' }
+      ]
+    },
+    css: {
+      eras: [
+        { label:'Home',         url:'css/csshome.html',          theme:'t-css-1994', year:'CSS' },
+        { label:'1994-1996',    url:'css/era-1-1994-1996.html',  theme:'t-css-1994', year:'1994-1996' },
+        { label:'1996-1998',    url:'css/era-2-1996-1998.html',  theme:'t-css-1996', year:'1996-1998' },
+        { label:'1998-2004',    url:'css/era-3-1998-2004.html',  theme:'t-css-1998', year:'1998-2004' },
+        { label:'2004-2011',    url:'css/era-4-2004-2011.html',  theme:'t-css-2004', year:'2004-2011' },
+        { label:'2011-2017',    url:'css/era-5-2011-2017.html',  theme:'t-css-2011', year:'2011-2017' },
+        { label:'2017-2026',    url:'css/era-6-2017-2026.html',  theme:'t-css-2017', year:'2017-2026' },
+        { label:'Glossary',     url:'css/glossary.html',         theme:'t-css-2017', year:'Glossary' },
+        { label:'Bibliography', url:'css/bibliography.html',     theme:'t-css-2017', year:'Bibliography' },
+        { label:'Contributors', url:'css/contributors.html',     theme:'t-css-2017', year:'Contributors' },
+        { label:'Discussion',   url:'css/discussion.html',       theme:'t-css-2017', year:'Discussion' }
+      ]
+    },
+    js: {
+      eras: [
+        { label:'Home',         url:'javascript/jsindex.html',      theme:'t-js-2025', year:'JS' },
+        { label:'1995',         url:'javascript/1995.html',         theme:'t-js-1995', year:'1995' },
+        { label:'1999',         url:'javascript/1999.html',         theme:'t-js-1999', year:'1999' },
+        { label:'2009',         url:'javascript/2009.html',         theme:'t-js-2009', year:'2009' },
+        { label:'2015',         url:'javascript/2015.html',         theme:'t-js-2015', year:'2015' },
+        { label:'2025',         url:'javascript/2025.html',         theme:'t-js-2025', year:'2025' },
+        { label:'Glossary',     url:'javascript/glossary.html',     theme:'t-js-2025', year:'Glossary' },
+        { label:'Bibliography', url:'javascript/bibliography.html', theme:'t-js-2025', year:'Bibliography' },
+        { label:'Contributors', url:'javascript/contributors.html', theme:'t-js-2025', year:'Contributors' },
+        { label:'Discussion',   url:'javascript/discussion.html',   theme:'t-js-2025', year:'Discussion' }
+      ]
+    },
+    modern: {
+      eras: [
+        { label:'Accessibility',   url:'modern/accessibility.html', theme:'t-js-2025', year:'Current Era' },
+        { label:'Future',          url:'modern/future.html',        theme:'t-js-2025', year:'Current Era' },
+        { label:'Glossary',        url:'modern/glossary.html',      theme:'t-js-2025', year:'Current Era' },
+        { label:'Resources',       url:'modern/resources.html',     theme:'t-js-2025', year:'Current Era' },
+        { label:'Contributors',    url:'modern/contributors.html',  theme:'t-js-2025', year:'Current Era' },
+        { label:'Discussions',     url:'modern/discussions.html',   theme:'t-js-2025', year:'Current Era' }
+      ]
+    }
+  };
+
+  var ALL_T = [
+    't-home',
+    't-html-1990','t-html-1994','t-html-1997','t-html-2004','t-html-2014',
+    't-css-1994','t-css-1996','t-css-1998','t-css-2004','t-css-2011','t-css-2017',
+    't-js-1995','t-js-1999','t-js-2009','t-js-2015','t-js-2025'
+  ];
+
+  var curSec = 'home', curIdx = -1;
+  var histStack = [], fwdStack = [];
+  var bd = document.body;
+  var fr = document.getElementById('cfr');
+  var hh = document.getElementById('hubhome');
+  var etabs = document.getElementById('etabs');
+  var addr = document.getElementById('addr');
+  var pbar = document.getElementById('pbar');
+  var sleft = document.getElementById('sleft');
+  var sright = document.getElementById('sright');
+  var ebadge = document.getElementById('ebadge');
+  var btitle = document.getElementById('btitle');
+  var osMode = 'windows';
+
+  function applyT(theme, year) {
+    ALL_T.forEach(function(t){ bd.classList.remove(t); });
+    bd.classList.add(theme);
+    ebadge.textContent = year;
+    btitle.textContent = 'Web History Hub - ' + (osMode.charAt(0).toUpperCase() + osMode.slice(1)) + ' Browser';
+  }
+
+  function setOS(mode) {
+    osMode = mode;
+    bd.classList.remove('os-windows','os-mac','os-linux');
+    bd.classList.add('os-' + mode);
+    document.getElementById('os-win').classList.toggle('active', mode === 'windows');
+    document.getElementById('os-mac').classList.toggle('active', mode === 'mac');
+    document.getElementById('os-linux').classList.toggle('active', mode === 'linux');
+    btitle.textContent = 'Web History Hub - ' + (osMode.charAt(0).toUpperCase() + osMode.slice(1)) + ' Browser';
+    sright.textContent = 'historyofwd.netlify.app | ' + osMode + ' mode';
+  }
+
+  var ptimer;
+  function startP(url) {
+    clearTimeout(ptimer);
+    pbar.style.transition = 'none'; pbar.style.width = '0%'; pbar.style.opacity = '1';
+    setTimeout(function(){ pbar.style.transition = 'width 0.5s ease'; pbar.style.width = '72%'; }, 16);
+    sleft.textContent = 'Loading ' + url;
+  }
+  function endP() {
+    pbar.style.transition = 'width 0.3s ease'; pbar.style.width = '100%';
+    ptimer = setTimeout(function(){
+      pbar.style.transition = 'opacity 0.4s ease'; pbar.style.opacity = '0';
+      sleft.textContent = 'Document: Done';
+      setTimeout(function(){ pbar.style.width='0%'; pbar.style.opacity='1'; }, 450);
+    }, 300);
+  }
+
+  function nav(sec, idx, push) {
+    if (push === undefined) push = true;
+    if (push) { histStack.push({ sec: curSec, idx: curIdx }); fwdStack = []; }
+    curSec = sec; curIdx = idx;
+    var e = D[sec].eras[idx];
+    applyT(e.theme, e.year);
+    addr.value = 'https://historyofwd.netlify.app/' + e.url;
+    sright.textContent = 'historyofwd.netlify.app';
+    startP(e.url);
+    hh.style.display = 'none';
+    fr.style.display = 'block';
+    fr.onload = endP;
+    fr.src = e.url;
+  }
+
+  function showSec(sec) {
+    ['home','html','css','js','modern'].forEach(function(s){
+      document.getElementById('st-'+s).classList.toggle('active', s===sec);
+    });
+    if (sec === 'home') {
+      curSec = 'home'; curIdx = -1;
+      etabs.style.display = 'none'; etabs.innerHTML = '';
+      fr.style.display = 'none'; hh.style.display = 'block';
+      applyT('t-home', 'Hub');
+      addr.value = 'https://historyofwd.netlify.app/';
+      sleft.textContent = 'Document: Done';
+      sright.textContent = 'historyofwd.netlify.app | ' + osMode + ' mode';
+      return;
+    }
+    buildTabs(sec);
+    pickEra(sec, 0);
+  }
+
+  function buildTabs(sec) {
+    ['home','html','css','js','modern'].forEach(function(s){
+      document.getElementById('st-'+s).classList.toggle('active', s===sec);
+    });
+    etabs.style.display = 'flex'; etabs.innerHTML = '';
+    D[sec].eras.forEach(function(e, i){
+      var t = document.createElement('div');
+      t.className = 'etab';
+      t.textContent = e.label;
+      t.onclick = (function(ii){ return function(){ pickEra(sec, ii); }; })(i);
+      etabs.appendChild(t);
+    });
+  }
+
+  function pickEra(sec, idx) {
+    var ts = etabs.querySelectorAll('.etab');
+    ts.forEach(function(t,i){ t.classList.toggle('active', i===idx); });
+    nav(sec, idx);
+  }
+
+  function navBack() {
+    if (!histStack.length) return;
+    var prev = histStack.pop();
+    fwdStack.push({ sec: curSec, idx: curIdx });
+    if (prev.sec === 'home') { showSec('home'); return; }
+    buildTabs(prev.sec);
+    nav(prev.sec, prev.idx, false);
+    var ts = etabs.querySelectorAll('.etab');
+    ts.forEach(function(t,i){ t.classList.toggle('active', i===prev.idx); });
+  }
+  function navFwd() {
+    if (!fwdStack.length) return;
+    var nxt = fwdStack.pop();
+    histStack.push({ sec: curSec, idx: curIdx });
+    if (nxt.sec === 'home') { showSec('home'); return; }
+    buildTabs(nxt.sec);
+    nav(nxt.sec, nxt.idx, false);
+    var ts = etabs.querySelectorAll('.etab');
+    ts.forEach(function(t,i){ t.classList.toggle('active', i===nxt.idx); });
+  }
+  function reloadFr() {
+    if (fr.style.display === 'none') return;
+    startP(fr.src); fr.onload = endP; fr.src = fr.src;
+  }
+  function goHome() { showSec('home'); }
+
+  setOS('windows');
+</script>
+</body>
+</html>

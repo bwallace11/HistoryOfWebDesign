@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Web History Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      min-height: 100%;
+      background: #f5f5f5;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      font-size: 14px;
+      color: #222;
+    }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .titlebar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #1a3a5c;
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 6px 6px 0 0;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .title-left { display: flex; align-items: center; gap: 6px; min-width: 0; }
+    .title-dot { width: 10px; height: 10px; background: #fff; border-radius: 50%; opacity: .7; flex: 0 0 auto; }
+    #btitle {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .winbtns { display: flex; gap: 8px; }
+    .winbtn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      font-size: 0;
+      line-height: 1;
+      border: none;
+    }
+    .wb-min { background: #ffbd2e; }
+    .wb-max { background: #28c940; }
+    .wb-close { background: #ff5f57; }
+
+    .addrbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      background: #fff;
+      border: 1px solid #333;
+      border-top: none;
+      border-bottom: none;
+    }
+    .addr-label { font-size: 12px; font-weight: 700; white-space: nowrap; }
+    .addr-input {
+      flex: 1;
+      min-width: 0;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 12px;
+      color: #333;
+      background: #f7f9fc;
+    }
+    .go-btn {
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      background: #f3f3f3;
+      padding: 4px 10px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    h1 { font-size: 24px; margin-bottom: 6px; }
+    .subtitle { font-size: 14px; color: #555; margin-bottom: 16px; }
+
+    /* Section tabs */
+    .stabs {
+      display: flex;
+      gap: 2px;
+      border-bottom: 2px solid #333;
+      margin-bottom: 0;
+    }
+    .stab {
+      padding: 8px 20px;
+      font-size: 14px;
+      font-weight: bold;
+      background: #ddd;
+      color: #444;
+      border: 1px solid #bbb;
+      border-bottom: none;
+      border-radius: 6px 6px 0 0;
+      cursor: pointer;
+    }
+    .stab.active {
+      background: #fff;
+      color: #111;
+      border-color: #333;
+      border-bottom: 2px solid #fff;
+      margin-bottom: -2px;
+    }
+    .stab:hover:not(.active) { background: #e8e8e8; }
+
+    /* Era sub-tabs */
+    .etabs {
+      display: none;
+      flex-wrap: wrap;
+      gap: 2px;
+      padding: 8px 0 4px;
+      background: #fff;
+      border-left: 1px solid #333;
+      border-right: 1px solid #333;
+      padding-left: 8px;
+    }
+    .etab {
+      padding: 5px 14px;
+      font-size: 13px;
+      background: #e8e8e8;
+      color: #333;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .etab.active {
+      background: #333;
+      color: #fff;
+      font-weight: bold;
+    }
+    .etab:hover:not(.active) { background: #ddd; }
+
+    /* Content area */
+    .viewport {
+      background: #fff;
+      border: 1px solid #333;
+      border-top: none;
+      min-height: 400px;
+    }
+
+    /* Hub home */
+    .hub-home { padding: 24px; }
+    .hub-home h2 { font-size: 20px; margin-bottom: 10px; color: #1a3a5c; }
+    .hub-home p { line-height: 1.6; margin-bottom: 16px; }
+    .hub-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
+    @media (max-width: 640px) { .hub-cards { grid-template-columns: 1fr; } }
+    .hub-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 16px;
+      background: #fafafa;
+    }
+    .hub-card h3 { font-size: 16px; color: #1a3a5c; margin-bottom: 8px; }
+    .hub-card p { font-size: 13px; line-height: 1.5; margin-bottom: 12px; }
+    .hub-btn {
+      display: inline-block;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: bold;
+      background: #1a3a5c;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .hub-btn:hover { background: #2a5f96; }
+    .hub-note {
+      margin-top: 16px;
+      padding: 12px;
+      background: #f0f4f8;
+      border-left: 3px solid #1a3a5c;
+      border-radius: 4px;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .hub-note strong { color: #1a3a5c; }
+
+    /* Content iframe */
+    .cframe {
+      width: 100%;
+      height: 820px;
+      border: none;
+      display: block;
+    }
+
+    @media (max-width: 1024px) {
+      .container { padding: 12px; }
+      .hub-home { padding: 18px; }
+      .cframe { height: 70vh; min-height: 460px; }
+    }
+
+    @media (max-width: 768px) {
+      .titlebar,
+      .addrbar {
+        flex-wrap: wrap;
+      }
+      .stabs {
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+      .stab {
+        flex: 0 0 auto;
+        padding: 7px 12px;
+      }
+      .hub-cards {
+        grid-template-columns: 1fr;
+      }
+      .cframe {
+        height: 68vh;
+        min-height: 380px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        padding: 8px;
+      }
+      .titlebar {
+        border-radius: 4px 4px 0 0;
+      }
+      #btitle {
+        max-width: 70vw;
+      }
+      .subtitle {
+        margin-bottom: 10px;
+      }
+      .addr-label {
+        display: none;
+      }
+      .go-btn {
+        width: 100%;
+      }
+      .hub-home {
+        padding: 14px;
+      }
+      .hub-home h2 {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Web History Hub</h1>
+  <p class="subtitle">A historical archive of HTML, CSS, and JavaScript</p>
+
+  <div class="titlebar">
+    <div class="title-left">
+      <span class="title-dot"></span>
+      <span id="btitle">Web History Hub - Netscape Navigator</span>
+    </div>
+    <div class="winbtns">
+      <span class="winbtn wb-min" title="Minimize was introduced with graphical window managers in the mid-1980s and became standard on mainstream web browsers in the 1990s to keep a window open without closing it." aria-label="Minimize history and purpose">&#x2015;</span>
+      <span class="winbtn wb-max" title="Resize/Maximize controls appeared in early GUI systems in the 1980s and were standardized in browser chrome by the 1990s so users could quickly switch between full and windowed reading." aria-label="Resize maximize history and purpose">&#x25A1;</span>
+      <span class="winbtn wb-close" title="Close/Exit has existed since early desktop GUI windows in the 1980s and became universal in browser interfaces in the 1990s to fully end the current window session." aria-label="Close exit history and purpose">&#x00D7;</span>
+    </div>
+  </div>
+
+  <div class="addrbar">
+    <span class="addr-label">Address:</span>
+    <input class="addr-input" id="addr" type="text" value="https://historyofwd.netlify.app/" readonly title="Address bar timeline: in the 1990s it was mainly for direct URLs, then keyword search support appeared in the early 2000s, and by the late 2000s browsers merged URL entry and search into one omnibox/search bar." aria-label="Address bar timeline and search evolution">
+    <button class="go-btn">Go</button>
+  </div>
+
+  <!-- Section tabs -->
+  <div class="stabs">
+    <div class="stab active" id="st-home" onclick="showSec('home')">Hub</div>
+    <div class="stab"        id="st-html" onclick="showSec('html')">HTML History</div>
+    <div class="stab"        id="st-css"  onclick="showSec('css')">CSS History</div>
+    <div class="stab"        id="st-js"   onclick="showSec('js')">JavaScript History</div>
+  </div>
+
+  <!-- Era sub-tabs -->
+  <div class="etabs" id="etabs"></div>
+
+  <!-- Viewport -->
+  <div class="viewport">
+    <!-- Hub home -->
+    <div class="hub-home" id="hubhome">
+      <h2>Welcome to the Web History Hub</h2>
+      <p>
+        A complete historical archive of the three core technologies of the World Wide Web:
+        <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>.
+        Each section uses only the technologies available during the era it covers.
+      </p>
+      <div class="hub-cards">
+        <div class="hub-card">
+          <h3>HTML History</h3>
+          <p>Explore the origins of HTML from Tim Berners-Lee's first proposal in 1989 through HTML5 and the Living Standard. Era pages use HTML only &mdash; no CSS, no JavaScript.</p>
+          <button class="hub-btn" onclick="showSec('html')">Open HTML Section</button>
+        </div>
+        <div class="hub-card">
+          <h3>CSS History</h3>
+          <p>From Hakon Wium Lie's 1994 proposal to modern Grid and Flexbox. Each era page uses only the HTML and CSS available at that time &mdash; no JavaScript.</p>
+          <button class="hub-btn" onclick="showSec('css')">Open CSS Section</button>
+        </div>
+        <div class="hub-card">
+          <h3>JavaScript History</h3>
+          <p>From Brendan Eich's ten-day creation at Netscape in 1995 to the annual ECMAScript release cycle. Each era uses HTML, CSS, and JavaScript from that period.</p>
+          <button class="hub-btn" onclick="showSec('js')">Open JavaScript Section</button>
+        </div>
+      </div>
+      <div class="hub-note">
+        <strong>Note on design:</strong> Each section is built using only the technologies available during the era it covers. Earlier eras have no styling or primitive layouts; later eras use modern techniques. The visual differences are not errors &mdash; they are the historical record.
+      </div>
+    </div>
+
+    <!-- Content iframe -->
+    <iframe class="cframe" id="cfr" title="Era content"
+            sandbox="allow-scripts allow-same-origin"
+            style="display:none"></iframe>
+  </div>
+</div>
+
+<script>
+  var D = {
+    html: {
+      eras: [
+        { label:'1990-1994',    url:'html/era1-1990-1994.html' },
+        { label:'1994-1997',    url:'html/era2-1994-1997.html' },
+        { label:'1997-2003',    url:'html/era3-1997-2003.html' },
+        { label:'2004-2013',    url:'html/era4-2004-2013.html' },
+        { label:'2014-Present', url:'html/era5-2014-now.html' },
+        { label:'Home',         url:'html/htmlhome.html' },
+        { label:'Glossary',     url:'html/glossary.html' },
+        { label:'Bibliography', url:'html/bibliography.html' },
+        { label:'Contributors', url:'html/contributors.html' },
+        { label:'Discussion',   url:'html/discussion.html' }
+      ]
+    },
+    css: {
+      eras: [
+        { label:'1994-1996',    url:'css/era-1-1994-1996.html' },
+        { label:'1996-1998',    url:'css/era-2-1996-1998.html' },
+        { label:'1998-2004',    url:'css/era-3-1998-2004.html' },
+        { label:'2004-2011',    url:'css/era-4-2004-2011.html' },
+        { label:'2011-2017',    url:'css/era-5-2011-2017.html' },
+        { label:'2017-2026',    url:'css/era-6-2017-2026.html' },
+        { label:'Home',         url:'css/csshome.html' },
+        { label:'Glossary',     url:'css/glossary.html' },
+        { label:'Bibliography', url:'css/bibliography.html' },
+        { label:'Contributors', url:'css/contributors.html' },
+        { label:'Discussion',   url:'css/discussion.html' }
+      ]
+    },
+    js: {
+      eras: [
+        { label:'1995',         url:'javascript/1995.html' },
+        { label:'1999',         url:'javascript/1999.html' },
+        { label:'2009',         url:'javascript/2009.html' },
+        { label:'2015',         url:'javascript/2015.html' },
+        { label:'2025',         url:'javascript/2025.html' },
+        { label:'Home',         url:'javascript/jsindex.html' },
+        { label:'Glossary',     url:'javascript/glossary.html' },
+        { label:'Bibliography', url:'javascript/bibliography.html' },
+        { label:'Contributors', url:'javascript/contributors.html' },
+        { label:'Discussion',   url:'javascript/discussion.html' }
+      ]
+    }
+  };
+
+  var curSec = 'home';
+  var curIdx = -1;
+
+  var fr     = document.getElementById('cfr');
+  var hh     = document.getElementById('hubhome');
+  var etabs  = document.getElementById('etabs');
+  var addr   = document.getElementById('addr');
+
+  function nav(sec, idx) {
+    curSec = sec;
+    curIdx = idx;
+    var e = D[sec].eras[idx];
+    hh.style.display = 'none';
+    fr.style.display = 'block';
+    fr.src = e.url;
+    addr.value = 'https://historyofwd.netlify.app/' + e.url;
+  }
+
+  function showSec(sec) {
+    ['home','html','css','js'].forEach(function(s){
+      document.getElementById('st-'+s).classList.toggle('active', s===sec);
+    });
+    if (sec === 'home') {
+      curSec = 'home';
+      curIdx = -1;
+      etabs.style.display = 'none';
+      etabs.innerHTML = '';
+      fr.style.display = 'none';
+      hh.style.display = 'block';
+      addr.value = 'https://historyofwd.netlify.app/';
+      return;
+    }
+    buildTabs(sec);
+    pickEra(sec, 0);
+  }
+
+  function buildTabs(sec) {
+    etabs.style.display = 'flex';
+    etabs.innerHTML = '';
+    D[sec].eras.forEach(function(e, i){
+      var t = document.createElement('div');
+      t.className = 'etab';
+      t.textContent = e.label;
+      t.onclick = (function(ii){ return function(){ pickEra(sec, ii); }; })(i);
+      etabs.appendChild(t);
+    });
+  }
+
+  function pickEra(sec, idx) {
+    var ts = etabs.querySelectorAll('.etab');
+    ts.forEach(function(t,i){ t.classList.toggle('active', i===idx); });
+    nav(sec, idx);
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+  <title>CSS Era 2 (1996-1998) - Netscape Navigator 3</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <style type="text/css">
+    .page { background: #ffffff; border: 2px solid #333333; padding: 12px; margin: 12px; }
+    body { margin: 0; }
+    h1 { font-size: 20pt; margin: 0 0 8px 0; }
+    h2 { font-size: 14pt; margin: 14px 0 6px 0; }
+    a:link { color: #0000cc; text-decoration: underline; }
+    a:visited { color: #551A8B; }
+    .nav { border: 1px solid #333333; padding: 6px; background: #eeeeee; }
+    .small { font-size: 10pt; }
+    .box { border: 1px solid #333333; padding: 8px; background: #f7f7f7; }
+  </style>
+</head>
+
+<body>
+<div class="page">
+  <h1>Era 2: CSS Level 1 and first real browser support (1996-1998)</h1>
+
+  <h2>What changed in this era</h2>
+  <p>
+    CSS Level 1 (often written as <b>CSS1</b>) becomes an official recommendation on <b>17 December 1996</b>.
+    This mattered because it created a shared baseline for browsers and authors: a real spec for fonts, colors,
+    backgrounds, text styling, and the basic box model (margin, border, padding).
+  </p>
+
+  <div class="box">
+    <b>CSS Level 1 focus:</b>
+    <ul>
+      <li>Font properties (family, size, weight, style)</li>
+      <li>Color and background color</li>
+      <li>Text properties (alignment, decoration)</li>
+      <li>Box properties (margin, border, padding)</li>
+      <li>Classification hooks (class and id) for selecting elements</li>
+    </ul>
+  </div>
+
+  <h2>Major players</h2>
+  <ul>
+    <li><b>H&aring;kon Wium Lie</b> and <b>Bert Bos</b>: core CSS design leadership.</li>
+    <li><b>World Wide Web Consortium</b> (W3C): publishes CSS1 recommendation.</li>
+    <li><b>Browser implementers:</b> early CSS support appears unevenly across products.</li>
+  </ul>
+
+  <h2>What shipped (the messy truth)</h2>
+  <p>
+    CSS existed on paper before it existed reliably in browsers. During 1996-1998, support was partial and buggy.
+    Authors still used HTML presentation features heavily, because those worked.
+  </p>
+
+  <h2>What authors actually did</h2>
+  <ul>
+    <li><b>Inline style and tiny embedded styles:</b> small experiments where failure was acceptable.</li>
+    <li><b>Fallback-first:</b> assume CSS might fail and content still must be readable.</li>
+    <li><b>Keep it shallow:</b> simple color/font changes, not complex layout.</li>
+  </ul>
+
+  <hr>
+
+  <h2>Artifact: Internet Explorer 3 CSS Support (1996)</h2>
+  <div class="box">
+    <p>
+    <b>Title:</b> First commercial browser with CSS support<br>
+    <b>Year:</b> 1996<br>
+    <b>Browser:</b> Internet Explorer 3
+    </p>
+    <p>
+    IE3 was the first widely used browser to ship with partial CSS1 support.
+    The implementation was incomplete and buggy, but it proved that CSS could
+    work in practice. Netscape Navigator added CSS support in version 4 (1997),
+    but its implementation was even more inconsistent.
+    </p>
+    <p>
+    <b>Why it mattered:</b> Having any CSS support in a major browser encouraged
+    authors to experiment. Even partial support showed that the concept of
+    separating style from content could work.
+    </p>
+  </div>
+
+  <h2>Artifact: Early CSS example code</h2>
+  <div class="box">
+    <p><b>What CSS1 looked like in practice:</b></p>
+    <pre>
+body {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-size: 24pt;
+  color: #000080;
+}
+
+a:link { color: #0000EE; }
+a:visited { color: #551A8B; }
+    </pre>
+    <p>
+    This was the extent of what worked reliably. Font changes, colors, and
+    basic text styling. Layout was still handled entirely by HTML tables.
+    </p>
+  </div>
+
+  <h2>Limitations designers faced</h2>
+  <ul>
+    <li>CSS layout properties (float, position) were unreliable across browsers.</li>
+    <li>No way to create equal-height columns with CSS.</li>
+    <li>Box model differences between IE and Netscape caused spacing problems.</li>
+    <li>Authors had to test in multiple browsers and often maintain separate stylesheets.</li>
+  </ul>
+
+  <p class="small">
+    CSS1 becomes a W3C recommendation on 17 December 1996.
+  </p>
+</div>
+</body>
+</html>

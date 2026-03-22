@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HTML5 and the Living Standard - Chrome</title>
+  <link rel="stylesheet" href="../css/shared-modern.css">
+</head>
+<body style="margin:0;padding:16px;background:#fff">
+
+<header>
+  <h1>HTML5 and the HTML Living Standard</h1>
+  <p><em>The web becomes an application platform</em></p>
+</header>
+
+<nav>
+  <a href="era5-2014-now.html">Present Era</a>
+  <a href="glossary.html">Glossary</a>
+  <a href="bibliography.html">Bibliography</a>
+  <a href="contributors.html">Contributors</a>
+  <a href="discussion.html">Discussion</a>
+  <a href="../index.html" target="_top">Web History Hub</a>
+</nav>
+
+<main>
+  <section>
+    <h2>From HTML5 to a living standard</h2>
+    <p>
+      HTML5 was developed jointly by WHATWG and W3C to unify HTML 4, XHTML,
+      and real browser behavior into a single, more precise specification.
+      In 2014 W3C published HTML5 as a Recommendation, while WHATWG continued
+      to maintain an evolving HTML "Living Standard."
+    </p>
+    <p>
+      HTML5 was not just new elements. It was a complete redefinition of how
+      HTML parsing works, what happens with malformed markup, and how the DOM
+      is constructed. For the first time, two browsers reading the same broken
+      HTML would produce the same result.
+    </p>
+  </section>
+
+  <section>
+    <h2>Why this era replaced the previous one</h2>
+    <p>
+      The transition era (2004-2013) showed that the web needed native support
+      for audio, video, application structure, and rich form controls. Plugins
+      like Flash filled the gap but created security, accessibility, and
+      performance problems. HTML5 brought these capabilities directly into the
+      browser, removing the need for third-party plugins.
+    </p>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Artifact: The Death of Flash (2010-2017)</h2>
+    <div style="border:2px solid #1a73e8;padding:16px;margin:12px 0;background:#f0f4f8;border-radius:4px">
+      <p>
+        <strong>Title:</strong> "Thoughts on Flash" by Steve Jobs<br>
+        <strong>Year:</strong> 2010<br>
+        <strong>Author:</strong> Steve Jobs, Apple Inc.
+      </p>
+      <p>
+        In April 2010, Steve Jobs published an open letter explaining why Apple
+        would not support Adobe Flash on the iPhone and iPad. He cited performance,
+        security, battery life, and the availability of open standards (HTML5 video,
+        CSS3, JavaScript) as alternatives.
+      </p>
+      <p>
+        Flash had dominated rich web experiences since the late 1990s. Studios like
+        <strong>2Advanced Studios</strong> created full-screen Flash websites with
+        heavy animation, cinematic transitions, and immersive sound design. These
+        sites were visually stunning but completely inaccessible to screen readers,
+        invisible to search engines, and required a plugin that crashed frequently.
+      </p>
+      <p>
+        <strong>Why it mattered:</strong> Jobs' letter accelerated a shift already
+        underway. As mobile browsing surpassed desktop, Flash became untenable.
+        Adobe discontinued Flash Player in December 2020. HTML5's
+        <code>&lt;video&gt;</code> and <code>&lt;audio&gt;</code> elements,
+        combined with CSS animations and the Canvas API, replaced what Flash
+        had provided.
+      </p>
+      <figure style="margin:14px 0 0">
+        <img src="../images/html/geocities.png" alt="Example of a heavy late-1990s rich web page style that depended on plugin-era presentation" style="max-width:100%;height:auto;border:1px solid #9bb8e8;border-radius:6px;display:block">
+        <figcaption style="margin-top:6px;font-size:13px;color:#445;">Representative legacy rich-page aesthetic before native HTML5 media became dominant.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>Artifact: Responsive web design article (2010)</h2>
+    <div style="border:2px solid #1a73e8;padding:16px;margin:12px 0;background:#f0f4f8;border-radius:4px">
+      <p>
+        <strong>Title:</strong> "Responsive Web Design"<br>
+        <strong>Year:</strong> 2010<br>
+        <strong>Author:</strong> Ethan Marcotte, published in A List Apart
+      </p>
+      <p>
+        Ethan Marcotte coined the term "responsive web design" in a May 2010
+        article. He proposed that websites should use fluid grids, flexible images,
+        and CSS media queries to adapt to any screen size rather than building
+        separate mobile and desktop versions.
+      </p>
+      <p>
+        <strong>Why it mattered:</strong> Responsive design became the standard
+        approach to handling the explosion of screen sizes from smartphones to
+        tablets to large monitors. HTML5's <code>&lt;meta name="viewport"&gt;</code>
+        tag and CSS3 media queries made this possible.
+      </p>
+      <figure style="margin:14px 0 0">
+        <img src="../images/html/googleMap.png" alt="Responsive map interface adapting to modern viewport constraints" style="max-width:100%;height:auto;border:1px solid #9bb8e8;border-radius:6px;display:block">
+        <figcaption style="margin-top:6px;font-size:13px;color:#445;">Example of modern responsive interface behavior across device sizes.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Key HTML5 elements and ideas</h2>
+    <ul>
+      <li>New semantic sectioning: <code>section</code>, <code>article</code>, <code>nav</code>, <code>aside</code>, <code>header</code>, <code>footer</code>, and <code>main</code>.</li>
+      <li>Rich media support: <code>audio</code>, <code>video</code>, <code>source</code>, and <code>track</code> for captioning.</li>
+      <li>Drawing and interactive graphics with <code>canvas</code> and related APIs.</li>
+      <li>New form controls and input types like <code>email</code>, <code>url</code>, <code>date</code>, <code>range</code>, and <code>color</code>.</li>
+      <li>Precise definitions of parsing, error handling, and DOM behavior to ensure interoperability across browsers.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Major contributors and groups</h2>
+    <ul>
+      <li><strong>Ian Hickson</strong> - principal architect and editor of the WHATWG HTML specification for many years.</li>
+      <li><strong>HTML Working Group co-chairs</strong> Paul Cotton, Sam Ruby, and Maciej Stachowiak - led W3C's HTML5 process.</li>
+      <li><strong>WHATWG</strong> - a community of browser vendors and experts that maintains the HTML Living Standard.</li>
+      <li><strong>W3C</strong> - provided formal Recommendations and a governance framework for the Open Web Platform.</li>
+      <li><strong>Ethan Marcotte</strong> - coined "responsive web design" and changed how the industry builds for multiple devices.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Limitations that remain</h2>
+    <ul>
+      <li>HTML alone still cannot handle complex layouts; CSS and JavaScript are required for modern applications.</li>
+      <li>The Living Standard evolves continuously, meaning developers must keep up with changes.</li>
+      <li>Browser vendor influence on standards raises questions about corporate control of the open web.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Why a living standard?</h2>
+    <p>
+      The HTML Living Standard is continuously updated so that the specification
+      reflects how browsers actually behave, including edge cases and legacy content.
+      This avoids the lag and fragmentation that occurred when HTML was published only
+      as occasional, versioned documents like "HTML 4.01."
+    </p>
+    <p>
+      Browser vendors and standards editors can add, adjust, or clarify features
+      incrementally, while preserving backward compatibility for billions of existing pages.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <p>HTML section present-era page (modern era shell).</p>
+</footer>
+
+</body>
+</html>

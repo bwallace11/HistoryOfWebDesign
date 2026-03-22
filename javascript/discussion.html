@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Critical Discussion – JavaScript Archive</title>
+  <style>
+    /* Content styles */
+    body { margin: 0; background: #0f1117; min-height: 100vh; }
+    site-header, site-nav, site-footer { display: block; }
+    site-header .header-inner { padding: 20px 20px 14px; background: radial-gradient(600px 200px at 20% 50%, rgba(99,102,241,.3), transparent), #212438; }
+    site-header .header-inner h1 { margin: 0 0 4px; color: #818cf8; font-size: 22px; }
+    site-header .header-inner p { margin: 0; color: #9499b8; font-size: 13px; }
+    site-nav { background: #212438; border-bottom: 1px solid #2e3250; padding: 8px 16px; }
+    site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+    site-nav ul li a { color: #818cf8; text-decoration: none; font-weight: 700; padding: 5px 10px; border-radius: 999px; border: 1px solid #2e3250; font-size: 12px; background: rgba(0,0,0,.2); }
+    site-nav ul li a:hover { color: #e8eaf0; }
+    site-nav ul li a.active { color: #e8eaf0; background: #6366f1; border-color: #6366f1; }
+    .page-grid { display: grid; grid-template-columns: 1fr 260px; gap: 0; }
+    @media (max-width: 800px) { .page-grid { grid-template-columns: 1fr; } }
+    main { padding: 18px 20px; color: #ececf1; }
+    main h1 { color: #818cf8; margin-top: 0; }
+    main h2 { color: #9daaff; }
+    main h3 { color: #b9bbca; }
+    main p, main li { color: #b9bbca; line-height: 1.65; }
+    main strong { color: #e8eaf0; }
+    main code { background: #2e3250; padding: 2px 6px; border-radius: 4px; font-size: 12px; color: #7CFFB2; }
+    main a { color: #7CFFB2; }
+    .sidebar { background: #171722; border-left: 1px solid #2e3250; padding: 16px; }
+    .sidebar-card { background: rgba(0,0,0,.3); border: 1px solid #2e3250; border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+    .sidebar-card h3 { margin: 0 0 8px; font-size: 13px; color: #9daaff; }
+    .sidebar-card ul { margin: 0; padding-left: 18px; font-size: 12px; color: #9499b8; }
+    .sidebar-card p { font-size: 12px; color: #9499b8; margin: 0; }
+    site-footer { background: #212438; border-top: 1px solid #2e3250; padding: 10px 20px; font-size: 12px; color: #9499b8; }
+    site-footer a { color: #818cf8; }
+    em { color: #b9bbca; }
+</style>
+  <link rel="stylesheet" href="../css/shared-modern.css">
+</head>
+<body>
+
+<!-- ORIGINAL CONTENT -->
+<site-header>
+  <div class="header-inner">
+    <h1>JavaScript History Archive</h1>
+    <p>A historical record of the ECMAScript specification &mdash; 1995 to 2025</p>
+  </div>
+</site-header>
+
+<site-nav>
+  <ul>
+    <li><a href="2025.html">Present Era</a></li>
+    <li><a href="glossary.html">Glossary</a></li>
+    <li><a href="bibliography.html">Bibliography</a></li>
+    <li><a href="contributors.html">Contributors</a></li>
+    <li><a href="discussion.html">Discussion</a></li>
+    <li><a href="../index.html" target="_top">Web History Hub</a></li>
+  </ul>
+</site-nav>
+
+<div class="page-grid">
+  <main>
+    <h1>Critical Discussion: The Evolution of JavaScript</h1>
+    <p>JavaScript's history is not simply a sequence of feature additions. It is a story shaped by browser competition, corporate conflict, standardization politics, developer frustration, ecosystem explosion, and long-term stability pressures.</p>
+
+    <h2>1. The Browser Wars and the Birth of Fragmentation (1995&ndash;1999)</h2>
+    <p>When Netscape introduced JavaScript in 1995, Microsoft quickly responded with JScript. Because there was no unified specification, each browser implemented its own interpretation. The creation of ECMAScript was a political compromise necessary for survival.</p>
+    <h3>Discussion Questions</h3>
+    <ul>
+      <li>Would JavaScript have survived without formal standardization?</li>
+      <li>Is vendor competition beneficial for innovation, or does it ultimately destabilize platforms?</li>
+    </ul>
+
+    <h2>2. The ES4 Collapse: Innovation vs Stability (2000&ndash;2009)</h2>
+    <p>After ES3, the ES4 proposal aimed to radically expand the language with static typing, namespaces, and classes. Disagreement among browser vendors led to its abandonment, ultimately resulting in the more incremental ES5 and ES2015.</p>
+    <h3>Discussion Questions</h3>
+    <ul>
+      <li>Was ES4 too ambitious, or simply ahead of its time?</li>
+      <li>Should a language prioritize innovation over compatibility?</li>
+    </ul>
+
+    <h2>3. AJAX and the Rise of Web Applications (2005&ndash;2010)</h2>
+    <p>AJAX transformed JavaScript from a scripting helper into the backbone of interactive web applications. However, this growth introduced complexity that pushed the language beyond its original design assumptions.</p>
+    <h3>Discussion Questions</h3>
+    <ul>
+      <li>Did JavaScript's original design anticipate large-scale application architecture?</li>
+      <li>How did asynchronous programming reshape front-end development?</li>
+    </ul>
+
+    <h2>4. ES2015 and the "Modern JavaScript" Identity Shift</h2>
+    <p>ES2015 succeeded where ES4 failed by balancing innovation with incremental migration paths. Transpilers such as Babel smoothed adoption, marking JavaScript's transition from reactive patchwork language to structured, modern system.</p>
+    <h3>Discussion Questions</h3>
+    <ul>
+      <li>Why did ES2015 succeed where ES4 failed?</li>
+      <li>Did transpilers accelerate innovation or mask deeper compatibility issues?</li>
+    </ul>
+
+    <h2>5. Backward Compatibility as Philosophy</h2>
+    <p>JavaScript rarely removes features. This protects billions of web pages but increases language complexity and constrains design improvements. Early quirks like <code>typeof null === "object"</code> remain to this day.</p>
+    <h3>Discussion Questions</h3>
+    <ul>
+      <li>Should JavaScript ever break backward compatibility for long-term improvement?</li>
+      <li>How does JavaScript's compatibility strategy compare to other languages?</li>
+    </ul>
+  </main>
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <h3>Era Pages</h3>
+      <ul>
+        <li><a href="1995.html">1995 &mdash; Birth of JS</a></li>
+        <li><a href="1999.html">1999 &mdash; ECMAScript 3</a></li>
+        <li><a href="2009.html">2009 &mdash; ECMAScript 5</a></li>
+        <li><a href="2015.html">2015 &mdash; ES2015</a></li>
+        <li><a href="2025.html">2025 &mdash; Modern JS</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-card">
+      <h3>Reference</h3>
+      <ul>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="contributors.html">Contributors</a></li>
+        <li><strong>Discussion</strong></li>
+        <li><a href="bibliography.html">Bibliography</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-card">
+      <h3>Topics</h3>
+      <ul>
+        <li>Browser Wars</li>
+        <li>ES4 Collapse</li>
+        <li>AJAX Era</li>
+        <li>Node.js</li>
+        <li>ES2015</li>
+        <li>TC39 Governance</li>
+        <li>Backward Compatibility</li>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<site-footer>
+  JavaScript section reference page (modern era shell) &nbsp;|&nbsp;
+  <a href="../index.html" target="_top">Web History Hub</a>
+</site-footer>
+<!-- END ORIGINAL CONTENT -->
+
+</body>
+</html>

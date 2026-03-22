@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+  <title>CSS Era 3 (1998-2004) - Internet Explorer 5.5</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <style type="text/css">
+    #wrap { width: 92%; margin: 12px auto; background: #ffffff; border: 4px solid #ffcc00; }
+    body { margin: 0; }
+    #wrap *, #wrap { box-sizing: border-box; }
+    #top { background: #000066; color: #ffffff; padding: 10px; }
+    #top h1 { margin: 0; font-size: 20px; }
+    #top .tagline { font-size: 11px; color: #ffcc00; margin-top: 4px; }
+    #nav { background: #ffcc00; padding: 6px; font-size: 12px; }
+    #nav a { color: #000066; font-weight: bold; text-decoration: none; margin-right: 10px; }
+    #nav a:hover { text-decoration: underline; }
+    #left { float: left; width: 24%; padding: 10px; background: #f2f2f2; border-right: 2px solid #cccccc; }
+    #right { float: right; width: 72%; padding: 10px; }
+    .box { border: 2px solid #000066; padding: 8px; margin-bottom: 10px; background: #ffffff; }
+    .box h2 { margin: 0 0 6px; font-size: 14px; color: #000066; }
+    .tiny { font-size: 11px; color: #333; }
+    .clear-float { clear: both; }
+    .callout { border: 2px dashed #cc0000; padding: 8px; background: #fff7f7; }
+  </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <div id="top">
+      <h1>Era 3: CSS Level 2 and the browser wars (1998-2001)</h1>
+      <div class="tagline">CSS Level 2 becomes a W3C recommendation on 12 May 1998.</div>
+    </div>
+
+    <div id="nav">
+    </div>
+
+    <div id="left">
+      <div class="box">
+        <h2>What CSS2 tried to deliver</h2>
+        <ul>
+          <li>Positioning (absolute, relative, fixed)</li>
+          <li>Layering with z-index</li>
+          <li>Media types (print vs screen)</li>
+          <li>More selectors and richer formatting</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h2>Reality check</h2>
+        <p class="tiny">CSS2 was ambitious. Browser support was inconsistent, and authors lived in workaround land.</p>
+      </div>
+    </div>
+
+    <div id="right">
+      <div class="box">
+        <h2>Major players (spec and institutions)</h2>
+        <p>CSS2 is edited by <b>Bert Bos</b>, <b>H&aring;kon Wium Lie</b>, <b>Chris Lilley</b>, and <b>Ian Jacobs</b>. The <b>World Wide Web Consortium</b> (W3C) coordinates the recommendation track.</p>
+      </div>
+      <div class="box">
+        <h2>Browser wars impact</h2>
+        <p>Competing browsers shipped overlapping CSS features with different bugs and different interpretations. Authors often built two styles: one for a dominant browser, one for "everything else."</p>
+        <div class="callout"><b>Big lesson:</b> the spec existing did not mean the web behaved the same everywhere.</div>
+      </div>
+      <div class="box">
+        <h2>What authors actually did (1998-2001)</h2>
+        <ul>
+          <li><b>Table layout still ruled:</b> CSS layout was not dependable, so tables stayed the default layout tool.</li>
+          <li><b>Early float layouts:</b> floated columns existed but required careful clearing.</li>
+          <li><b>Browser sniffing:</b> different style sheets or conditional hacks for different engines.</li>
+          <li><b>Print styles:</b> experimented with <b>media types</b>, but support varied.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h2>Why this era matters</h2>
+        <p>CSS2 set the conceptual foundation for modern layout and media styling, even though implementation lagged. It also showed that interoperability requires tests, shared behavior, and patience.</p>
+      </div>
+
+      <div class="box">
+        <h2>Artifact: CSS Zen Garden (2003)</h2>
+        <p>
+          <b>Title:</b> CSS Zen Garden<br>
+          <b>Year:</b> 2003<br>
+          <b>Creator:</b> Dave Shea
+        </p>
+        <p>
+          CSS Zen Garden was a website that demonstrated the power of CSS by
+          inviting designers to style the same HTML document in completely
+          different ways. The HTML never changed. Only the CSS was different.
+          Each submission looked like a completely different website.
+        </p>
+        <p>
+          <b>Example of the principle:</b> One stylesheet might create a dark,
+          minimalist design. Another might create a colorful, ornate layout.
+          A third might look like a newspaper. All used the exact same HTML.
+        </p>
+        <p>
+          <b>Why it mattered:</b> CSS Zen Garden proved to skeptics that CSS
+          could handle real design work, not just font colors. It became the
+          most influential argument for separating content from design and
+          convinced a generation of web developers to learn CSS seriously.
+        </p>
+      </div>
+
+      <div class="box">
+        <h2>Artifact: The Box Model Problem</h2>
+        <p>
+          <b>Title:</b> Internet Explorer box model bug<br>
+          <b>Year:</b> 1998-2001<br>
+          <b>Affected browser:</b> Internet Explorer 5/6
+        </p>
+        <p>
+          IE calculated element widths differently from the CSS2 specification.
+          In IE's model, <code>width</code> included padding and border. In the
+          standard model, <code>width</code> was content only. This meant the
+          same CSS produced different layouts in different browsers.
+        </p>
+        <p>
+          Authors invented "box model hacks" to send different width values to
+          different browsers. The problem was so persistent that CSS3 eventually
+          added <code>box-sizing: border-box</code> to let authors opt into
+          the IE behavior, which many designers actually preferred.
+        </p>
+        <p>
+          <b>Why it mattered:</b> The box model bug is the most famous CSS
+          interoperability failure. It taught the standards community that
+          specifications must be tested against real browser implementations,
+          not just published as documents.
+        </p>
+      </div>
+    </div>
+
+    <div class="clear-float"></div>
+    <div class="box" style="margin:10px;"><b>CSS2 Recommendation date:</b> 12 May 1998.</div>
+  </div>
+</body>
+</html>

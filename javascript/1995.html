@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>1995 - The Birth of JavaScript - Netscape Navigator 2.0</title>
+</head>
+<body bgcolor="#c0c0c0" style="margin:0">
+
+<center>
+<table width="600" border="0" cellpadding="0" cellspacing="0">
+<tr><td bgcolor="#000080">
+  <center><font face="Arial, Helvetica" size="2" color="#ffffff"><b>&nbsp;&nbsp;JavaScript History Archive&nbsp;&nbsp;</b></font></center>
+</td></tr>
+</table>
+</center>
+
+<br>
+
+<hr>
+
+<center>
+<table width="600" border="0" cellpadding="8" cellspacing="0">
+<tr><td>
+
+<font face="Arial, Helvetica">
+<h1><font color="#000080" size="5">1995 &ndash; The Birth of JavaScript</font></h1>
+</font>
+
+<font face="Arial, Helvetica" size="3">
+
+<p>
+In May 1995, Brendan Eich created JavaScript at Netscape Communications in approximately
+ten days. The World Wide Web at that time consisted almost entirely of static HTML documents.
+Interaction required server requests, and user input triggered full page reloads.
+JavaScript introduced client-side execution &mdash; code running directly in the browser
+without contacting a server.
+</p>
+
+<p>
+Originally named Mocha, then LiveScript, the language was renamed JavaScript shortly
+before release to align with the marketing momentum of Sun Microsystems' Java.
+Despite the shared name, JavaScript was never a subset of Java. Its design combined
+influences from Scheme (functional patterns), Self (prototype-based inheritance),
+and C-style syntax.
+</p>
+
+<p>
+There was no formal standard in 1995. Each browser implemented its own behavior.
+The language was designed quickly, without anticipating the scale of applications
+it would eventually support.
+</p>
+
+<font face="Arial, Helvetica">
+<h2><font color="#000080">Technical Characteristics of 1995 JavaScript</font></h2>
+</font>
+
+<ul>
+<li>Prototype-based object model (no formal class syntax)</li>
+<li>Dynamic, loosely typed variables</li>
+<li>First-class functions</li>
+<li>Everything placed in the global scope by default</li>
+<li>Direct DOM manipulation via <tt>document.write()</tt> and inline event handlers</li>
+<li>No modules, no error handling, no standard library</li>
+</ul>
+
+<h2><font color="#000080">Era Demonstration</font></h2>
+
+<p>
+The demonstration below is written in the style of 1995-era JavaScript: global functions,
+inline <tt>onclick</tt> handlers, and no structured error handling. This is exactly how
+JavaScript was written in the browser in 1995.
+</p>
+
+</font>
+
+<table width="100%" border="2" cellpadding="10" cellspacing="0" bgcolor="#eeeeee">
+<tr><td>
+
+<font face="Arial, Helvetica" size="3">
+<b>Demo 1: Inline Event Handler and Global Function (1995 style)</b>
+</font>
+
+<p>
+<font face="Arial, Helvetica" size="2">
+Enter your name and click the button. The page greets you using a global function
+triggered by an inline <tt>onclick</tt> attribute &mdash; the only event model that
+existed in 1995.
+</font>
+</p>
+
+<font face="Arial, Helvetica" size="2">Your name:</font>&nbsp;
+<input type="text" id="nameInput" size="22">&nbsp;
+<input type="button" value="Greet Me" onclick="greetUser()">
+<p id="greeting">&nbsp;</p>
+
+<hr size="1">
+
+<font face="Arial, Helvetica" size="2">
+<b>Demo 2: Calculator using <tt>eval()</tt></b><br>
+In 1995, <tt>eval()</tt> was the standard tool for evaluating math expressions typed
+by users. There was no safer built-in alternative.
+</font>
+<br><br>
+<font face="Arial, Helvetica" size="2">Expression:</font>&nbsp;
+<input type="text" id="calcInput" size="22" value="4 + 5 * 2">&nbsp;
+<input type="button" value="Calculate" onclick="runCalc()">
+<p id="calcResult">&nbsp;</p>
+
+<font face="Arial, Helvetica" size="1" color="#808080">
+<i>Uses: global functions, inline onclick, document.getElementById, innerHTML, eval()</i>
+</font>
+
+</td></tr>
+</table>
+
+<script language="JavaScript">
+// 1995-style JavaScript: everything is global, no structure, no error handling.
+// Functions are declared globally and called from inline HTML onclick attributes.
+
+function greetUser() {
+  var name = document.getElementById("nameInput").value;
+  if (name == "") {
+    document.getElementById("greeting").innerHTML = "<font face='Arial,Helvetica' color='#cc0000' size='2'><b>Please enter a name.</b></font>";
+  } else {
+    document.getElementById("greeting").innerHTML = "<font face='Arial,Helvetica' color='#000080' size='2'><b>Hello, " + name + "! Welcome to the Web.</b></font>";
+  }
+}
+
+function runCalc() {
+  var expr = document.getElementById("calcInput").value;
+  var result = eval(expr);
+  document.getElementById("calcResult").innerHTML = "<font face='Arial,Helvetica' color='#000080' size='2'><b>" + expr + " = " + result + "</b></font>";
+}
+</script>
+
+<font face="Arial, Helvetica" size="3">
+<h2><font color="#000080">Why This Matters</font></h2>
+
+<p>
+Despite its hasty creation, JavaScript's placement inside Netscape Navigator 2.0
+made it the first programming language millions of people encountered.
+Its presence in the browser &mdash; not its elegance &mdash; determined its future.
+By the time anyone had a better idea, JavaScript was already everywhere.
+</p>
+
+<h2><font color="#000080">Artifact: Brendan Eich's Ten-Day Prototype (1995)</font></h2>
+</font>
+
+<table width="100%" border="2" cellpadding="10" cellspacing="0" bgcolor="#eeeeee">
+<tr><td>
+<font face="Arial, Helvetica" size="2">
+<p>
+<b>Title:</b> The Creation of JavaScript<br>
+<b>Year:</b> May 1995<br>
+<b>Creator:</b> Brendan Eich at Netscape Communications
+</p>
+<p>
+Netscape management wanted a scripting language that could be embedded in web pages
+to make them interactive. The job was given to Brendan Eich, who built the first
+prototype in approximately ten days. The speed was not a sign of simplicity &mdash;
+it reflected intense corporate pressure to ship before Microsoft could respond.
+</p>
+<p>
+Eich drew from three language traditions: <b>Scheme</b> (first-class functions),
+<b>Self</b> (prototype-based objects), and <b>C/Java</b> (familiar syntax).
+The result was a language that looked like Java but behaved more like a functional
+language with mutable prototypes.
+</p>
+<p>
+<b>Why it mattered:</b> The ten-day timeline meant decisions had to be made quickly.
+Some of those decisions (loose typing, implicit globals, <tt>==</tt> coercion
+rules) became permanent parts of the language because backward compatibility
+prevented fixing them later. JavaScript's quirks are not random &mdash; they are
+the artifacts of a prototype built under extreme time pressure.
+</p>
+</font>
+</td></tr>
+</table>
+
+<br>
+
+<font face="Arial, Helvetica" size="3">
+<h2><font color="#000080">Limitations of 1995 JavaScript</font></h2>
+</font>
+
+<font face="Arial, Helvetica" size="2">
+<ul>
+<li>No error handling (no <tt>try</tt>/<tt>catch</tt>).</li>
+<li>No regular expressions.</li>
+<li>No standard library for common tasks.</li>
+<li>All variables were global unless explicitly scoped inside a function.</li>
+<li>No modules; all code shared a single global namespace.</li>
+<li>The DOM API was minimal: <tt>document.write()</tt> and a few collection objects.</li>
+</ul>
+</font>
+
+</td></tr>
+</table>
+</center>
+
+<hr>
+
+<center>
+<font face="Arial, Helvetica" size="1" color="#808080">
+JavaScript History Archive &nbsp;|&nbsp;
+<a href="../index.html" target="_top">Web History Hub</a>
+</font>
+</center>
+<br>
+
+</body>
+</html>

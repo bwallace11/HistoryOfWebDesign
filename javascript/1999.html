@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>1999 - ECMAScript 3 - Netscape Navigator 4</title>
+<style type="text/css">
+  .navbar { background: #000066; color: #ffffff; padding: 5px 8px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; }
+  body { margin: 0; }
+  .navbar a { color: #ffffff; text-decoration: none; }
+  .navbar a:hover { text-decoration: underline; }
+  .pagewrap { max-width: 800px; margin: 12px auto; padding: 10px; background: #ffffff; border: 1px solid #888888; font-family: Arial, Helvetica, sans-serif; }
+  .demobox { border: 2px solid #000066; padding: 10px; margin: 12px 0; background: #f0f0ff; }
+  .demobox h3 { margin: 0 0 8px; color: #000066; }
+  .output { background: #ffffff; border: 1px solid #888888; padding: 6px; min-height: 20px; margin: 8px 0; font-family: Arial, Helvetica, sans-serif; font-size: 12px; }
+  .note { font-size: 11px; color: #666666; }
+  .footer { background: #cccccc; border-top: 1px solid #888888; padding: 6px 10px; font-size: 11px; color: #333333; margin-top: 16px; }
+</style>
+</head>
+<body>
+
+<div class="pagewrap">
+
+<h1>1999 &ndash; Standardization and ECMAScript 3</h1>
+
+<p>
+The late 1990s were dominated by the Browser Wars between Netscape Navigator and
+Microsoft Internet Explorer. Microsoft had introduced JScript &mdash; its own implementation
+of JavaScript &mdash; in Internet Explorer 3.0 in 1996. Because there was no unified
+specification, each browser implemented the language slightly differently.
+Developers were forced to write conditional code checking <code>navigator.appName</code>
+and testing for feature availability before using any API.
+</p>
+
+<p>
+To resolve this, Netscape submitted JavaScript to Ecma International for standardization
+in 1996. The first edition of ECMAScript was published in 1997. ECMAScript 2 followed in
+1998 as a minor editorial revision. ECMAScript 3, released in December 1999, became the
+foundational specification that nearly all JavaScript development relied on for the next decade.
+</p>
+
+<h2>Major Additions in ECMAScript 3</h2>
+
+<ul>
+<li><b>try/catch/finally</b> &mdash; Structured exception handling for the first time</li>
+<li><b>Regular expressions</b> &mdash; Built-in pattern matching with <code>/pattern/</code> syntax</li>
+<li><b>Improved string methods</b> &mdash; <code>match()</code>, <code>replace()</code>, <code>search()</code>, <code>split()</code></li>
+<li><b>do-while loops</b> &mdash; A new loop construct</li>
+<li><b>switch statements</b> &mdash; Formalized multi-branch logic</li>
+<li><b>More consistent object behavior</b> &mdash; Standardized property access and enumeration</li>
+</ul>
+
+<p>
+ES3 transformed JavaScript from a loosely defined, browser-specific scripting tool into
+a documented language with defined behavior. It established the baseline that developers
+could depend on across browsers &mdash; though implementation gaps still existed in practice.
+</p>
+
+<h2>Era Demonstration</h2>
+
+<p>
+The demos below use two of ES3's most significant additions:
+<b>regular expressions</b> and <b>try/catch error handling</b>.
+Both were entirely new in 1999 &mdash; before ES3, there was no built-in way to
+match patterns in strings or to catch runtime errors gracefully.
+</p>
+
+<div class="demobox">
+<h3>Demo 1: Regular Expression Validation</h3>
+
+<p>
+A <i>regular expression</i> (regex) is a pattern used to test or search strings.
+The pattern <code>/^[a-zA-Z]+$/</code> means: match a string that contains only
+letters A&ndash;Z. The <code>^</code> anchors the start, <code>$</code> anchors
+the end, and <code>+</code> means one or more characters.
+</p>
+<p>Type a value and click Validate to test whether it contains only letters:</p>
+
+<input type="text" id="regexInput" size="24" value="">
+&nbsp;
+<input type="button" value="Validate" onclick="validateInput()">
+
+<div class="output" id="regexOutput">&nbsp;</div>
+
+<p class="note">
+Uses: var, /^[a-zA-Z]+$/ regex literal, .test() method &mdash; all new in ES3.
+</p>
+</div>
+
+<div class="demobox">
+<h3>Demo 2: try/catch Exception Handling</h3>
+
+<p>
+Before ES3, a JavaScript error would silently fail or crash the entire script.
+ES3 introduced <code>try/catch</code>, allowing code to attempt a risky operation
+and handle any error that occurs without stopping the page.
+</p>
+<p>
+The demo below attempts to parse an object literal using <code>eval()</code>.
+Try a valid input like <code>({"name":"ES3"})</code>, or something broken like
+<code>{bad}</code> to trigger the catch block:
+</p>
+
+<input type="text" id="tryInput" size="30" value='({"name":"ES3"})'>
+&nbsp;
+<input type="button" value="Parse" onclick="tryParse()">
+
+<div class="output" id="tryOutput">&nbsp;</div>
+
+<p class="note">
+Uses: try, catch(e), e.message &mdash; all new in ES3.
+</p>
+</div>
+
+<script type="text/javascript">
+// ECMAScript 3 style: var declarations, no strict mode, no arrow functions.
+// try/catch and regex literals are the key ES3 features demonstrated here.
+
+function validateInput() {
+  var value = document.getElementById("regexInput").value;
+  var lettersOnly = /^[a-zA-Z]+$/;
+
+  if (value == "") {
+    document.getElementById("regexOutput").innerHTML = "Please enter something to validate.";
+    return;
+  }
+
+  if (lettersOnly.test(value)) {
+    document.getElementById("regexOutput").innerHTML = "Valid: contains only letters.";
+  } else {
+    document.getElementById("regexOutput").innerHTML = "Invalid: contains non-letter characters.";
+  }
+}
+
+function tryParse() {
+  var input = document.getElementById("tryInput").value;
+
+  try {
+    var result = eval(input);
+    var output = "Parsed successfully: ";
+    for (var key in result) {
+      output += key + " = " + result[key] + "  ";
+    }
+    document.getElementById("tryOutput").innerHTML = output;
+  } catch (e) {
+    document.getElementById("tryOutput").innerHTML = "Error caught: " + e.message;
+  }
+}
+</script>
+
+<h2>Why ES3 Mattered</h2>
+
+<p>
+ES3 did not add glamour &mdash; it added reliability. For the first time, a developer
+could write JavaScript knowing that a defined specification existed. The gap between
+theory and browser practice remained wide, but the standard gave the ecosystem something
+to aim for. ES3 remained the effective baseline of the web until ES5 in 2009.
+</p>
+
+<h2>Artifact: The Browser Wars and JavaScript Fragmentation</h2>
+
+<div class="demobox">
+<p>
+<b>Title:</b> Netscape vs Internet Explorer: "DHTML" Wars<br>
+<b>Year:</b> 1997-2001<br>
+<b>Context:</b> Browser vendor competition
+</p>
+<p>
+Both Netscape and Microsoft marketed "Dynamic HTML" (DHTML) &mdash; a combination of
+JavaScript, CSS, and proprietary DOM APIs. The problem was that Netscape's DHTML used
+<code>document.layers</code> while Internet Explorer used <code>document.all</code>.
+Code written for one browser simply failed in the other.
+</p>
+<p>
+Developers wrote browser detection code at the top of every script:
+</p>
+<pre style="background:#ffffff;border:1px solid #888888;padding:6px;font-size:12px">
+var isIE = (navigator.appName == "Microsoft Internet Explorer");
+var isNN = (navigator.appName == "Netscape");
+
+if (isIE) {
+    // use document.all
+} else if (isNN) {
+    // use document.layers
+}
+</pre>
+<p>
+<b>Why it mattered:</b> This fragmentation made JavaScript development painful and
+expensive. The W3C DOM standard (DOM Level 1, 1998) was created to end this chaos
+by providing a single API that all browsers should implement.
+</p>
+</div>
+
+<h2>Artifact: The First JavaScript Book</h2>
+
+<div class="demobox">
+<p>
+<b>Title:</b> "JavaScript: The Definitive Guide"<br>
+<b>Year:</b> 1996 (1st edition)<br>
+<b>Author:</b> David Flanagan (O'Reilly)
+</p>
+<p>
+David Flanagan's book became the standard reference for JavaScript developers.
+Known as "the Rhino book" for its cover illustration, it tracked the language
+through every major revision and became the resource developers turned to when
+browser documentation was unreliable or nonexistent.
+</p>
+<p>
+<b>Why it mattered:</b> In an era before MDN and Stack Overflow, authoritative
+reference books were how developers learned. The Definitive Guide helped
+establish JavaScript as a real language worth studying seriously.
+</p>
+</div>
+
+</div>
+
+<div class="footer">
+JavaScript History Archive &nbsp;|&nbsp;
+<a href="../index.html" target="_top">Web History Hub</a>
+</div>
+<br>
+
+</body>
+</html>

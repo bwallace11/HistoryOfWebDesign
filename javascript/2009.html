@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=8">
+<title>2009 - ECMAScript 5 - Internet Explorer 8</title>
+<style>
+  /* Original page styles (CSS 2.1 era) */
+  body { margin: 0; }
+  *, *::before, *::after { box-sizing: border-box; }
+  #header { background: #1a3a5c; color: #ffffff; padding: 12px 14px; }
+  #header h1 { margin: 0; font-size: 20px; }
+  #header .subtitle { margin: 6px 0 0; font-size: 12px; color: #cfe3ff; }
+  #navbar { background: #2c5f8a; padding: 6px 10px; font-size: 12px; overflow: hidden; }
+  #navbar a { color: #ffffff; text-decoration: none; margin-right: 10px; font-weight: bold; }
+  #navbar a:hover { text-decoration: underline; }
+  #navbar a.active { color: #ffcc00; }
+  #wrapper { display: block; overflow: hidden; }
+  #main { float: left; width: 66%; padding: 12px; }
+  #sidebar { float: right; width: 30%; padding: 12px; background: #f7f7f7; border-left: 1px solid #c0ccd8; }
+  .demobox { border: 1px solid #2c5f8a; padding: 10px; margin: 12px 0; background: #f0f4f8; }
+  .demobox h3 { margin: 0 0 8px; color: #1a3a5c; font-size: 14px; }
+  pre { background: #ffffff; border: 1px solid #c0ccd8; padding: 8px; font-size: 12px; white-space: pre-wrap; }
+  .note { font-size: 11px; color: #666666; }
+  button { font-family: Verdana, Tahoma, sans-serif; font-size: 12px; padding: 4px 12px; background: #dce3ea; color: #1a3a5c; border: 1px solid #a0aab4; cursor: pointer; }
+  button:hover { background: #c8d0d8; }
+  code { background: #eee; padding: 1px 4px; border: 1px solid #ccc; font-size: 11px; }
+  #footer { border-top: 1px solid #a0aab4; padding: 8px 14px; background: #dce3ea; font-size: 11px; color: #333333; overflow: hidden; clear: both; }
+</style>
+</head>
+<body>
+
+<div id="header">
+  <h1>JavaScript History Archive</h1>
+  <p class="subtitle">A historical record of the ECMAScript specification &mdash; 1995 to 2025</p>
+</div>
+
+<div id="wrapper">
+
+  <div id="main">
+
+    <h1>2009 &ndash; ECMAScript 5: Stabilization After the ES4 Crisis</h1>
+
+    <p>After ECMAScript 3 in 1999, the committee began work on an ambitious successor called ES4. The proposal included static typing, optional type annotations, namespaces, classes, and significant structural changes.</p>
+
+    <p>The effort collapsed. Disagreement among browser vendors &mdash; particularly between Adobe and Mozilla on one side, and Microsoft and others on the other &mdash; made consensus impossible. ES4 was formally abandoned in 2008. A smaller interim specification called ES3.1 was agreed upon instead, which was later published as <strong>ECMAScript 5</strong> in December 2009.</p>
+
+    <p>ES5 prioritized stability over novelty. It added genuinely useful features without breaking the billions of web pages already running on ES3.</p>
+
+    <h2>Major Features in ECMAScript 5</h2>
+    <ul>
+      <li><strong>Strict mode</strong> &mdash; Opt-in mode that eliminates silent errors</li>
+      <li><strong>Native JSON support</strong> &mdash; <code>JSON.parse()</code> and <code>JSON.stringify()</code></li>
+      <li><strong>Object property descriptors</strong> &mdash; <code>Object.defineProperty()</code>, <code>Object.keys()</code></li>
+      <li><strong>Improved array methods</strong> &mdash; <code>forEach()</code>, <code>map()</code>, <code>filter()</code>, <code>reduce()</code></li>
+      <li><strong>Function.prototype.bind()</strong> &mdash; Control over <code>this</code> binding</li>
+    </ul>
+
+    <h2>Era Demonstrations</h2>
+
+    <div class="demobox">
+      <h3>Demo 1: Native JSON &mdash; Serialize and Parse Data</h3>
+      <p>Before ES5, there was no built-in way to convert JavaScript objects to JSON strings or back. ES5 added <code>JSON.stringify()</code> and <code>JSON.parse()</code> as native language features.</p>
+      <p>Click the button to create an object, convert it to a JSON string, parse it back, and confirm the round-trip:</p>
+      <button id="jsonBtn">Run JSON Round-Trip</button>
+      <pre id="jsonOutput">Click the button above to run the demo.</pre>
+      <p class="note">Uses: "use strict", JSON.stringify(obj, null, 2), JSON.parse(str), addEventListener</p>
+    </div>
+
+    <div class="demobox">
+      <h3>Demo 2: Array Methods &mdash; forEach, map, filter, reduce</h3>
+      <p>ES5 introduced functional array methods that replaced manual <code>for</code> loops. Enter a comma-separated list of numbers:</p>
+      <input type="text" id="numbersInput" size="30" value="3, 7, 2, 9, 1, 5">
+      &nbsp;
+      <button id="arrayBtn">Run Array Methods</button>
+      <pre id="arrayOutput">Enter numbers above and click Run.</pre>
+      <p class="note">Uses: .split(), .map(Number), .filter(), .reduce() &mdash; all ES5 array methods</p>
+    </div>
+
+    <script type="text/javascript">
+    "use strict";
+
+    document.getElementById("jsonBtn").addEventListener("click", function() {
+      var sessionData = {
+        user: "historian",
+        era: "ES5",
+        year: 2009,
+        features: ["strict mode", "JSON", "array methods"]
+      };
+
+      var jsonString = JSON.stringify(sessionData, null, 2);
+      var parsed = JSON.parse(jsonString);
+
+      var output = "Object serialized to JSON:\n";
+      output += jsonString;
+      output += "\n\nParsed back -- era: \"" + parsed.era + "\"";
+      output += "\nFeatures count: " + parsed.features.length;
+
+      document.getElementById("jsonOutput").textContent = output;
+    });
+
+    document.getElementById("arrayBtn").addEventListener("click", function() {
+      var raw = document.getElementById("numbersInput").value;
+
+      if (raw.trim() === "") {
+        document.getElementById("arrayOutput").textContent = "Please enter some numbers.";
+        return;
+      }
+
+      var numbers = raw.split(",").map(function(n) {
+        return Number(n.trim());
+      }).filter(function(n) {
+        return !isNaN(n);
+      });
+
+      if (numbers.length === 0) {
+        document.getElementById("arrayOutput").textContent = "No valid numbers found.";
+        return;
+      }
+
+      var evens   = numbers.filter(function(n) { return n % 2 === 0; });
+      var odds    = numbers.filter(function(n) { return n % 2 !== 0; });
+      var doubled = numbers.map(function(n) { return n * 2; });
+      var sum     = numbers.reduce(function(acc, n) { return acc + n; }, 0);
+
+      var output = "Input:   " + numbers.join(", ") + "\n";
+      output += "Evens:   " + (evens.length ? evens.join(", ") : "none") + "\n";
+      output += "Odds:    " + (odds.length ? odds.join(", ") : "none") + "\n";
+      output += "Doubled: " + doubled.join(", ") + "\n";
+      output += "Sum:     " + sum;
+
+      document.getElementById("arrayOutput").textContent = output;
+    });
+    </script>
+
+    <h2>Why ES5 Mattered</h2>
+    <p>ES5 proved that JavaScript could evolve responsibly. After the chaos of the Browser Wars and the collapse of ES4, a careful, backward-compatible update restored confidence in the standardization process.</p>
+
+  </div>
+
+  <div id="sidebar">
+    <h3>In This Section</h3>
+    <ul>
+      <li><a href="1995.html">1995 &mdash; Birth of JS</a></li>
+      <li><a href="1999.html">1999 &mdash; ECMAScript 3</a></li>
+      <li><strong>2009 &mdash; ECMAScript 5</strong></li>
+      <li><a href="2015.html">2015 &mdash; ES2015</a></li>
+      <li><a href="2025.html">2025 &mdash; Modern JS</a></li>
+    </ul>
+    <h3>Reference</h3>
+    <ul>
+      <li><a href="glossary.html">Glossary</a></li>
+      <li><a href="contributors.html">Contributors</a></li>
+      <li><a href="discussion.html">Discussion</a></li>
+      <li><a href="bibliography.html">Bibliography</a></li>
+    </ul>
+    <h3>Key Dates</h3>
+    <p>
+      <strong>1999</strong> &mdash; ES3 published<br>
+      <strong>2003-08</strong> &mdash; ES4 effort and collapse<br>
+      <strong>2009</strong> &mdash; ES5 published<br>
+      <strong>2009</strong> &mdash; Node.js released
+    </p>
+    <h3>ES5 Quick Facts</h3>
+    <p>
+      Published: December 2009<br>
+      Preceded by: ECMAScript 3 (1999)<br>
+      Followed by: ECMAScript 5.1 (2011)<br>
+      Editor: Allen Wirfs-Brock
+    </p>
+  </div>
+
+</div>
+
+<div id="footer">
+  JavaScript History Archive &nbsp;|&nbsp;
+  <a href="../index.html" target="_top">Web History Hub</a>
+</div>
+
+</body>
+</html>

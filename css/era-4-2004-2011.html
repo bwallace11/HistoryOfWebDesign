@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+  <title>CSS Era 4 (2004-2011) - Internet Explorer 7</title>
+  <meta charset="utf-8">
+  <style>
+    body { margin: 0; }
+    #container { max-width: 960px; width: 100%; margin: 0 auto; background: #fff; border: 1px solid #999; box-sizing: border-box; }
+    #container * { box-sizing: border-box; }
+    #header { background: #003366; color: #fff; padding: 14px; }
+    #header h1 { margin: 0; font-size: 22px; }
+    #header p { margin: 6px 0 0; font-size: 12px; color: #cfe3ff; }
+    #nav { background: #e6e6e6; border-top: 1px solid #999; border-bottom: 1px solid #999; padding: 8px 10px; font-size: 13px; }
+    #nav a { color: #003366; font-weight: bold; text-decoration: none; margin-right: 12px; }
+    #nav a:hover { text-decoration: underline; }
+    #sidebar { float: left; width: 250px; padding: 10px; background: #f7f7f7; border-right: 1px solid #ccc; }
+    #content { float: right; width: 680px; padding: 10px; }
+    .box { border: 1px solid #999; padding: 10px; margin-bottom: 10px; background: #fff; }
+    .box h2 { margin: 0 0 8px; font-size: 16px; color: #003366; }
+    .clearfix:after { content: "."; display: block; clear: both; height: 0; visibility: hidden; }
+    .tiny { font-size: 12px; color: #444; }
+    code { background: #eee; padding: 2px 4px; border: 1px solid #ccc; }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <div id="header">
+      <h1>Era 4: CSS 2.1 baseline and the fixed-width centered web (2004-2011)</h1>
+      <p>CSS Level 2 Revision 1 (CSS 2.1) becomes a W3C recommendation on 7 June 2011, but it defines the baseline behavior that authors and browsers stabilized during the 2000s.</p>
+    </div>
+
+    <div id="nav">
+    </div>
+
+    <div class="clearfix">
+      <div id="sidebar">
+        <div class="box">
+          <h2>Era style pattern</h2>
+          <ul class="tiny">
+            <li>960px centered wrapper</li>
+            <li>Float columns</li>
+            <li>Clearfix hacks</li>
+            <li>"Header / Nav / Content / Footer" layout</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h2>The "margin center" hack</h2>
+          <p class="tiny"><code>width: 960px;</code><br><code>margin: 0 auto;</code></p>
+        </div>
+      </div>
+
+      <div id="content">
+        <div class="box">
+          <h2>Why this era happened</h2>
+          <p>After the late-1990s chaos, authors wanted a dependable baseline. CSS features that were too buggy or too inconsistently implemented got avoided. The community converged on "safe" CSS: floats, clear fixes, predictable typography, and fixed-width centered layouts.</p>
+        </div>
+        <div class="box">
+          <h2>Major players (spec editors and community)</h2>
+          <ul>
+            <li><b>Bert Bos</b>: long-term CSS editor and W3C contributor.</li>
+            <li><b>Tantek &Ccedil;elik</b> and <b>Ian Hickson</b>: listed as editors on CSS 2.1 spec.</li>
+            <li><b>Web Standards Project</b> (WaSP): advocacy pushing browser support and standards compliance.</li>
+            <li><b>Browser engine teams:</b> Trident (Microsoft), Gecko (Mozilla), WebKit (Apple), Presto (Opera).</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h2>What authors actually did (2001-2010)</h2>
+          <ul>
+            <li><b>960px grid layouts:</b> fixed containers, often 960px, centered with <code>margin: 0 auto</code>.</li>
+            <li><b>Float columns + clearfix:</b> floats for layout, clearfix hacks to contain them.</li>
+            <li><b>Image-based rounded corners:</b> before border-radius was reliable, corners were sliced images.</li>
+            <li><b>"HasLayout" and IE fixes:</b> special hacks for older Microsoft Internet Explorer behavior.</li>
+            <li><b>Reset CSS:</b> normalize browser default margins/paddings to reduce surprises.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h2>Why CSS 2.1 matters</h2>
+          <p>CSS 2.1 is a cleanup and stabilization step: it clarified behavior and removed or de-emphasized features that never worked consistently. It became the "boring baseline" that made modern CSS possible.</p>
+        </div>
+
+        <div class="box">
+          <h2>Artifact: The 960 Grid System (2008)</h2>
+          <p>
+            <b>Title:</b> 960 Grid System<br>
+            <b>Year:</b> 2008<br>
+            <b>Creator:</b> Nathan Smith
+          </p>
+          <p>
+            The 960 Grid System was a CSS framework that gave designers a
+            standardized 12- or 16-column grid within a 960px-wide container.
+            It became the dominant layout approach of this era because 960
+            divides evenly by 2, 3, 4, 5, 6, 8, 10, 12, 15, and 16.
+          </p>
+          <p>
+            <b>Example pattern:</b>
+          </p>
+          <p>
+            <code>.container_12 { width: 960px; margin: 0 auto; }</code><br>
+            <code>.grid_6 { float: left; width: 460px; margin: 0 10px; }</code>
+          </p>
+          <p>
+            <b>Why it mattered:</b> Grid systems brought order to the chaos of
+            float-based layout. They established conventions for column widths,
+            gutters, and alignment that influenced every CSS framework that
+            followed, including Bootstrap.
+          </p>
+        </div>
+
+        <div class="box">
+          <h2>Artifact: The Clearfix Hack</h2>
+          <p>
+            <b>Title:</b> "Micro clearfix hack"<br>
+            <b>Year:</b> 2004-2011<br>
+            <b>Notable version by:</b> Nicolas Gallagher (2011)
+          </p>
+          <p>
+            When float-based columns were used for layout, the parent container
+            would collapse to zero height because floated elements are removed
+            from normal flow. The "clearfix" hack used pseudoelements or overflow
+            tricks to force the parent to contain its floated children.
+          </p>
+          <p>
+            <b>Why it mattered:</b> The clearfix hack is a symbol of this era's
+            CSS limitations. Developers had to fight the language to achieve basic
+            layouts. This frustration drove demand for Flexbox and Grid.
+          </p>
+        </div>
+
+        <div class="box">
+          <h2>Limitations designers faced</h2>
+          <ul class="tiny">
+            <li>No native rounded corners; required sliced corner images.</li>
+            <li>No shadows without images or hacks.</li>
+            <li>No gradients; background images for every subtle gradient.</li>
+            <li>Equal-height columns required JavaScript or "faux columns" background tricks.</li>
+            <li>IE6 refused to die, requiring special hacks for years after newer browsers appeared.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid #999;padding:10px;background:#e6e6e6;font-size:12px;">
+      <b>Key reference:</b> CSS 2.1 W3C recommendation date: 7 June 2011.
+    </div>
+  </div>
+</body>
+</html>

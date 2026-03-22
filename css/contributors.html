@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Contributors - CSS History Archive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root { --bg: #0f0f14; --panel: #171722; --border: #2b2b38; --text: #ececf1; --muted: #b9bbca; --accent: #9daaff; --link: #7CFFB2; }
+    @media (prefers-color-scheme: light) { :root { --bg: #f6f7fb; --panel: #ffffff; --border: #d9dbe7; --text: #141414; --muted: #444; --accent: #1f2a63; --link: #0a7a3a; } }
+
+    .page-body { margin: 0; min-height: 100vh; font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif; background: radial-gradient(900px 450px at 30% 20%, rgba(157,170,255,.18), transparent), radial-gradient(700px 450px at 80% 60%, rgba(124,255,178,.12), transparent), var(--bg); color: var(--text); line-height: 1.65; padding: 18px; }
+    body { margin: 0; background: var(--bg); }
+    .page-body header { max-width: 980px; margin: 0 auto 14px auto; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
+    .page-body h1 { margin: 0; color: var(--accent); }
+    .page-body p { margin: 8px 0; color: var(--muted); }
+    .page-body .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 980px; margin: 0 auto; }
+    @media (max-width: 700px) { .page-body .grid { grid-template-columns: 1fr; } }
+    .page-body .card { background: rgba(0,0,0,.18); border: 1px solid var(--border); border-radius: 14px; padding: 14px; }
+    .page-body .card h2 { margin: 0 0 8px; font-size: 16px; color: var(--accent); }
+    .page-body .card p { font-size: 14px; }
+    .page-body a { color: var(--link); }
+  </style>
+  <link rel="stylesheet" href="shared-modern.css">
+</head>
+<body>
+  <div class="page-body">
+    <header>
+      <h1>Major Contributors to CSS</h1>
+    </header>
+
+    <nav>
+      <a href="era-6-2017-2026.html">Present Era</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="bibliography.html">Bibliography</a>
+      <a href="contributors.html">Contributors</a>
+      <a href="discussion.html">Discussion</a>
+      <a href="../index.html" target="_top">Web History Hub</a>
+    </nav>
+
+    <div class="grid">
+      <div class="card">
+        <h2>H&aring;kon Wium Lie</h2>
+        <p>Proposed cascading style sheets in October 1994 while working at CERN with Tim Berners-Lee. His proposal, "Cascading HTML Style Sheets," introduced the cascade mechanism and the idea of author-versus-reader style priorities. Later became CTO of Opera Software.</p>
+      </div>
+      <div class="card">
+        <h2>Bert Bos</h2>
+        <p>Co-designed CSS with H&aring;kon Wium Lie and became a primary editor of CSS specifications at W3C. Has been central to the W3C CSS Working Group for decades.</p>
+      </div>
+      <div class="card">
+        <h2>Tantek &Ccedil;elik</h2>
+        <p>A key figure in CSS 2.1 editing and a long-time browser implementer who discovered and documented many cross-browser CSS bugs. Advocated for web standards adoption during the "browser wars" cleanup era.</p>
+      </div>
+      <div class="card">
+        <h2>Elika J. Etemad (fantasai)</h2>
+        <p>A prolific CSS specification editor who has worked on dozens of CSS modules. Instrumental in shaping the modern modular CSS architecture and ensuring specification precision.</p>
+      </div>
+      <div class="card">
+        <h2>Rachel Andrew &amp; Jen Simmons</h2>
+        <p>Both played major roles in educating developers about CSS Grid Layout and modern layout techniques, making complex specifications accessible to working developers.</p>
+      </div>
+      <div class="card">
+        <h2>W3C CSS Working Group</h2>
+        <p>The committee responsible for all CSS specifications, composed of browser vendor representatives and invited experts. Meets regularly to advance CSS modules from proposal to Recommendation.</p>
+      </div>
+    </div>
+
+    <footer>
+      CSS section reference page (modern era shell).
+    </footer>
+  </div>
+</body>
+</html>

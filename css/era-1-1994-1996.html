@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+  <title>CSS Era 1 (1994-1996) - NCSA Mosaic</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <style type="text/css">
+    body { color: #000000; background: #c0c0c0; margin: 0; padding: 16px; }
+    a:link { color: #0000EE; }
+    a:visited { color: #551A8B; }
+    h1 { font-size: 24pt; }
+    h2 { font-size: 16pt; }
+    table { border: 1px solid #000000; }
+    td { padding: 6px; }
+    .note { font-size: 10pt; }
+  </style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     ORIGINAL PAGE CONTENT BELOW - UNCHANGED
+============================================================ -->
+<center>
+  <h1>Cascading Style Sheets: Era 1 (1990-1996)</h1>
+  <p>
+    CSS stands for <b>Cascading Style Sheets</b>. This era covers the conditions that created CSS and the first
+    real proposal work that led to <b>CSS Level 1</b>.
+  </p>
+
+  <table width="90%" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>
+        <b>Era 1: 1994-1996</b>
+      </td>
+    </tr>
+  </table>
+</center>
+
+<hr>
+
+<h2>Context: why CSS had to exist</h2>
+<p>
+Early web pages were mostly structural markup (headings, paragraphs, lists, links). As the web expanded past research,
+authors wanted control over type, spacing, colors, and basic layout. Browsers responded by adding presentational HTML
+features (for example, font tags and alignment) but that mixed content and presentation and made sites hard to maintain.
+CSS was created as a separate, reusable styling layer to prevent HTML from turning into a formatting mess.
+</p>
+
+<h2>Key milestones (1990-1996)</h2>
+<ul>
+  <li><b>1990-1993:</b> The World Wide Web spreads from research to public networks; authors want more control.</li>
+  <li><b>1994:</b> Early CSS proposals circulate; the goal is to style HTML documents without changing HTML itself.</li>
+  <li><b>1994-1996:</b> CSS develops through discussion, prototypes, and standards work, preparing for CSS1.</li>
+  <li><b>17 December 1996:</b> CSS Level 1 becomes a World Wide Web Consortium recommendation. (See <a href="bibliography.html">bibliography</a>.)</li>
+</ul>
+
+<h2>Major people and institutions</h2>
+<ul>
+  <li><b>H&aring;kon Wium Lie</b> (CERN): proposed early cascading style sheets and pushed the idea as the web grew.</li>
+  <li><b>Bert Bos</b>: co-designed early CSS and became a major editor of CSS specifications.</li>
+  <li><b>Tim Berners-Lee</b> (CERN / W3C): founded the World Wide Web Consortium to coordinate web standards.</li>
+  <li><b>World Wide Web Consortium</b> (W3C): the standards organization that published CSS recommendations.</li>
+</ul>
+
+<h2>What shipped (reality check)</h2>
+<p>
+Before CSS1 was a stable recommendation, browser support was limited and inconsistent. Authors relied mostly on
+HTML presentation features and browser defaults.
+</p>
+
+<h2>What authors actually did (1990-1996)</h2>
+<ul>
+  <li><b>Presentational HTML:</b> authors used tags and attributes because CSS support was not reliable.</li>
+  <li><b>Defaults and patience:</b> pages leaned on browser default fonts and spacing.</li>
+  <li><b>Early experiments:</b> tiny embedded style sheets or testing pages, usually not production-critical.</li>
+</ul>
+
+<hr>
+
+<h2>Artifact: The CSS Proposal (1994)</h2>
+<table width="90%" cellspacing="0" cellpadding="8" border="2">
+<tr><td bgcolor="#eeeeee">
+<p>
+<b>Title:</b> "Cascading HTML Style Sheets - A Proposal"<br>
+<b>Year:</b> 1994<br>
+<b>Author:</b> H&aring;kon Wium Lie
+</p>
+<p>
+In October 1994, H&aring;kon Wium Lie published the first formal proposal for
+cascading style sheets. The key insight was <b>cascading</b>: multiple style
+sources (browser defaults, user preferences, author styles) could combine
+with defined priority rules. This was different from other proposals that
+gave full control to either the author or the user.
+</p>
+<p>
+<b>Why it mattered:</b> The cascading model balanced author control with user
+needs (such as accessibility overrides). This philosophy remains at the heart
+of CSS today. Without cascading, CSS might not have been adopted as a standard.
+</p>
+</td></tr>
+</table>
+
+<br>
+
+<h2>Artifact: Why CSS was necessary</h2>
+<table width="90%" cellspacing="0" cellpadding="8" border="2">
+<tr><td bgcolor="#eeeeee">
+<p>
+<b>The problem CSS solved:</b> By 1995, HTML was accumulating presentational
+tags like <code>&lt;font&gt;</code>, <code>&lt;center&gt;</code>, and
+<code>bgcolor</code> attributes. Every page mixed content with formatting.
+Changing the look of a website meant editing every HTML file. CSS proposed
+separating content (HTML) from presentation (CSS) so authors could change
+the appearance of an entire site by editing one file.
+</p>
+<p>
+<b>Limitations before CSS:</b>
+</p>
+<ul>
+  <li>No way to set fonts consistently across pages without repeating <code>&lt;font&gt;</code> tags everywhere.</li>
+  <li>No support for layout beyond tables and invisible spacer GIFs.</li>
+  <li>No hover effects, no dynamic visual changes.</li>
+  <li>Authors had very limited control over spacing and margins.</li>
+</ul>
+</td></tr>
+</table>
+
+<br>
+
+<p class="note">
+This era ends when CSS Level 1 becomes a W3C recommendation on 17 December 1996.
+</p>
+
+<!-- ============================================================
+     END ORIGINAL CONTENT
+============================================================ -->
+
+</body>
+</html>

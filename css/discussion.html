@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Discussion - CSS History Archive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root { --bg: #0f0f14; --panel: #171722; --border: #2b2b38; --text: #ececf1; --muted: #b9bbca; --accent: #9daaff; --link: #7CFFB2; }
+    @media (prefers-color-scheme: light) { :root { --bg: #f6f7fb; --panel: #ffffff; --border: #d9dbe7; --text: #141414; --muted: #444; --accent: #1f2a63; --link: #0a7a3a; } }
+
+    .page-body { margin: 0; min-height: 100vh; font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif; background: radial-gradient(900px 450px at 30% 20%, rgba(157,170,255,.18), transparent), radial-gradient(700px 450px at 80% 60%, rgba(124,255,178,.12), transparent), var(--bg); color: var(--text); line-height: 1.65; padding: 18px; }
+    body { margin: 0; background: var(--bg); }
+    .page-body header, .page-body section { max-width: 980px; margin: 0 auto 14px auto; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
+    .page-body h1 { margin: 0; color: var(--accent); }
+    .page-body h2 { margin: 0 0 8px; font-size: 16px; color: var(--accent); }
+    .page-body h3 { color: var(--muted); font-size: 14px; }
+    .page-body p { margin: 8px 0; color: var(--muted); }
+    .page-body ul { color: var(--muted); }
+    .page-body li { margin: 4px 0; }
+    .page-body code { background: rgba(0,0,0,.25); padding: 2px 6px; border-radius: 4px; font-size: .9em; color: var(--link); }
+    .page-body a { color: var(--link); }
+  </style>
+  <link rel="stylesheet" href="shared-modern.css">
+</head>
+<body>
+  <div class="page-body">
+    <header>
+      <h1>Critical Discussion: The Evolution of CSS</h1>
+    </header>
+
+    <nav>
+      <a href="era-6-2017-2026.html">Present Era</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="bibliography.html">Bibliography</a>
+      <a href="contributors.html">Contributors</a>
+      <a href="discussion.html">Discussion</a>
+      <a href="../index.html" target="_top">Web History Hub</a>
+    </nav>
+
+    <section>
+      <h2>1. Why CSS Was Necessary</h2>
+      <p>Early HTML contained both structure and presentation. Authors used <code>&lt;font&gt;</code> tags, <code>bgcolor</code> attributes, and nested tables to control appearance. This made documents difficult to maintain: changing the font across a site meant editing every page individually. CSS proposed separating content from presentation so that a single stylesheet could control the entire site's appearance.</p>
+      <h3>Discussion Questions</h3>
+      <ul>
+        <li>Was mixing content and presentation truly harmful, or merely inconvenient?</li>
+        <li>Does CSS completely solve the separation problem, or does some presentation still leak into HTML?</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>2. The Implementation Gap</h2>
+      <p>CSS Level 1 became a W3C Recommendation in December 1996, but full, interoperable browser support took years to arrive. Authors who adopted CSS early encountered inconsistencies and bugs across browsers. This created a "chicken and egg" problem: authors avoided CSS because browsers were buggy; browser vendors had less incentive to fix CSS because authors did not use it.</p>
+      <h3>Discussion Questions</h3>
+      <ul>
+        <li>What mechanisms could have accelerated CSS adoption in the late 1990s?</li>
+        <li>How does the CSS implementation gap compare to challenges with newer features like Grid and Container Queries?</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. CSS Layout: Tables, Floats, Flexbox, Grid</h2>
+      <p>CSS layout evolved through several generations: table-based layout (HTML attributes, no CSS), float-based layout (CSS 2.1, fragile), Flexbox (CSS3, one-dimensional), and Grid (CSS3, two-dimensional). Each generation replaced the previous one's workarounds with proper solutions. The history of CSS layout is a history of authors using available tools beyond their intended purpose.</p>
+      <h3>Discussion Questions</h3>
+      <ul>
+        <li>Why did it take until 2017 for a proper two-dimensional layout system to ship in all browsers?</li>
+        <li>What does the evolution of CSS layout reveal about how browser standards develop in practice?</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. The Modular Approach vs Versioned CSS</h2>
+      <p>CSS3 abandoned the idea of a single monolithic version in favor of individual modules (borders, selectors, transitions, Grid) each on their own track. This allowed useful features to ship sooner, but made it harder to talk about "CSS3" as a coherent thing. Developers had to track support for each module individually.</p>
+      <h3>Discussion Questions</h3>
+      <ul>
+        <li>Does the modular approach make CSS harder or easier to learn?</li>
+        <li>How should tooling (such as Autoprefixer and PostCSS) factor into evaluations of CSS's complexity?</li>
+      </ul>
+    </section>
+
+    <footer>
+      CSS section reference page (modern era shell).
+    </footer>
+  </div>
+</body>
+</html>

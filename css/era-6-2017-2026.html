@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CSS Era 6 (2017-2026) - Chrome 120</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #fff; min-height: 100vh; }
+
+    .page-body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      color: #1f2328;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .page-body header {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 24px 20px;
+      border-bottom: 1px solid #d1d6db;
+      background: none;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+    }
+    .page-body h1 { margin: 0 0 6px; font-size: 24px; font-weight: 600; color: #1f2328; }
+    .page-body header p { margin: 0; color: #656d76; font-size: 15px; line-height: 1.55; }
+
+    .page-body nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .page-body nav a {
+      color: #0969da;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 5px 12px;
+      border: 1px solid #d1d6db;
+      border-radius: 6px;
+      background: #f6f8fa;
+    }
+    .page-body nav a:hover { background: #eaeef2; }
+
+    .page-body section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px 24px;
+      background: none;
+      border: none;
+      border-radius: 0;
+    }
+
+    .page-body .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 800px) { .page-body .grid { grid-template-columns: 1fr; } }
+
+    .page-body .card {
+      background: #f6f8fa;
+      border: 1px solid #d1d6db;
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .page-body .card h2 { margin: 0 0 10px; font-size: 15px; font-weight: 600; color: #1f2328; }
+    .page-body .card ul { margin: 0; padding-left: 20px; }
+    .page-body .card li { color: #656d76; font-size: 14px; line-height: 1.7; }
+
+    .page-body section > h2 { font-size: 18px; font-weight: 600; color: #1f2328; margin: 0 0 8px; }
+    .page-body p { margin: 8px 0; color: #656d76; }
+    .page-body a { color: #0969da; }
+    .page-body code { background: #eff1f3; padding: 2px 5px; border-radius: 4px; font-size: 0.9em; }
+  </style>
+  <link rel="stylesheet" href="shared-modern.css">
+</head>
+
+<body>
+  <div class="page-body">
+    <header>
+      <h1>Era 6: Grid era and modern platform CSS (2017-2026)</h1>
+      <p>CSS Grid Layout becomes a cornerstone for real layout work and modern CSS grows into a system language for design. The Grid spec continues evolving as a living collection of modules.</p>
+    </header>
+
+    <nav>
+      <a href="era-6-2017-2026.html">Present Era</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="bibliography.html">Bibliography</a>
+      <a href="contributors.html">Contributors</a>
+      <a href="discussion.html">Discussion</a>
+      <a href="../index.html" target="_top">Web History Hub</a>
+    </nav>
+
+    <section>
+      <div class="grid">
+        <div class="card">
+          <h2>What defines this era</h2>
+          <ul>
+            <li>Grid layouts (2D layout)</li>
+            <li>Custom properties (CSS variables)</li>
+            <li>Modern selectors and better component styling</li>
+            <li>Design systems and theming as normal practice</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Major people and groups</h2>
+          <ul>
+            <li><b>CSS Working Group</b> (W3C): editors and contributors across browsers.</li>
+            <li><b>Elika J. Etemad</b> (fantasai): major editor and standards leader.</li>
+            <li><b>Tab Atkins</b>: long-time standards editor and explainer author.</li>
+            <li><b>Jen Simmons</b>, <b>Rachel Andrew</b>, <b>Miriam Suzanne</b>: education and advocacy for modern layout.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>What authors actually did</h2>
+          <ul>
+            <li><b>Grid-first layouts</b> replacing framework-only grids.</li>
+            <li><b>Utility CSS</b> and design systems at scale.</li>
+            <li><b>Progressive enhancement</b>: use modern features when available, graceful fallback otherwise.</li>
+            <li><b>Dark mode</b> using <code>prefers-color-scheme</code>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Why modern CSS feels "alive"</h2>
+      <p>CSS evolves through modules that ship when browsers implement them and tests confirm behavior. Instead of a single "CSS4," improvements arrive continuously.</p>
+    </section>
+
+    <section>
+      <div class="grid">
+        <div class="card">
+          <h2>Artifact: CSS Grid Layout (2017)</h2>
+          <p>
+            <strong>Title:</strong> CSS Grid Layout Module Level 1<br>
+            <strong>Year:</strong> 2017<br>
+            <strong>Key educators:</strong> Rachel Andrew, Jen Simmons
+          </p>
+          <p>
+            CSS Grid became available in all major browsers in March 2017.
+            For the first time, CSS had a true two-dimensional layout system.
+            Authors could define rows AND columns simultaneously, place items
+            precisely on a grid, and create complex layouts without hacks.
+          </p>
+          <p><strong>Example Grid code:</strong></p>
+          <pre style="background:#eff1f3;padding:8px;border-radius:4px;font-size:13px;overflow-x:auto">
+.layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 16px;
+}</pre>
+          <p>
+            <strong>Why it mattered:</strong> Grid replaced decades of float
+            hacks, framework grids, and Flexbox workarounds for page layout.
+            Rachel Andrew's educational work and Jen Simmons' "Layout Land"
+            videos taught thousands of developers how to use Grid effectively.
+          </p>
+          <figure style="margin:12px 0 0">
+            <img src="../images/css/cssZenGarden.png" alt="CSS Zen Garden showing dramatic layout and theme variation driven by CSS" style="max-width:100%;height:auto;border:1px solid #2e3250;border-radius:8px;display:block">
+            <figcaption style="margin-top:6px;font-size:13px;color:#b9bbca;">Historic CSS showcase that helped popularize separation of content and presentation.</figcaption>
+          </figure>
+        </div>
+
+        <div class="card">
+          <h2>Artifact: CSS Custom Properties (Variables)</h2>
+          <p>
+            <strong>Title:</strong> CSS Custom Properties for Cascading Variables<br>
+            <strong>Year:</strong> 2017 (broad browser support)<br>
+            <strong>Key spec editor:</strong> Tab Atkins
+          </p>
+          <p>
+            Custom properties (CSS variables) let authors define values once
+            and reuse them throughout a stylesheet. Unlike preprocessor variables
+            (Sass, Less), CSS custom properties are live in the browser, cascade
+            normally, and can be changed with JavaScript at runtime.
+          </p>
+          <pre style="background:#eff1f3;padding:8px;border-radius:4px;font-size:13px;overflow-x:auto">
+:root {
+  --color-primary: #0969da;
+  --spacing: 16px;
+}
+.card {
+  color: var(--color-primary);
+  padding: var(--spacing);
+}</pre>
+          <p>
+            <strong>Why it mattered:</strong> Variables made CSS design systems
+            practical. Theming (including dark mode) became a matter of swapping
+            a few variable values rather than rewriting entire stylesheets.
+          </p>
+          <figure style="margin:12px 0 0">
+            <img src="../images/css/Bootstrap.png" alt="Component-based design system example highlighting reusable styles" style="max-width:100%;height:auto;border:1px solid #2e3250;border-radius:8px;display:block">
+            <figcaption style="margin-top:6px;font-size:13px;color:#b9bbca;">Design-system style component model aligned with token and variable-driven CSS workflows.</figcaption>
+          </figure>
+        </div>
+
+        <div class="card">
+          <h2>Why this era replaced the previous one</h2>
+          <p>
+            Flexbox solved one-dimensional layout but complex page structures
+            still required nesting and workarounds. CSS Grid provided the
+            missing two-dimensional layout. Custom properties removed the
+            need for CSS preprocessors in many cases. Container queries
+            (arriving in 2023) completed the picture by letting components
+            respond to their own size, not just the viewport.
+          </p>
+          <h3 style="font-size:14px">Limitations that remain</h3>
+          <ul>
+            <li>Some advanced features still lack full browser support.</li>
+            <li>The spec surface area is now enormous; learning CSS is harder than ever.</li>
+            <li>Legacy browser support requirements slow adoption of newest features.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      CSS section present-era page (modern era shell).
+    </footer>
+  </div>
+</body>
+</html>
