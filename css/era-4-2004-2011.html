@@ -3,6 +3,7 @@
 <head>
   <title>CSS Era 4 (2004-2011) - Internet Explorer 7</title>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body { margin: 0; }
     #container { max-width: 960px; width: 100%; margin: 0 auto; background: #fff; border: 1px solid #999; box-sizing: border-box; }
@@ -20,6 +21,12 @@
     .clearfix:after { content: "."; display: block; clear: both; height: 0; visibility: hidden; }
     .tiny { font-size: 12px; color: #444; }
     code { background: #eee; padding: 2px 4px; border: 1px solid #ccc; }
+    @media (max-width: 760px) {
+      #container { border-width: 0; }
+      #sidebar, #content { float: none; width: 100%; border-right: 0; }
+      #header h1 { font-size: 18px; }
+      #nav { overflow-wrap: anywhere; }
+    }
   </style>
 </head>
 
