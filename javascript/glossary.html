@@ -4,42 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Glossary – JavaScript Archive</title>
-  <style>
-    /* Content styles */
-    body { margin: 0; background: #0f1117; min-height: 100vh; }
-    site-header, site-nav, site-footer { display: block; }
-    site-header .header-inner { padding: 20px 20px 14px; background: radial-gradient(600px 200px at 20% 50%, rgba(99,102,241,.3), transparent), #212438; }
-    site-header .header-inner h1 { margin: 0 0 4px; color: #818cf8; font-size: 22px; }
-    site-header .header-inner p { margin: 0; color: #9499b8; font-size: 13px; }
-    site-nav { background: #212438; border-bottom: 1px solid #2e3250; padding: 8px 16px; }
-    site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
-    site-nav ul li a { color: #818cf8; text-decoration: none; font-weight: 700; padding: 5px 10px; border-radius: 999px; border: 1px solid #2e3250; font-size: 12px; background: rgba(0,0,0,.2); }
-    site-nav ul li a:hover { color: #e8eaf0; }
-    site-nav ul li a.active { color: #e8eaf0; background: #6366f1; border-color: #6366f1; }
-    .page-grid { display: grid; grid-template-columns: 1fr 260px; gap: 0; }
-    @media (max-width: 800px) { .page-grid { grid-template-columns: 1fr; } }
-    main { padding: 18px 20px; color: #ececf1; }
-    main h1 { color: #818cf8; margin-top: 0; }
-    main h2 { color: #9daaff; }
-    main h3 { color: #b9bbca; }
-    main p, main li { color: #b9bbca; line-height: 1.65; }
-    main strong { color: #e8eaf0; }
-    main code { background: #2e3250; padding: 2px 6px; border-radius: 4px; font-size: 12px; color: #7CFFB2; }
-    main a { color: #7CFFB2; }
-    .sidebar { background: #171722; border-left: 1px solid #2e3250; padding: 16px; }
-    .sidebar-card { background: rgba(0,0,0,.3); border: 1px solid #2e3250; border-radius: 10px; padding: 12px; margin-bottom: 12px; }
-    .sidebar-card h3 { margin: 0 0 8px; font-size: 13px; color: #9daaff; }
-    .sidebar-card ul { margin: 0; padding-left: 18px; font-size: 12px; color: #9499b8; }
-    .sidebar-card p { font-size: 12px; color: #9499b8; margin: 0; }
-    site-footer { background: #212438; border-top: 1px solid #2e3250; padding: 10px 20px; font-size: 12px; color: #9499b8; }
-    site-footer a { color: #818cf8; }
-    em { color: #b9bbca; }
-</style>
   <link rel="stylesheet" href="../css/shared-modern.css">
 </head>
 <body>
 
-<!-- ORIGINAL CONTENT -->
 <site-header>
   <div class="header-inner">
     <h1>JavaScript History Archive</h1>
@@ -47,72 +15,26 @@
   </div>
 </site-header>
 
-<site-nav>
-  <ul>
-    <li><a href="2025.html">Present Era</a></li>
-    <li><a href="glossary.html">Glossary</a></li>
-    <li><a href="bibliography.html">Bibliography</a></li>
-    <li><a href="contributors.html">Contributors</a></li>
-    <li><a href="discussion.html">Discussion</a></li>
-    <li><a href="../index.html" target="_top">Web History Hub</a></li>
-  </ul>
-</site-nav>
-
 <div class="page-grid">
   <main>
-    <h1>Glossary</h1>
-    <p>Key terms used throughout the JavaScript history archive.</p>
-    <h2>ECMAScript</h2>
-    <p>The formal name for the JavaScript language specification, maintained by Ecma International under the designation ECMA-262.</p>
-    <h2>TC39</h2>
-    <p>Technical Committee 39 of Ecma International. Responsible for evolving the ECMAScript specification. Members include representatives from Google, Mozilla, Apple, Microsoft, Meta, and others.</p>
-    <h2>Prototype-based inheritance</h2>
-    <p>An object-oriented model in which objects inherit directly from other objects rather than from class definitions. JavaScript uses prototype chains.</p>
-    <h2>Transpiler</h2>
-    <p>A tool that converts code written in one version of a language into an equivalent version supported by older runtimes. Babel is the most widely used JavaScript transpiler.</p>
-    <h2>Strict mode</h2>
-    <p>An opt-in mode introduced in ES5, activated by placing <code>"use strict";</code> at the top of a script or function. Turns silent errors into exceptions.</p>
-    <h2>DOM (Document Object Model)</h2>
-    <p>An API provided by the browser that represents an HTML document as a tree of objects. JavaScript uses the DOM to read and modify page content at runtime.</p>
-    <h2>Promise</h2>
-    <p>An object introduced in ES2015 representing the eventual result of an asynchronous operation. A Promise is pending, fulfilled, or rejected.</p>
-    <h2>async/await</h2>
-    <p>Syntax introduced in ES2017 that allows asynchronous code to be written like synchronous code. An <code>async</code> function always returns a Promise.</p>
-    <h2>JScript</h2>
-    <p>Microsoft's implementation of JavaScript, introduced in Internet Explorer 3.0 in 1996. Differed from Netscape's implementation in ways that created significant compatibility problems.</p>
-    <h2>Polyfill</h2>
-    <p>JavaScript code that implements a modern API in environments that do not natively support it. Unlike a transpiler (which converts syntax), a polyfill adds missing runtime functionality.</p>
-    <h2>Event loop</h2>
-    <p>The mechanism that allows JavaScript &mdash; a single-threaded language &mdash; to handle asynchronous operations. Continuously checks a message queue and executes callbacks when their events complete.</p>
+    <h1>Glossary of JavaScript Terms</h1>
+    <div class="term"><h2>ECMAScript</h2><p>The formal specification name for the JavaScript language (ECMA-262).</p></div>
+    <div class="term"><h2>TC39</h2><p>The standards committee that evolves ECMAScript through staged proposals.</p></div>
+    <div class="term"><h2>Prototype Chain</h2><p>JavaScript&rsquo;s inheritance mechanism where objects delegate behavior to parent prototypes.</p></div>
+    <div class="term"><h2>Transpiler</h2><p>A build tool that converts modern syntax into compatible output for older engines.</p></div>
+    <div class="term"><h2>Strict Mode</h2><p>An opt-in execution mode that tightens semantics and exposes silent errors.</p></div>
+    <div class="term"><h2>DOM</h2><p>The object representation of an HTML document used for runtime interaction.</p></div>
+    <div class="term"><h2>Promise</h2><p>An object representing eventual completion or failure of an asynchronous operation.</p></div>
+    <div class="term"><h2>async/await</h2><p>Syntax built on Promises for readable asynchronous flow.</p></div>
+    <div class="term"><h2>JScript</h2><p>Microsoft&rsquo;s historical JavaScript implementation that contributed to compatibility fragmentation.</p></div>
+    <div class="term"><h2>Polyfill</h2><p>Runtime code that adds missing platform features in environments lacking native support.</p></div>
   </main>
-  <aside class="sidebar">
-    <div class="sidebar-card">
-      <h3>Era Pages</h3>
-      <ul>
-        <li><a href="1995.html">1995 &mdash; Birth of JS</a></li>
-        <li><a href="1999.html">1999 &mdash; ECMAScript 3</a></li>
-        <li><a href="2009.html">2009 &mdash; ECMAScript 5</a></li>
-        <li><a href="2015.html">2015 &mdash; ES2015</a></li>
-        <li><a href="2025.html">2025 &mdash; Modern JS</a></li>
-      </ul>
-    </div>
-    <div class="sidebar-card">
-      <h3>Reference</h3>
-      <ul>
-        <li><strong>Glossary</strong></li>
-        <li><a href="contributors.html">Contributors</a></li>
-        <li><a href="discussion.html">Discussion</a></li>
-        <li><a href="bibliography.html">Bibliography</a></li>
-      </ul>
-    </div>
-  </aside>
 </div>
 
 <site-footer>
   JavaScript section reference page (modern era shell) &nbsp;|&nbsp;
   <a href="../index.html" target="_top">Web History Hub</a>
 </site-footer>
-<!-- END ORIGINAL CONTENT -->
 
 </body>
 </html>

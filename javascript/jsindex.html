@@ -6,11 +6,11 @@
   <title>Home – JavaScript Archive</title>
   <style>
     /* Content styles */
-    body { margin: 0; }
+    body { margin: 0; background: #0F172A; }
     site-header, site-nav, site-footer { display: block; }
-    site-header .header-inner { padding: 20px 20px 14px; background: radial-gradient(600px 200px at 20% 50%, rgba(99,102,241,.3), transparent), #212438; }
-    site-header .header-inner h1 { margin: 0 0 4px; color: #818cf8; font-size: 22px; }
-    site-header .header-inner p { margin: 0; color: #9499b8; font-size: 13px; }
+    site-header .header-inner { padding: 20px 20px 14px; background: linear-gradient(135deg, rgba(59,130,246,.18) 0%, rgba(139,92,246,.18) 100%); border-bottom: 1px solid #1F2937; box-shadow: 0 0 30px rgba(59,130,246,0.2); }
+    site-header .header-inner h1 { margin: 0 0 4px; color: #3B82F6; font-size: 22px; }
+    site-header .header-inner p { margin: 0; color: #9CA3AF; font-size: 13px; }
     site-nav { background: #212438; border-bottom: 1px solid #2e3250; padding: 8px 16px; }
     site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
     site-nav ul li a { color: #818cf8; text-decoration: none; font-weight: 700; padding: 5px 10px; border-radius: 999px; border: 1px solid #2e3250; font-size: 12px; background: rgba(0,0,0,.2); }
@@ -19,21 +19,21 @@
     .page-grid { display: grid; grid-template-columns: 1fr 260px; gap: 0; }
     @media (max-width: 800px) { .page-grid { grid-template-columns: 1fr; } }
     main { padding: 18px 20px; color: #ececf1; }
-    main h1 { color: #818cf8; margin-top: 0; }
-    main h2 { color: #9daaff; }
-    main h3 { color: #b9bbca; }
-    main p, main li { color: #b9bbca; line-height: 1.65; }
+    main h1 { color: #3B82F6; margin-top: 0; }
+    main h2 { color: #8B5CF6; }
+    main h3 { color: #9CA3AF; }
+    main p, main li { color: #9CA3AF; line-height: 1.65; }
     main strong { color: #e8eaf0; }
-    main code { background: #2e3250; padding: 2px 6px; border-radius: 4px; font-size: 12px; color: #7CFFB2; }
-    main a { color: #7CFFB2; }
-    .sidebar { background: #171722; border-left: 1px solid #2e3250; padding: 16px; }
-    .sidebar-card { background: rgba(0,0,0,.3); border: 1px solid #2e3250; border-radius: 10px; padding: 12px; margin-bottom: 12px; }
-    .sidebar-card h3 { margin: 0 0 8px; font-size: 13px; color: #9daaff; }
-    .sidebar-card ul { margin: 0; padding-left: 18px; font-size: 12px; color: #9499b8; }
-    .sidebar-card p { font-size: 12px; color: #9499b8; margin: 0; }
-    site-footer { background: #212438; border-top: 1px solid #2e3250; padding: 10px 20px; font-size: 12px; color: #9499b8; }
-    site-footer a { color: #818cf8; }
-    em { color: #b9bbca; }
+    main code { background: #1F2937; padding: 2px 6px; border-radius: 4px; font-size: 12px; color: #22D3EE; }
+    main a { color: #22D3EE; }
+    .sidebar { background: #111827; border-left: 1px solid #1F2937; padding: 16px; }
+    .sidebar-card { background: #111827; border: 1px solid #1F2937; border-radius: 10px; padding: 12px; margin-bottom: 12px; box-shadow: 0 0 30px rgba(59,130,246,0.2); }
+    .sidebar-card h3 { margin: 0 0 8px; font-size: 13px; color: #8B5CF6; }
+    .sidebar-card ul { margin: 0; padding-left: 18px; font-size: 12px; color: #9CA3AF; }
+    .sidebar-card p { font-size: 12px; color: #9CA3AF; margin: 0; }
+    site-footer { background: #111827; border-top: 1px solid #1F2937; padding: 10px 20px; font-size: 12px; color: #9CA3AF; }
+    site-footer a { color: #22D3EE; }
+    em { color: #9CA3AF; }
 </style>
 </head>
 <body>
@@ -68,25 +68,6 @@
     </ul>
   </main>
   <aside class="sidebar">
-    <div class="sidebar-card">
-      <h3>Era Pages</h3>
-      <ul>
-        <li><a href="1995.html">1995 &mdash; Birth of JS</a></li>
-        <li><a href="1999.html">1999 &mdash; ECMAScript 3</a></li>
-        <li><a href="2009.html">2009 &mdash; ECMAScript 5</a></li>
-        <li><a href="2015.html">2015 &mdash; ES2015</a></li>
-        <li><a href="2025.html">2025 &mdash; Modern JS</a></li>
-      </ul>
-    </div>
-    <div class="sidebar-card">
-      <h3>Reference</h3>
-      <ul>
-        <li><a href="glossary.html">Glossary</a></li>
-        <li><a href="contributors.html">Contributors</a></li>
-        <li><a href="discussion.html">Discussion</a></li>
-        <li><a href="bibliography.html">Bibliography</a></li>
-      </ul>
-    </div>
     <div class="sidebar-card">
       <h3>About This Archive</h3>
       <p>Each era page uses only the HTML, CSS, and JavaScript available at the time it covers. The styling differences are intentional and historical.</p>

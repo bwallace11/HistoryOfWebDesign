@@ -4,24 +4,6 @@
   <meta charset="utf-8">
   <title>Glossary - CSS History Archive</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    :root { --bg: #0f0f14; --panel: #171722; --border: #2b2b38; --text: #ececf1; --muted: #b9bbca; --accent: #9daaff; --link: #7CFFB2; }
-    @media (prefers-color-scheme: light) { :root { --bg: #f6f7fb; --panel: #ffffff; --border: #d9dbe7; --text: #141414; --muted: #444; --accent: #1f2a63; --link: #0a7a3a; } }
-
-    .page-body { margin: 0; min-height: 100vh; font-family: system-ui, -apple-system, Segoe UI, Arial, sans-serif; background: radial-gradient(900px 450px at 30% 20%, rgba(157,170,255,.18), transparent), radial-gradient(700px 450px at 80% 60%, rgba(124,255,178,.12), transparent), var(--bg); color: var(--text); line-height: 1.65; padding: 18px; }
-    body { margin: 0; background: var(--bg); }
-    .page-body header { max-width: 980px; margin: 0 auto 14px auto; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
-    .page-body h1 { margin: 0; color: var(--accent); }
-    .page-body p { margin: 8px 0; color: var(--muted); }
-    .page-body section { max-width: 980px; margin: 0 auto 14px auto; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
-    .page-body .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 980px; margin: 0 auto; }
-    @media (max-width: 700px) { .page-body .grid { grid-template-columns: 1fr; } }
-    .page-body .card { background: rgba(0,0,0,.18); border: 1px solid var(--border); border-radius: 14px; padding: 14px; }
-    .page-body .card h2 { margin: 0 0 8px; font-size: 16px; color: var(--accent); }
-    .page-body .card p { font-size: 14px; }
-    .page-body a { color: var(--link); }
-    .page-body code { background: rgba(0,0,0,.25); padding: 2px 6px; border-radius: 4px; font-size: .9em; color: var(--link); }
-  </style>
   <link rel="stylesheet" href="shared-modern.css">
 </head>
 <body>
@@ -31,57 +13,20 @@
       <p>Key terms used throughout the CSS history archive.</p>
     </header>
 
-    <nav>
-      <a href="era-6-2017-2026.html">Present Era</a>
-      <a href="glossary.html">Glossary</a>
-      <a href="bibliography.html">Bibliography</a>
-      <a href="contributors.html">Contributors</a>
-      <a href="discussion.html">Discussion</a>
-      <a href="../index.html" target="_top">Web History Hub</a>
-    </nav>
-
-    <div class="grid">
-      <div class="card">
-        <h2>Cascading</h2>
-        <p>The mechanism by which CSS resolves conflicts when multiple rules apply to the same element. Rules cascade according to specificity, origin (author, user, browser), and order of appearance.</p>
+    <section>
+      <div class="grid">
+        <article class="card"><h2>Cascading</h2><p>The conflict-resolution system that determines which rule wins by origin, specificity, and source order.</p></article>
+        <article class="card"><h2>Selector</h2><p>The rule target syntax, such as element, class, ID, attribute, and relationship selectors.</p></article>
+        <article class="card"><h2>Box Model</h2><p>The rectangular model for content, padding, border, and margin used for sizing and spacing.</p></article>
+        <article class="card"><h2>Specificity</h2><p>A weighting system used to break ties between competing declarations.</p></article>
+        <article class="card"><h2>Float</h2><p>A legacy positioning approach that moved elements left/right and wrapped inline content around them.</p></article>
+        <article class="card"><h2>Flexbox</h2><p>A one-dimensional layout model for alignment and spacing across a row or column.</p></article>
+        <article class="card"><h2>Grid Layout</h2><p>A two-dimensional layout model for rows and columns with precise track control.</p></article>
+        <article class="card"><h2>Custom Properties</h2><p>Native CSS variables declared with <code>--name</code> and consumed with <code>var()</code>.</p></article>
+        <article class="card"><h2>Media Query</h2><p>Conditional styling based on viewport or environment characteristics.</p></article>
+        <article class="card"><h2>Vendor Prefix</h2><p>Legacy browser prefixes used during experimental implementation phases.</p></article>
       </div>
-      <div class="card">
-        <h2>Selector</h2>
-        <p>The part of a CSS rule that identifies which HTML elements the rule applies to. Examples include element selectors (<code>p</code>), class selectors (<code>.note</code>), and ID selectors (<code>#header</code>).</p>
-      </div>
-      <div class="card">
-        <h2>Box model</h2>
-        <p>The CSS model that treats every element as a rectangular box with content, padding, border, and margin areas. Understanding the box model is essential for controlling layout and spacing.</p>
-      </div>
-      <div class="card">
-        <h2>Specificity</h2>
-        <p>A weighting system CSS uses to decide which rule wins when multiple rules target the same element and property. Inline styles beat IDs, which beat classes, which beat element selectors.</p>
-      </div>
-      <div class="card">
-        <h2>Float</h2>
-        <p>A CSS property that removes an element from normal document flow and shifts it to the left or right, allowing text to wrap around it. Before Flexbox and Grid, floats were the primary tool for multi-column layouts.</p>
-      </div>
-      <div class="card">
-        <h2>Flexbox (Flexible Box Layout)</h2>
-        <p>A CSS layout model introduced in CSS3 that provides efficient alignment and distribution of space among items in a container, especially when sizes are unknown or dynamic.</p>
-      </div>
-      <div class="card">
-        <h2>Grid Layout</h2>
-        <p>A two-dimensional CSS layout system introduced widely in 2017 that divides a container into rows and columns, enabling complex layouts without nested floats or tables.</p>
-      </div>
-      <div class="card">
-        <h2>Custom properties (CSS variables)</h2>
-        <p>Variables defined in CSS using the <code>--name: value</code> syntax and referenced via <code>var(--name)</code>. Introduced in CSS3, they allow themes and reusable values without a preprocessor.</p>
-      </div>
-      <div class="card">
-        <h2>Media query</h2>
-        <p>A CSS feature that applies rules only when certain conditions are true, typically related to the viewport width. The basis of responsive design, standardized in CSS3.</p>
-      </div>
-      <div class="card">
-        <h2>Vendor prefix</h2>
-        <p>Browser-specific prefixes such as <code>-webkit-</code>, <code>-moz-</code>, and <code>-ms-</code> used during the CSS3 era to experiment with features before standardization. Now largely deprecated in favor of unprefixed properties.</p>
-      </div>
-    </div>
+    </section>
 
     <footer>
       CSS section reference page (modern era shell).

@@ -175,6 +175,40 @@
       border-radius: var(--btn-r); opacity: 0.88; pointer-events: none; z-index: 999;
       transition: background-color 1.2s ease, color 1.2s ease, border-radius 1.2s ease;
     }
+    .ctrl-help {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1200;
+    }
+    .ctrl-help.open { display: flex; }
+    .ctrl-help-box {
+      width: min(92vw, 460px);
+      background: var(--content-bg);
+      border: 2px solid var(--chrome-lo);
+      border-radius: var(--shell-r);
+      box-shadow: var(--shadow);
+      padding: 14px;
+      color: var(--btn-fg);
+    }
+    .ctrl-help-box h3 {
+      font-size: 15px;
+      margin: 0 0 8px;
+      color: var(--card-h2);
+    }
+    .ctrl-help-box p {
+      font-size: 12px;
+      line-height: 1.55;
+      margin: 0 0 10px;
+      color: var(--btn-fg);
+    }
+    .ctrl-help-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
 
     /* Era themes */
     .t-home {
@@ -339,18 +373,18 @@
       --winbtn-r:4px;
     }
     .t-css-2017 {
-      --bg:#0f1117; --chrome-bg:#1a1d2e; --chrome-hi:#818cf8; --chrome-lo:#2e3250;
-      --titlebar-bg:#212438; --titlebar-fg:#e8eaf0;
-      --toolbar-bg:#212438; --toolbar-border:1px solid #2e3250;
-      --addr-bg:#212438; --addr-input-bg:#0f1117; --addr-input-fg:#e8eaf0;
-      --btn-bg:#2e3250; --btn-fg:#e8eaf0;
-      --tab-active-bg:#1a1d2e; --tab-active-fg:#818cf8;
-      --tab-idle-bg:#212438; --tab-hover-bg:#2e3250;
-      --content-bg:#1a1d2e; --status-bg:#212438; --status-fg:#9499b8;
-      --card-h2:#818cf8;
+      --bg:#0F172A; --chrome-bg:#111827; --chrome-hi:#3B82F6; --chrome-lo:#1F2937;
+      --titlebar-bg:#111827; --titlebar-fg:#E5E7EB;
+      --toolbar-bg:#111827; --toolbar-border:1px solid #1F2937;
+      --addr-bg:#111827; --addr-input-bg:#0F172A; --addr-input-fg:#E5E7EB;
+      --btn-bg:#3B82F6; --btn-fg:#E5E7EB;
+      --tab-active-bg:#111827; --tab-active-fg:#8B5CF6;
+      --tab-idle-bg:#111827; --tab-hover-bg:#1F2937;
+      --content-bg:#111827; --status-bg:#111827; --status-fg:#9CA3AF;
+      --card-h2:#3B82F6;
       --shell-r:10px; --btn-r:20px; --addr-r:20px; --tab-r:8px 8px 0 0;
       --font:"Segoe UI",system-ui,sans-serif; --fsize:13px;
-      --shadow:0 8px 32px rgba(0,0,0,.75); --bar-color:#818cf8;
+      --shadow:0 0 30px rgba(59,130,246,0.2); --bar-color:#22D3EE;
       --winbtn-r:50%; --winbtn-w:12px; --winbtn-h:12px; --winbtn-fs:0px; --winbtn-brd:0px; --winbtn-gap:8px;
       --wb-close:#ff5f57; --wb-min:#ffbd2e; --wb-max:#28c940;
       --wb-close-fg:transparent; --wb-min-fg:transparent; --wb-max-fg:transparent;
@@ -414,18 +448,18 @@
       --winbtn-r:4px;
     }
     .t-js-2025 {
-      --bg:#0f1117; --chrome-bg:#1a1d2e; --chrome-hi:#6366f1; --chrome-lo:#2e3250;
-      --titlebar-bg:#212438; --titlebar-fg:#e8eaf0;
-      --toolbar-bg:#212438; --toolbar-border:1px solid #2e3250;
-      --addr-bg:#212438; --addr-input-bg:#0f1117; --addr-input-fg:#e8eaf0;
-      --btn-bg:#6366f1; --btn-fg:#fff;
-      --tab-active-bg:#1a1d2e; --tab-active-fg:#818cf8;
-      --tab-idle-bg:#212438; --tab-hover-bg:#2e3250;
-      --content-bg:#1a1d2e; --status-bg:#212438; --status-fg:#9499b8;
-      --card-h2:#818cf8;
+      --bg:#0F172A; --chrome-bg:#111827; --chrome-hi:#3B82F6; --chrome-lo:#1F2937;
+      --titlebar-bg:#111827; --titlebar-fg:#E5E7EB;
+      --toolbar-bg:#111827; --toolbar-border:1px solid #1F2937;
+      --addr-bg:#111827; --addr-input-bg:#0F172A; --addr-input-fg:#E5E7EB;
+      --btn-bg:#3B82F6; --btn-fg:#E5E7EB;
+      --tab-active-bg:#111827; --tab-active-fg:#8B5CF6;
+      --tab-idle-bg:#111827; --tab-hover-bg:#1F2937;
+      --content-bg:#111827; --status-bg:#111827; --status-fg:#9CA3AF;
+      --card-h2:#3B82F6;
       --shell-r:12px; --btn-r:20px; --addr-r:20px; --tab-r:8px 8px 0 0;
       --font:"Segoe UI",system-ui,sans-serif; --fsize:13px;
-      --shadow:0 8px 40px rgba(0,0,0,.8); --bar-color:#6366f1;
+      --shadow:0 0 30px rgba(59,130,246,0.2); --bar-color:#22D3EE;
       --winbtn-r:50%; --winbtn-w:12px; --winbtn-h:12px; --winbtn-fs:0px; --winbtn-brd:0px; --winbtn-gap:8px;
       --wb-close:#ff5f57; --wb-min:#ffbd2e; --wb-max:#28c940;
       --wb-close-fg:transparent; --wb-min-fg:transparent; --wb-max-fg:transparent;
@@ -559,10 +593,10 @@
     <button class="tbtn" onclick="reloadFr()">Reload</button>
     <button class="tbtn" onclick="goHome()">Home</button>
   </div>
-  <div class="addrbar">
-    <span class="addr-label">Address:</span>
-    <input class="addr-input" id="addr" type="text" value="https://historyofwd.netlify.app/" readonly title="Address bar timeline: in the 1990s it was mainly for direct URLs, then keyword search support appeared in the early 2000s, and by the late 2000s browsers merged URL entry and search into one omnibox/search bar." aria-label="Address bar timeline and search evolution">
-    <button class="go-btn">Go</button>
+  <div class="addrbar" title="Address bar evolution: 1990s browsers used this box mainly for direct URLs. Around 2001-2003, keyword shortcuts and separate search boxes became common. By 2008-2010, major browsers merged URL entry + web search into one omnibox/search bar to reduce UI clutter, speed navigation, and make searching easier for non-technical users.">
+    <span class="addr-label" id="addr-label">Address:</span>
+    <input class="addr-input" id="addr" type="text" value="https://historyofwd.netlify.app/" readonly title="Address bar evolution: 1990s = URL entry, early 2000s = keyword/search assistance, late 2000s to 2010 = merged URL + search omnibox for speed and simpler browsing." aria-label="Address bar timeline: when and why URL bars became search bars">
+    <button class="go-btn" id="go-btn">Go</button>
   </div>
   <div class="stabs">
     <div class="stab active" id="st-home" onclick="showSec('home')">Hub</div>
@@ -628,6 +662,15 @@
   </div>
 </div>
 <div class="era-badge" id="ebadge">Hub</div>
+<div class="ctrl-help" id="ctrl-help" aria-hidden="true">
+  <div class="ctrl-help-box" role="dialog" aria-modal="true" aria-labelledby="ctrl-help-title">
+    <h3 id="ctrl-help-title">Window Control</h3>
+    <p id="ctrl-help-body">Control timeline details will appear here.</p>
+    <div class="ctrl-help-actions">
+      <button class="tbtn" id="ctrl-help-exit">Exit</button>
+    </div>
+  </div>
+</div>
 
 <script>
   var D = {
@@ -639,7 +682,7 @@
         { label:'1997-2003',    url:'html/era3-1997-2003.html',  theme:'t-html-1997', year:'1997-2003' },
         { label:'2004-2013',    url:'html/era4-2004-2013.html',  theme:'t-html-2004', year:'2004-2013' },
         { label:'2014-Present', url:'html/era5-2014-now.html',   theme:'t-html-2014', year:'2014-Now' },
-        { label:'Glossary',     url:'html/glossary.html',        theme:'t-html-2004', year:'Glossary' },
+        { label:'Glossary',     url:'html/glossary.html',        theme:'t-html-2014', year:'Glossary' },
         { label:'Bibliography', url:'html/bibliography.html',    theme:'t-html-2014', year:'Bibliography' },
         { label:'Contributors', url:'html/contributors.html',    theme:'t-html-2014', year:'Contributors' },
         { label:'Discussion',   url:'html/discussion.html',      theme:'t-html-2014', year:'Discussion' }
@@ -700,16 +743,56 @@
   var hh = document.getElementById('hubhome');
   var etabs = document.getElementById('etabs');
   var addr = document.getElementById('addr');
+  var addrLabel = document.getElementById('addr-label');
+  var goBtn = document.getElementById('go-btn');
   var pbar = document.getElementById('pbar');
   var sleft = document.getElementById('sleft');
   var sright = document.getElementById('sright');
   var ebadge = document.getElementById('ebadge');
   var btitle = document.getElementById('btitle');
+  var ctrlHelp = document.getElementById('ctrl-help');
+  var ctrlHelpTitle = document.getElementById('ctrl-help-title');
+  var ctrlHelpBody = document.getElementById('ctrl-help-body');
+  var ctrlHelpExit = document.getElementById('ctrl-help-exit');
   var osMode = 'windows';
+
+  function updateAddressChrome(theme) {
+    var isPost2010 = theme === 't-html-2014' || theme === 't-css-2011' || theme === 't-css-2017' || theme === 't-js-2015' || theme === 't-js-2025';
+    if (isPost2010) {
+      addrLabel.style.display = 'none';
+      goBtn.style.display = 'none';
+      return;
+    }
+    addrLabel.style.display = '';
+    goBtn.style.display = '';
+    if (osMode === 'mac') {
+      addrLabel.textContent = 'Location:';
+    } else if (osMode === 'linux') {
+      addrLabel.textContent = 'Address:';
+    } else {
+      addrLabel.textContent = 'Address:';
+    }
+  }
+
+  var CTRL_INFO = {
+    min: {
+      title: 'Minimize Control',
+      body: 'Placed in browser windows during the 1990s desktop era after appearing in GUI systems in the mid-1980s. It was added so users could keep a browser session active while clearing screen space without closing it.'
+    },
+    max: {
+      title: 'Resize / Maximize Control',
+      body: 'Placed in mainstream browser chrome during the 1990s after early GUI adoption in the 1980s. It was added so people could quickly switch between windowed and full-size reading, especially as page complexity grew.'
+    },
+    close: {
+      title: 'Exit / Close Control',
+      body: 'Placed as a standard browser window control in the 1990s desktop model, inherited from 1980s GUI conventions. It was added to explicitly end the current browser window session.'
+    }
+  };
 
   function applyT(theme, year) {
     ALL_T.forEach(function(t){ bd.classList.remove(t); });
     bd.classList.add(theme);
+    updateAddressChrome(theme);
     ebadge.textContent = year;
     btitle.textContent = 'Web History Hub - ' + (osMode.charAt(0).toUpperCase() + osMode.slice(1)) + ' Browser';
   }
@@ -721,8 +804,27 @@
     document.getElementById('os-win').classList.toggle('active', mode === 'windows');
     document.getElementById('os-mac').classList.toggle('active', mode === 'mac');
     document.getElementById('os-linux').classList.toggle('active', mode === 'linux');
+    if (curSec !== 'home' && curIdx >= 0) {
+      updateAddressChrome(D[curSec].eras[curIdx].theme);
+    } else {
+      updateAddressChrome('t-home');
+    }
     btitle.textContent = 'Web History Hub - ' + (osMode.charAt(0).toUpperCase() + osMode.slice(1)) + ' Browser';
     sright.textContent = 'historyofwd.netlify.app | ' + osMode + ' mode';
+  }
+
+  function openCtrlHelp(type) {
+    var info = CTRL_INFO[type];
+    if (!info) return;
+    ctrlHelpTitle.textContent = info.title;
+    ctrlHelpBody.textContent = info.body;
+    ctrlHelp.classList.add('open');
+    ctrlHelp.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeCtrlHelp() {
+    ctrlHelp.classList.remove('open');
+    ctrlHelp.setAttribute('aria-hidden', 'true');
   }
 
   var ptimer;
@@ -748,7 +850,7 @@
     var e = D[sec].eras[idx];
     applyT(e.theme, e.year);
     addr.value = 'https://historyofwd.netlify.app/' + e.url;
-    sright.textContent = 'historyofwd.netlify.app';
+    sright.textContent = 'historyofwd.netlify.app | ' + osMode + ' mode';
     startP(e.url);
     hh.style.display = 'none';
     fr.style.display = 'block';
@@ -819,6 +921,21 @@
     startP(fr.src); fr.onload = endP; fr.src = fr.src;
   }
   function goHome() { showSec('home'); }
+
+  document.getElementById('wb-min').addEventListener('click', function(){ openCtrlHelp('min'); });
+  document.getElementById('wb-max').addEventListener('click', function(){ openCtrlHelp('max'); });
+  document.getElementById('wb-close').addEventListener('click', function(){ openCtrlHelp('close'); });
+  ctrlHelpExit.addEventListener('click', closeCtrlHelp);
+  ctrlHelp.addEventListener('click', function(ev){
+    if (ev.target === ctrlHelp) closeCtrlHelp();
+  });
+  document.addEventListener('keydown', function(ev){
+    if (!ctrlHelp.classList.contains('open')) return;
+    if (ev.key === 'Backspace' || ev.key === 'Delete' || ev.key === 'Escape') {
+      ev.preventDefault();
+      closeCtrlHelp();
+    }
+  });
 
   setOS('windows');
 </script>

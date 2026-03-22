@@ -6,52 +6,51 @@
   <title>2025 - Modern ECMAScript - Chrome 130</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { margin: 0; background: #fff; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; color: #1f2328; font-size: 15px; line-height: 1.6; }
+    body { margin: 0; background: #0F172A; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; color: #E5E7EB; font-size: 15px; line-height: 1.6; }
     site-header, site-nav, site-footer { display: block; }
 
     site-header { padding: 0; }
-    site-header .header-inner { padding: 20px 24px 14px; background: #fff; border-bottom: 1px solid #d1d6db; }
-    site-header .header-inner h1 { margin: 0 0 4px; color: #1f2328; font-size: 20px; font-weight: 600; }
-    site-header .header-inner p { margin: 0; color: #656d76; font-size: 13px; }
+    site-header .header-inner { padding: 20px 24px 14px; background: linear-gradient(135deg, rgba(59,130,246,.18) 0%, rgba(139,92,246,.18) 100%); border-bottom: 1px solid #1F2937; box-shadow: 0 0 30px rgba(59,130,246,0.2); }
+    site-header .header-inner h1 { margin: 0 0 4px; color: #3B82F6; font-size: 20px; font-weight: 600; }
+    site-header .header-inner p { margin: 0; color: #9CA3AF; font-size: 13px; }
 
-    site-nav { display: block; background: #f6f8fa; border-bottom: 1px solid #d1d6db; padding: 6px 20px; }
+    site-nav { display: block; background: #111827; border-bottom: 1px solid #1F2937; padding: 6px 20px; }
     site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 2px; }
-    site-nav ul li a { color: #656d76; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; font-size: 13px; }
-    site-nav ul li a:hover { color: #1f2328; background: #eaeef2; }
-    site-nav ul li a.active { color: #fff; background: #0969da; }
+    site-nav ul li a { color: #9CA3AF; text-decoration: none; font-weight: 600; padding: 6px 12px; border-radius: 6px; font-size: 13px; }
+    site-nav ul li a:hover { color: #E5E7EB; background: #1F2937; }
+    site-nav ul li a.active { color: #E5E7EB; background: #3B82F6; }
 
     .page-grid { display: grid; grid-template-columns: 1fr 240px; gap: 24px; max-width: 1060px; margin: 0 auto; padding: 24px 20px; }
     @media (max-width: 800px) { .page-grid { grid-template-columns: 1fr; } }
 
-    main { color: #1f2328; }
-    main h1 { color: #1f2328; font-size: 22px; font-weight: 600; margin-top: 0; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #d1d6db; }
-    main h2 { color: #1f2328; font-size: 17px; font-weight: 600; margin-top: 28px; margin-bottom: 10px; }
-    main p { color: #656d76; line-height: 1.65; margin-bottom: 12px; }
+    main { color: #E5E7EB; }
+    main h1 { color: #3B82F6; font-size: 22px; font-weight: 600; margin-top: 0; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #1F2937; }
+    main h2 { color: #8B5CF6; font-size: 17px; font-weight: 600; margin-top: 28px; margin-bottom: 10px; }
+    main p { color: #9CA3AF; line-height: 1.65; margin-bottom: 12px; }
     main ul { margin: 0 0 14px; padding-left: 24px; }
-    main ul li { color: #656d76; line-height: 1.7; margin-bottom: 4px; }
-    main strong { color: #1f2328; }
-    main code { background: #eff1f3; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #1f2328; }
+    main ul li { color: #9CA3AF; line-height: 1.7; margin-bottom: 4px; }
+    main strong { color: #E5E7EB; }
+    main code { background: #1F2937; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #22D3EE; }
 
     .sidebar { }
-    .sidebar-card { background: #f6f8fa; border: 1px solid #d1d6db; border-radius: 8px; padding: 14px; margin-bottom: 14px; }
-    .sidebar-card h3 { margin: 0 0 8px; font-size: 12px; font-weight: 600; color: #656d76; text-transform: uppercase; letter-spacing: 0.5px; }
-    .sidebar-card ul { margin: 0; padding-left: 18px; font-size: 13px; color: #656d76; list-style: disc; }
+    .sidebar-card { background: #111827; border: 1px solid #1F2937; border-radius: 8px; padding: 14px; margin-bottom: 14px; box-shadow: 0 0 30px rgba(59,130,246,0.2); }
+    .sidebar-card h3 { margin: 0 0 8px; font-size: 12px; font-weight: 600; color: #8B5CF6; text-transform: uppercase; letter-spacing: 0.5px; }
+    .sidebar-card ul { margin: 0; padding-left: 18px; font-size: 13px; color: #9CA3AF; list-style: disc; }
     .sidebar-card ul li { margin-bottom: 3px; border: none; padding: 0; }
-    .sidebar-card p { font-size: 13px; color: #656d76; margin: 0; }
-    .chip { display: inline-block; background: #ddf4ff; border: 1px solid rgba(84,174,255,0.4); border-radius: 16px; padding: 2px 8px; font-size: 11px; color: #0969da; margin: 2px; }
+    .sidebar-card p { font-size: 13px; color: #9CA3AF; margin: 0; }
+    .chip { display: inline-block; background: rgba(34,211,238,.14); border: 1px solid rgba(34,211,238,.45); border-radius: 16px; padding: 2px 8px; font-size: 11px; color: #22D3EE; margin: 2px; }
 
-    .demobox { background: #f6f8fa; border: 1px solid #d1d6db; border-radius: 8px; padding: 16px; margin: 16px 0; }
-    .demobox h3 { margin: 0 0 8px; color: #1f2328; font-size: 15px; font-weight: 600; }
+    .demobox { background: #111827; border: 1px solid #1F2937; border-radius: 8px; padding: 16px; margin: 16px 0; box-shadow: 0 0 30px rgba(59,130,246,0.2); }
+    .demobox h3 { margin: 0 0 8px; color: #8B5CF6; font-size: 15px; font-weight: 600; }
     .input-row { margin: 10px 0; }
-    pre { background: #24292f; border-radius: 6px; padding: 12px 14px; font-size: 13px; white-space: pre-wrap; color: #e6edf3; line-height: 1.5; }
-    .note { font-size: 12px; color: #8b949e; margin-top: 8px; }
-    button { background: #0969da; color: #fff; border: 1px solid rgba(27,31,36,.15); border-radius: 6px; padding: 7px 16px; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer; }
-    button:hover { background: #0860ca; }
+    pre { background: #0b1220; border: 1px solid #1F2937; border-radius: 6px; padding: 12px 14px; font-size: 13px; white-space: pre-wrap; color: #E5E7EB; line-height: 1.5; }
+    .note { font-size: 12px; color: #9CA3AF; margin-top: 8px; }
+    button { background: #3B82F6; color: #E5E7EB; border: 1px solid #1F2937; border-radius: 6px; padding: 7px 16px; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer; }
+    button:hover { background: #22D3EE; color: #0F172A; }
 
-    site-footer { display: block; background: #f6f8fa; border-top: 1px solid #d1d6db; padding: 12px 24px; font-size: 12px; color: #656d76; }
-    site-footer a { color: #0969da; }
+    site-footer { display: block; background: #111827; border-top: 1px solid #1F2937; padding: 12px 24px; font-size: 12px; color: #9CA3AF; }
+    site-footer a { color: #22D3EE; }
   </style>
-  <link rel="stylesheet" href="../css/shared-modern.css">
 </head>
 <body>
 
@@ -61,17 +60,6 @@
     <p>A historical record of the ECMAScript specification &mdash; 1995 to 2025</p>
   </div>
 </site-header>
-
-<site-nav>
-  <ul>
-    <li><a href="2025.html">Present Era</a></li>
-    <li><a href="glossary.html">Glossary</a></li>
-    <li><a href="bibliography.html">Bibliography</a></li>
-    <li><a href="contributors.html">Contributors</a></li>
-    <li><a href="discussion.html">Discussion</a></li>
-    <li><a href="../index.html" target="_top">Web History Hub</a></li>
-  </ul>
-</site-nav>
 
 <div class="page-grid">
   <main>
